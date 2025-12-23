@@ -550,3 +550,18 @@
 - [x] Garantir redirecionamento para /dashboard após login
 - [x] Remover opção de cadastro manual
 - [x] Testar fluxo completo OAuth
+
+
+## Dashboard Minimalista e Sistema de Pontos Acumulativos
+- [x] Criar tabela `user_points_log` (userId, action, points, timestamp)
+- [x] Implementar procedure `points.addPoints` (action: login, video, exercise, podcast, task)
+- [x] Implementar procedure `points.getPointsSummary` (hoje, esta semana, este mês)
+- [x] Redesenhar Dashboard.tsx com layout minimalista
+- [x] Remover textos desnecessários e propaganda
+- [x] Adicionar card de Pontos (dia/semana/mês)
+- [x] Adicionar card de XP e Nível
+- [x] Adicionar seção "Continuar de onde parou"
+- [x] Adicionar acesso rápido às disciplinas
+- [x] Integrar chamadas de pontos em ações do usuário (checkDailyLogin no mount)
+- [x] Testar sistema de pontos completo
+- [x] Escrever testes para procedures de pontos

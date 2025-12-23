@@ -202,6 +202,26 @@ export type Streak = typeof streaks.$inferSelect;
 export type InsertStreak = typeof streaks.$inferInsert;
 
 /**
+ * User points log (accumulative gamification system)
+ * Tracks points earned from various actions (login, video, exercise, podcast, task)
+ */
+export const userPointsLog = mysqlTable("userPointsLog", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  
+  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed"]).notNull(),
+  points: int("points").notNull(),
+  
+  // Optional metadata
+  relatedId: int("relatedId"), // pageId, exerciseId, etc.
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type UserPointsLog = typeof userPointsLog.$inferSelect;
+export type InsertUserPointsLog = typeof userPointsLog.$inferInsert;
+
+/**
  * User XP (experience points) and levels
  */
 export const userXP = mysqlTable("userXP", {

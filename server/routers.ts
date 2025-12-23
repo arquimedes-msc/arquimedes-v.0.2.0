@@ -361,7 +361,35 @@ Retorne APENAS um JSON com:
       
       return null;
     }),
+   }),
+
+  // ============= POINTS =============
+  points: router({
+    addPoints: protectedProcedure
+      .input(z.object({
+        action: z.enum(["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed"]),
+        points: z.number(),
+        relatedId: z.number().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        await db.addPoints(ctx.user.id, input.action, input.points, input.relatedId);
+        return { success: true };
+      }),
+    
+    getSummary: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getPointsSummary(ctx.user.id);
+    }),
+    
+    checkDailyLogin: protectedProcedure.mutation(async ({ ctx }) => {
+      const hasEarned = await db.hasEarnedPointsToday(ctx.user.id, "daily_login");
+      
+      if (!hasEarned) {
+        await db.addPoints(ctx.user.id, "daily_login", 10);
+        return { earned: true, points: 10 };
+      }
+      
+      return { earned: false, points: 0 };
+    }),
   }),
 });
-
 export type AppRouter = typeof appRouter;

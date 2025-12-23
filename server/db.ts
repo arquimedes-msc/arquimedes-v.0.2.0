@@ -12,7 +12,8 @@ import {
   achievements, Achievement, InsertAchievement,
   streaks, Streak, InsertStreak,
   userXP, UserXP, InsertUserXP,
-  xpTransactions, XPTransaction, InsertXPTransaction
+  xpTransactions, XPTransaction, InsertXPTransaction,
+  userPointsLog, UserPointsLog, InsertUserPointsLog
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -606,4 +607,100 @@ export async function awardAchievement(
     .limit(1);
   
   return newResult[0] || null;
+}
+
+
+// ============= POINTS OPERATIONS =============
+
+/**
+ * Add points for a user action
+ */
+export async function addPoints(
+  userId: number,
+  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed",
+  points: number,
+  relatedId?: number
+): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+
+  await db.insert(userPointsLog).values({
+    userId,
+    action,
+    points,
+    relatedId: relatedId || null,
+  });
+}
+
+/**
+ * Get points summary for a user (today, this week, this month)
+ */
+export async function getPointsSummary(userId: number): Promise<{
+  today: number;
+  thisWeek: number;
+  thisMonth: number;
+  allTime: number;
+}> {
+  const db = await getDb();
+  if (!db) {
+    return { today: 0, thisWeek: 0, thisMonth: 0, allTime: 0 };
+  }
+
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const weekStart = new Date(now);
+  weekStart.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
+  weekStart.setHours(0, 0, 0, 0);
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  // Get all points for the user
+  const allPoints = await db
+    .select()
+    .from(userPointsLog)
+    .where(eq(userPointsLog.userId, userId));
+
+  const today = allPoints
+    .filter(p => p.createdAt >= todayStart)
+    .reduce((sum, p) => sum + p.points, 0);
+
+  const thisWeek = allPoints
+    .filter(p => p.createdAt >= weekStart)
+    .reduce((sum, p) => sum + p.points, 0);
+
+  const thisMonth = allPoints
+    .filter(p => p.createdAt >= monthStart)
+    .reduce((sum, p) => sum + p.points, 0);
+
+  const allTime = allPoints.reduce((sum, p) => sum + p.points, 0);
+
+  return { today, thisWeek, thisMonth, allTime };
+}
+
+/**
+ * Check if user already earned points for a specific action today
+ * (to prevent duplicate daily login points, for example)
+ */
+export async function hasEarnedPointsToday(
+  userId: number,
+  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed"
+): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const result = await db
+    .select()
+    .from(userPointsLog)
+    .where(
+      and(
+        eq(userPointsLog.userId, userId),
+        eq(userPointsLog.action, action),
+        sql`${userPointsLog.createdAt} >= ${todayStart}`
+      )
+    )
+    .limit(1);
+
+  return result.length > 0;
 }
