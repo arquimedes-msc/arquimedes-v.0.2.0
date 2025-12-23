@@ -907,3 +907,11 @@
 - [x] Destacar disciplina ativa (Aritmética) em verde com badge "Cursando"
 - [x] Disciplinas inativas em cor cinza com opacity reduzida
 - [x] Testar responsividade mobile
+
+
+## Matrícula Automática em Aritmética (v2.19.0)
+- [x] Analisar sistema atual de enrollments
+- [x] Criar helper autoEnrollInAritmetica() no db.ts
+- [x] Adicionar lógica de matrícula no completeOnboarding
+- [x] Testar matrícula automática com novo usuário (3 testes passando)
+- [x] Verificar que Dashboard mostra Aritmética após onboarding

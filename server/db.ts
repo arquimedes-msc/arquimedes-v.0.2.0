@@ -1242,3 +1242,15 @@ export async function getDailyChallengeStats(userId: number) {
     totalPoints,
   };
 }
+
+// ============= AUTO-ENROLLMENT =============
+
+/**
+ * Automatically enroll a user in the Aritmética discipline (ID: 1)
+ * Called when a new user completes onboarding
+ */
+export async function autoEnrollInAritmetica(userId: number) {
+  const ARITMETICA_DISCIPLINE_ID = 1; // ID da disciplina Aritmética
+  await enrollUserInDiscipline(userId, ARITMETICA_DISCIPLINE_ID);
+  console.log(`[AutoEnroll] User ${userId} enrolled in Aritmética`);
+}

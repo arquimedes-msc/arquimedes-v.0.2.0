@@ -377,6 +377,8 @@ Retorne APENAS um JSON com:
     
     completeOnboarding: protectedProcedure.mutation(async ({ ctx }) => {
       await db.completeOnboarding(ctx.user.id);
+      // Automatically enroll user in Aritmética discipline
+      await db.autoEnrollInAritmetica(ctx.user.id);
       return { success: true };
     }),
     
