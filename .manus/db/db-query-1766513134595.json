@@ -1,0 +1,9 @@
+{
+  "query": "-- Deletar o módulo de Divisão que tem apenas 3 aulas (o menor)\nDELETE FROM modules \nWHERE disciplineId = 1 \nAND name = 'Divisão' \nAND id NOT IN (\n  SELECT moduleId FROM (\n    SELECT moduleId, COUNT(*) as page_count \n    FROM pages \n    WHERE moduleId IN (SELECT id FROM modules WHERE name = 'Divisão' AND disciplineId = 1)\n    GROUP BY moduleId \n    ORDER BY page_count DESC \n    LIMIT 1\n  ) AS keep_module\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute -- Deletar o módulo de Divisão que tem apenas 3 aulas (o menor)\nDELETE FROM modules \nWHERE disciplineId = 1 \nAND name = 'Divisão' \nAND id NOT IN (\n  SELECT moduleId FROM (\n    SELECT moduleId, COUNT(*) as page_count \n    FROM pages \n    WHERE moduleId IN (SELECT id FROM modules WHERE name = 'Divisão' AND disciplineId = 1)\n    GROUP BY moduleId \n    ORDER BY page_count DESC \n    LIMIT 1\n  ) AS keep_module\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 65
+}

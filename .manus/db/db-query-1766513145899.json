@@ -1,0 +1,9 @@
+{
+  "query": "-- Verificar se Porcentagem existe e atualizar para ordem 5\nUPDATE modules SET `order` = 5, name = 'Porcentagem', description = 'Cálculos com percentuais, proporções e regra de três' WHERE slug = 'porcentagem' AND disciplineId = 1;\n\n-- Se não existir, criar novamente\nINSERT INTO modules (disciplineId, name, slug, description, `order`) \nSELECT 1, 'Porcentagem', 'porcentagem', 'Cálculos com percentuais, proporções e regra de três', 5\nWHERE NOT EXISTS (SELECT 1 FROM modules WHERE slug = 'porcentagem' AND disciplineId = 1);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute -- Verificar se Porcentagem existe e atualizar para ordem 5\nUPDATE modules SET `order` = 5, name = 'Porcentagem', description = 'Cálculos com percentuais, proporções e regra de três' WHERE slug = 'porcentagem' AND disciplineId = 1;\n\n-- Se não existir, criar novamente\nINSERT INTO modules (disciplineId, name, slug, description, `order`) \nSELECT 1, 'Porcentagem', 'porcentagem', 'Cálculos com percentuais, proporções e regra de três', 5\nWHERE NOT EXISTS (SELECT 1 FROM modules WHERE slug = 'porcentagem' AND disciplineId = 1);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 85
+}

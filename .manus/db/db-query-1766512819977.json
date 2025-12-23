@@ -1,0 +1,87 @@
+{
+  "query": "SELECT id, name, slug, `order`, description FROM modules WHERE disciplineId = 1 ORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug, `order`, description FROM modules WHERE disciplineId = 1 ORDER BY `order`;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao",
+      "order": "1",
+      "description": "Aprenda os fundamentos da adição, suas propriedades e técnicas de cálculo com reagrupamento."
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao",
+      "order": "2",
+      "description": "Domine a subtração, suas propriedades e técnicas de cálculo com empréstimo."
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao",
+      "order": "3",
+      "description": "A Soma Repetida e a Área"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "description": "Repartição Justa e Medida"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "description": "Aprenda a dividir números, entender divisão com resto e aplicar em situações práticas."
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem",
+      "order": "5",
+      "description": "Cálculos com percentuais e proporções"
+    },
+    {
+      "id": "120001",
+      "name": "Frações",
+      "slug": "fracoes",
+      "order": "6",
+      "description": "Aprenda a trabalhar com frações: conceitos, operações e aplicações práticas."
+    },
+    {
+      "id": "120002",
+      "name": "Números Decimais",
+      "slug": "numeros-decimais",
+      "order": "7",
+      "description": "Entenda números decimais e como realizar operações com eles."
+    },
+    {
+      "id": "120003",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "order": "8",
+      "description": "Domine razões, proporções e regra de três."
+    },
+    {
+      "id": "120004",
+      "name": "Potenciação e Radiciação",
+      "slug": "potenciacao-radiciacao",
+      "order": "9",
+      "description": "Aprenda potências, raízes e suas propriedades."
+    },
+    {
+      "id": "120005",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros",
+      "order": "10",
+      "description": "Trabalhe com números positivos, negativos e operações com sinais."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\torder\tdescription\n1\tAdição\tadicao\t1\tAprenda os fundamentos da adição, suas propriedades e técnicas de cálculo com reagrupamento.\n90002\tSubtração\tsubtracao\t2\tDomine a subtração, suas propriedades e técnicas de cálculo com empréstimo.\n2\tMultiplicação\tmultiplicacao\t3\tA Soma Repetida e a Área\n3\tDivisão\tdivisao\t4\tRepartição Justa e Medida\n30001\tDivisão\tdivisao\t4\tAprenda a dividir números, entender divisão com resto e aplicar em situações práticas.\n60003\tPorcentagem\tporcentagem\t5\tCálculos com percentuais e proporções\n120001\tFrações\tfracoes\t6\tAprenda a trabalhar com frações: conceitos, operações e aplicações práticas.\n120002\tNúmeros Decimais\tnumeros-decimais\t7\tEntenda números decimais e como realizar operações com eles.\n120003\tRazão e Proporção\trazao-proporcao\t8\tDomine razões, proporções e regra de três.\n120004\tPotenciação e Radiciação\tpotenciacao-radiciacao\t9\tAprenda potências, raízes e suas propriedades.\n120005\tNúmeros Inteiros\tnumeros-inteiros\t10\tTrabalhe com números positivos, negativos e operações com sinais.\n",
+  "stderr": "",
+  "execution_time_ms": 63
+}

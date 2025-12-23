@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE modules SET `order` = 1, name = 'Adição' WHERE slug = 'adicao' AND disciplineId = 1;\nUPDATE modules SET `order` = 2, name = 'Subtração' WHERE slug = 'subtracao' AND disciplineId = 1;\nUPDATE modules SET `order` = 3, name = 'Multiplicação' WHERE slug = 'multiplicacao' AND disciplineId = 1;\nUPDATE modules SET `order` = 4, name = 'Divisão' WHERE slug = 'divisao' AND disciplineId = 1;\nUPDATE modules SET `order` = 5, name = 'Porcentagem' WHERE slug = 'porcentagem' AND disciplineId = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE modules SET `order` = 1, name = 'Adição' WHERE slug = 'adicao' AND disciplineId = 1;\nUPDATE modules SET `order` = 2, name = 'Subtração' WHERE slug = 'subtracao' AND disciplineId = 1;\nUPDATE modules SET `order` = 3, name = 'Multiplicação' WHERE slug = 'multiplicacao' AND disciplineId = 1;\nUPDATE modules SET `order` = 4, name = 'Divisão' WHERE slug = 'divisao' AND disciplineId = 1;\nUPDATE modules SET `order` = 5, name = 'Porcentagem' WHERE slug = 'porcentagem' AND disciplineId = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 101
+}

@@ -1,0 +1,9 @@
+{
+  "query": "-- 1. Mover todas as páginas do Módulo 5 (Divisão duplicado) para o Módulo 4\nUPDATE pages SET moduleId = (SELECT id FROM modules WHERE `order` = 4 AND disciplineId = 1 LIMIT 1) \nWHERE moduleId = (SELECT id FROM modules WHERE `order` = 5 AND disciplineId = 1 LIMIT 1);\n\n-- 2. Deletar Módulo 5 (Divisão duplicado)\nDELETE FROM modules WHERE `order` = 5 AND disciplineId = 1;\n\n-- 3. Atualizar ordem da Porcentagem de 6 para 5\nUPDATE modules SET `order` = 5, description = 'Cálculos com percentuais, proporções e regra de três' WHERE slug = 'porcentagem' AND disciplineId = 1;\n\n-- 4. Atualizar descrição do módulo de Divisão unificado\nUPDATE modules SET name = 'Divisão', description = 'Aprenda a dividir números, repartição justa, quociente, resto e aplicações práticas' WHERE `order` = 4 AND disciplineId = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute -- 1. Mover todas as páginas do Módulo 5 (Divisão duplicado) para o Módulo 4\nUPDATE pages SET moduleId = (SELECT id FROM modules WHERE `order` = 4 AND disciplineId = 1 LIMIT 1) \nWHERE moduleId = (SELECT id FROM modules WHERE `order` = 5 AND disciplineId = 1 LIMIT 1);\n\n-- 2. Deletar Módulo 5 (Divisão duplicado)\nDELETE FROM modules WHERE `order` = 5 AND disciplineId = 1;\n\n-- 3. Atualizar ordem da Porcentagem de 6 para 5\nUPDATE modules SET `order` = 5, description = 'Cálculos com percentuais, proporções e regra de três' WHERE slug = 'porcentagem' AND disciplineId = 1;\n\n-- 4. Atualizar descrição do módulo de Divisão unificado\nUPDATE modules SET name = 'Divisão', description = 'Aprenda a dividir números, repartição justa, quociente, resto e aplicações práticas' WHERE `order` = 4 AND disciplineId = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 95
+}

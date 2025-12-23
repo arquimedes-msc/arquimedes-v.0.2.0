@@ -1,0 +1,136 @@
+{
+  "query": "SELECT id, name, slug, `order`, (SELECT COUNT(*) FROM pages WHERE pages.moduleId = modules.id) as page_count FROM modules WHERE disciplineId = 1 ORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug, `order`, (SELECT COUNT(*) FROM pages WHERE pages.moduleId = modules.id) as page_count FROM modules WHERE disciplineId = 1 ORDER BY `order`;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao",
+      "order": "1",
+      "page_count": "3"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao",
+      "order": "3",
+      "page_count": "3"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao",
+      "order": "3",
+      "page_count": "0"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "page_count": "3"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "5",
+      "page_count": "3"
+    },
+    {
+      "id": "60001",
+      "name": "Frações",
+      "slug": "fracoes",
+      "order": "5",
+      "page_count": "0"
+    },
+    {
+      "id": "90001",
+      "name": "Proporção e Razão",
+      "slug": "proporcao-e-razao",
+      "order": "6",
+      "page_count": "0"
+    },
+    {
+      "id": "60002",
+      "name": "Decimais",
+      "slug": "decimais",
+      "order": "6",
+      "page_count": "0"
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem",
+      "order": "7",
+      "page_count": "4"
+    },
+    {
+      "id": "60004",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "order": "8",
+      "page_count": "0"
+    },
+    {
+      "id": "60005",
+      "name": "Potenciação",
+      "slug": "potenciacao",
+      "order": "9",
+      "page_count": "0"
+    },
+    {
+      "id": "60006",
+      "name": "Radiciação",
+      "slug": "radiciacao",
+      "order": "10",
+      "page_count": "0"
+    },
+    {
+      "id": "60007",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros",
+      "order": "11",
+      "page_count": "0"
+    },
+    {
+      "id": "60008",
+      "name": "Múltiplos e Divisores",
+      "slug": "multiplos-divisores",
+      "order": "12",
+      "page_count": "0"
+    },
+    {
+      "id": "60009",
+      "name": "Números Primos",
+      "slug": "numeros-primos",
+      "order": "13",
+      "page_count": "0"
+    },
+    {
+      "id": "60010",
+      "name": "Expressões Numéricas",
+      "slug": "expressoes-numericas",
+      "order": "14",
+      "page_count": "0"
+    },
+    {
+      "id": "60011",
+      "name": "Sistemas de Medidas",
+      "slug": "sistemas-medidas",
+      "order": "15",
+      "page_count": "0"
+    },
+    {
+      "id": "60012",
+      "name": "Matemática Financeira Básica",
+      "slug": "matematica-financeira",
+      "order": "16",
+      "page_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\torder\tpage_count\n1\tAdição\tadicao\t1\t3\n2\tMultiplicação\tmultiplicacao\t3\t3\n90002\tSubtração\tsubtracao\t3\t0\n3\tDivisão\tdivisao\t4\t3\n30001\tDivisão\tdivisao\t5\t3\n60001\tFrações\tfracoes\t5\t0\n90001\tProporção e Razão\tproporcao-e-razao\t6\t0\n60002\tDecimais\tdecimais\t6\t0\n60003\tPorcentagem\tporcentagem\t7\t4\n60004\tRazão e Proporção\trazao-proporcao\t8\t0\n60005\tPotenciação\tpotenciacao\t9\t0\n60006\tRadiciação\tradiciacao\t10\t0\n60007\tNúmeros Inteiros\tnumeros-inteiros\t11\t0\n60008\tMúltiplos e Divisores\tmultiplos-divisores\t12\t0\n60009\tNúmeros Primos\tnumeros-primos\t13\t0\n60010\tExpressões Numéricas\texpressoes-numericas\t14\t0\n60011\tSistemas de Medidas\tsistemas-medidas\t15\t0\n60012\tMatemática Financeira Básica\tmatematica-financeira\t16\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1396
+}

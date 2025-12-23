@@ -1,0 +1,24 @@
+{
+  "query": "SELECT id, name, slug, `order`, (SELECT COUNT(*) FROM pages WHERE pages.moduleId = modules.id) as page_count FROM modules WHERE disciplineId = 1 AND name LIKE '%Divisão%' OR disciplineId = 1 AND name LIKE '%Divis%' ORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name, slug, `order`, (SELECT COUNT(*) FROM pages WHERE pages.moduleId = modules.id) as page_count FROM modules WHERE disciplineId = 1 AND name LIKE '%Divisão%' OR disciplineId = 1 AND name LIKE '%Divis%' ORDER BY `order`;",
+  "rows": [
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "page_count": "3"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao",
+      "order": "4",
+      "page_count": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\torder\tpage_count\n3\tDivisão\tdivisao\t4\t3\n30001\tDivisão\tdivisao\t4\t3\n",
+  "stderr": "",
+  "execution_time_ms": 54
+}

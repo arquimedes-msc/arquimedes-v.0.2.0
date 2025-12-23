@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO modules (disciplineId, name, slug, description, `order`) VALUES \n(1, 'Frações', 'fracoes', 'Aprenda a trabalhar com frações: conceitos, operações e aplicações práticas.', 6),\n(1, 'Números Decimais', 'numeros-decimais', 'Entenda números decimais e como realizar operações com eles.', 7),\n(1, 'Razão e Proporção', 'razao-proporcao', 'Domine razões, proporções e regra de três.', 8),\n(1, 'Potenciação e Radiciação', 'potenciacao-radiciacao', 'Aprenda potências, raízes e suas propriedades.', 9),\n(1, 'Números Inteiros', 'numeros-inteiros', 'Trabalhe com números positivos, negativos e operações com sinais.', 10);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute INSERT INTO modules (disciplineId, name, slug, description, `order`) VALUES \n(1, 'Frações', 'fracoes', 'Aprenda a trabalhar com frações: conceitos, operações e aplicações práticas.', 6),\n(1, 'Números Decimais', 'numeros-decimais', 'Entenda números decimais e como realizar operações com eles.', 7),\n(1, 'Razão e Proporção', 'razao-proporcao', 'Domine razões, proporções e regra de três.', 8),\n(1, 'Potenciação e Radiciação', 'potenciacao-radiciacao', 'Aprenda potências, raízes e suas propriedades.', 9),\n(1, 'Números Inteiros', 'numeros-inteiros', 'Trabalhe com números positivos, negativos e operações com sinais.', 10);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 72
+}

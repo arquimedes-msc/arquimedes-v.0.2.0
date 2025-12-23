@@ -415,3 +415,20 @@
 ### ✅ Correções Aplicadas (23/12/2025)
 - [x] Bug #4: Vídeos do YouTube removidos da página de módulos (ModulePage.tsx)
 - [x] Bug #5: Escaneabilidade do conteúdo melhorada (ícones, seções, blockquotes, listas)
+
+
+### 🔄 Reestruturação de Módulos (23/12/2025)
+- [ ] Analisar estrutura atual dos 18 módulos de Aritmética
+- [ ] Reordenar para 10 módulos: 1-Adição, 2-Subtração, 3-Multiplicação, 4-Divisão, 5-Porcentagem
+- [ ] Definir nomes para módulos 6-10 (novos tópicos de aritmética)
+- [ ] Atualizar campo `order` no banco de dados
+- [ ] Testar navegação após reordenação
+- [x] Bug #5: Escaneabilidade do conteúdo melhorada (ícones, seções, blockquotes, listas)
+
+### 🔄 Reestruturação de Módulos (23/12/2025)
+- [x] Reorganizar módulos de Aritmética para 10 tópicos
+- [x] Unificar módulos de Divisão duplicados (mantido 4 aulas)
+- [x] Mover Porcentagem para Módulo 5 (3 aulas)
+- [x] Atualizar descrição de Porcentagem (incluir proporções e regra de três)
+- [x] Criar novos módulos 6-10 (Frações, Decimais, Razão, Potenciação, Inteiros)
+- [x] Testar navegação com nova estrutura de 10 módulos

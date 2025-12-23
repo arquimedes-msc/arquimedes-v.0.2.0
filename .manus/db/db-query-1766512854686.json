@@ -1,0 +1,9 @@
+{
+  "query": "-- Primeiro, vamos mover todas as páginas do módulo duplicado para o módulo principal\nUPDATE pages SET moduleId = (SELECT id FROM modules WHERE slug = 'divisao' AND disciplineId = 1 LIMIT 1) \nWHERE moduleId IN (SELECT id FROM modules WHERE name = 'Divisão' AND disciplineId = 1 AND slug != 'divisao');\n\n-- Agora deletar o módulo duplicado\nDELETE FROM modules WHERE name = 'Divisão' AND disciplineId = 1 AND slug != 'divisao';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute -- Primeiro, vamos mover todas as páginas do módulo duplicado para o módulo principal\nUPDATE pages SET moduleId = (SELECT id FROM modules WHERE slug = 'divisao' AND disciplineId = 1 LIMIT 1) \nWHERE moduleId IN (SELECT id FROM modules WHERE name = 'Divisão' AND disciplineId = 1 AND slug != 'divisao');\n\n-- Agora deletar o módulo duplicado\nDELETE FROM modules WHERE name = 'Divisão' AND disciplineId = 1 AND slug != 'divisao';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 64
+}
