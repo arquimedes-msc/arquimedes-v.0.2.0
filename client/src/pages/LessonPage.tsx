@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { SEO } from "@/components/SEO";
 import { MobileNav } from "@/components/MobileNav";
+import { useScrollToBottom } from "@/hooks/useScrollToBottom";
 
 export default function LessonPage() {
   const params = useParams<{ disciplineSlug: string; moduleSlug: string; pageSlug: string }>();
@@ -87,10 +88,10 @@ export default function LessonPage() {
   };
 
   const handleMarkComplete = () => {
-    if (!page) return;
+    if (!page || progress?.completed) return;
 
-    const allExercisesCompleted = exercises.every((ex) => completedExercises.has(ex.id));
-    const score = allExercisesCompleted ? 100 : Math.round((completedExercises.size / exercises.length) * 100);
+    const allExercisesCompleted = exercises.length === 0 || exercises.every((ex) => completedExercises.has(ex.id));
+    const score = exercises.length === 0 ? 100 : allExercisesCompleted ? 100 : Math.round((completedExercises.size / exercises.length) * 100);
 
     updateProgressMutation.mutate({
       pageId: page.id,
@@ -98,6 +99,17 @@ export default function LessonPage() {
       score,
     });
   };
+
+  // Auto-complete when user scrolls to bottom
+  useScrollToBottom({
+    threshold: 200,
+    onReachBottom: () => {
+      if (isAuthenticated && page && !progress?.completed) {
+        handleMarkComplete();
+      }
+    },
+    once: true,
+  });
 
   // Find next and previous pages
   const currentIndex = allPages.findIndex((p) => p.id === page?.id);
@@ -227,12 +239,12 @@ export default function LessonPage() {
           </Card>
         )}
 
-        {/* Mark as Complete */}
+        {/* Auto-completion indicator */}
         {isAuthenticated && !progress?.completed && (
-          <div className="flex justify-center px-4">
-            <Button size="lg" onClick={handleMarkComplete} disabled={updateProgressMutation.isPending} className="w-full sm:w-auto min-h-[48px] text-base">
-              {updateProgressMutation.isPending ? "Salvando..." : "Marcar como Concluído"}
-            </Button>
+          <div className="flex justify-center px-4 py-6">
+            <p className="text-sm text-muted-foreground text-center">
+              🎓 Continue lendo até o final para concluir esta aula automaticamente
+            </p>
           </div>
         )}
 

@@ -957,3 +957,12 @@
 - [x] Criar estrutura do Módulo 6: Porcentagem no banco (já existia)
 - [x] Criar estrutura do Módulo 7: Exponenciação no banco (já existia)
 - [x] Criar estrutura do Módulo 8: Fatoração no banco (já existia)
+
+
+## Conclusão Automática de Aulas (v2.23.0)
+- [x] Analisar sistema atual de conclusão de páginas
+- [x] Implementar hook useScrollToBottom para detectar final da página
+- [x] Remover botão "Marcar como Concluído"
+- [x] Integrar marcação automática ao chegar no final (threshold 200px)
+- [x] Adicionar indicador visual de progresso de leitura
+- [x] Testar com diferentes tamanhos de tela
