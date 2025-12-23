@@ -1,0 +1,46 @@
+{
+  "query": "SELECT p.id, p.title, p.order, p.slug\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.name LIKE '%Subtra%'\nORDER BY p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.order, p.slug\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.name LIKE '%Subtra%'\nORDER BY p.order;",
+  "rows": [
+    {
+      "id": "120009",
+      "title": "O que é Subtrair?",
+      "order": "1",
+      "slug": "o-que-e-subtrair"
+    },
+    {
+      "id": "120015",
+      "title": "O que é Subtrair?",
+      "order": "1",
+      "slug": "o-que-e-subtrair"
+    },
+    {
+      "id": "120010",
+      "title": "Subtração na Reta Numérica",
+      "order": "2",
+      "slug": "subtracao-com-emprestimo"
+    },
+    {
+      "id": "120016",
+      "title": "Subtração na Reta Numérica",
+      "order": "2",
+      "slug": "subtracao-com-emprestimo"
+    },
+    {
+      "id": "120011",
+      "title": "Subtração com Empréstimo",
+      "order": "3",
+      "slug": "aplicacoes-praticas-subtracao"
+    },
+    {
+      "id": "120017",
+      "title": "Subtração com Empréstimo",
+      "order": "3",
+      "slug": "aplicacoes-praticas-subtracao"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\torder\tslug\n120009\tO que é Subtrair?\t1\to-que-e-subtrair\n120015\tO que é Subtrair?\t1\to-que-e-subtrair\n120010\tSubtração na Reta Numérica\t2\tsubtracao-com-emprestimo\n120016\tSubtração na Reta Numérica\t2\tsubtracao-com-emprestimo\n120011\tSubtração com Empréstimo\t3\taplicacoes-praticas-subtracao\n120017\tSubtração com Empréstimo\t3\taplicacoes-praticas-subtracao\n",
+  "stderr": "",
+  "execution_time_ms": 75
+}

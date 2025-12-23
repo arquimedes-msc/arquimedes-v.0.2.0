@@ -463,3 +463,17 @@
 - [x] Testar navegação e visualização no navegador
 - [x] Validar escaneabilidade e elementos visuais (ícones, seções, blockquotes)
 - [x] Total: 7 páginas com ~11.300 palavras de conteúdo educacional
+
+
+### 📚 Criação de Conteúdo Rico - Subtração (Concluído - 23/12/2025)
+- [x] Criar conteúdo rico para Subtração Aula 1 (O que é Subtrair - Conceito)
+- [x] Criar conteúdo rico para Subtração Aula 2 (Subtração na Reta Numérica)
+- [x] Criar conteúdo rico para Subtração Aula 3 (Subtração com Empréstimo)
+- [x] Criar conteúdo rico para Subtração Aula 4 (Subtração de Números Maiores)
+- [x] Criar conteúdo rico para Subtração Aula 5 (Relação entre Adição e Subtração)
+- [x] Criar conteúdo rico para Subtração Aula 6 (Aplicações Práticas)
+- [x] Aplicar conteúdo ao banco de dados via script
+- [x] Testar navegação e visualização no navegador
+- [x] Validar escaneabilidade e elementos visuais
+- [x] Corrigir títulos e ordem das páginas no banco
+- [x] Total: 6 páginas com ~11.000 palavras de conteúdo educacional

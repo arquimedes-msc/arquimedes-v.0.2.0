@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE pages p\nJOIN modules m ON p.moduleId = m.id\nSET p.title = CASE p.order\n  WHEN 1 THEN 'O que é Subtrair?'\n  WHEN 2 THEN 'Subtração na Reta Numérica'\n  WHEN 3 THEN 'Subtração com Empréstimo'\n  WHEN 4 THEN 'Subtração de Números Maiores'\n  WHEN 5 THEN 'Relação entre Adição e Subtração'\n  WHEN 6 THEN 'Aplicações Práticas da Subtração'\nEND\nWHERE m.name LIKE '%Subtra%' AND p.order BETWEEN 1 AND 6;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE pages p\nJOIN modules m ON p.moduleId = m.id\nSET p.title = CASE p.order\n  WHEN 1 THEN 'O que é Subtrair?'\n  WHEN 2 THEN 'Subtração na Reta Numérica'\n  WHEN 3 THEN 'Subtração com Empréstimo'\n  WHEN 4 THEN 'Subtração de Números Maiores'\n  WHEN 5 THEN 'Relação entre Adição e Subtração'\n  WHEN 6 THEN 'Aplicações Práticas da Subtração'\nEND\nWHERE m.name LIKE '%Subtra%' AND p.order BETWEEN 1 AND 6;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 65
+}

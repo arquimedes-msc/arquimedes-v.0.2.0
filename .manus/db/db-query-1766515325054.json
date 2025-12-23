@@ -1,0 +1,58 @@
+{
+  "query": "SELECT m.id, m.name, m.order, p.id as page_id, p.title, p.order as page_order\nFROM modules m\nLEFT JOIN pages p ON p.moduleId = m.id\nWHERE m.name LIKE '%Subtra%'\nORDER BY m.order, p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT m.id, m.name, m.order, p.id as page_id, p.title, p.order as page_order\nFROM modules m\nLEFT JOIN pages p ON p.moduleId = m.id\nWHERE m.name LIKE '%Subtra%'\nORDER BY m.order, p.order;",
+  "rows": [
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120009",
+      "title": "O que é Subtrair?",
+      "page_order": "1"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120015",
+      "title": "O que é Subtrair?",
+      "page_order": "1"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120010",
+      "title": "Subtração com Empréstimo",
+      "page_order": "2"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120016",
+      "title": "Subtração com Empréstimo",
+      "page_order": "2"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120011",
+      "title": "Aplicações Práticas da Subtração",
+      "page_order": "3"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "order": "2",
+      "page_id": "120017",
+      "title": "Aplicações Práticas da Subtração",
+      "page_order": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\torder\tpage_id\ttitle\tpage_order\n90002\tSubtração\t2\t120009\tO que é Subtrair?\t1\n90002\tSubtração\t2\t120015\tO que é Subtrair?\t1\n90002\tSubtração\t2\t120010\tSubtração com Empréstimo\t2\n90002\tSubtração\t2\t120016\tSubtração com Empréstimo\t2\n90002\tSubtração\t2\t120011\tAplicações Práticas da Subtração\t3\n90002\tSubtração\t2\t120017\tAplicações Práticas da Subtração\t3\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}
