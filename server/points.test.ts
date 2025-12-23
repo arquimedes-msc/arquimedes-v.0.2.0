@@ -2,6 +2,8 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { appRouter } from "./routers";
 import * as db from "./db";
 import type { TrpcContext } from "./_core/context";
+import { userPointsLog } from "../drizzle/schema";
+import { eq, and } from "drizzle-orm";
 
 describe("Points System", () => {
   const mockUser = {
@@ -61,9 +63,22 @@ describe("Points System", () => {
   });
 
   it("should give daily login points only once per day", async () => {
+    // Clean up any existing daily_login points from previous test runs
+    const database = await db.getDb();
+    if (database) {
+      await database.delete(userPointsLog)
+        .where(and(
+          eq(userPointsLog.userId, mockUser.id),
+          eq(userPointsLog.action, "daily_login")
+        ));
+    }
+
     const firstLogin = await caller.points.checkDailyLogin();
     expect(firstLogin.earned).toBe(true);
     expect(firstLogin.points).toBe(10);
+
+    // Wait a bit to ensure the first record is persisted
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     const secondLogin = await caller.points.checkDailyLogin();
     expect(secondLogin.earned).toBe(false);

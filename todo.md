@@ -565,3 +565,27 @@
 - [x] Integrar chamadas de pontos em ações do usuário (checkDailyLogin no mount)
 - [x] Testar sistema de pontos completo
 - [x] Escrever testes para procedures de pontos
+
+
+## Melhoria de Escaneabilidade das 3 Primeiras Aulas
+- [ ] Analisar conteúdo atual das aulas 1, 2, 3 (Adição e Subtração)
+- [ ] Identificar pontos de quebra natural no texto
+- [ ] Adicionar 6-8 exercícios práticos por aula (mix digitação + múltipla escolha)
+- [ ] Buscar e adicionar 2-3 vídeos curtos do YouTube por aula (2-5 min)
+- [ ] Implementar componente de seções/cards para quebrar texto
+- [ ] Intercalar: texto → vídeo → exercícios → texto → exercícios
+- [ ] Adicionar títulos de seção claros (h2, h3)
+- [ ] Testar ritmo de leitura e fluxo de conteúdo
+- [ ] Garantir que exercícios estejam conectados ao conteúdo anterior
+- [ ] Validar que vídeos complementam (não repetem) o texto
+
+
+## Melhoria de Escaneabilidade das 3 Primeiras Aulas
+- [x] Analisar conteúdo das 3 primeiras aulas
+- [x] Quebrar texto longo em seções menores
+- [x] Adicionar 10 vídeos do YouTube entre seções
+- [x] Intercalar conteúdo com exercícios práticos
+- [x] Usar emojis para facilitar escaneabilidade
+- [x] Criar estrutura progressiva (níveis)
+- [x] Testar escaneabilidade e ritmo
+- [x] Corrigir teste de pontos (daily login)
