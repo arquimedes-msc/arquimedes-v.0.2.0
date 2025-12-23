@@ -27,7 +27,7 @@ export function MobileNav() {
 
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
-      window.location.href = "/";
+      window.location.href = "/"; // Redireciona para login
     },
   });
 
@@ -66,7 +66,7 @@ export function MobileNav() {
           <div className="p-4 space-y-4">
             {/* Quick Links */}
             <div className="space-y-2">
-              <Link href="/" onClick={() => setOpen(false)}>
+              <Link href="/dashboard" onClick={() => setOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start gap-2">
                   <Home className="h-4 w-4" />
                   Início

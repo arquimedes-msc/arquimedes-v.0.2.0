@@ -412,3 +412,13 @@
 - [x] Criar componente YouTubeEmbed (player de vídeo responsivo)
 - [x] Integrar componentes nas páginas de conteúdo (criada página /components)
 - [x] Testar todos os componentes interativos (página de demo criada)
+
+
+## Tela de Login Dedicada
+- [x] Criar página Login.tsx como nova Home
+- [x] Mover Home atual para Dashboard.tsx
+- [x] Ajustar rotas no App.tsx (/ = Login, /dashboard = Dashboard)
+- [x] Implementar proteção de rotas (redirect se não autenticado)
+- [ ] Testar fluxo de login com Google OAuth
+- [ ] Testar cadastro automático de novos usuários
+- [ ] Fazer commit no GitHub
