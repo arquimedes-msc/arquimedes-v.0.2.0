@@ -4,6 +4,7 @@ import { trpc } from "@/lib/trpc";
 import { BookOpen, Trophy, Zap, ArrowRight, TrendingUp, Calendar, Target, Sparkles, Award, Flame } from "lucide-react";
 import { getModuleIcon } from "@/components/MathIcons";
 import { Sidebar } from "@/components/Sidebar";
+import { MobileNav } from "@/components/MobileNav";
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import OnboardingModal from "@/components/OnboardingModal";
@@ -97,6 +98,7 @@ export default function Dashboard() {
 
   return (
     <>
+      <MobileNav />
       <Sidebar />
       <div className="lg:ml-72 min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       

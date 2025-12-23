@@ -975,3 +975,16 @@
 - [x] Adicionar animação suave de preenchimento (transition-all duration-150)
 - [x] Testar responsividade em mobile
 - [x] Garantir que não interfere com navegação (z-50, fixed, altura 3px)
+
+
+## Mobile e Performance (v2.25.0)
+- [x] Identificar todas as páginas sem MobileNav (7 páginas identificadas)
+- [ ] Testar viewport 375px (iPhone SE) em todas as páginas principais
+- [ ] Testar viewport 390px (iPhone 12/13/14) em todas as páginas principais
+- [ ] Corrigir problemas de layout encontrados em 375px
+- [ ] Corrigir problemas de layout encontrados em 390px
+- [x] Adicionar MobileNav em 7 páginas (Dashboard, DisciplinePage, ModulePage, ExerciseRoomPage, VideoRoomPage, ProfilePage, DailyChallengePage)
+- [x] Garantir scroll suave (scroll-behavior: smooth) - já implementado no index.css
+- [x] Otimizar performance de animações (will-change, transform) - usando Framer Motion
+- [ ] Testar gestos de toque em mobile
+- [ ] Validar tamanhos de toque (min 44x44px)

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sidebar } from "@/components/Sidebar";
+import { MobileNav } from "@/components/MobileNav";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -112,6 +113,7 @@ export default function ProfilePage() {
 
   return (
     <>
+      <MobileNav />
       <Sidebar />
       <div className="lg:ml-72 min-h-screen bg-gradient-to-b from-blue-50 to-white">
         {/* Header */}

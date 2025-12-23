@@ -1,5 +1,6 @@
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { MobileNav } from "@/components/MobileNav";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -73,7 +74,9 @@ export default function ModulePage() {
   const progressPercentage = pages.length > 0 ? (completedPages / pages.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-muted/30">
+    <>
+      <MobileNav />
+      <div className="min-h-screen bg-muted/30">
       {/* Header */}
       <div className="bg-background border-b">
         <div className="container max-w-4xl py-6">
@@ -207,5 +210,6 @@ export default function ModulePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

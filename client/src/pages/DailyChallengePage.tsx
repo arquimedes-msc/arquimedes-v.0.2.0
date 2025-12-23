@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
+import { MobileNav } from "@/components/MobileNav";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -98,8 +99,10 @@ export default function DailyChallengePage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen">
-        <Sidebar />
+      <>
+        <MobileNav />
+        <div className="flex min-h-screen">
+          <Sidebar />
         <div className="flex-1 p-8">
           <div className="max-w-4xl mx-auto">
             <div className="animate-pulse space-y-4">
@@ -107,14 +110,17 @@ export default function DailyChallengePage() {
               <div className="h-64 bg-gray-200 rounded"></div>
             </div>
           </div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <Sidebar />
+    <>
+      <MobileNav />
+      <div className="flex min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <Sidebar />
       <div className="flex-1 p-4 md:p-8 overflow-y-auto">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
@@ -300,6 +306,7 @@ export default function DailyChallengePage() {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
