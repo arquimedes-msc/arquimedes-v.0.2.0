@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussões da Comunidade
+    url: https://github.com/MSC-Consultoria/arquimedes0.0.1/discussions
+    about: Faça perguntas, compartilhe ideias e discuta com a comunidade
+  - name: 📚 Documentação
+    url: https://github.com/MSC-Consultoria/arquimedes0.0.1#readme
+    about: Leia a documentação completa do projeto
+  - name: 🗺️ Roadmap
+    url: https://github.com/MSC-Consultoria/arquimedes0.0.1/blob/main/ROADMAP.md
+    about: Veja o que está planejado para o futuro
+  - name: 📊 Status do Projeto
+    url: https://github.com/MSC-Consultoria/arquimedes0.0.1/blob/main/PROJECT_STATUS.md
+    about: Confira o progresso atual do projeto

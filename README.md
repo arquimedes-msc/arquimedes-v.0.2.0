@@ -6,12 +6,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Progresso](https://img.shields.io/badge/Progresso-65%25-10b981?style=for-the-badge)](PROJECT_STATUS.md)
 
-**Educação de qualidade em matemática básica para adultos**
+**Educação de qualidade em matemática para adultos**
 
 *Do básico ao avançado, sem infantilização*
 
-[Demo ao Vivo](https://3000-izawxsbz194xne7hs1lhx-bbd42229.us2.manus.computer) · [Reportar Bug](https://github.com/msc-consultorias/arquimedes/issues) · [Solicitar Funcionalidade](https://github.com/msc-consultorias/arquimedes/issues)
+[Demo ao Vivo](https://3000-izawxsbz194xne7hs1lhx-bbd42229.us2.manus.computer) · [Reportar Bug](https://github.com/MSC-Consultoria/arquimedes0.0.1/issues) · [Solicitar Funcionalidade](https://github.com/MSC-Consultoria/arquimedes0.0.1/issues) · [Status do Projeto](PROJECT_STATUS.md)
 
 </div>
 
@@ -31,60 +32,121 @@ Proporcionar educação matemática de qualidade, acessível e contextualizada p
 - **Contextualização Prática**: Exemplos do cotidiano (finanças, compras, medidas)
 - **Visualização Interativa**: Diagramas, retas numéricas e equações renderizadas
 - **Feedback Imediato**: Sistema de exercícios com validação automática
-- **Aprendizado Adaptativo**: Exercícios personalizados gerados por IA
+- **Aprendizado Gamificado**: XP, níveis, streaks e conquistas
 - **Interface Profissional**: Design limpo e moderno, adequado para adultos
 
 ---
 
 ## 🚀 Funcionalidades
 
-### ✅ Implementadas (v0.2.0)
+### ✅ Implementadas (v2.3.0)
+
+#### 📚 Estrutura de Conteúdo
+- **4 Grandes Áreas de Conhecimento**
+  - 🔢 **Aritmética** (15 módulos estruturados)
+  - 📐 **Álgebra** (estrutura planejada)
+  - 📏 **Geometria** (estrutura planejada)
+  - ∫ **Cálculo** (estrutura planejada)
 
 - **Sistema de Navegação Hierárquica**
   - Estrutura Disciplina → Módulo → Página/Aula
   - Breadcrumb intuitivo
   - Índice interativo de conteúdo
+  - Menu hambúrguer mobile com progresso por módulo
 
-- **Renderização de Conteúdo Educacional**
+#### 📝 Conteúdo Educacional Rico
+- **3 Módulos Completos de Aritmética:**
+  1. **Adição e Subtração** (3 páginas)
+  2. **Multiplicação** (3 páginas)
+  3. **Divisão** (3 páginas)
+
+- **Estatísticas de Conteúdo:**
+  - 12 páginas de aulas
+  - 19.736 palavras de conteúdo educacional
+  - 265 exercícios interativos
+  - 12 vídeos do YouTube integrados
+
+- **Renderização Avançada:**
   - Texto formatado com Markdown
   - Equações matemáticas em LaTeX (KaTeX)
+  - Proteção do símbolo R$ (moeda brasileira)
   - Suporte a conceitos-chave destacados
 
-- **Exercícios Interativos**
-  - Validação automática de respostas
-  - Feedback imediato ao aluno
-  - Histórico completo de tentativas
-  - Sistema de dicas progressivas
+#### 🎮 Gamificação Completa
+- **Sistema de XP e Níveis**
+  - Pontos de experiência por aula completada
+  - Níveis progressivos baseados em XP total
+  - Barra de progresso visual
 
-- **Gestão de Progresso**
-  - Rastreamento de aulas completadas
-  - Sistema de pontuação por exercício
-  - Dashboard personalizado com métricas
-  - Recomendações de próximos passos
+- **Streaks (Sequências)**
+  - Rastreamento de dias consecutivos de estudo
+  - Incentivo para manter consistência
 
-- **Geração Inteligente de Exercícios**
-  - Integração com LLM (Large Language Model)
-  - Exercícios personalizados baseados no nível do aluno
-  - Problemas contextualizados do cotidiano
+- **Conquistas (Achievements)**
+  - Badges por marcos alcançados
+  - Sistema de recompensas visual
 
-- **Sistema de Notificações**
-  - Alertas ao proprietário sobre marcos dos alunos
-  - Notificações de novas aulas disponíveis
+#### 💪 Exercícios Interativos
+- Validação automática de respostas
+- Feedback imediato ao aluno
+- Histórico completo de tentativas
+- Sistema de dicas progressivas
+- Geração inteligente com LLM
 
-- **Conteúdo Completo - Módulo 1**
-  - **Adição e Subtração**: 3 páginas
-  - **Multiplicação**: 3 páginas
-  - **Divisão**: 3 páginas
-  - Total: 9 aulas com exercícios práticos
+#### 📊 Gestão de Progresso
+- Rastreamento de aulas completadas
+- Sistema de pontuação por exercício
+- Dashboard personalizado com métricas
+- Recomendações de próximos passos
+- Resumo de aprendizado
 
-### 🔜 Roadmap Futuro
+#### 🎨 Interface e UX
+- **Design Responsivo Mobile-First**
+  - Botões otimizados para toque (min 48x48px)
+  - Layout adaptativo (mobile → tablet → desktop)
+  - Menu hambúrguer com navegação completa
 
-- [ ] Embeds de vídeos do YouTube
-- [ ] Diagramas interativos (SVG/Canvas)
-- [ ] Sistema de conquistas gamificado
-- [ ] Módulos de Física (5 módulos planejados)
-- [ ] Fórum de discussão entre alunos
-- [ ] Certificados de conclusão
+- **Tipografia Brasileira**
+  - Fontes Inter e Lexend via Google Fonts
+  - Suporte completo a acentos (á, é, í, ó, ú, ã, õ, ç)
+
+- **Componentes Visuais Interativos**
+  - NumberLine (reta numérica animada)
+  - MultiplicationMatrix (matriz visual)
+  - MultiplicationTable (tabuada interativa)
+
+#### 🔐 Autenticação e Perfil
+- Autenticação Manus OAuth
+- Página de perfil do usuário
+- Histórico pessoal de progresso
+
+#### 🧪 Qualidade de Código
+- 19 testes unitários (100% passando)
+- Zero erros TypeScript
+- Linting configurado
+- Documentação técnica completa
+
+---
+
+## 🗺️ Roadmap
+
+Veja [PROJECT_STATUS.md](PROJECT_STATUS.md) para o roadmap completo e detalhado.
+
+### **Fase 1: Completar Aritmética** (4-6 semanas) 🔄 EM ANDAMENTO
+- Criar conteúdo para 12 módulos pendentes
+- Meta: 36-48 páginas, 500+ exercícios
+
+### **Fase 2: Estruturar Álgebra** (3-4 semanas)
+- 10-12 módulos (Equações, Funções, Polinômios, etc.)
+
+### **Fase 3: Estruturar Geometria** (3-4 semanas)
+- 10-12 módulos (Formas, Perímetro, Teorema de Pitágoras, etc.)
+
+### **Fase 4: Estruturar Cálculo** (3-4 semanas)
+- 8-10 módulos (Limites, Derivadas, Integrais, etc.)
+
+### **Fase 5: Melhorias de UX** (2-3 semanas)
+- Modo escuro, busca global, PWA, CI/CD
 
 ---
 
@@ -95,21 +157,72 @@ Proporcionar educação matemática de qualidade, acessível e contextualizada p
 - **TypeScript** - Tipagem estática
 - **Tailwind CSS 4** - Estilização
 - **Wouter** - Roteamento
+- **tRPC** - Type-safe API client
+- **React Query** - Gerenciamento de estado
 - **KaTeX** - Renderização de LaTeX
-- **shadcn/ui** - Componentes UI
+- **Lucide React** - Ícones
 
 ### Backend
-- **Node.js** - Runtime
-- **Express** - Servidor HTTP
+- **Node.js 22** - Runtime
+- **Express 4** - Servidor HTTP
 - **tRPC 11** - API type-safe
-- **Drizzle ORM** - ORM para banco de dados
+- **Drizzle ORM** - ORM TypeScript-first
 - **MySQL/TiDB** - Banco de dados
-
-### Infraestrutura
 - **Manus OAuth** - Autenticação
-- **Manus LLM API** - Geração de exercícios
+
+### Ferramentas
+- **Vite** - Build tool
 - **Vitest** - Testes unitários
+- **ESLint** - Linting
 - **pnpm** - Gerenciador de pacotes
+
+---
+
+## 📦 Instalação e Desenvolvimento
+
+### Pré-requisitos
+- Node.js 22+
+- pnpm 9+
+- MySQL 8+ ou TiDB
+
+### Instalação
+
+```bash
+# Clonar repositório
+git clone https://github.com/MSC-Consultoria/arquimedes0.0.1.git
+cd arquimedes0.0.1
+
+# Instalar dependências
+pnpm install
+
+# Configurar variáveis de ambiente
+cp .env.example .env
+# Editar .env com suas credenciais
+
+# Executar migrations do banco
+pnpm db:push
+
+# Popular banco com dados de exemplo
+pnpm seed
+```
+
+### Desenvolvimento
+
+```bash
+# Iniciar servidor de desenvolvimento
+pnpm dev
+
+# Executar testes
+pnpm test
+
+# Build para produção
+pnpm build
+
+# Executar linting
+pnpm lint
+```
+
+O servidor estará disponível em `http://localhost:3000`.
 
 ---
 
@@ -117,231 +230,104 @@ Proporcionar educação matemática de qualidade, acessível e contextualizada p
 
 ```
 arquimedes/
-├── client/                    # Frontend React
-│   ├── public/               # Assets estáticos
+├── client/                 # Frontend React
+│   ├── public/            # Assets estáticos
 │   └── src/
-│       ├── components/       # Componentes reutilizáveis
-│       │   ├── ui/          # shadcn/ui components
-│       │   ├── MathContent.tsx
-│       │   └── ExerciseCard.tsx
-│       ├── pages/           # Páginas da aplicação
-│       │   ├── Home.tsx
-│       │   ├── DisciplinePage.tsx
-│       │   ├── ModulePage.tsx
-│       │   └── LessonPage.tsx
-│       ├── lib/             # Utilitários
-│       │   └── trpc.ts
-│       ├── App.tsx          # Rotas principais
-│       └── index.css        # Estilos globais
-│
-├── server/                   # Backend tRPC
-│   ├── _core/               # Configuração do servidor
-│   │   ├── llm.ts          # Integração LLM
-│   │   ├── notification.ts  # Sistema de notificações
-│   │   └── context.ts      # Contexto tRPC
-│   ├── db.ts               # Queries do banco de dados
-│   ├── routers.ts          # Endpoints tRPC
-│   └── *.test.ts           # Testes unitários
-│
-├── drizzle/                 # Migrations do banco
-│   └── schema.ts           # Schema do banco de dados
-│
-├── shared/                  # Código compartilhado
-│   └── const.ts            # Constantes
-│
-├── docs/                    # Documentação adicional
-│   ├── ARCHITECTURE.md     # Arquitetura detalhada
-│   └── DATABASE.md         # Guia do banco de dados
-│
-└── seed-data.mjs           # Script de população inicial
+│       ├── components/    # Componentes React
+│       ├── pages/         # Páginas da aplicação
+│       ├── hooks/         # Custom hooks
+│       ├── contexts/      # React contexts
+│       └── lib/           # Utilitários
+├── server/                # Backend Express + tRPC
+│   ├── routers.ts         # Definição de routers tRPC
+│   ├── db.ts              # Helpers de banco de dados
+│   └── _core/             # Infraestrutura (OAuth, contexto)
+├── drizzle/               # Schema e migrations
+│   └── schema.ts          # Definição de tabelas
+├── shared/                # Código compartilhado
+└── storage/               # Helpers de S3
 ```
 
 ---
 
-## 🚀 Começando
-
-### Pré-requisitos
-
-- **Node.js** >= 18.x
-- **pnpm** >= 8.x
-- **MySQL** ou **TiDB** (banco de dados)
-
-### Instalação
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/msc-consultorias/arquimedes.git
-   cd arquimedes
-   ```
-
-2. **Instale as dependências**
-   ```bash
-   pnpm install
-   ```
-
-3. **Configure as variáveis de ambiente**
-   
-   Crie um arquivo `.env` na raiz do projeto:
-   ```env
-   DATABASE_URL=mysql://user:password@host:port/database
-   JWT_SECRET=your-jwt-secret
-   OAUTH_SERVER_URL=https://api.manus.im
-   VITE_OAUTH_PORTAL_URL=https://portal.manus.im
-   BUILT_IN_FORGE_API_URL=https://api.manus.im
-   BUILT_IN_FORGE_API_KEY=your-api-key
-   ```
-
-4. **Execute as migrations do banco de dados**
-   ```bash
-   pnpm db:push
-   ```
-
-5. **Popule o banco com dados iniciais**
-   ```bash
-   node seed-data.mjs
-   ```
-
-6. **Inicie o servidor de desenvolvimento**
-   ```bash
-   pnpm dev
-   ```
-
-7. **Acesse a aplicação**
-   
-   Abra [http://localhost:3000](http://localhost:3000) no navegador
-
-### Executar Testes
+## 🧪 Testes
 
 ```bash
 # Executar todos os testes
 pnpm test
 
 # Executar testes em modo watch
-pnpm test --watch
+pnpm test:watch
 
-# Verificar tipagem TypeScript
-pnpm check
+# Executar testes com cobertura
+pnpm test:coverage
 ```
 
-### Build para Produção
-
-```bash
-# Build do frontend e backend
-pnpm build
-
-# Iniciar em produção
-pnpm start
-```
+**Status atual:** 19/19 testes passando (100%)
 
 ---
 
-## 📊 Banco de Dados
+## 📊 Métricas do Projeto
 
-### Schema Principal
-
-O banco de dados é estruturado em torno de 8 tabelas principais:
-
-1. **users** - Usuários autenticados
-2. **disciplines** - Disciplinas (ex: Matemática Básica)
-3. **modules** - Módulos dentro de disciplinas
-4. **pages** - Páginas/aulas com conteúdo
-5. **exercises** - Exercícios fixos por página
-6. **exerciseAttempts** - Tentativas de resolução
-7. **pageProgress** - Progresso do usuário por página
-8. **achievements** - Conquistas dos usuários
-
-### Acesso ao Banco
-
-Para acessar o banco de dados diretamente, consulte o guia completo em [docs/DATABASE.md](docs/DATABASE.md).
-
-**Conexão rápida via CLI:**
-```bash
-mysql -h <host> -u <user> -p<password> <database>
-```
-
----
-
-## 🏗️ Arquitetura
-
-A aplicação segue uma arquitetura **full-stack type-safe** com tRPC:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    FRONTEND (React)                      │
-│  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐ │
-│  │   Pages    │  │  Components  │  │  tRPC Client    │ │
-│  └────────────┘  └──────────────┘  └─────────────────┘ │
-└──────────────────────────┬──────────────────────────────┘
-                           │ HTTP/tRPC
-┌──────────────────────────┴──────────────────────────────┐
-│                   BACKEND (Express + tRPC)               │
-│  ┌────────────┐  ┌──────────────┐  ┌─────────────────┐ │
-│  │  Routers   │  │   DB Layer   │  │   LLM Service   │ │
-│  └────────────┘  └──────────────┘  └─────────────────┘ │
-└──────────────────────────┬──────────────────────────────┘
-                           │ SQL
-┌──────────────────────────┴──────────────────────────────┐
-│                  DATABASE (MySQL/TiDB)                   │
-└──────────────────────────────────────────────────────────┘
-```
-
-Para detalhes completos, veja [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+| Métrica | Valor |
+|---------|-------|
+| **Disciplinas** | 4 (Aritmética, Álgebra, Geometria, Cálculo) |
+| **Módulos** | 15 (todos em Aritmética) |
+| **Páginas de Conteúdo** | 12 |
+| **Exercícios** | 265 |
+| **Vídeos Integrados** | 12 |
+| **Palavras de Conteúdo** | 19.736 |
+| **Linhas de Código** | ~8.500 |
+| **Componentes React** | 45+ |
+| **Testes Unitários** | 19 (100% passando) |
+| **Progresso Geral** | 65% (232/355 tarefas) |
 
 ---
 
 ## 🤝 Contribuindo
 
-Contribuições são muito bem-vindas! Este projeto é mantido pela **MSC Consultorias** e está aberto para colaborações da comunidade.
+Contribuições são muito bem-vindas! Veja [CONTRIBUTING.md](CONTRIBUTING.md) para detalhes sobre como contribuir.
 
-### Como Contribuir
+### Áreas que Precisam de Ajuda
+1. 📝 **Criação de conteúdo educacional** - Escrever páginas de aulas
+2. 🎯 **Criação de exercícios** - Desenvolver problemas práticos
+3. 🎨 **Design visual** - Melhorar UI/UX e criar ilustrações
+4. 💻 **Desenvolvimento frontend** - Implementar novos componentes
+5. 🧪 **Testes** - Escrever testes unitários e E2E
+6. 📚 **Documentação** - Melhorar guias e tutoriais
 
-1. **Fork** o projeto
-2. Crie uma **branch** para sua feature (`git checkout -b feature/NovaFuncionalidade`)
-3. **Commit** suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. **Push** para a branch (`git push origin feature/NovaFuncionalidade`)
-5. Abra um **Pull Request**
-
-### Diretrizes
-
-- Mantenha o código limpo e bem documentado
-- Adicione testes para novas funcionalidades
-- Siga os padrões de código existentes
-- Atualize a documentação quando necessário
-
-Para mais detalhes, consulte [CONTRIBUTING.md](CONTRIBUTING.md).
+### Como Começar
+1. Fork o repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'feat: Adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
 
 ---
 
-## 📝 Licença
+## 📄 Licença
 
-Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ---
 
-## 👥 Autores
+## 📞 Contato e Suporte
 
-**MSC Consultorias**
-- Website: [mscconsultorias.com.br](https://mscconsultorias.com.br)
-- Email: contato@mscconsultorias.com.br
+- **Repositório:** [github.com/MSC-Consultoria/arquimedes0.0.1](https://github.com/MSC-Consultoria/arquimedes0.0.1)
+- **Issues:** [GitHub Issues](https://github.com/MSC-Consultoria/arquimedes0.0.1/issues)
+- **Discussões:** [GitHub Discussions](https://github.com/MSC-Consultoria/arquimedes0.0.1/discussions)
+- **Documentação Técnica:** [ARCHITECTURE.md](ARCHITECTURE.md)
+- **Status do Projeto:** [PROJECT_STATUS.md](PROJECT_STATUS.md)
 
 ---
 
 ## 🙏 Agradecimentos
 
-- Comunidade open source
-- Contribuidores do projeto
-- Alunos que testaram a plataforma
-- Equipe Manus pela infraestrutura
-
----
-
-## 📞 Suporte
-
-Encontrou um bug? Tem uma sugestão?
-
-- 🐛 [Reportar Bug](https://github.com/msc-consultorias/arquimedes/issues)
-- 💡 [Solicitar Funcionalidade](https://github.com/msc-consultorias/arquimedes/issues)
-- 📧 Email: suporte@mscconsultorias.com.br
+- [Manus](https://manus.im) - Plataforma de deploy e autenticação
+- [shadcn/ui](https://ui.shadcn.com/) - Componentes UI
+- [KaTeX](https://katex.org/) - Renderização de LaTeX
+- [Lucide](https://lucide.dev/) - Ícones
+- Comunidade open-source
 
 ---
 
@@ -349,6 +335,6 @@ Encontrou um bug? Tem uma sugestão?
 
 **Feito com ❤️ pela MSC Consultorias**
 
-*Transformando a educação matemática, uma aula por vez*
+[⬆ Voltar ao topo](#-arquimedes---plataforma-de-educação-em-matemática)
 
 </div>

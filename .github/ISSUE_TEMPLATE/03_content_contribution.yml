@@ -1,0 +1,128 @@
+name: 📝 Contribuir com Conteúdo
+description: Quer criar ou melhorar conteúdo educacional? Ótimo!
+title: "[CONTEÚDO] "
+labels: ["content", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por querer contribuir com conteúdo educacional! Sua expertise é muito valiosa.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Tipo de Contribuição
+      description: O que você quer criar ou melhorar?
+      options:
+        - 📄 Nova página de aula
+        - 📚 Novo módulo completo
+        - 🎯 Novos exercícios
+        - 📹 Sugestão de vídeo do YouTube
+        - ✏️ Correção de conteúdo existente
+        - 🎨 Componente visual/interativo
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: discipline
+    attributes:
+      label: Disciplina
+      description: Qual área de conhecimento?
+      options:
+        - 🔢 Aritmética
+        - 📐 Álgebra
+        - 📏 Geometria
+        - ∫ Cálculo
+    validations:
+      required: true
+
+  - type: input
+    id: module
+    attributes:
+      label: Módulo
+      description: Qual módulo específico? (ex: "Frações", "Equações de 1º Grau")
+      placeholder: Ex: Frações
+    validations:
+      required: true
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: Esboço do Conteúdo
+      description: Descreva o que você planeja criar ou melhorar
+      placeholder: |
+        ## Página 1: O que são Frações
+        - Conceito de numerador e denominador
+        - Representação visual (pizza, barras)
+        - Exemplos do cotidiano
+        - 3 exercícios práticos
+    validations:
+      required: true
+
+  - type: textarea
+    id: learning_objectives
+    attributes:
+      label: Objetivos de Aprendizado
+      description: O que o aluno deve aprender com este conteúdo?
+      placeholder: |
+        Ao final desta aula, o aluno será capaz de:
+        - Identificar numerador e denominador
+        - Representar frações visualmente
+        - Resolver problemas práticos com frações
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Nível de Dificuldade
+      description: Para qual nível este conteúdo é adequado?
+      options:
+        - 🟢 Iniciante (conceitos básicos)
+        - 🟡 Intermediário (requer conhecimento prévio)
+        - 🔴 Avançado (conceitos complexos)
+    validations:
+      required: true
+
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: Pré-requisitos
+      description: Que conhecimentos o aluno precisa ter antes desta aula?
+      placeholder: Ex: Conhecimento de adição e subtração básicas
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Recursos Adicionais
+      description: Links para vídeos, artigos, imagens ou outros materiais que você planeja usar
+      placeholder: |
+        - Vídeo YouTube: https://youtube.com/watch?v=...
+        - Imagem: https://...
+        - Referência: https://...
+
+  - type: textarea
+    id: draft
+    attributes:
+      label: Rascunho (opcional)
+      description: Se já tiver um rascunho do conteúdo, cole aqui
+      placeholder: |
+        # O que são Frações
+        
+        Uma fração representa uma parte de um todo...
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Por favor, confirme que você
+      options:
+        - label: Li o guia de contribuição (CONTRIBUTING.md)
+          required: true
+        - label: O conteúdo é original ou tenho permissão para usá-lo
+          required: true
+        - label: O conteúdo segue a abordagem do Arquimedes (clara, prática, sem infantilização)
+          required: true
+        - label: Estou disposto a revisar e ajustar o conteúdo com base em feedback
+          required: true

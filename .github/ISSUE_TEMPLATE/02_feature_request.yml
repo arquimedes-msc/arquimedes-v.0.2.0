@@ -1,0 +1,93 @@
+name: ✨ Solicitar Funcionalidade
+description: Sugira uma nova funcionalidade ou melhoria!
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por sugerir uma melhoria! Suas ideias nos ajudam a tornar o Arquimedes ainda melhor.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema ou Necessidade
+      description: Qual problema esta funcionalidade resolve? Ou qual necessidade ela atende?
+      placeholder: Ex: É frustrante quando preciso procurar uma aula específica e não consigo encontrar rapidamente
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solução Proposta
+      description: Descreva como você imagina que esta funcionalidade deveria funcionar
+      placeholder: Ex: Adicionar um campo de busca no menu que permite procurar aulas por palavra-chave
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas Consideradas
+      description: Você pensou em outras formas de resolver este problema?
+      placeholder: Ex: Poderia ter um índice alfabético, mas a busca seria mais rápida
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      description: Qual área esta funcionalidade afeta?
+      options:
+        - 📚 Conteúdo Educacional
+        - 🎮 Gamificação
+        - 🎨 Interface/Design
+        - 🔧 Funcionalidade
+        - 📱 Mobile
+        - 🔐 Autenticação/Perfil
+        - 📊 Dashboard/Métricas
+        - 🎯 Exercícios
+        - 🔍 Busca/Navegação
+        - ⚙️ Configurações
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade (na sua opinião)
+      description: Quão importante é esta funcionalidade para você?
+      options:
+        - 🔴 Alta (muito necessária)
+        - 🟡 Média (seria útil)
+        - 🟢 Baixa (nice to have)
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: Mockups ou Exemplos
+      description: Se possível, adicione imagens, links ou exemplos de como esta funcionalidade poderia ser
+      placeholder: Cole aqui ou arraste imagens
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Contexto Adicional
+      description: Qualquer outra informação relevante sobre esta funcionalidade
+      placeholder: Ex: Vi esta funcionalidade em outro site e funcionou muito bem
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      description: Por favor, confirme que você
+      options:
+        - label: Pesquisei issues existentes e não encontrei esta funcionalidade sugerida
+          required: true
+        - label: Esta funcionalidade beneficiaria outros usuários, não apenas eu
+          required: false
+        - label: Estou disposto a ajudar a implementar esta funcionalidade
+          required: false
