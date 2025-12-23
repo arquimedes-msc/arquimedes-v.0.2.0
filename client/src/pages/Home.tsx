@@ -37,14 +37,15 @@ export default function Home() {
               Aprenda matemática básica de forma clara, prática e sem infantilização. 
               Educação de qualidade para adultos.
             </p>
-            {!isAuthenticated ? (
-              <Button size="lg" variant="secondary" asChild>
-                <a href={getLoginUrl()}>
-                  Começar Agora
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-            ) : (
+            <div className="flex flex-wrap gap-4">
+              {!isAuthenticated ? (
+                <Button size="lg" variant="secondary" asChild>
+                  <a href={getLoginUrl()}>
+                    Começar Agora
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </Button>
+              ) : (
               <div className="flex items-center gap-4">
                 <p className="text-lg">Bem-vindo, {user?.name || user?.email}!</p>
                 <Button variant="secondary" onClick={() => logoutMutation.mutate()}>
@@ -52,7 +53,13 @@ export default function Home() {
                   Sair
                 </Button>
               </div>
-            )}
+              )}
+              <Link href="/visuals">
+                <Button size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 border-white/30">
+                  🎨 Visualizações Interativas
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

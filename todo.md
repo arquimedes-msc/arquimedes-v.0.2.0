@@ -88,3 +88,25 @@
 - [x] Criar templates de issues (bug report, feature request)
 - [x] Criar template de pull request
 - [x] Criar guia de deploy no GitHub (DEPLOY_GITHUB.md)
+
+
+## Expansão de Conteúdo Educacional
+- [x] Expandir páginas de Adição (adicionar exemplos, contextos práticos)
+- [ ] Expandir páginas de Subtração (adicionar mais exercícios)
+- [ ] Expandir páginas de Multiplicação (adicionar visualizações)
+- [ ] Expandir páginas de Divisão (adicionar conceitos avançados)
+- [ ] Adicionar mais exercícios práticos por página
+- [ ] Criar vídeos explicativos (ou embeds do YouTube)
+
+## Design Visual e Diagramas
+- [x] Criar diagramas de retas numéricas interativas
+- [x] Criar visualizações de matrizes para multiplicação
+- [x] Criar ilustrações de conceitos matemáticos
+- [x] Melhorar design da página inicial
+- [x] Adicionar animações e transições suaves
+- [x] Criar paleta de cores mais rica
+- [x] Design de cards de exercícios mais atraente
+- [x] Criar página de demonstração de visualizações (/visuals)
+- [x] Adicionar componente NumberLine (reta numérica animada)
+- [x] Adicionar componente MultiplicationMatrix (matriz visual)
+- [x] Adicionar componente MultiplicationTable (tabuada visual)
