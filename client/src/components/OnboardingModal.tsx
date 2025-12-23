@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -70,6 +70,7 @@ export default function OnboardingModal({ isOpen, onComplete }: OnboardingModalP
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0">
+        <DialogTitle className="sr-only">Tutorial de Boas-vindas</DialogTitle>
         {/* Etapa 1: Boas-vindas */}
         {step === 1 && (
           <div className="p-12 text-center space-y-6">

@@ -738,3 +738,22 @@
 - [x] Criar estatísticas de vídeos (total assistido)
 - [x] Escrever 11 testes unitários (100% passando)
 - [x] Integrar com sistema de pontos acumulativos
+
+
+## Sistema de Desafio do Dia (v2.13.0)
+- [x] Criar tabela `dailyChallenges` no banco de dados
+- [x] Criar tabela `dailyChallengeAttempts` para rastreamento
+- [x] Implementar helper para gerar desafio diário (3 exercícios aleatórios)
+- [x] Implementar helper para verificar se usuário já completou desafio de hoje
+- [x] Criar procedure tRPC para buscar desafio do dia
+- [x] Criar procedure tRPC para submeter resposta do desafio
+- [x] Criar procedure tRPC para obter estatísticas de desafios
+- [x] Criar página DailyChallengePage.tsx
+- [x] Implementar UI com 3 exercícios e contador de tempo
+- [x] Adicionar badge especial "Desafio Completo"
+- [x] Implementar sistema de pontos dobrados (10/20/30)
+- [x] Adicionar rota /desafio-do-dia no App.tsx
+- [x] Adicionar link na Sidebar com ícone de troféu
+- [x] Adicionar enum daily_challenge_completed ao userPointsLog
+- [x] Escrever 7 testes unitários para desafio do dia (100% passando)
+- [x] Integrar com sistema de pontos acumulativos

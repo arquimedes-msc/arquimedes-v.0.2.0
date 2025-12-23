@@ -214,7 +214,7 @@ export const userPointsLog = mysqlTable("userPointsLog", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull(),
   
-  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed"]).notNull(),
+  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed", "daily_challenge_completed"]).notNull(),
   points: int("points").notNull(),
   
   // Optional metadata
@@ -343,3 +343,34 @@ export const standaloneVideoViews = mysqlTable("standalone_video_views", {
 
 export type StandaloneVideoView = typeof standaloneVideoViews.$inferSelect;
 export type InsertStandaloneVideoView = typeof standaloneVideoViews.$inferInsert;
+
+/**
+ * Daily Challenges (Desafio do Dia)
+ * Armazena os desafios diários gerados automaticamente
+ */
+export const dailyChallenges = mysqlTable("daily_challenges", {
+  id: int("id").autoincrement().primaryKey(),
+  challengeDate: varchar("challengeDate", { length: 10 }).notNull(), // Data do desafio (YYYY-MM-DD)
+  exerciseIds: json("exerciseIds").notNull(), // Array de 3 IDs de exercícios [id1, id2, id3]
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type DailyChallenge = typeof dailyChallenges.$inferSelect;
+export type InsertDailyChallenge = typeof dailyChallenges.$inferInsert;
+
+/**
+ * Daily Challenge Attempts (Tentativas de Desafio Diário)
+ * Rastreia quando usuários completam o desafio do dia
+ */
+export const dailyChallengeAttempts = mysqlTable("daily_challenge_attempts", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  challengeId: int("challengeId").notNull(),
+  exerciseId: int("exerciseId").notNull(), // Qual exercício do desafio
+  isCorrect: boolean("isCorrect").notNull(),
+  pointsEarned: int("pointsEarned").notNull(), // Pontos dobrados: 10/20/30
+  attemptedAt: timestamp("attemptedAt").defaultNow().notNull(),
+});
+
+export type DailyChallengeAttempt = typeof dailyChallengeAttempts.$inferSelect;
+export type InsertDailyChallengeAttempt = typeof dailyChallengeAttempts.$inferInsert;

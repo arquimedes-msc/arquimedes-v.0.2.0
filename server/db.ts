@@ -18,7 +18,9 @@ import {
   standaloneExercises, StandaloneExercise, InsertStandaloneExercise,
   standaloneExerciseAttempts, StandaloneExerciseAttempt, InsertStandaloneExerciseAttempt,
   standaloneVideos, StandaloneVideo, InsertStandaloneVideo,
-  standaloneVideoViews, StandaloneVideoView, InsertStandaloneVideoView
+  standaloneVideoViews, StandaloneVideoView, InsertStandaloneVideoView,
+  dailyChallenges, DailyChallenge, InsertDailyChallenge,
+  dailyChallengeAttempts, DailyChallengeAttempt, InsertDailyChallengeAttempt
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -622,7 +624,7 @@ export async function awardAchievement(
  */
 export async function addPoints(
   userId: number,
-  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed",
+  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed" | "daily_challenge_completed",
   points: number,
   relatedId?: number
 ): Promise<void> {
@@ -1037,5 +1039,188 @@ export async function getStandaloneVideoStats(userId: number) {
   const watched = await getWatchedVideos(userId);
   return {
     totalWatched: watched.length,
+  };
+}
+
+
+// ============================================
+// Daily Challenge (Desafio do Dia)
+// ============================================
+
+export async function getTodayChallenge() {
+  const db = await getDb();
+  if (!db) return null;
+
+  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  
+  const challenges = await db
+    .select()
+    .from(dailyChallenges)
+    .where(eq(dailyChallenges.challengeDate, today))
+    .limit(1);
+
+  if (challenges.length > 0) {
+    return challenges[0];
+  }
+
+  // Gerar novo desafio para hoje
+  return await generateTodayChallenge();
+}
+
+export async function generateTodayChallenge() {
+  const db = await getDb();
+  if (!db) return null;
+
+  const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+
+  // Buscar todos os exercícios disponíveis
+  const allExercises = await db.select().from(standaloneExercises);
+
+  if (allExercises.length < 3) {
+    throw new Error("Not enough exercises to create a daily challenge");
+  }
+
+  // Selecionar 3 exercícios aleatórios (1 fácil, 1 moderado, 1 difícil)
+  const easyExercises = allExercises.filter((ex) => ex.difficulty === "easy");
+  const moderateExercises = allExercises.filter((ex) => ex.difficulty === "moderate");
+  const hardExercises = allExercises.filter((ex) => ex.difficulty === "hard");
+
+  const selectedExercises = [];
+
+  if (easyExercises.length > 0) {
+    const randomEasy = easyExercises[Math.floor(Math.random() * easyExercises.length)];
+    selectedExercises.push(randomEasy.id);
+  }
+
+  if (moderateExercises.length > 0) {
+    const randomModerate = moderateExercises[Math.floor(Math.random() * moderateExercises.length)];
+    selectedExercises.push(randomModerate.id);
+  }
+
+  if (hardExercises.length > 0) {
+    const randomHard = hardExercises[Math.floor(Math.random() * hardExercises.length)];
+    selectedExercises.push(randomHard.id);
+  }
+
+  // Se não tiver exercícios suficientes de cada tipo, completar com aleatórios
+  while (selectedExercises.length < 3 && allExercises.length >= 3) {
+    const randomExercise = allExercises[Math.floor(Math.random() * allExercises.length)];
+    if (!selectedExercises.includes(randomExercise.id)) {
+      selectedExercises.push(randomExercise.id);
+    }
+  }
+
+  // Inserir novo desafio no banco
+  await db.insert(dailyChallenges).values({
+    challengeDate: today,
+    exerciseIds: selectedExercises,
+  });
+
+  // Buscar e retornar o desafio criado
+  const newChallenges = await db
+    .select()
+    .from(dailyChallenges)
+    .where(eq(dailyChallenges.challengeDate, today))
+    .limit(1);
+
+  return newChallenges[0];
+}
+
+export async function getChallengeExercises(exerciseIds: number[]) {
+  const db = await getDb();
+  if (!db) return [];
+
+  const exercises = await db
+    .select()
+    .from(standaloneExercises)
+    .where(sql`${standaloneExercises.id} IN (${sql.join(exerciseIds.map((id) => sql`${id}`), sql`, `)})`);
+
+  return exercises;
+}
+
+export async function submitDailyChallengeAnswer(
+  userId: number,
+  challengeId: number,
+  exerciseId: number,
+  userAnswer: number
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // Buscar exercício
+  const exercise = await db
+    .select()
+    .from(standaloneExercises)
+    .where(eq(standaloneExercises.id, exerciseId))
+    .limit(1);
+
+  if (exercise.length === 0) {
+    throw new Error("Exercise not found");
+  }
+
+  const isCorrect = exercise[0].correctAnswer === userAnswer;
+  const pointsEarned = isCorrect ? exercise[0].points * 2 : 0; // Pontos dobrados!
+
+  // Registrar tentativa
+  await db.insert(dailyChallengeAttempts).values({
+    userId,
+    challengeId,
+    exerciseId,
+    isCorrect,
+    pointsEarned,
+  });
+
+  return { isCorrect, pointsEarned };
+}
+
+export async function hasCompletedTodayChallenge(userId: number) {
+  const db = await getDb();
+  if (!db) return false;
+
+  const today = new Date().toISOString().split("T")[0];
+
+  // Buscar desafio de hoje
+  const todayChallenge = await db
+    .select()
+    .from(dailyChallenges)
+    .where(eq(dailyChallenges.challengeDate, today))
+    .limit(1);
+
+  if (todayChallenge.length === 0) {
+    return false;
+  }
+
+  // Verificar se usuário completou todos os 3 exercícios
+  const attempts = await db
+    .select()
+    .from(dailyChallengeAttempts)
+    .where(
+      and(
+        eq(dailyChallengeAttempts.userId, userId),
+        eq(dailyChallengeAttempts.challengeId, todayChallenge[0].id)
+      )
+    );
+
+  // Usuário completou se tiver 3 tentativas (uma para cada exercício)
+  return attempts.length >= 3;
+}
+
+export async function getDailyChallengeStats(userId: number) {
+  const db = await getDb();
+  if (!db) return { totalChallenges: 0, totalCorrect: 0, totalPoints: 0 };
+
+  const attempts = await db
+    .select()
+    .from(dailyChallengeAttempts)
+    .where(eq(dailyChallengeAttempts.userId, userId));
+
+  const totalChallenges = Math.floor(attempts.length / 3); // 3 exercícios por desafio
+  const totalCorrect = attempts.filter((a) => a.isCorrect).length;
+  const totalPoints = attempts.reduce((sum, a) => sum + a.pointsEarned, 0);
+
+  return {
+    totalChallenges,
+    totalCorrect,
+    totalPoints,
   };
 }

@@ -526,5 +526,56 @@ Retorne APENAS um JSON com:
       return await db.getStandaloneVideoStats(ctx.user.id);
     }),
   }),
+
+  // ============= DAILY CHALLENGE (DESAFIO DO DIA) =============
+  dailyChallenge: router({
+    getToday: publicProcedure.query(async () => {
+      const challenge = await db.getTodayChallenge();
+      if (!challenge) {
+        throw new Error("Failed to generate today's challenge");
+      }
+
+      // Buscar exercícios do desafio
+      const exerciseIds = challenge.exerciseIds as number[];
+      const exercises = await db.getChallengeExercises(exerciseIds);
+
+      return {
+        challenge,
+        exercises,
+      };
+    }),
+
+    submit: protectedProcedure
+      .input(
+        z.object({
+          challengeId: z.number(),
+          exerciseId: z.number(),
+          userAnswer: z.number(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const result = await db.submitDailyChallengeAnswer(
+          ctx.user.id,
+          input.challengeId,
+          input.exerciseId,
+          input.userAnswer
+        );
+
+        // Award double points if correct
+        if (result.isCorrect && result.pointsEarned > 0) {
+          await db.addPoints(ctx.user.id, "daily_challenge_completed", result.pointsEarned);
+        }
+
+        return result;
+      }),
+
+    hasCompleted: protectedProcedure.query(async ({ ctx }) => {
+      return await db.hasCompletedTodayChallenge(ctx.user.id);
+    }),
+
+    getStats: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getDailyChallengeStats(ctx.user.id);
+    }),
+  }),
 });
 export type AppRouter = typeof appRouter;
