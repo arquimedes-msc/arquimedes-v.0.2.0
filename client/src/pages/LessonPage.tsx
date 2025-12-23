@@ -237,27 +237,25 @@ export default function LessonPage() {
         )}
 
         {/* Navigation */}
-        <div className="flex justify-between items-center pt-8 border-t">
-          {previousPage ? (
-            <Button variant="outline" asChild>
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8 border-t">
+          {previousPage && (
+            <Button variant="outline" asChild className="w-full sm:flex-1 min-h-[48px] justify-start">
               <Link href={`/disciplina/${discipline.slug}/modulo/${module.slug}/aula/${previousPage.slug}`}>
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Anterior: {previousPage.title}
+                <ArrowLeft className="h-4 w-4 mr-2 flex-shrink-0" />
+                <span className="truncate">Anterior: {previousPage.title}</span>
               </Link>
             </Button>
-          ) : (
-            <div />
           )}
 
           {nextPage ? (
-            <Button asChild>
+            <Button asChild className="w-full sm:flex-1 min-h-[48px] justify-start">
               <Link href={`/disciplina/${discipline.slug}/modulo/${module.slug}/aula/${nextPage.slug}`}>
-                Próximo: {nextPage.title}
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <span className="truncate">Próximo: {nextPage.title}</span>
+                <ArrowRight className="h-4 w-4 ml-2 flex-shrink-0" />
               </Link>
             </Button>
           ) : (
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="w-full sm:flex-1 min-h-[48px]">
               <Link href={`/disciplina/${discipline.slug}/modulo/${module.slug}`}>
                 Voltar ao Módulo
               </Link>

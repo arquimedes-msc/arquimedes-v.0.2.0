@@ -65,11 +65,11 @@ describe("Disciplines Router", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
 
     expect(discipline).toBeDefined();
-    expect(discipline?.name).toBe("Matemática Básica");
-    expect(discipline?.slug).toBe("matematica-basica");
+    expect(discipline?.name).toBe("Aritmética");
+    expect(discipline?.slug).toBe("aritmetica");
   });
 });
 
@@ -79,7 +79,7 @@ describe("Modules Router", () => {
     const caller = appRouter.createCaller(ctx);
 
     // First get discipline
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     expect(discipline).toBeDefined();
 
     // Then get modules
@@ -96,7 +96,7 @@ describe("Modules Router", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -113,7 +113,7 @@ describe("Pages Router", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -133,7 +133,7 @@ describe("Pages Router", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -156,7 +156,7 @@ describe("Exercises Router", () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -179,7 +179,7 @@ describe("Exercises Router", () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -205,7 +205,7 @@ describe("Exercises Router", () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",
@@ -232,7 +232,7 @@ describe("Progress Router", () => {
     const ctx = createAuthContext();
     const caller = appRouter.createCaller(ctx);
 
-    const discipline = await caller.disciplines.getBySlug({ slug: "matematica-basica" });
+    const discipline = await caller.disciplines.getBySlug({ slug: "aritmetica" });
     const module = await caller.modules.getBySlug({
       disciplineId: discipline!.id,
       slug: "adicao-subtracao",

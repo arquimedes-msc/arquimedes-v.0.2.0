@@ -498,3 +498,18 @@
 - [x] Garantir que negrito e links apareçam com cores corretas (azul)
 - [x] Remover código de exercícios visível (ExerciseCard tags)
 - [x] Executar todos os 19 testes unitários (100% passando)
+
+
+## Correções Urgentes de Layout Mobile (Bugs Críticos)
+- [x] Corrigir tipografia do símbolo R$ (aparece como itálico quebrado "nacarteiraerece")
+- [x] Corrigir botões de navegação maiores que a tela (causando scroll horizontal)
+- [x] Garantir que botões "Anterior" e "Próximo" tenham largura máxima da tela
+- [x] Empilhar botões verticalmente em mobile (um em cima do outro)
+- [x] Testar layout em viewport 360px (Android padrão)
+## Reestruturação de Conteúdo em 4 Áreas
+- [x] Criar 4 disciplinas principais: Aritmética, Álgebra, Geometria, Cálculo
+- [x] Migrar módulos existentes para Aritmética
+- [x] Criar estrutura completa de módulos de Aritmética (15 módulos)
+- [x] Definir progressão pedagógica de Aritmética (do zero ao avançado)
+- [x] Criar placeholders para Álgebra, Geometria e Cálculo
+- [x] Atualizar navegação e dashboard com nova hierarquia

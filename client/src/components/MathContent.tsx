@@ -127,6 +127,11 @@ const markdownComponents = {
 function processLatex(text: string): string {
   if (!text) return "";
   let processed = text;
+  
+  // Proteger R$ (moeda brasileira) antes de processar LaTeX
+  processed = processed.replace(/R\$/g, 'R__DOLLAR__');
+  
+  // Processar LaTeX display mode ($$...$$)
   processed = processed.replace(/\$\$(.*?)\$\$/g, (match, math) => {
     try {
       const rendered = katex.renderToString(math.trim(), {
@@ -148,5 +153,9 @@ function processLatex(text: string): string {
       return match;
     }
   });
+  
+  // Restaurar R$ (moeda brasileira) após processar LaTeX
+  processed = processed.replace(/R__DOLLAR__/g, 'R$');
+  
   return processed;
 }
