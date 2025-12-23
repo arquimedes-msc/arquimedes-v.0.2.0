@@ -1310,3 +1310,33 @@
   * 7. Porcentagem (3 páginas)
 - [ ] Testar navegação completa
 - [ ] Salvar checkpoint
+
+
+## 📐 Módulo 5: Frações ✅ COMPLETO
+
+### Estrutura do Módulo
+- [x] Verificar ID e estrutura do Módulo 5 no banco (ID 4, order 5)
+- [x] Página 1: Conceito de Frações
+  * Conteúdo educacional completo (1800+ palavras)
+  * O que são frações, numerador, denominador
+  * Representação visual (pizzas, barras, conjuntos)
+  * Frações próprias, impróprias e aparentes
+  * Leitura de frações, frações no cotidiano
+  * Vídeo educacional (15 min)
+- [x] Página 2: Operações com Frações
+  * Conteúdo educacional completo (2200+ palavras)
+  * Adição e subtração (mesmo denominador e denominadores diferentes)
+  * Multiplicação de frações (com simplificação antes)
+  * Divisão de frações (inverter e multiplicar)
+  * Operações mistas, aplicações práticas
+  * Vídeo educacional (20 min)
+- [x] Página 3: Simplificação e Equivalência
+  * Conteúdo educacional completo (2000+ palavras)
+  * Frações equivalentes (multiplicar/dividir por mesmo número)
+  * Simplificação de frações (MDC, simplificação gradual)
+  * Comparação de frações (3 métodos)
+  * Aplicações práticas (receitas, divisão, ofertas)
+  * Vídeo educacional (18 min)
+- [x] Total: 3 páginas, 6000+ palavras de conteúdo
+- [ ] Testar navegação completa
+- [ ] Salvar checkpoint
