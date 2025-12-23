@@ -332,3 +332,28 @@
 - [ ] Expandir Página 1: Operação Inversa - 5000+ palavras
 - [ ] Expandir Página 2: Repartição Justa - 5000+ palavras
 - [ ] Expandir Página 3: Conceito de Resto - 5000+ palavras
+
+
+## Componente YouTubeEmbed
+- [x] Criar componente YouTubeEmbed.tsx
+- [x] Aceitar videoId como prop
+- [x] Renderizar player responsivo (16:9)
+- [x] Adicionar controles personalizados
+- [x] Suporte a autoplay e loop (opcionais)
+- [x] Placeholder visual antes do carregamento
+- [x] Criar YouTubePlaceholder para desenvolvimento
+- [ ] Integrar em páginas de aula
+
+## Sistema de Sons (Web Audio API)
+- [x] Criar SoundManager.ts com Web Audio API
+- [x] Adicionar som de acerto (sintetizado)
+- [x] Adicionar som de erro (sintetizado)
+- [x] Adicionar som de level-up (sintetizado)
+- [x] Adicionar som de conquista (sintetizado)
+- [x] Adicionar som de click (sintetizado)
+- [x] Adicionar som de whoosh (sintetizado)
+- [x] Criar hook useSounds() para componentes
+- [x] Adicionar botão de mute/unmute global (SoundToggle)
+- [x] Integrar sons no ExerciseCard
+- [ ] Integrar sons no sistema de gamificação
+- [ ] Adicionar feedback visual + sonoro simultâneo

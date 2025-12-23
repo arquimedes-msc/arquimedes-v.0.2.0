@@ -7,6 +7,7 @@ import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
 import { MathContent } from "./MathContent";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
+import { useSounds } from "@/lib/sounds";
 
 interface Exercise {
   id: number;
@@ -23,6 +24,7 @@ interface ExerciseCardProps {
 }
 
 export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
+  const { playSuccess, playError } = useSounds();
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState<{
     type: "correct" | "incorrect" | null;
@@ -36,6 +38,7 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
       setAttemptCount(data.attemptNumber);
       
       if (data.isCorrect) {
+        playSuccess(); // Som de acerto
         setFeedback({
           type: "correct",
           message: "Excelente! Resposta correta! 🎉",
@@ -43,6 +46,7 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
         toast.success("Resposta correta!");
         onComplete?.(true);
       } else {
+        playError(); // Som de erro
         setFeedback({
           type: "incorrect",
           message: data.correctAnswer
