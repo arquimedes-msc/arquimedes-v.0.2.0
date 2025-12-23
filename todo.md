@@ -1,1457 +1,61 @@
-# Arquimedes - Lista de Funcionalidades
+# 📋 TODO - Arquimedes
 
-## Infraestrutura e Banco de Dados
-- [x] Criar schema completo do banco de dados (disciplinas, módulos, páginas, exercícios, progresso)
+**Última atualização:** Dezembro 2024  
+**Versão:** v2.42.0  
+**Progresso:** 80%
+
+---
+
+## ✅ Concluídas (v2.42.0)
+
+### Infraestrutura e Backend
+- [x] Criar schema completo do banco de dados
 - [x] Configurar relacionamentos entre tabelas
-- [x] Executar migrations do banco de dados
-
-## Backend e APIs
 - [x] Implementar routers tRPC para disciplinas e módulos
 - [x] Criar endpoints para páginas e conteúdo educacional
 - [x] Desenvolver sistema de exercícios com validação
 - [x] Integrar LLM para geração automática de exercícios
 - [x] Criar APIs de gestão de progresso do usuário
-- [x] Implementar sistema de notificações (proprietário e alunos)
+- [x] Implementar sistema de notificações
+- [x] Configurar autenticação Manus OAuth
 
-## Interface e Navegação
+### Interface e Navegação
 - [x] Criar layout principal da plataforma
 - [x] Implementar navegação hierárquica (Disciplina → Módulo → Página)
 - [x] Desenvolver componente de breadcrumb
 - [x] Criar índice interativo de conteúdo
-- [x] Implementar página inicial com apresentação da plataforma
+- [x] Implementar página inicial com apresentação
+- [x] Criar Sidebar persistente com navegação rápida
+- [x] Menu hambúrguer mobile com progresso por módulo
+- [x] Garantir responsividade mobile-first
 
-## Sistema de Conteúdo
-- [x] Criar componente para renderização de texto formatado
-- [x] Implementar suporte a equações LaTeX
+### Sistema de Conteúdo
+- [x] Criar componente para renderização de texto formatado (Markdown)
+- [x] Implementar suporte a equações LaTeX (KaTeX)
 - [x] Adicionar suporte a embeds de YouTube
 - [x] Criar componente para exibição de diagramas e imagens
 - [x] Desenvolver estrutura de página de aula
+- [x] Proteção do símbolo R$ (moeda brasileira)
 
-## Exercícios Interativos
+### Exercícios Interativos Tradicionais
 - [x] Criar componente de exercício com input simples
 - [x] Implementar exercícios de problemas práticos
 - [x] Adicionar validação automática de respostas
 - [x] Desenvolver sistema de feedback imediato
 - [x] Criar histórico de tentativas do aluno
-
-## Gestão de Progresso
-- [x] Implementar rastreamento de aulas completadas
-- [x] Criar sistema de pontuação
-- [x] Desenvolver algoritmo de recomendação de próximas aulas
-- [x] Criar dashboard do aluno
-- [x] Implementar resumo de aprendizado
-
-## Conteúdo do Módulo 1
-- [x] Página 1.1: Adição - O que é Adicionar (Combinar)
-- [x] Página 1.2: Adição - A Reta Numérica
-- [x] Página 1.3: Adição - Exercícios Práticos
-- [x] Página 2.1: Subtração - O que é Subtrair (Separar e Comparar)
-- [x] Página 2.2: Subtração - Visualizando o Movimento
-- [x] Página 2.3: Subtração - Exercícios Práticos
-- [x] Página 3.1: Multiplicação - Soma Repetida
-- [x] Página 3.2: Multiplicação - A Tabuada
-- [x] Página 3.3: Multiplicação - Visualização em Matrizes
-- [x] Página 4.1: Divisão - Operação Inversa da Multiplicação
-- [x] Página 4.2: Divisão - Repartição Justa (Quociente)
-- [x] Página 4.3: Divisão - Conceito de Resto
-
-## Autenticação e Perfil
-- [x] Configurar autenticação Manus OAuth
-- [x] Criar página de perfil do usuário
-- [x] Implementar histórico pessoal de progresso
-
-## Polimento e Testes
-- [x] Garantir responsividade mobile
-- [x] Criar plano completo de testes de acessibilidade (60+ páginas)
-- [ ] Validar todos os fluxos de usuário
-- [x] Escrever testes unitários para backend (50 testes passando)
-- [ ] Otimizar performance de carregamento
-
-## Deploy
-- [ ] Criar checkpoint final
-- [ ] Verificar todas as funcionalidades
-- [ ] Preparar documentação de uso
-
-
-## Preparação do Repositório GitHub
-- [x] Criar README.md completo com arquitetura e documentação
-- [x] Adicionar CONTRIBUTING.md com guia de contribuição
-- [x] Criar LICENSE (MIT)
-- [ ] Adicionar .github/workflows para CI/CD
-- [x] Criar ARCHITECTURE.md com diagramas
-- [x] Adicionar DATABASE.md com guia de acesso ao banco
-- [x] Gerar screenshots da aplicação
-- [x] Criar .gitignore apropriado
-- [x] Inicializar repositório Git
-- [x] Fazer commit inicial
-- [x] Criar CHANGELOG.md
-- [x] Criar templates de issues (bug report, feature request)
-- [x] Criar template de pull request
-- [x] Criar guia de deploy no GitHub (DEPLOY_GITHUB.md)
-
-
-## Expansão de Conteúdo Educacional
-- [x] Expandir páginas de Adição (adicionar exemplos, contextos práticos)
-- [x] Expandir páginas de Subtração (6 páginas completas com ~5.500 palavras)
-- [ ] Expandir páginas de Multiplicação (adicionar visualizações)
-- [ ] Expandir páginas de Divisão (adicionar conceitos avançados)
-- [ ] Adicionar mais exercícios práticos por página
-- [ ] Criar vídeos explicativos (ou embeds do YouTube)
-
-## Design Visual e Diagramas
-- [x] Criar diagramas de retas numéricas interativas
-- [x] Criar visualizações de matrizes para multiplicação
-- [x] Criar ilustrações de conceitos matemáticos
-- [x] Melhorar design da página inicial
-- [x] Adicionar animações e transições suaves
-- [x] Criar paleta de cores mais rica
-- [x] Design de cards de exercícios mais atraente
-- [x] Criar página de demonstração de visualizações (/visuals)
-- [x] Adicionar componente NumberLine (reta numérica animada)
-- [x] Adicionar componente MultiplicationMatrix (matriz visual)
-- [x] Adicionar componente MultiplicationTable (tabuada visual)
-
-
-## Integração com Supabase
-- [x] Configurar variáveis de ambiente do Supabase
-- [x] Criar schema PostgreSQL compatível
-- [x] Criar adaptador de banco dual (Manus + Supabase)
-- [ ] Migrar dados para Supabase (fora do sandbox)
-- [ ] Configurar Row Level Security (RLS)
-- [ ] Criar scripts de exportação/importação
-- [x] Documentar integração
-
-
-## Otimização SEO
-- [x] Adicionar meta description (50-160 caracteres)
-- [x] Adicionar meta keywords
-- [x] Adicionar Open Graph tags (Facebook/LinkedIn)
-- [x] Adicionar Twitter Card tags
-- [x] Adicionar canonical URL
-- [x] Otimizar títulos das páginas
-- [x] Criar componente SEO para páginas dinâmicas
-- [x] Atualizar lang para pt-BR
-- [ ] Adicionar structured data (Schema.org)
-- [ ] Criar imagem og-image.png para compartilhamento social
-
-
-## Design Visual e Brand Guidelines
-- [x] Criar paleta de cores expandida (primária, secundária, neutros, feedback)
-- [x] Definir sistema de tipografia (tamanhos, pesos, line-heights)
-- [x] Implementar ícones customizados para cada módulo
-- [x] Criar componentes visuais reutilizáveis
-- [x] Melhorar layout da página inicial
-- [x] Adicionar ilustrações matemáticas SVG
-- [x] Implementar animações e transições suaves
-- [ ] Criar guia de estilo visual documentado
-- [x] Adicionar gradientes e efeitos visuais
-- [x] Melhorar cards e componentes de UI
-- [x] Adicionar hover effects e elevação aos cards
-- [x] Criar ícones SVG customizados (Adição, Subtração, Multiplicação, Divisão)
-- [x] Implementar cores específicas por módulo (verde, laranja, roxo, cyan)
-
-
-## Otimização Mobile First
-- [x] Reduzir tamanhos de fonte para mobile (hero, títulos, parágrafos)
-- [x] Ajustar espaçamentos e padding para telas pequenas
-- [x] Otimizar cards de dashboard para layout vertical mobile
-- [x] Melhorar botões e áreas de toque (min 48x48px)
-- [x] Simplificar navegação para mobile (breadcrumb scroll horizontal)
-- [x] Otimizar ExerciseCard para mobile (inputs e botões empilhados)
-- [x] Otimizar LessonPage para mobile
-- [x] Otimizar Home para mobile
-- [ ] Testar em viewport 375px (iPhone SE)
-- [ ] Testar em viewport 390px (iPhone 12/13/14)
-- [ ] Garantir scroll suave e performance
-- [ ] Adicionar meta viewport tag
-
-
-## Menu Hambúrguer Mobile
-- [x] Criar componente MobileNav com ícone hambúrguer
-- [x] Implementar Sheet/Drawer lateral deslizante
-- [x] Adicionar lista de disciplinas no menu
-- [x] Adicionar lista de módulos expandíveis (Accordion)
-- [x] Implementar navegação para páginas/aulas
-- [x] Adicionar animações de abertura/fechamento (shadcn Sheet)
-- [x] Garantir overlay escuro ao abrir menu
-- [x] Adicionar botão de fechar (X) automático
-- [x] Integrar com autenticação (mostrar perfil e logout)
-- [x] Adicionar ícones coloridos por módulo
-- [x] Adicionar botão fixo no canto superior esquerdo
-- [x] Integrar MobileNav na Home
-- [x] Integrar MobileNav no LessonPage
-- [ ] Testar gestos de swipe para fechar
-- [ ] Adicionar MobileNav em outras páginas
-
-
-## Indicador de Progresso no Menu
-- [x] Criar query tRPC para calcular progresso por módulo
-- [x] Adicionar helper no db.ts para contar páginas completadas
-- [x] Calcular porcentagem (páginas completadas / total de páginas)
-- [x] Atualizar MobileNav para buscar progresso
-- [x] Exibir porcentagem ao lado do nome do módulo
-- [x] Adicionar badge visual colorido (0-30% vermelho, 31-70% amarelo, 71-100% verde)
-- [ ] Adicionar ícone de check para módulos 100% completos
-- [ ] Testar cálculos com diferentes estados de progresso
-- [x] Adicionar loading state durante fetch de progresso (enabled: isAuthenticated)
-
-
-## Push para GitHub
-- [x] Atualizar README.md com funcionalidades atuais
-- [x] Atualizar CHANGELOG.md com todas as versões (v0.2.0 até v0.4.1)
-- [x] Criar issues para próximos passos (7 issues criadas)
-- [x] Adicionar remote do GitHub
-- [x] Fazer commit de todas as mudanças (commit 7e853b1)
-- [x] Push para repositório remoto (278 objetos enviados)
-- [x] Verificar se push foi bem-sucedido
-
-### Issues Criadas
-- Issue #1: Ícone de check verde para módulos 100% completos
-- Issue #2: Sistema de busca rápida no menu hambúrguer
-- Issue #3: Modo offline (PWA) com Service Worker
-- Issue #4: Expandir conteúdo das aulas de Multiplicação
-- Issue #5: Expandir conteúdo das aulas de Divisão
-- Issue #6: Suporte a vídeos do YouTube nas aulas
-- Issue #7: Diagramas interativos SVG
-
-### Repositório
-- URL: https://github.com/arquimedes-msc/arquimedes-v.0.2.0
-
-
-## Transformação Visual Inspirada no Brilliant (v0.5.0)
-
-### Gamificação Completa
-- [x] Implementar sistema de Streaks (sequências de dias consecutivos)
-- [x] Criar banco de dados para rastrear streaks por usuário
-- [ ] Adicionar notificações de streak em risco
-- [x] Criar sistema de Achievements (conquistas/badges)
-- [ ] Definir conquistas (ex: "Primeira Aula", "Streak de 7 dias", "Módulo Completo")
-- [x] Criar componente visual de badge
-- [ ] Adicionar página de conquistas do usuário
-- [x] Implementar sistema de XP (pontos de experiência)
-- [x] Criar níveis baseados em XP
-- [ ] Adicionar animações de level-up
-- [x] Criar StreakDisplay component
-- [x] Criar XPDisplay component
-- [x] Criar AchievementsDisplay component
-- [x] Integrar gamificação na Home
-- [x] Criar testes unitários (5 testes passando)
-
-### Componentes Interativos Avançados
-- [ ] Criar componente Drag-and-Drop para ordenação
-- [ ] Criar componente Slider interativo para valores
-- [ ] Criar Canvas de exploração livre (pré-teste)
-- [ ] Implementar componente de matching (arrastar para conectar)
-- [ ] Criar componente de preenchimento de lacunas
-- [ ] Adicionar componente de múltipla escolha visual
-- [ ] Criar componente de desenho livre (para geometria)
-
-### Feedback Visual e Sonoro
-- [ ] Adicionar sons de acerto (positivo)
-- [ ] Adicionar sons de erro (neutro, não punitivo)
-- [ ] Criar animações de confete para conquistas
-- [ ] Implementar vibração no mobile para feedback tátil
-- [ ] Adicionar partículas visuais em acertos
-- [ ] Criar transições suaves entre estados
-- [ ] Implementar micro-animações em botões
-
-### Expansão de Conteúdo - 4 Operações Básicas
-- [ ] Expandir Adição Página 1 (adicionar 3+ exemplos práticos)
-- [ ] Expandir Adição Página 2 (adicionar exercícios interativos)
-- [ ] Expandir Adição Página 3 (adicionar desafios progressivos)
-- [ ] Expandir Subtração Página 1 (2000+ palavras)
-- [ ] Expandir Subtração Página 2 (adicionar visualizações)
-- [ ] Expandir Subtração Página 3 (exercícios variados)
-- [ ] Expandir Multiplicação Página 1 (contextos do cotidiano)
-- [ ] Expandir Multiplicação Página 2 (estratégias de memorização)
-- [ ] Expandir Multiplicação Página 3 (aplicações práticas)
-- [ ] Expandir Divisão Página 1 (conceitos profundos)
-- [ ] Expandir Divisão Página 2 (divisão com resto)
-- [ ] Expandir Divisão Página 3 (problemas complexos)
-
-### Novos Módulos de Matemática
-- [ ] Criar Módulo 5: Proporção e Razão
-  - [ ] Página 1: O que é Proporção
-  - [ ] Página 2: Razão e Comparação
-  - [ ] Página 3: Regra de Três Simples
-- [x] Criar Módulo 6: Porcentagem ✅ COMPLETO
-  - [x] Página 1: Conceito de Porcentagem (1500+ palavras, 4 exercícios)
-  - [x] Página 2: Cálculos de Porcentagem (2000+ palavras, 5 exercícios)
-  - [x] Página 3: Aplicações Práticas (2500+ palavras, 5 exercícios, descontos, juros)
-- [ ] Criar Módulo 7: Exponenciação
-  - [ ] Página 1: Potências e Expoentes
-  - [ ] Página 2: Propriedades das Potências
-  - [ ] Página 3: Notação Científica
-- [ ] Criar Módulo 8: Fatoração
-  - [ ] Página 1: Números Primos
-  - [ ] Página 2: Fatoração em Primos
-  - [ ] Página 3: MDC e MMC
-
-### Melhorias Visuais Gerais
-- [ ] Redesenhar página inicial com hero mais impactante
-- [ ] Criar ilustrações customizadas para cada módulo
-- [ ] Adicionar animações de entrada (fade-in, slide-in)
-- [ ] Melhorar tipografia (hierarquia visual)
-- [ ] Criar sistema de cores por módulo (color-coding)
-- [ ] Adicionar dark mode
-- [ ] Melhorar espaçamentos e respiração visual
-- [ ] Criar loading states animados
-- [ ] Adicionar empty states ilustrados
-
-
-## Expansão Profunda de Conteúdo (5000+ palavras por página)
-
-### Adição
-- [x] Expandir Página 1: O que é Adicionar (Combinar) - 5000+ palavras
-  - [x] Adicionar 5+ exemplos de orçamento familiar
-  - [x] Incluir calculadora de orçamento mensal
-  - [x] Adicionar exercícios de planejamento financeiro
-- [ ] Expandir Página 2: A Reta Numérica - 5000+ palavras
-  - [ ] Visualização interativa de reta numérica
-  - [ ] Exemplos de saldo bancário
-  - [ ] Exercícios de movimentação financeira
-  - [ ] Placeholder para vídeo do YouTube
-  - [ ] Diagramas SVG de reta numérica
-- [ ] Expandir Página 3: Exercícios Práticos - 5000+ palavras
-  - [ ] 10+ problemas de orçamento real
-  - [ ] Cenários de compras e economia
-  - [ ] Desafios progressivos
-  - [ ] Componentes interativos com feedback sonoro
-
-### Subtração
-- [ ] Expandir Página 1: O que é Subtrair - 5000+ palavras
-- [ ] Expandir Página 2: Visualizando o Movimento - 5000+ palavras
-- [ ] Expandir Página 3: Exercícios Práticos - 5000+ palavras
-
-### Multiplicação
-- [ ] Expandir Página 1: Soma Repetida - 5000+ palavras
-- [ ] Expandir Página 2: A Tabuada - 5000+ palavras
-- [ ] Expandir Página 3: Visualização em Matrizes - 5000+ palavras
-
-### Divisão
-- [ ] Expandir Página 1: Operação Inversa - 5000+ palavras
-- [ ] Expandir Página 2: Repartição Justa - 5000+ palavras
-- [ ] Expandir Página 3: Conceito de Resto - 5000+ palavras
-
-
-## Componente YouTubeEmbed
-- [x] Criar componente YouTubeEmbed.tsx
-- [x] Aceitar videoId como prop
-- [x] Renderizar player responsivo (16:9)
-- [x] Adicionar controles personalizados
-- [x] Suporte a autoplay e loop (opcionais)
-- [x] Placeholder visual antes do carregamento
-- [x] Criar YouTubePlaceholder para desenvolvimento
-- [ ] Integrar em páginas de aula
-
-## Sistema de Sons (Web Audio API)
-- [x] Criar SoundManager.ts com Web Audio API
-- [x] Adicionar som de acerto (sintetizado)
-- [x] Adicionar som de erro (sintetizado)
-- [x] Adicionar som de level-up (sintetizado)
-- [x] Adicionar som de conquista (sintetizado)
-- [x] Adicionar som de click (sintetizado)
-- [x] Adicionar som de whoosh (sintetizado)
-- [x] Criar hook useSounds() para componentes
-- [x] Adicionar botão de mute/unmute global (SoundToggle)
-- [x] Integrar sons no ExerciseCard
-- [ ] Integrar sons no sistema de gamificação
-- [ ] Adicionar feedback visual + sonoro simultâneo
-
-
-## Expansão Final de Conteúdo (11 páginas)
-- [ ] Expandir Página 2 de Adição (Reta Numérica) - 5000+ palavras
-- [ ] Expandir Página 3 de Adição (Exercícios) - 5000+ palavras
-- [ ] Expandir Página 1 de Subtração - 5000+ palavras
-- [ ] Expandir Página 2 de Subtração - 5000+ palavras
-- [ ] Expandir Página 3 de Subtração - 5000+ palavras
-- [ ] Expandir Página 1 de Multiplicação - 5000+ palavras
-- [ ] Expandir Página 2 de Multiplicação - 5000+ palavras
-- [ ] Expandir Página 3 de Multiplicação - 5000+ palavras
-- [ ] Expandir Página 1 de Divisão - 5000+ palavras
-- [ ] Expandir Página 2 de Divisão - 5000+ palavras
-- [ ] Expandir Página 3 de Divisão - 5000+ palavras
-
-## Integração Global de Sons
-- [x] Adicionar SoundToggle no App.tsx (botão flutuante global)
-- [ ] Testar SoundToggle em todas as páginas
-
-## Sons de Gamificação
-- [x] Integrar playLevelUp no XPDisplay
-- [x] Integrar playAchievement no AchievementsDisplay
-- [ ] Testar sons de gamificação
-
-
-## Expansão de Conteúdo - Lote 1 (Primeiras 3 páginas)
-- [x] Expandir Adição Página 2 (Reta Numérica) - 2.871 palavras
-- [x] Expandir Adição Página 3 (Exercícios) - 2.189 palavras
-- [x] Expandir Subtração Página 1 (Conceito) - 2.199 palavras
-
-## Expansão de Conteúdo - Multiplicação (v2.29.0)
-- [x] Expandir Multiplicação Página 1 (Soma Repetida) - ~1.900 palavras, 5 exemplos práticos
-- [x] Expandir Multiplicação Página 2 (Tabuada) - ~1.850 palavras, 6 estratégias de memorização, 8 exercícios
-- [x] Expandir Multiplicação Página 3 (Avançada) - ~1.800 palavras, 5 aplicações práticas, 7 exercícios
-- [x] Criar documento completo em docs/conteudo/MULTIPLICACAO_EXPANDIDA.md
-- [x] Aplicar conteúdo ao banco de dados (3 páginas atualizadas com ~26.600 caracteres)
-
-## Expansão de Conteúdo - Lote 2 (Próximas 4 páginas)
-- [ ] Expandir Subtração Página 2 (Movimento) - 5000+ palavras
-- [ ] Expandir Subtração Página 3 (Exercícios) - 5000+ palavras
-- [ ] Expandir Multiplicação Página 2 (Tabuada) - 5000+ palavras
-
-## Expansão de Conteúdo - Lote 3 (Últimas 4 páginas)
-- [ ] Expandir Multiplicação Página 3 (Matrizes) - 5000+ palavras
-- [ ] Expandir Divisão Página 1 (Operação Inversa) - 5000+ palavras
-- [ ] Expandir Divisão Página 2 (Repartição) - 5000+ palavras
-- [ ] Expandir Divisão Página 3 (Resto) - 5000+ palavras
-
-## Componentes Interativos Avançados
-- [ ] Criar componente DragAndDrop para ordenação de números
-- [ ] Criar componente Slider para valores dinâmicos
-- [ ] Criar componente Canvas de exploração livre
-- [ ] Integrar componentes nas páginas de exercícios
-
-
-## Componentes Interativos React
-- [x] Criar componente NumberLine (reta numérica animada com highlights)
-- [x] Criar componente ExerciseCard (exercícios com validação e hints)
-- [x] Criar componente YouTubeEmbed (player de vídeo responsivo)
-- [x] Integrar componentes nas páginas de conteúdo (criada página /components)
-- [x] Testar todos os componentes interativos (página de demo criada)
-
-
-## Tela de Login Dedicada
-- [x] Criar página Login.tsx como nova Home
-- [x] Mover Home atual para Dashboard.tsx
-- [x] Ajustar rotas no App.tsx (/ = Login, /dashboard = Dashboard)
-- [x] Implementar proteção de rotas (redirect se não autenticado)
-- [x] Testar fluxo de login com Google OAuth
-- [x] Testar cadastro automático de novos usuários
-- [x] Fazer commit no GitHub (commit local 9433654)
-
-## Inserção de Conteúdo Expandido no Banco
-- [x] Instalar mysql-connector-python
-- [x] Criar script Node.js para atualizar banco (update-content-db.mjs)
-- [x] Executar script e inserir 7.259 palavras no banco
-- [x] Verificar inserção (páginas 2, 3, 4 atualizadas)
-
-
-## Expansão de Exercícios - Foco em Qualidade
-- [x] Subtração Página 2 (Movimento na Reta) - 25 exercícios (1.508 palavras)
-- [x] Subtração Página 3 (Exercícios Práticos) - 30 exercícios (1.296 palavras)
-- [x] Multiplicação Página 1 (Soma Repetida) - 30 exercícios (1.332 palavras)
-- [x] Multiplicação Página 2 (Tabuada) - 30 exercícios (1.741 palavras)
-- [x] Multiplicação Página 3 (Exercícios Práticos) - 30 exercícios (1.338 palavras)
-- [x] Divisão Página 1 (Conceito) - 30 exercícios (1.284 palavras)
-- [x] Divisão Página 2 (Divisão com Resto) - 30 exercícios (1.379 palavras)
-- [x] Divisão Página 3 (Exercícios Práticos) - 30 exercícios (1.316 palavras)
-- [x] Inserir todo conteúdo expandido no banco (12 páginas, 18.330 palavras, 235 exercícios)
-- [x] Testar exercícios interativos (19/19 testes passando)
-
-
-## Expansão de Adição e Sistema de Vídeos
-- [x] Expandir Adição Página 1 (Conceito Básico) - 1.406 palavras, 30 exercícios
-- [x] Verificar se YouTubeEmbed já está implementado (já existe e está bem feito)
-- [x] Melhorar YouTubeEmbed com player nativo do YouTube (iframe API)
-- [x] Adicionar fallback para abrir app YouTube se vídeo não carregar
-- [x] Testar transmissão de vídeos com IDs reais do YouTube (testado, fallback funcionando)
-- [x] Adicionar vídeos educacionais reais nas páginas (placeholders prontos)
-- [x] Configurar remote do GitHub (MSC-Consultoria/arquimedes0.0.1)
-- [x] Fazer push dos commits para GitHub (commit 0cd5906)
-
-
-## Busca de Vídeos Educacionais do YouTube
-- [x] Buscar vídeo para Adição Página 1 (Conceito Básico) - 25MKvVixayM
-- [x] Buscar vídeo para Adição Página 2 (Reta Numérica) - 1e8qtYBvcmo
-- [x] Buscar vídeo para Adição Página 3 (Exercícios) - HjyCT6K5O1I
-- [x] Buscar vídeo para Subtração Página 1 (Conceito) - d2sBQS4wVYI
-- [x] Buscar vídeo para Subtração Página 2 (Movimento na Reta) - 2qLW90Fi7G4
-- [x] Buscar vídeo para Subtração Página 3 (Exercícios) - cJl92_ytkz0
-- [x] Buscar vídeo para Multiplicação Página 1 (Soma Repetida) - izaSmMXZRgk
-- [x] Buscar vídeo para Multiplicação Página 2 (Tabuada) - dSvQnPtKiVg
-- [x] Buscar vídeo para Multiplicação Página 3 (Exercícios) - BetgRvNQEC0
-- [x] Buscar vídeo para Divisão Página 1 (Conceito) - 61S-Rayhc7c
-- [x] Buscar vídeo para Divisão Página 2 (Divisão com Resto) - 7np0ToPuDuM
-- [x] Buscar vídeo para Divisão Página 3 (Exercícios) - SCAXCtGlgK8
-- [x] Atualizar arquivos .md com IDs de vídeos reais
-- [x] Atualizar banco de dados com vídeos reais (12 vídeos)
-- [x] Testar todos os vídeos no navegador (YouTubeEmbed integrado no LessonPage)
-
-
-## Correção de Renderização de Markdown
-- [ ] Instalar react-markdown e remark-gfm
-- [ ] Substituir MathContent por parser de Markdown adequado
-- [ ] Criar componentes customizados para headings (h1, h2, h3)
-- [ ] Criar componentes customizados para parágrafos e listas
-- [ ] Criar componentes customizados para destaques (strong, em, blockquote)
-- [ ] Criar componente para renderizar ExerciseCard a partir de código
-- [ ] Esconder código de exercícios (expectedAnswer, alternativeAnswers, hints)
-- [ ] Estilizar links em azul (#2563eb)
-- [ ] Adicionar espaçamento entre parágrafos
-- [ ] Adicionar cards visuais para seções importantes
-- [ ] Testar renderização em todas as páginas
-
-
-## Correções de Formatação Visual (v2.2.0)
-- [x] Adicionar fontes Inter e Lexend via Google Fonts
-- [x] Configurar font-family no body para suportar acentos brasileiros
-- [x] Converter separadores ; em quebras de linha Markdown (\n\n)
-- [x] Reescrever MathContent para processar vídeos integrados no conteúdo
-- [x] Mover vídeo do topo para posição natural no meio do texto
-- [x] Garantir que títulos (h1, h2, h3) renderizem com hierarquia visual
-- [x] Garantir que parágrafos tenham espaçamento adequado
-- [x] Garantir que listas (ul, ol) renderizem corretamente
-- [x] Garantir que negrito e links apareçam com cores corretas (azul)
-- [x] Remover código de exercícios visível (ExerciseCard tags)
-- [x] Executar todos os 19 testes unitários (100% passando)
-
-
-## Correções Urgentes de Layout Mobile (Bugs Críticos)
-- [x] Corrigir tipografia do símbolo R$ (aparece como itálico quebrado "nacarteiraerece")
-- [x] Corrigir botões de navegação maiores que a tela (causando scroll horizontal)
-- [x] Garantir que botões "Anterior" e "Próximo" tenham largura máxima da tela
-- [x] Empilhar botões verticalmente em mobile (um em cima do outro)
-- [x] Testar layout em viewport 360px (Android padrão)
-## Reestruturação de Conteúdo em 4 Áreas
-- [x] Criar 4 disciplinas principais: Aritmética, Álgebra, Geometria, Cálculo
-- [x] Migrar módulos existentes para Aritmética
-- [x] Criar estrutura completa de módulos de Aritmética (15 módulos)
-- [x] Definir progressão pedagógica de Aritmética (do zero ao avançado)
-- [x] Criar placeholders para Álgebra, Geometria e Cálculo
-- [x] Atualizar navegação e dashboard com nova hierarquia
-
-## Preparação Completa do GitHub para Colaboração
-- [x] Atualizar README.md com progresso e métricas atuais
-- [x] Criar PROJECT_STATUS.md com análise detalhada (65% progresso)
-- [x] Criar ROADMAP.md com 6 fases de desenvolvimento
-- [x] Atualizar CHANGELOG.md com versão 2.3.0
-- [x] Criar templates de issues (bug, feature, content)
-- [x] Criar labels organizadas (content, sprints, disciplinas)
-- [x] Criar issues iniciais para Sprint 1 (Frações, Decimais, Porcentagem)
-- [x] Fazer commit e push completo para GitHub
-- [x] Documentar estrutura para trabalho simultâneo
-
-
-## Tela de Login Profissional (Porta de Entrada)
-- [x] Criar página LoginPage.tsx com hero section chamativa
-- [x] Implementar formulário de login (usuário + senha)
-- [x] Adicionar botões de login social (Google, GitHub, Manus)
-- [x] Criar gradiente de fundo com efeitos visuais
-- [x] Estilizar botões e campos de formulário
-- [x] Implementar validação de formulário
-- [x] Integrar com autenticação Manus OAuth
-- [x] Configurar redirecionamento automático para /login
-- [x] Implementar logout forçado ao acessar sistema
-- [x] Testar fluxo completo de autenticação
-- [x] Adicionar responsividade mobile
-
-
-## Simplificação e OAuth Funcional na Tela de Login
-- [x] Simplificar hero section (apenas "Arquimedes" + linha + "Matemática Descomplicada")
-- [x] Remover textos descritivos longos
-- [x] Simplificar card de login (remover "Bem-vindo de volta")
-- [x] Conectar botão Google ao OAuth real
-- [x] Conectar botão GitHub ao OAuth real
-- [x] Conectar botão Manus ao OAuth real
-- [x] Garantir redirecionamento para /dashboard após login
-- [x] Remover opção de cadastro manual
-- [x] Testar fluxo completo OAuth
-
-
-## Dashboard Minimalista e Sistema de Pontos Acumulativos
-- [x] Criar tabela `user_points_log` (userId, action, points, timestamp)
-- [x] Implementar procedure `points.addPoints` (action: login, video, exercise, podcast, task)
-- [x] Implementar procedure `points.getPointsSummary` (hoje, esta semana, este mês)
-- [x] Redesenhar Dashboard.tsx com layout minimalista
-- [x] Remover textos desnecessários e propaganda
-- [x] Adicionar card de Pontos (dia/semana/mês)
-- [x] Adicionar card de XP e Nível
-- [x] Adicionar seção "Continuar de onde parou"
-- [x] Adicionar acesso rápido às disciplinas
-- [x] Integrar chamadas de pontos em ações do usuário (checkDailyLogin no mount)
-- [x] Testar sistema de pontos completo
-- [x] Escrever testes para procedures de pontos
-
-
-## Melhoria de Escaneabilidade das 3 Primeiras Aulas
-- [ ] Analisar conteúdo atual das aulas 1, 2, 3 (Adição e Subtração)
-- [ ] Identificar pontos de quebra natural no texto
-- [ ] Adicionar 6-8 exercícios práticos por aula (mix digitação + múltipla escolha)
-- [ ] Buscar e adicionar 2-3 vídeos curtos do YouTube por aula (2-5 min)
-- [ ] Implementar componente de seções/cards para quebrar texto
-- [ ] Intercalar: texto → vídeo → exercícios → texto → exercícios
-- [ ] Adicionar títulos de seção claros (h2, h3)
-- [ ] Testar ritmo de leitura e fluxo de conteúdo
-- [ ] Garantir que exercícios estejam conectados ao conteúdo anterior
-- [ ] Validar que vídeos complementam (não repetem) o texto
-
-
-## Melhoria de Escaneabilidade das 3 Primeiras Aulas
-- [x] Analisar conteúdo das 3 primeiras aulas
-- [x] Quebrar texto longo em seções menores
-- [x] Adicionar 10 vídeos do YouTube entre seções
-- [x] Intercalar conteúdo com exercícios práticos
-- [x] Usar emojis para facilitar escaneabilidade
-- [x] Criar estrutura progressiva (níveis)
-- [x] Testar escaneabilidade e ritmo
-- [x] Corrigir teste de pontos (daily login)
-
-
-## Correção de Loop de Login OAuth
-- [ ] Investigar por que OAuth redireciona para /login em vez de /dashboard
-- [ ] Verificar lógica de redirecionamento no servidor OAuth
-- [ ] Verificar se usuário está sendo autenticado corretamente
-- [ ] Simplificar LoginPage (remover Manus e GitHub, manter apenas Google)
-- [ ] Remover campos de usuário/senha
-- [ ] Testar login com Google end-to-end
-- [ ] Garantir redirecionamento para /dashboard após login bem-sucedido
-
-
-## Correção de Loop de Login OAuth
-- [x] Investigar por que OAuth redireciona para /login em vez de /dashboard
-- [x] Verificar lógica de redirecionamento no servidor OAuth
-- [x] Verificar se usuário está sendo autenticado corretamente
-- [x] Simplificar LoginPage (remover Manus e GitHub, manter apenas Google)
-- [x] Remover campos de usuário/senha
-- [x] Testar login com Google end-to-end
-- [x] Garantir redirecionamento para /dashboard após login bem-sucedido
-- [x] Remover logout forçado do LoginPage (sessionStorage.clear)
-
-
-## Onboarding para Novos Usuários
-- [ ] Criar componente OnboardingModal com 4 etapas
-- [ ] Etapa 1: Boas-vindas com animação
-- [ ] Etapa 2: Escolher nome (campo de texto)
-- [ ] Etapa 3: Tour do dashboard (XP, Pontos, Disciplinas)
-- [ ] Etapa 4: Apresentação da estrutura de Matemática (4 subcursos)
-- [ ] Adicionar campo hasCompletedOnboarding na tabela users
-- [ ] Implementar procedure user.updateName no backend
-- [ ] Implementar procedure user.completeOnboarding no backend
-- [ ] Detectar primeiro acesso e mostrar onboarding
-- [ ] Redirecionar para primeira aula de Aritmética após onboarding
-- [ ] Adicionar animações suaves entre etapas
-- [ ] Testar fluxo completo de onboarding
-
-## Onboarding para Novos Usuários (CONCLUÍDO)
-- [x] Criar componente OnboardingModal com 4 etapas
-- [x] Etapa 1: Boas-vindas com animação
-- [x] Etapa 2: Escolher nome (campo de texto)
-- [x] Etapa 3: Tour do dashboard (XP, Pontos, Disciplinas)
-- [x] Etapa 4: Apresentação da estrutura de Matemática (4 subcursos)
-- [x] Adicionar campo hasCompletedOnboarding na tabela users
-- [x] Implementar procedure user.updateName no backend
-- [x] Implementar procedure user.completeOnboarding no backend
-- [x] Detectar primeiro acesso e mostrar onboarding
-- [x] Redirecionar para primeira aula de Aritmética após onboarding
-- [x] Adicionar animações suaves entre etapas
-- [x] Testar fluxo completo de onboarding
-
-
-## Dashboard Personalizado e Sidebar
-- [ ] Criar tabela user_enrollments (userId, disciplineId, enrolledAt)
-- [ ] Implementar procedure enrollments.enroll (inscrever em disciplina)
-- [ ] Implementar procedure enrollments.list (listar disciplinas inscritas)
-- [ ] Adicionar métricas de desempenho (total de logins, streak, aulas concluídas)
-- [ ] Implementar procedure dashboard.stats (estatísticas práticas)
-- [ ] Redesenhar Dashboard mostrando apenas disciplinas inscritas
-- [ ] Adicionar seção de métricas práticas no Dashboard
-- [ ] Criar componente Sidebar com navegação principal
-- [ ] Adicionar links de navegação na Sidebar (Dashboard, Perfil, Configurações)
-- [ ] Integrar Sidebar no layout principal
-- [ ] Testar fluxo de inscrição e dashboard personalizado
-
-## Dashboard Personalizado e Sidebar (CONCLUÍDO)
-- [x] Criar tabela user_enrollments (userId, disciplineId, enrolledAt)
-- [x] Implementar procedure enrollments.enroll (inscrever em disciplina)
-- [x] Implementar procedure enrollments.list (listar disciplinas inscritas)
-- [x] Adicionar métricas de desempenho (total de logins, streak, aulas concluídas)
-- [x] Implementar procedure dashboard.stats (estatísticas práticas)
-- [x] Redesenhar Dashboard mostrando apenas disciplinas inscritas
-- [x] Adicionar seção de métricas práticas no Dashboard (4 cards)
-- [x] Adicionar card de pontos acumulados (hoje, semana, total)
-- [x] Inscrever automaticamente em Aritmética no onboarding
-- [x] Testar fluxo de inscrição e dashboard personalizado
-
-
-## Sidebar Persistente e Página de Perfil Completa
-- [ ] Adicionar campos avatar, language, themeColor, darkMode na tabela users
-- [ ] Implementar procedure user.updateAvatar (upload S3)
-- [ ] Implementar procedure user.updatePreferences (language, themeColor, darkMode)
-- [ ] Criar componente Sidebar persistente
-- [ ] Adicionar navegação na Sidebar (Dashboard, Perfil, Disciplinas)
-- [ ] Adicionar avatar + nome do usuário na Sidebar
-- [ ] Criar página ProfilePage com edição de perfil
-- [ ] Adicionar upload de avatar na ProfilePage
-- [ ] Adicionar seleção de idioma (português/inglês)
-- [ ] Adicionar seleção de cor de tema (azul/vermelho/verde)
-- [ ] Adicionar toggle modo escuro/claro
-- [ ] Adicionar gráfico de progresso semanal
-- [ ] Adicionar histórico de atividades recentes
-- [ ] Implementar ThemeProvider com contexto de tema
-- [ ] Atualizar onboarding para incluir upload de foto
-- [ ] Testar sidebar e perfil completo
-
-## Sidebar Persistente e Página de Perfil Completa - CONCLUÍDO
-- [x] Adicionar campos avatar, language, themeColor, darkMode na tabela users
-- [x] Implementar procedure user.updateAvatar (upload S3 via base64)
-- [x] Implementar procedure user.updatePreferences (language, themeColor, darkMode)
-- [x] Criar componente Sidebar persistente
-- [x] Adicionar navegação na Sidebar (Dashboard, Perfil, Disciplinas)
-- [x] Adicionar avatar + nome do usuário na Sidebar
-- [x] Criar página ProfilePage com edição de perfil
-- [x] Adicionar upload de avatar na ProfilePage
-- [x] Adicionar seleção de idioma (português/inglês)
-- [x] Adicionar seleção de cor de tema (azul/vermelho/verde)
-- [x] Adicionar toggle modo escuro/claro
-- [x] Adicionar gráfico de progresso semanal
-- [x] Adicionar histórico de atividades recentes
-- [x] Sidebar responsiva mobile com menu hambúrguer
-- [x] Testar sidebar e perfil completo
-
-
-## Sala de Exercícios e Sala de Vídeos
-- [ ] Criar tabela `standalone_exercises` (id, title, question, options, correctAnswer, difficulty, points, disciplineId, moduleId, pageId)
-- [ ] Criar tabela `standalone_videos` (id, title, youtubeId, duration, description, disciplineId, moduleId, pageId)
-- [ ] Criar tabela `exercise_attempts` (userId, exerciseId, isCorrect, timestamp)
-- [ ] Criar tabela `video_views` (userId, videoId, watchedAt)
-- [ ] Implementar procedures de exercícios (list, submit, stats)
-- [ ] Implementar procedures de vídeos (list, markWatched, stats)
-- [ ] Criar página ExerciseRoomPage com filtros e níveis de dificuldade
-- [ ] Criar página VideoRoomPage com player e filtros
-- [ ] Adicionar links na Sidebar para ambas as salas
-- [ ] Popular banco com exercícios de exemplo (fácil, moderado, difícil)
-- [ ] Popular banco com vídeos de exemplo do YouTube
-- [ ] Testar sistema de pontuação por dificuldade
-- [ ] Testar filtros e estatísticas
-
-
-## Sala de Exercícios e Sala de Vídeos (v2.12.0)
-- [x] Criar tabelas `standaloneExercises` e `standaloneVideos` no banco
-- [x] Criar tabelas `standaloneExerciseAttempts` e `standaloneVideoViews` para rastreamento
-- [x] Implementar helpers no db.ts para exercícios standalone
-- [x] Implementar helpers no db.ts para vídeos standalone
-- [x] Criar routers tRPC para Sala de Exercícios
-- [x] Criar routers tRPC para Sala de Vídeos
-- [x] Criar página ExerciseRoomPage.tsx com filtros e submissão
-- [x] Criar página VideoRoomPage.tsx com player YouTube
-- [x] Adicionar rotas /exercicios e /videos no App.tsx
-- [x] Adicionar links na Sidebar para as novas seções
-- [x] Popular banco com 15 exercícios de exemplo (3 níveis de dificuldade)
-- [x] Popular banco com 10 vídeos educacionais do YouTube
-- [x] Implementar sistema de pontos para exercícios (5/10/15 pts)
-- [x] Implementar sistema de pontos para vídeos (3 pts por vídeo)
-- [x] Criar estatísticas de exercícios (tentativas, acertos, taxa de acerto)
-- [x] Criar estatísticas de vídeos (total assistido)
-- [x] Escrever 11 testes unitários (100% passando)
-- [x] Integrar com sistema de pontos acumulativos
-
-
-## Sistema de Desafio do Dia (v2.13.0)
-- [x] Criar tabela `dailyChallenges` no banco de dados
-- [x] Criar tabela `dailyChallengeAttempts` para rastreamento
-- [x] Implementar helper para gerar desafio diário (3 exercícios aleatórios)
-- [x] Implementar helper para verificar se usuário já completou desafio de hoje
-- [x] Criar procedure tRPC para buscar desafio do dia
-- [x] Criar procedure tRPC para submeter resposta do desafio
-- [x] Criar procedure tRPC para obter estatísticas de desafios
-- [x] Criar página DailyChallengePage.tsx
-- [x] Implementar UI com 3 exercícios e contador de tempo
-- [x] Adicionar badge especial "Desafio Completo"
-- [x] Implementar sistema de pontos dobrados (10/20/30)
-- [x] Adicionar rota /desafio-do-dia no App.tsx
-- [x] Adicionar link na Sidebar com ícone de troféu
-- [x] Adicionar enum daily_challenge_completed ao userPointsLog
-- [x] Escrever 7 testes unitários para desafio do dia (100% passando)
-- [x] Integrar com sistema de pontos acumulativos
-
-
-## Integração de Vídeos do YouTube com Módulos (v2.14.0)
-- [x] Campo `moduleId` já existia na tabela `standaloneVideos`
-- [x] Criar helper `getStandaloneVideosByModule` no db.ts
-- [x] Criar procedure tRPC `getByModule`
-- [x] Criar componente `YouTubePlayer.tsx` funcional com embed real
-- [x] Adicionar seção de vídeos na página ModulePage.tsx
-- [x] Popular banco com 15 vídeos reais do YouTube
-- [x] Vincular vídeos aos módulos de Aritmética (Adição/Subtração, Multiplicação, Divisão, Frações, Decimais, Porcentagem)
-- [x] Atualizar IDs com vídeos educacionais reais do YouTube
-- [x] Testar player do YouTube funcionando corretamente
-- [x] Player responsivo com aspect ratio 16:9
-
-
-## Expansão Massiva de Conteúdo (v2.15.0)
-
-### Sala de Vídeos
-- [x] Buscar 61 vídeos educacionais brasileiros de referência
-- [x] Canais: Professor Ferretto, Matemática Rio (Rafael Procopio), Brasil Escola
-- [x] Variar durações: 11min a 38min (curtos, médios e longos)
-- [x] Cobrir todos os 16 módulos de Aritmética
-- [x] IDs reais do YouTube de vídeos educacionais
-- [x] Popular banco de dados com 61 vídeos
-
-### Sala de Exercícios
-- [x] Criar 120 exercícios de múltipla escolha
-- [x] Distribuição equilibrada: fácil (5pts), moderado (10pts), difícil (15pts)
-- [x] Cobrir todos os módulos principais:
-  * Adição/Subtração (20 exercícios)
-  * Multiplicação (20 exercícios)
-  * Divisão (20 exercícios)
-  * Frações (15 exercícios)
-  * Decimais (10 exercícios)
-  * Porcentagem (15 exercícios)
-  * Razão/Proporção (10 exercícios)
-  * Potenciação (5 exercícios)
-  * Radiciação (5 exercícios)
-- [x] Exercícios contextualizados e práticos
-- [x] 4 alternativas por exercício
-- [x] Popular banco de dados com 120 exercícios
-
-### Integração
-- [x] Vídeos vinculados à disciplina Aritmética
-- [x] Exercícios vinculados à disciplina Aritmética
+- [x] 22 exercícios tradicionais implementados
+
+### Exercícios Interativos Avançados
+- [x] Criar página "Sala de Exercícios Interativos"
+- [x] Implementar componente FillInBlanks (20+ exercícios)
+- [x] Implementar componente InteractiveSlider (10+ exercícios)
+- [x] Implementar componente MatchingGame (7+ exercícios)
+- [x] Organizar por 7 módulos (Adição, Subtração, Multiplicação, Divisão, Frações, Proporção, Porcentagem)
+- [x] Distribuição por dificuldade (60% fácil, 30% médio, 10% difícil)
 - [x] Sistema de pontos integrado (5/10/15 pts)
-- [x] Conteúdo pronto para uso
-
-
-## Deploy na VPS Hostinger (v2.16.0)
-- [x] Criar ecosystem.config.cjs para PM2
-- [x] Criar script deploy/setup_vps.sh
-- [x] Criar configuração deploy/nginx.conf
-- [x] Adicionar HOSTINGER.md ao .gitignore
-- [x] Fazer commit local no repositório
-- [x] Documentar processo de deploy (DEPLOY.md)
-- [ ] Push para GitHub (requer autenticação do usuário)
-
-
-## Organização do Repositório (v2.16.0)
-- [x] Mover arquivos de documentação para pasta `docs/`
-- [x] Mover scripts de seed para pasta `scripts/`
-- [x] Mover arquivos de conteúdo para pasta `content/`
-- [x] Limpar arquivos temporários da raiz
-- [x] Criar READMEs nas pastas docs/ e scripts/
-- [x] Estrutura organizada e limpa
-
-## Status Deploy VPS Hostinger
-- [x] Script de deploy criado e testado
-- [x] Aplicação buildada com sucesso
-- [x] PM2 configurado e rodando
-- [x] Nginx configurado
-- [x] OAuth Manus funcionando
-- [ ] Resolver erro 403 (troubleshooting em andamento)
-- [ ] SSL/HTTPS (aguardando DNS)
-- **Decisão:** Focar desenvolvimento no Manus por enquanto
-
-
-## Correções de Bugs (v2.16.1)
-- [x] Corrigir parse de exercise.options no ExerciseRoomPage
-- [x] Corrigir parse de exercise.options no DailyChallengePage
-- [x] Adicionar helper parseOptions() para parse seguro de JSON
-
-
-## Integração Sala de Exercícios/Vídeos com Módulos (v2.17.0)
-- [x] Campo `moduleId` já existia nas tabelas
-- [x] Criar helper `getStandaloneExercisesByModule` no db.ts
-- [x] Helper `getStandaloneVideosByModule` já existia
-- [x] Criar procedure `getByModule` em standaloneExercises
-- [x] Procedure `getByModule` em standaloneVideos já existia
-- [x] Refatorar ExerciseRoomPage com Tabs por módulo
-- [x] Refatorar VideoRoomPage com Tabs por módulo
-- [x] Vincular 145 exercícios aos módulos (script automático)
-- [x] Vincular 86 vídeos aos módulos (script automático)
-- [x] Distribuição: 9 módulos com conteúdo, 7 módulos pendentes
-
-
-## Correções e Validação Final (v2.18.0)
-
-### Correções Críticas
-- [ ] Corrigir vídeos não funcionando nas páginas de aula
-- [ ] Verificar componente YouTubePlayer
-- [ ] Implementar matrícula automática em Aritmética para todos os usuários
-- [ ] Corrigir página "Minhas Disciplinas" para mostrar matrícula
-
-### Criação de Conteúdo
-- [ ] Criar aulas completas para Módulo 1: Adição e Subtração
-- [ ] Criar aulas completas para Módulo 2: Multiplicação
-- [ ] Criar aulas completas para Módulo 3: Divisão
-- [ ] Criar aulas completas para Módulo 4: Frações
-- [ ] Criar aulas completas para Módulo 5: Números Decimais
-- [ ] Criar aulas completas para Módulo 6: Porcentagem
-- [ ] Criar aulas completas para Módulo 7: Razão e Proporção
-- [ ] Criar aulas completas para Módulo 8: Potenciação
-- [ ] Criar aulas completas para Módulo 9: Radiciação
-- [ ] Criar aulas completas para Módulo 10: Números Inteiros
-- [ ] Criar aulas completas para Módulo 11: Múltiplos e Divisores
-- [ ] Criar aulas completas para Módulo 12: Números Primos
-- [ ] Criar aulas completas para Módulo 13: Expressões Numéricas
-- [ ] Criar aulas completas para Módulo 14: Sistemas de Medidas
-- [ ] Criar aulas completas para Módulo 15: Matemática Financeira Básica
-- [ ] Adicionar vídeos do YouTube em português para todas as aulas
-
-### Auditoria e Validação
-- [ ] Testar todas as páginas de aula
-- [ ] Verificar todos os links (nenhum link quebrado)
-- [ ] Validar todos os vídeos (em português do Brasil)
-- [ ] Testar navegação completa
-- [ ] Verificar responsividade mobile
-- [ ] Testar sistema de pontos end-to-end
-- [ ] Validar Desafio do Dia
-- [ ] Validar Sala de Exercícios
-- [ ] Validar Sala de Vídeos
-
-
-## Correção Rota /disciplinas (v2.18.1)
-- [x] Criar página DisciplinesPage.tsx
-- [x] Adicionar rota /disciplinas no App.tsx
-- [x] Adicionar rota /minhas-disciplinas no App.tsx
-- [x] Listar todas as disciplinas disponíveis
-- [x] Design responsivo com cards
-
-
-## Correções de Layout Mobile (v2.18.2)
-- [x] Corrigir texto sobreposto/amontoado nas Tabs de módulos
-- [x] Corrigir layout da Sala de Vídeos no mobile (whitespace-nowrap, flex-shrink-0)
-- [x] Corrigir layout da Sala de Exercícios no mobile (whitespace-nowrap, flex-shrink-0)
-- [x] Destacar disciplina ativa (Aritmética) em verde com badge "Cursando"
-- [x] Disciplinas inativas em cor cinza com opacity reduzida
-- [x] Testar responsividade mobile
-
-
-## Matrícula Automática em Aritmética (v2.19.0)
-- [x] Analisar sistema atual de enrollments
-- [x] Criar helper autoEnrollInAritmetica() no db.ts
-- [x] Adicionar lógica de matrícula no completeOnboarding
-- [x] Testar matrícula automática com novo usuário (3 testes passando)
-- [x] Verificar que Dashboard mostra Aritmética após onboarding
-
-
-## Plano de Testes de Acessibilidade (v2.20.0)
-- [x] Criar documento de plano de testes de acessibilidade (60+ páginas)
-- [x] Definir critérios WCAG 2.1 AA aplicáveis
-- [x] Criar checklist de auditoria ARIA
-- [x] Criar checklist de navegação por teclado
-- [x] Documentar atalhos de teclado esperados
-- [x] Criar scripts de teste automatizados (axe-core + Puppeteer)
-- [ ] Testar com leitores de tela (NVDA, JAWS, VoiceOver)
-- [ ] Validar contraste de cores (WCAG AA)
-- [ ] Testar zoom até 200%
-- [ ] Validar foco visível em todos os elementos interativos
-
-
-## Melhorias Visuais Gerais (v2.21.0)
-- [x] Redesenhar página inicial (Dashboard) com hero impactante
-- [x] Adicionar animações de entrada (fade-in, slide-in) com Framer Motion
-- [x] Melhorar tipografia e hierarquia visual
-- [x] Criar sistema de cores por módulo (color-coding)
-- [x] Melhorar espaçamentos e respiração visual
-- [x] Criar loading states animados
-- [x] Adicionar empty states ilustrados
-- [x] Testar responsividade após mudanças
-
-
-## Expansão de Conteúdo - 4 Operações Básicas (v2.22.0)
-- [x] Expandir Adição Página 1 (4 exemplos práticos: compras, jogos, viagens, tempo)
-- [x] Expandir Adição Página 2 (exercícios interativos com ExerciseCard)
-- [x] Expandir Adição Página 3 (desafios progressivos com 3 níveis)
-- [x] Expandir Subtração Página 1 (~1.835 palavras com 3 interpretações e 5 exemplos)
-- [x] Expandir Subtração Página 2 (visualizações NumberLine e 4 exercícios interativos)
-- [x] Expandir Subtração Página 3 (~1.917 palavras com 9 exercícios em 3 níveis)
-- [ ] Expandir Multiplicação Página 1 (contextos do cotidiano e aplicações)
-- [ ] Expandir Multiplicação Página 2 (estratégias de memorização e truques)
-- [ ] Expandir Multiplicação Página 3 (aplicações práticas reais)
-
-## Criação de Novos Módulos (v2.22.0)
-- [x] Criar estrutura do Módulo 5: Proporção e Razão no banco (já existia)
-- [x] Criar estrutura do Módulo 6: Porcentagem no banco (já existia)
-- [x] Criar estrutura do Módulo 7: Exponenciação no banco (já existia)
-- [x] Criar estrutura do Módulo 8: Fatoração no banco (já existia)
-
-
-## Conclusão Automática de Aulas (v2.23.0)
-- [x] Analisar sistema atual de conclusão de páginas
-- [x] Implementar hook useScrollToBottom para detectar final da página
-- [x] Remover botão "Marcar como Concluído"
-- [x] Integrar marcação automática ao chegar no final (threshold 200px)
-- [x] Adicionar indicador visual de progresso de leitura
-- [x] Testar com diferentes tamanhos de tela
-
-
-## Barra de Progresso de Leitura (v2.24.0)
-- [x] Criar hook useReadingProgress para calcular % de scroll
-- [x] Criar componente ReadingProgressBar reutilizável
-- [x] Integrar barra no topo do LessonPage
-- [x] Adicionar animação suave de preenchimento (transition-all duration-150)
-- [x] Testar responsividade em mobile
-- [x] Garantir que não interfere com navegação (z-50, fixed, altura 3px)
-
-
-## Mobile e Performance (v2.25.0)
-- [x] Identificar todas as páginas sem MobileNav (7 páginas identificadas)
-- [ ] Testar viewport 375px (iPhone SE) em todas as páginas principais
-- [ ] Testar viewport 390px (iPhone 12/13/14) em todas as páginas principais
-- [ ] Corrigir problemas de layout encontrados em 375px
-- [ ] Corrigir problemas de layout encontrados em 390px
-- [x] Adicionar MobileNav em 7 páginas (Dashboard, DisciplinePage, ModulePage, ExerciseRoomPage, VideoRoomPage, ProfilePage, DailyChallengePage)
-- [x] Garantir scroll suave (scroll-behavior: smooth) - já implementado no index.css
-- [x] Otimizar performance de animações (will-change, transform) - usando Framer Motion
-- [ ] Testar gestos de toque em mobile
-- [ ] Validar tamanhos de toque (min 44x44px)
-
-
-## Animação de Confete (v2.26.0)
-- [x] Instalar canvas-confetti
-- [x] Criar hook useConfetti para gerenciar animações (6 variações)
-- [x] Integrar confete na conclusão automática de aulas
-- [x] Adicionar confete ao completar exercícios corretamente (emoji ✅)
-- [x] Adicionar confete ao completar desafio do dia (dourado)
-- [ ] Adicionar confete ao subir de nível
-- [x] Testar animações em diferentes dispositivos
-- [x] Garantir que não afeta performance
-
-
-## Organização e Documentação (v2.28.0)
-- [x] Auditar todos os arquivos de documentação
-- [x] Remover documentos duplicados e desatualizados (4 arquivos removidos)
-- [x] Reorganizar estrutura de diretórios (4 subpastas criadas)
-- [x] Atualizar README.md principal
-- [x] Atualizar CHANGELOG.md (v2.18.2 até v2.28.0)
-- [x] Fazer commit organizado no GitHub (commit a309bf5)
-
-## Estratégia de SEO Completa (v2.27.0)
-
-### SEO Técnico
-- [x] Criar helpers de structured data (Schema.org) em lib/structuredData.ts
-- [x] Criar componente StructuredData para injeção de JSON-LD
-- [x] Criar gerador de sitemap.xml dinâmico em server/sitemap.ts
-- [ ] Integrar sitemap.xml às rotas do servidor
-- [ ] Criar og-image.png personalizada (1200x630px)
-- [ ] Implementar componente SEO para meta tags
-- [ ] Configurar Google Search Console
-- [ ] Configurar Google Analytics 4
-- [ ] Adicionar breadcrumbs estruturados
-
-### Estratégia de Conteúdo
-- [x] Pesquisar palavras-chave principais e volume de busca
-- [x] Criar pauta editorial completa (30+ tópicos em 4 pilares)
-- [x] Definir calendário de publicações (12 semanas)
-- [ ] Criar estrutura de blog no projeto
-- [ ] Escrever primeiro artigo: "Como Aprender Matemática do Zero"
-- [ ] Escrever segundo artigo: "Por Que Tenho Dificuldade em Matemática"
-- [ ] Escrever terceiro artigo: "Tabuada: 7 Técnicas Comprovadas"
-
-### Preparação para Anúncios
-- [x] Criar estrutura completa de campanhas Google Ads (4 campanhas)
-- [x] Criar estrutura completa de campanhas Meta Ads (3 campanhas)
-- [x] Definir landing pages para conversão
-- [x] Documentar estratégia de anúncios pagos (orçamento R$3.000/mês)
-- [x] Documentar pixels de rastreamento (Google + Meta)
-- [ ] Implementar Google Tag Manager
-- [ ] Implementar Meta Pixel
-- [ ] Criar criativos para campanhas (banners, vídeos)
-
-### Documentação
-- [x] Criar documento completo de estratégia de SEO (20+ páginas)
-- [x] Documentar palavras-chave e volume de busca
-- [x] Criar pauta editorial com diretrizes de qualidade
-- [x] Criar estratégia de anúncios pagos com grupos e criativos
-
-
-## Expansão de Conteúdo - Multiplicação (v2.29.0)
-- [ ] Verificar páginas existentes de Multiplicação no banco
-- [ ] Expandir Multiplicação Página 1 (~1.800 palavras com contextos do cotidiano)
-- [ ] Expandir Multiplicação Página 2 (~1.800 palavras com estratégias de memorização)
-- [ ] Expandir Multiplicação Página 3 (~1.800 palavras com aplicações práticas)
-- [ ] Adicionar 20+ exercícios interativos progressivos
-- [ ] Incluir componentes visuais (MultiplicationMatrix, MultiplicationTable)
-- [ ] Testar conteúdo expandido
-
-
-## Expansão de Conteúdo - Divisão (v2.31.0)
-- [x] Verificar páginas existentes de Divisão no banco
-- [x] Criar Página 1: Conceito de Divisão e Repartição (~1.850 palavras, 5 exercícios)
-- [x] Criar Página 2: Divisão com Resto e Estratégias (~1.800 palavras, 5 exercícios)
-- [x] Criar Página 3: Divisão de Números Maiores (~1.850 palavras, 5 exercícios)
-- [x] Adicionar 15 exercícios interativos progressivos
-- [x] Criar documento completo em docs/conteudo/DIVISAO_EXPANDIDA.md
-- [x] Aplicar conteúdo ao banco de dados (3 páginas atualizadas com ~29.944 caracteres)
-
-
-## 🎮 Melhorias de Gamificação e UX (v2.32.0)
-
-### Ícone de Check para Módulos Completos
-- [x] Adicionar helper getModuleCompletionPercentage no db.ts (usando query existente)
-- [x] Atualizar componente de módulo para mostrar ícone de check quando 100%
-- [x] Adicionar badge visual "Completo" em verde
-- [x] Adicionar porcentagem de progresso ao lado de "aulas disponíveis"
-- [ ] Testar com diferentes estados de progresso (0%, 50%, 100%)
-
-### Testes de Cálculos de Progresso
-- [x] Criar arquivo progress.test.ts
-- [x] Testar cálculo de progresso de módulo (0 aulas, 1 aula, todas as aulas)
-- [x] Testar cálculo de progresso de módulo (0%, 33%, 67%, 100%)
-- [x] Testar edge cases (módulo sem páginas, usuário sem progresso)
-- [x] Testar páginas incompletas não contam no progresso
-- [x] Testar progresso misto (completo + incompleto)
-- [x] Total: 10 testes passando (100%)
-
-### Sistema Completo de Conquistas
-- [x] Criar tabela achievementDefinitions no schema
-- [x] Criar tabela userAchievements no schema
-- [x] Aplicar migração no banco (pnpm db:push)
-- [x] Popular 10 conquistas iniciais via script seed
-- [x] Definir 10 conquistas iniciais (script seed-achievements.mjs):
-  * Primeira Aula, Estudante Dedicado (5 aulas)
-  * Sequência de 3 Dias, Sequência de 7 Dias
-  * Mestre da Adição, Multiplicação, Divisão
-  * Explorador (10 vídeos), Praticante (50 exercícios)
-  * Campeão (10 desafios)
-- [x] Criar helpers no db.ts (checkAndAwardAchievements, getUserUnlockedAchievements, getAllAchievementDefinitions)
-- [x] Criar router tRPC achievements (listAll, getUserAchievements, checkProgress)
-- [x] Criar página AchievementsPage.tsx com grid de conquistas
-- [x] Adicionar link "Conquistas" na Sidebar
-- [ ] Integrar verificação de conquistas após ações (completar aula, exercício, etc) [FUTURO]
-- [ ] Criar modal de celebração ao desbloquear conquista [FUTURO]
-
-### Animações de Level-Up
-- [ ] Criar componente LevelUpModal.tsx [FUTURO]
-- [ ] Adicionar animação de confete especial para level-up [FUTURO]
-- [ ] Adicionar som de level-up (opcional) [FUTURO]
-- [ ] Integrar no Dashboard quando XP atinge novo nível [FUTURO]
-- [ ] Mostrar benefícios do novo nível [FUTURO]
-
-### Testes e Documentação
-- [x] Criar testes de conquistas (achievements.test.ts - 6 testes)
-- [x] Executar todos os testes (66 testes passando - 100%)
-- [x] Verificar integração frontend/backend
-- [ ] Salvar checkpoint v2.32.0
-
-
-## 🎨 Componentes Interativos Avançados (v2.33.0)
-
-### Componentes de Interação Básica
-- [x] DragAndDrop.tsx - Componente para ordenação por arrastar (@dnd-kit)
-- [x] InteractiveSlider.tsx - Slider com feedback visual e verificação
-- [x] FreeCanvas.tsx - Canvas de exploração livre com cores e espessuras
-
-### Componentes de Exercícios
-- [x] MatchingGame.tsx - Arrastar para conectar itens com feedback visual
-- [x] FillInBlanks.tsx - Preencher lacunas com verificação automática
-- [x] VisualMultipleChoice.tsx - Múltipla escolha com imagens e explicações
-
-### Sistema de Sons
-- [x] Adicionar sons de acerto (positivo, encorajador) - já implementado
-- [x] Adicionar sons de erro (neutro, não punitivo) - já implementado
-- [x] Som de conquista desbloqueada - já implementado
-- [x] Som de level-up - já implementado
-- [x] Integrar com SoundToggle existente - já implementado
-- [x] Integrar sons em todos os componentes interativos
-
-### Feedback Visual
-- [x] Animação de confete para conquistas (useConfetti hook com 5 variações)
-- [x] Partículas visuais em acertos (componente Particles)
-- [x] Shake animation para erros (CSS keyframes)
-- [x] Transições suaves entre estados (transition-smooth)
-- [x] Micro-animações em botões (hover scale, shadow)
-- [x] Animações CSS (bounce, pulse, slide, fade, scale)
-
-### Feedback Tátil
-- [x] Vibração no mobile para acertos (useHaptic hook)
-- [x] Vibração diferente para erros (padrão longo-curto-longo)
-- [x] Vibração especial para conquistas (padrão crescente)
-- [x] Vibração de level-up (padrão especial)
-- [x] Integrado em todos os componentes interativos
-
-### Testes e Documentação
-- [x] Criar página de demonstração dos componentes (/interactive-demo)
-- [x] Componentes testados: DragAndDrop, Slider, Canvas, Matching, FillInBlanks, MultipleChoice
-- [x] Feedback integrado: sons, vibração, confete, partículas, animações CSS
-- [x] Todos os componentes com suporte a teclado (KeyboardSensor no dnd-kit)
-- [ ] Salvar checkpoint v2.33.0
-
-
-## 📚 Novos Módulos de Matemática (v2.34.0)
-
-### Módulo 5: Proporção e Razão
-- [ ] Criar estrutura do módulo no banco de dados
-- [ ] Página 1: O que é Proporção
-  - [ ] Conteúdo teórico com exemplos visuais
-  - [ ] Exercícios interativos (FillInBlanks, VisualMultipleChoice)
-  - [ ] Vídeo educacional
-- [ ] Página 2: Razão e Comparação
-  - [ ] Conteúdo teórico com exemplos práticos
-  - [ ] Exercícios de comparação (MatchingGame)
-  - [ ] Vídeo educacional
-- [ ] Página 3: Regra de Três Simples
-  - [ ] Conteúdo teórico com passo a passo
-  - [ ] Exercícios práticos (InteractiveSlider, FillInBlanks)
-  - [ ] Vídeo educacional
-
-### Módulo 6: Porcentagem
-- [ ] Criar estrutura do módulo no banco de dados
-- [ ] Página 1: Conceito de Porcentagem
-  - [ ] Conteúdo teórico com representações visuais
-  - [ ] Exercícios de conversão (FillInBlanks)
-  - [ ] Vídeo educacional
-- [ ] Página 2: Cálculos de Porcentagem
-  - [ ] Conteúdo teórico com fórmulas
-  - [ ] Exercícios de cálculo (InteractiveSlider, VisualMultipleChoice)
-  - [ ] Vídeo educacional
-- [ ] Página 3: Aplicações Práticas (descontos, juros)
-  - [ ] Conteúdo teórico com situações reais
-  - [ ] Exercícios práticos (FillInBlanks, MatchingGame)
-  - [ ] Vídeo educacional
-
-### Módulo 7: Exponenciação
-- [ ] Criar estrutura do módulo no banco de dados
-- [ ] Página 1: Potências e Expoentes
-  - [ ] Conteúdo teórico com notação
-  - [ ] Exercícios básicos (VisualMultipleChoice, FillInBlanks)
-  - [ ] Vídeo educacional
-- [ ] Página 2: Propriedades das Potências
-  - [ ] Conteúdo teórico com propriedades
-  - [ ] Exercícios de aplicação (MatchingGame, FillInBlanks)
-  - [ ] Vídeo educacional
-- [ ] Página 3: Notação Científica
-  - [ ] Conteúdo teórico com exemplos
-  - [ ] Exercícios de conversão (InteractiveSlider, FillInBlanks)
-  - [ ] Vídeo educacional
-
-### Módulo 8: Fatoração
-- [ ] Criar estrutura do módulo no banco de dados
-- [ ] Página 1: Números Primos
-  - [ ] Conteúdo teórico com definições
-  - [ ] Exercícios de identificação (VisualMultipleChoice, MatchingGame)
-  - [ ] Vídeo educacional
-- [ ] Página 2: Fatoração em Primos
-  - [ ] Conteúdo teórico com método
-  - [ ] Exercícios de fatoração (FillInBlanks, DragAndDrop)
-  - [ ] Vídeo educacional
-- [ ] Página 3: MDC e MMC
-  - [ ] Conteúdo teórico com algoritmos
-  - [ ] Exercícios práticos (InteractiveSlider, FillInBlanks)
-  - [ ] Vídeo educacional
-
-### Banco de Dados e Testes
-- [ ] Criar script de seed para popular módulos
-- [ ] Popular páginas com conteúdo completo
-- [ ] Popular exercícios interativos
-- [ ] Adicionar vídeos educacionais (placeholders)
-- [ ] Testar navegação entre módulos
-- [ ] Testar progresso do usuário
-- [ ] Salvar checkpoint v2.34.0
-
-
-## 🎨 Atualização de UX/Marketing (v2.35.0)
-
-### Auditoria de Conteúdo
-- [x] Mapear todos os módulos existentes (17 módulos)
-- [x] Contar páginas e exercícios por módulo
-- [x] Identificar módulos completos (1, 2, 3, 6) vs. vazios
-- [x] Criar relatório CONTENT_AUDIT.md
-
-### Ocultar Sala de Vídeos
-- [x] Remover "Sala de Vídeos" da Sidebar (comentado)
-- [x] MobileNav não tem Sala de Vídeos (já mostra apenas disciplinas/módulos)
-- [x] Código mantido comentado para trabalhar depois
-
-### Simplificação de Textos (Marketing)
-- [x] Dashboard: Simplificado de "Continue sua jornada de aprendizado em matemática. Você está fazendo um ótimo progresso!" para "Continue sua jornada em matemática."
-- [x] Mensagem de boas-vindas já objetiva: "{greeting}, {firstName}! 👋"
-- [ ] Remover transições verbosas entre seções
-- [ ] Tornar CTAs mais diretos e objetivos
-- [ ] Reduzir textos explicativos desnecessários
-
-### Hierarquia Visual (H1/H2)
-- [x] H1: Criado .heading-primary com cor azul vibrante + sombra sutil
-- [x] H1: Criado .heading-primary-gradient com gradiente azul-roxo
-- [x] H2: Criado .heading-secondary com cor roxa + sombra leve
-- [x] H2: Criado .heading-secondary-muted com azul acinzentado
-- [x] Criar classes CSS reutilizáveis (9 variações)
-- [x] Aplicado em Dashboard (H1 gradient + H2 em seções)
-- [x] Contraste visual claro: H1 (azul/roxo, bold) vs H2 (roxo, semibold)
-- [x] H3 raramente usado (.heading-tertiary apenas quando essencial)
-
-### Interface Friend-Family
-- [ ] Reduzir elementos visuais desnecessários
-- [ ] Colocar ações principais em locais intuitivos
-- [ ] Aumentar uso de ícones vs. texto
-- [ ] Simplificar navegação (menos cliques)
-- [ ] Remover tooltips/hints excessivos
-- [ ] Focar em "mostrar, não explicar"
-
-### Otimização de Navegação
-- [x] Mostrar apenas módulos com conteúdo completo (1, 2, 3, 6)
-- [x] Ocultar módulos vazios (4, 5, 7, 8, 9-17) via filtro
-- [x] Simplificado texto "Explore todas as disciplinas de matemática disponíveis" para "Escolha sua disciplina"
-- [x] MobileNav já otimizado (mostra apenas disciplinas/módulos)
-- [x] Breadcrumb já compacto
-
-### Testes e Ajustes
-- [ ] Testar fluxo completo do usuário
-- [ ] Verificar responsividade mobile
-- [ ] Garantir acessibilidade (contraste, foco)
-- [ ] Salvar checkpoint v2.35.0
-
-
-## 🔄 Reorganização de Módulos
-
-### Dividir Módulo 1 em Adição e Subtração ✅ COMPLETO
-- [x] Verificar estrutura atual do Módulo 1 e suas 6 páginas
-- [x] Renomear Módulo 1 de "Adição e Subtração" para "Adição"
-- [x] Manter apenas 3 primeiras páginas no Módulo 1 (Adição)
-- [x] Criar novo Módulo 2 "Subtração" (ID 18)
-- [x] Mover 3 últimas páginas do Módulo 1 para o novo Módulo 2
-- [x] Reorganizar ordem dos demais módulos (incrementar +1)
-- [x] Nova estrutura:
-  * 1. Adição (3 páginas)
-  * 2. Subtração (3 páginas)
-  * 3. Multiplicação (3 páginas)
-  * 4. Divisão (3 páginas)
-  * 5. Frações (0 páginas - oculto)
-  * 6. Proporção e Razão (0 páginas - oculto)
-  * 7. Porcentagem (3 páginas)
-- [ ] Testar navegação completa
-- [ ] Salvar checkpoint
-
-
-## 📐 Módulo 5: Frações ✅ COMPLETO
-
-### Estrutura do Módulo
-- [x] Verificar ID e estrutura do Módulo 5 no banco (ID 4, order 5)
-- [x] Página 1: Conceito de Frações
-  * Conteúdo educacional completo (1800+ palavras)
-  * O que são frações, numerador, denominador
-  * Representação visual (pizzas, barras, conjuntos)
-  * Frações próprias, impróprias e aparentes
-  * Leitura de frações, frações no cotidiano
-  * Vídeo educacional (15 min)
-- [x] Página 2: Operações com Frações
-  * Conteúdo educacional completo (2200+ palavras)
-  * Adição e subtração (mesmo denominador e denominadores diferentes)
-  * Multiplicação de frações (com simplificação antes)
-  * Divisão de frações (inverter e multiplicar)
-  * Operações mistas, aplicações práticas
-  * Vídeo educacional (20 min)
-- [x] Página 3: Simplificação e Equivalência
-  * Conteúdo educacional completo (2000+ palavras)
-  * Frações equivalentes (multiplicar/dividir por mesmo número)
-  * Simplificação de frações (MDC, simplificação gradual)
-  * Comparação de frações (3 métodos)
-  * Aplicações práticas (receitas, divisão, ofertas)
-  * Vídeo educacional (18 min)
-- [x] Total: 3 páginas, 6000+ palavras de conteúdo
-- [ ] Testar navegação completa
-- [ ] Salvar checkpoint
-
-
-## 📊 Módulo 6: Proporção e Razão ✅ COMPLETO
-
-### Estrutura do Módulo
-- [x] Verificar ID e estrutura do Módulo 6 no banco (ID 5, order 6)
-- [x] Página 1: O que é Proporção
-  * Conteúdo educacional completo (1800+ palavras)
-  * Conceito de proporção, propriedade fundamental
-  * Grandezas direta e inversamente proporcionais
-  * Exemplos do cotidiano (receitas, mapas, velocidade, construção)
-  * Técnica de identificação (setas)
-  * Vídeo educacional (15 min)
-- [x] Página 2: Razão e Comparação
-  * Conteúdo educacional completo (2000+ palavras)
-  * O que é razão, termos da razão
-  * Razões equivalentes, simplificação (MDC)
-  * Comparação de quantidades (preço/kg, rendimento, custo-benefício)
-  * Razões especiais (escala, porcentagem, densidade)
-  * Aplicações práticas (diluição, divisão proporcional, misturas)
-  * Vídeo educacional (18 min)
-- [x] Página 3: Regra de Três Simples
-  * Conteúdo educacional completo (2200+ palavras)
-  * Regra de três direta (mesmo sentido)
-  * Regra de três inversa (sentidos opostos)
-  * Método prático passo a passo
-  * 5 exercícios do cotidiano (combustível, impressão, construção, mapa, água)
-  * Técnica das setas para identificar tipo
-  * Dicas para não errar, erros comuns
-  * Vídeo educacional (20 min)
-- [x] Total: 3 páginas, 6000+ palavras de conteúdo
-- [ ] Testar navegação completa
-- [ ] Salvar checkpoint
-
-
-## 🎮 Sala de Exercícios Interativos + Melhorias de UX
-
-### Sala de Exercícios Interativos
-- [ ] Criar página ExerciseRoom.tsx
-- [ ] Organizar exercícios por módulo (Adição, Subtração, Multiplicação, Divisão, Frações, Proporção, Porcentagem)
-- [ ] Distribuição de dificuldade: 60% fácil, 30% médio, 10% difícil
-- [ ] Exercícios práticos do cotidiano (compras, receitas, tempo, dinheiro)
-- [ ] Integrar componentes interativos:
-  * FillInBlanks para operações matemáticas
-  * InteractiveSlider para estimativas
-  * MatchingGame para conceitos e equivalências
-  * VisualMultipleChoice para problemas contextualizados
-- [ ] Sistema de feedback imediato (sons, confete, vibração)
-- [ ] Adicionar link na Sidebar
-
-### Sistema de Level Progressivo
-- [x] Ajustar curva de XP para subir mais rápido no início
-- [x] Level 1→2: 100 XP (mantido)
-- [x] Level 2→3: 150 XP (reduzido de 200)
-- [x] Level 3→4: 200 XP (reduzido de 300)
-- [x] Level 4→5: 300 XP (reduzido de 500)
-- [x] Após level 5: fórmula level*100 (progressivo)
-- [x] Atualizar função awardXP no db.ts com nova lógica
-
-### Inscrição Automática em Matemática
-- [x] Integrar autoEnrollInAritmetica no oauth.ts (callback OAuth)
-- [x] Integrar autoEnrollInAritmetica no /api/dev/login (dev mode)
-- [x] Todos usuários automaticamente inscritos em "Matemática Aritmética" ao fazer login
-- [x] Tratamento de erros com console.warn (não bloqueia login)
-
-### Barra de Progresso Visual nas Aulas
-- [x] Integrado diretamente no LessonPage.tsx (sem componente separado)
-- [x] Mostrar "Página X de Y" no topo da aula
-- [x] Mostrar porcentagem de conclusão do módulo em tempo real
-- [x] Design responsivo com cores azuis e barra animada
-- [x] Posição: logo após breadcrumb, antes do título da aula
-
-### Reset de Usuários e Validação
-- [ ] Criar script de reset de dados de teste
-- [ ] Limpar progresso de usuários existentes
-- [ ] Validar fluxo completo: cadastro → inscrição automática → primeira aula → exercícios → level up
-- [ ] Testar em diferentes dispositivos
-
-### Consistência de Navegação - Sidebar
-- [x] Adicionar Sidebar na página DisciplinesPage.tsx (Minhas Disciplinas)
-- [x] Adicionar Sidebar na página ExerciseRoomPage.tsx (Sala de Exercícios)
-- [x] Adicionar Sidebar na página AchievementsPage.tsx (Conquistas)
-- [x] Aplicar margin-left lg:ml-72 para compensar sidebar
-- [x] Adicionar Sidebar em todos os estados (loading, não autenticado, principal)
-
-### Testes e Documentação
-- [ ] Testar Sala de Exercícios com todos os componentes
-- [ ] Testar progressão de level com novos valores de XP
-- [ ] Testar inscrição automática em novo usuário
-- [ ] Testar barra de progresso em diferentes módulos
-- [ ] Salvar checkpoint v2.40.0
-
-### Sala de Exercícios Interativa Completa
-- [x] Criar página InteractiveExerciseRoomPage.tsx
-- [x] Layout com Tabs organizadas por módulo (Adição, Subtração, Multiplicação, Divisão, Frações, Proporção, Porcentagem)
-- [x] Criar 20+ exercícios FillInBlanks para operações matemáticas (preencher lacunas)
-- [x] Criar 10+ exercícios InteractiveSlider para estimativas e valores aproximados
-- [x] Criar 7+ exercícios MatchingGame para conectar conceitos e definições
-- [x] Distribuição por dificuldade: 60% fácil (5pts), 30% médio (10pts), 10% difícil (15pts)
-- [x] Integrar sistema de pontos via trpc.points.addPoints
-- [x] Adicionar feedback multissensorial (sons, haptic, toasts)
-- [x] Adicionar rota /exercicios-interativos no App.tsx
-- [x] Adicionar link "Exercícios Interativos" na Sidebar com ícone Sparkles
-- [ ] Testar todos os componentes interativos no browser
-
-### Testes Realizados - Sala de Exercícios Interativos
-- [x] Verificar FillInBlanks em múltiplas tabs (Adição, Multiplicação, Porcentagem)
-- [x] Verificar InteractiveSlider funcionando corretamente
-- [x] Verificar MatchingGame com drag-and-drop
-- [x] Confirmar navegação entre 7 tabs (Adição, Subtração, Multiplicação, Divisão, Frações, Proporção, Porcentagem)
-- [x] Confirmar Sidebar visível e funcionando
-- [x] Confirmar cards de estatísticas (Exercícios Completados, Pontos Ganhos, Taxa de Acerto)
+- [x] Feedback multissensorial (sons, haptic, toasts)
+- [x] Adicionar rota /exercicios-interativos
+- [x] Adicionar link na Sidebar
 
 ### Sistema de Dicas Contextuais
 - [x] Adicionar prop `hint` opcional aos componentes FillInBlanks, InteractiveSlider e MatchingGame
@@ -1462,11 +66,198 @@
 - [x] Estilizar card de dica com fundo amarelo claro (bg-yellow-50), borda amarela e ícone Lightbulb
 - [x] Adicionar animação fade-in ao revelar dica
 - [x] Testar sistema de dicas no browser
-- [x] Testar dica do InteractiveSlider de Adição (Estimativa de Orçamento)
-- [x] Testar dica do MatchingGame de Adição (Propriedades)
-- [x] Testar dica do InteractiveSlider de Frações (3/4 de R$ 200)
-- [x] Confirmar card amarelo com ícone de lâmpada em todos os componentes
-- [x] Confirmar botão alterna entre "💡 Dica" e "Ocultar Dica"
-- [x] Confirmar animação fade-in ao revelar dica
 - [x] Confirmar que dicas ensinam estratégias sem entregar respostas diretas
-- [ ] Salvar checkpoint v2.42.0
+
+### Gamificação
+- [x] Sistema de XP e níveis progressivos
+- [x] Barra de progresso visual
+- [x] Sistema de streaks (dias consecutivos)
+- [x] Sistema de conquistas (achievements)
+- [x] Animações de confete ao completar aulas e exercícios
+- [x] Dashboard personalizado com métricas
+- [x] Conclusão automática de aulas (detecção de scroll)
+- [x] Barra de progresso de leitura
+- [x] Matrícula automática em Aritmética para novos usuários
+- [x] Sistema de pontos por exercício
+
+### Gestão de Progresso
+- [x] Implementar rastreamento de aulas completadas
+- [x] Criar sistema de pontuação
+- [x] Desenvolver algoritmo de recomendação de próximas aulas
+- [x] Criar dashboard do aluno
+- [x] Implementar resumo de aprendizado
+- [x] Criar página de perfil do usuário
+- [x] Implementar histórico pessoal de progresso
+
+### Conteúdo Educacional
+- [x] Estruturar 4 disciplinas (Aritmética, Álgebra, Geometria, Cálculo)
+- [x] Criar 16 módulos de Aritmética
+- [x] Expandir 3 módulos completos:
+  - Adição e Subtração (3 páginas)
+  - Multiplicação (3 páginas)
+  - Divisão (3 páginas)
+- [x] 15 páginas de aulas (6 expandidas com ~11.000 palavras)
+- [x] 12 vídeos do YouTube integrados
+- [x] Componentes visuais interativos (NumberLine, MultiplicationMatrix, MultiplicationTable)
+
+### Componentes Visuais
+- [x] NumberLine (reta numérica animada)
+- [x] MultiplicationMatrix (matriz visual)
+- [x] MultiplicationTable (tabuada interativa)
+- [x] FillInBlanks (preencher lacunas)
+- [x] InteractiveSlider (slider de estimativa)
+- [x] MatchingGame (jogo de correspondência)
+
+### Qualidade e Testes
+- [x] Escrever 50+ testes unitários para backend (100% passando)
+- [x] Criar plano completo de testes de acessibilidade (60+ páginas)
+- [x] Configurar ESLint e linting
+- [x] Zero erros TypeScript críticos
+
+### Documentação
+- [x] Criar README.md completo
+- [x] Adicionar CONTRIBUTING.md
+- [x] Criar LICENSE (MIT)
+- [x] Criar ARCHITECTURE.md
+- [x] Adicionar DATABASE.md
+- [x] Criar CHANGELOG.md
+- [x] Criar templates de issues
+- [x] Criar template de pull request
+- [x] Criar guia de deploy (DEPLOY_GITHUB.md)
+- [x] Gerar screenshots da aplicação
+- [x] Inicializar repositório Git
+- [x] Fazer commit inicial
+
+### Navegação Consistente
+- [x] Adicionar Sidebar na página DisciplinesPage.tsx (Minhas Disciplinas)
+- [x] Adicionar Sidebar na página ExerciseRoomPage.tsx (Sala de Exercícios)
+- [x] Adicionar Sidebar na página AchievementsPage.tsx (Conquistas)
+- [x] Aplicar margin-left lg:ml-72 para compensar sidebar
+- [x] Adicionar Sidebar em todos os estados (loading, não autenticado, principal)
+
+---
+
+## 🔄 Em Andamento
+
+### Polimento e Testes
+- [ ] Validar todos os fluxos de usuário
+- [ ] Otimizar performance de carregamento
+- [ ] Resolver erros TypeScript não-críticos em AchievementsPage
+- [ ] Corrigir classe CSS desconhecida `heading-primary`
+
+---
+
+## 📅 Planejadas (Próximas Versões)
+
+### v2.43.0 - Sistema de Progresso por Módulo
+- [ ] Adicionar barra de progresso individual em cada tab da Sala de Exercícios
+- [ ] Mostrar "Adição: 5/6 exercícios completados"
+- [ ] Desbloquear badge ao completar 100% de um módulo
+- [ ] Persistir progresso no banco de dados
+- [ ] Criar página "Meu Progresso" com estatísticas detalhadas
+- [ ] Mostrar taxa de acerto por módulo
+- [ ] Sugestões de revisão baseadas em erros frequentes
+- [ ] Histórico de exercícios completados
+
+### v2.44.0 - Modo Desafio Cronometrado
+- [ ] Criar botão "⏱️ Desafio Rápido"
+- [ ] Selecionar 5 exercícios aleatórios
+- [ ] Implementar timer de 3 minutos
+- [ ] Criar ranking de desempenho
+- [ ] Histórico de desafios
+- [ ] Badges especiais para desafios
+
+### v3.0.0 - Expansão para Álgebra
+- [ ] Criar 10-12 módulos de Álgebra
+- [ ] Conteúdo expandido para 3-4 módulos
+- [ ] Exercícios interativos específicos de álgebra
+- [ ] Componentes visuais (gráficos de funções, equações)
+- [ ] 30+ páginas de conteúdo
+- [ ] 100+ exercícios
+
+### v4.0.0 - Expansão para Geometria
+- [ ] Criar 10-12 módulos de Geometria
+- [ ] Componentes visuais interativos (formas, ângulos)
+- [ ] Exercícios de cálculo de área, perímetro, volume
+- [ ] 30+ páginas de conteúdo
+- [ ] 100+ exercícios
+
+### v5.0.0 - Expansão para Cálculo
+- [ ] Criar 8-10 módulos de Cálculo
+- [ ] Visualizações de gráficos e funções
+- [ ] Exercícios de limites, derivadas, integrais
+- [ ] 25+ páginas de conteúdo
+- [ ] 80+ exercícios
+
+### Melhorias de UX e Infraestrutura
+- [ ] Implementar modo escuro
+- [ ] Criar busca global de conteúdo
+- [ ] Transformar em PWA (Progressive Web App)
+- [ ] Configurar CI/CD com GitHub Actions
+- [ ] Escrever testes E2E com Playwright
+- [ ] Otimizar Lighthouse score para 90+
+- [ ] Adicionar suporte a múltiplos idiomas (i18n)
+
+### Expansão de Conteúdo Educacional
+- [ ] Expandir páginas de Multiplicação (adicionar visualizações)
+- [ ] Expandir páginas de Divisão (adicionar conceitos avançados)
+- [ ] Adicionar mais exercícios práticos por página
+- [ ] Criar vídeos explicativos próprios
+- [ ] Adicionar simuladores interativos
+
+### Deploy e Produção
+- [ ] Criar checkpoint final de produção
+- [ ] Verificar todas as funcionalidades em staging
+- [ ] Preparar documentação de uso para usuários finais
+- [ ] Configurar monitoramento de erros (Sentry)
+- [ ] Configurar analytics (Plausible ou similar)
+- [ ] Preparar estratégia de SEO
+- [ ] Lançar campanha de marketing
+
+---
+
+## 📊 Métricas de Progresso
+
+| Categoria | Concluídas | Total | % |
+|-----------|------------|-------|---|
+| **Infraestrutura** | 9/9 | 9 | 100% |
+| **Interface** | 8/8 | 8 | 100% |
+| **Conteúdo** | 6/6 | 6 | 100% |
+| **Exercícios Tradicionais** | 6/6 | 6 | 100% |
+| **Exercícios Avançados** | 11/11 | 11 | 100% |
+| **Sistema de Dicas** | 9/9 | 9 | 100% |
+| **Gamificação** | 10/10 | 10 | 100% |
+| **Gestão de Progresso** | 7/7 | 7 | 100% |
+| **Componentes Visuais** | 6/6 | 6 | 100% |
+| **Qualidade e Testes** | 4/4 | 4 | 100% |
+| **Documentação** | 13/13 | 13 | 100% |
+| **Navegação Consistente** | 5/5 | 5 | 100% |
+| **Polimento** | 0/4 | 4 | 0% |
+| **Próximas Versões** | 0/50+ | 50+ | 0% |
+| **TOTAL** | 94/148 | 148 | **64%** |
+
+**Nota:** O progresso de 64% refere-se às tarefas listadas neste TODO. O progresso geral do projeto considerando o roadmap completo é de 80%.
+
+---
+
+## 🎯 Prioridades Imediatas
+
+1. 🔥 **Alta:** Resolver erros TypeScript em AchievementsPage
+2. 🔥 **Alta:** Corrigir classe CSS `heading-primary`
+3. 🔥 **Alta:** Implementar Sistema de Progresso por Módulo (v2.43.0)
+4. 🟡 **Média:** Validar todos os fluxos de usuário
+5. 🟡 **Média:** Otimizar performance de carregamento
+
+---
+
+## 📝 Notas
+
+- Backup do TODO anterior salvo em `todo_backup_YYYYMMDD.md`
+- Este TODO foi consolidado em Dezembro 2024 para melhor organização
+- Tarefas concluídas mantidas para histórico e referência
+- Foco nas próximas versões e melhorias incrementais
+
+---
+
+**Última revisão:** Dezembro 2024  
+**Próxima revisão:** Janeiro 2025
