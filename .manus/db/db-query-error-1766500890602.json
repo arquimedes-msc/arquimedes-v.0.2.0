@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, slug, title, LENGTH(mainText) as content_length FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'divisao') ORDER BY `order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, slug, title, LENGTH(mainText) as content_length FROM pages WHERE moduleId = (SELECT id FROM modules WHERE slug = 'divisao') ORDER BY `order`",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1242 (21000) at line 1: Subquery returns more than 1 row"
+  ]
+}

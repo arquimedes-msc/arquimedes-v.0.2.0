@@ -1062,3 +1062,13 @@
 - [ ] Adicionar 20+ exercícios interativos progressivos
 - [ ] Incluir componentes visuais (MultiplicationMatrix, MultiplicationTable)
 - [ ] Testar conteúdo expandido
+
+
+## Expansão de Conteúdo - Divisão (v2.31.0)
+- [x] Verificar páginas existentes de Divisão no banco
+- [x] Criar Página 1: Conceito de Divisão e Repartição (~1.850 palavras, 5 exercícios)
+- [x] Criar Página 2: Divisão com Resto e Estratégias (~1.800 palavras, 5 exercícios)
+- [x] Criar Página 3: Divisão de Números Maiores (~1.850 palavras, 5 exercícios)
+- [x] Adicionar 15 exercícios interativos progressivos
+- [x] Criar documento completo em docs/conteudo/DIVISAO_EXPANDIDA.md
+- [x] Aplicar conteúdo ao banco de dados (3 páginas atualizadas com ~29.944 caracteres)

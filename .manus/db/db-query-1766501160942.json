@@ -1,0 +1,28 @@
+{
+  "query": "SELECT p.id, p.slug, p.title, m.name as module_name FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.name LIKE '%Divis%' ORDER BY m.id, p.`order` LIMIT 3",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.slug, p.title, m.name as module_name FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.name LIKE '%Divis%' ORDER BY m.id, p.`order` LIMIT 3",
+  "rows": [
+    {
+      "id": "7",
+      "slug": "operacao-inversa",
+      "title": "Divisão: A Operação Inversa da Multiplicação",
+      "module_name": "Divisão"
+    },
+    {
+      "id": "8",
+      "slug": "quociente",
+      "title": "Repartição Justa (O Quociente)",
+      "module_name": "Divisão"
+    },
+    {
+      "id": "9",
+      "slug": "resto",
+      "title": "O Conceito de Resto",
+      "module_name": "Divisão"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tmodule_name\n7\toperacao-inversa\tDivisão: A Operação Inversa da Multiplicação\tDivisão\n8\tquociente\tRepartição Justa (O Quociente)\tDivisão\n9\tresto\tO Conceito de Resto\tDivisão\n",
+  "stderr": "",
+  "execution_time_ms": 67
+}

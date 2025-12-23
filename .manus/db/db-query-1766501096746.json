@@ -1,0 +1,40 @@
+{
+  "query": "SELECT p.id, p.slug, p.title FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.name LIKE '%Divis%' ORDER BY m.id, p.`order`",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.slug, p.title FROM pages p JOIN modules m ON p.moduleId = m.id WHERE m.name LIKE '%Divis%' ORDER BY m.id, p.`order`",
+  "rows": [
+    {
+      "id": "7",
+      "slug": "operacao-inversa",
+      "title": "Divisão: A Operação Inversa da Multiplicação"
+    },
+    {
+      "id": "8",
+      "slug": "quociente",
+      "title": "Repartição Justa (O Quociente)"
+    },
+    {
+      "id": "9",
+      "slug": "resto",
+      "title": "O Conceito de Resto"
+    },
+    {
+      "id": "30001",
+      "slug": "divisao-conceito",
+      "title": "Divisão - Conceito de Repartição"
+    },
+    {
+      "id": "30002",
+      "slug": "divisao-resto",
+      "title": "Divisão com Resto"
+    },
+    {
+      "id": "30003",
+      "slug": "divisao-exercicios",
+      "title": "Exercícios Práticos de Divisão"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\n7\toperacao-inversa\tDivisão: A Operação Inversa da Multiplicação\n8\tquociente\tRepartição Justa (O Quociente)\n9\tresto\tO Conceito de Resto\n30001\tdivisao-conceito\tDivisão - Conceito de Repartição\n30002\tdivisao-resto\tDivisão com Resto\n30003\tdivisao-exercicios\tExercícios Práticos de Divisão\n",
+  "stderr": "",
+  "execution_time_ms": 55
+}
