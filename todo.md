@@ -291,4 +291,108 @@
 - [x] Confirmar completeOnboarding mutation atualizando banco
 - [x] Confirmar hasCompletedOnboarding = true após conclusão
 - [x] Confirmar onboarding não aparece novamente após conclusão
-- [ ] Salvar checkpoint v2.43.0
+- [x] Salvar checkpoint v2.43.0
+
+
+### Fase Final: Polimento, Testes e Refinamento do MVP
+
+#### 1. Correção de Erros Existentes
+- [ ] Corrigir erro TypeScript em AchievementsPage.tsx (getUserAchievements)
+- [ ] Corrigir erro TypeScript em AchievementsPage.tsx (parâmetro 'a' implícito)
+- [ ] Corrigir classe CSS inválida `heading-primary`
+- [ ] Verificar e corrigir outros erros TypeScript
+- [ ] Verificar e corrigir warnings do console
+
+#### 2. Script de Reset de Dados de Teste
+- [x] Criar endpoint admin para resetar progresso de usuários
+- [x] Resetar XP, pontos, conquistas, hasCompletedOnboarding
+- [x] Resetar progresso de aulas e exercícios
+- [x] Manter dados seed (disciplinas, módulos, páginas)
+- [x] Criar função resetUserProgress no db.ts
+- [x] Criar router admin.resetUserProgress no routers.ts
+- [x] Criar página AdminPage.tsx com botão de reset
+- [x] Adicionar rota /admin no App.tsx
+- [x] Testar reset via SQL (migrations aplicadas, progresso resetado com sucesso)
+
+#### 3. Testes de Autenticação e Onboarding
+- [ ] Testar login via OAuth
+- [ ] Testar logout
+- [ ] Testar onboarding completo (7 etapas)
+- [ ] Testar botão "Pular tour"
+- [ ] Verificar inscrição automática em Aritmética
+- [ ] Testar redirecionamento para login quando não autenticado
+
+#### 4. Testes de Sistema de Aulas
+- [ ] Testar listagem de disciplinas
+- [ ] Testar listagem de módulos
+- [ ] Testar navegação entre páginas de aulas
+- [ ] Testar barra de progresso de módulo
+- [ ] Testar conclusão de aula (ganho de XP)
+- [ ] Testar botão "Próxima Aula"
+
+#### 5. Testes de Exercícios
+- [ ] Testar Sala de Exercícios (múltipla escolha)
+- [ ] Testar resposta correta (ganho de pontos)
+- [ ] Testar resposta incorreta (feedback)
+- [ ] Testar Exercícios Interativos (FillInBlanks)
+- [ ] Testar Exercícios Interativos (InteractiveSlider)
+- [ ] Testar Exercícios Interativos (MatchingGame)
+- [ ] Testar sistema de dicas (botão "💡 Dica")
+
+#### 6. Testes de Gamificação
+- [ ] Testar ganho de XP por aula
+- [ ] Testar progressão de níveis
+- [ ] Testar ganho de pontos por exercício
+- [ ] Testar sequência de dias (streak)
+- [ ] Testar conquistas (primeira aula, sequência, etc.)
+- [ ] Testar Dashboard com estatísticas corretas
+
+#### 7. Testes de Navegação e UX
+- [ ] Testar Sidebar em todas as páginas
+- [ ] Testar navegação mobile (MobileNav)
+- [ ] Testar responsividade em mobile
+- [ ] Testar responsividade em tablet
+- [ ] Testar responsividade em desktop
+- [ ] Criar página 404 para rotas inválidas
+- [ ] Testar loading states
+- [ ] Testar mensagens de erro
+
+#### 8. Testes de Banco de Dados
+- [ ] Verificar integridade referencial
+- [ ] Verificar dados seed corretos
+- [ ] Verificar queries otimizadas
+- [ ] Verificar índices necessários
+- [ ] Testar migrations
+
+#### 9. Testes de Perfil
+- [ ] Testar página de perfil
+- [ ] Testar edição de nome
+- [ ] Testar avatar
+- [ ] Testar estatísticas do usuário
+
+#### 10. Documentação e Entrega
+- [ ] Documentar bugs conhecidos
+- [ ] Documentar limitações do MVP
+- [ ] Atualizar README.md
+- [ ] Salvar checkpoint final v2.44.0
+- [ ] Preparar instruções para primeiros usuários
+
+
+### 🐛 Bugs Críticos Encontrados nos Testes Finais
+
+#### 🔴 Bug #1: XP Não é Creditado Após Conclusão de Aula (URGENTE)
+- [ ] Investigar por que XP não é creditado ao completar aula
+- [ ] Verificar se mutation completeLesson está sendo chamada ao clicar em "Próximo"
+- [ ] Verificar se backend está creditando XP corretamente
+- [ ] Verificar se query do Dashboard busca XP atualizado
+- [ ] Testar novamente fluxo completo após correção
+- [ ] Validar se contagem de "Aulas concluídas" atualiza
+
+#### 🟡 Bug #2: Módulos Faltantes na Página de Aritmética
+- [ ] Investigar por que apenas 5 módulos aparecem (1, 2, 4, 5, 9) quando existem 18 no banco
+- [ ] Verificar query no backend que lista módulos
+- [ ] Verificar se há filtro ocultando módulos sem aulas/páginas
+- [ ] Adicionar módulos 3 (Subtração), 6 (Frações), 7 (Proporção), 8, 10-18
+
+#### 🟢 Bug #3: Erro TypeScript em AchievementsPage (Não-bloqueador)
+- [ ] Corrigir tipagem do tRPC para getUserAchievements

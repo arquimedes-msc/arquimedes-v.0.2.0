@@ -121,10 +121,7 @@ function ModuleCard({
   const progressPercentage = pages.length > 0 ? Math.round((completedPages / pages.length) * 100) : 0;
   const isModuleComplete = progressPercentage === 100;
 
-  // Ocultar módulos sem conteúdo
-  if (pages.length === 0) {
-    return null;
-  }
+  // Mostrar todos os módulos, mesmo vazios (com estado "Em breve")
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -153,7 +150,7 @@ function ModuleCard({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-muted-foreground">
-              {pages.length} aulas disponíveis
+              {pages.length > 0 ? `${pages.length} aulas disponíveis` : 'Em breve'}
             </p>
             {isAuthenticated && pages.length > 0 && (
               <p className="text-sm font-medium text-primary">
@@ -161,22 +158,30 @@ function ModuleCard({
               </p>
             )}
           </div>
-          {pages.slice(0, 3).map((page) => (
-            <div key={page.id} className="flex items-center gap-2 text-sm">
-              <BookOpen className="h-4 w-4 text-muted-foreground" />
-              <span>{page.title}</span>
-            </div>
-          ))}
-          {pages.length > 3 && (
-            <p className="text-sm text-muted-foreground pl-6">
-              + {pages.length - 3} mais aulas
+          {pages.length > 0 ? (
+            <>
+              {pages.slice(0, 3).map((page) => (
+                <div key={page.id} className="flex items-center gap-2 text-sm">
+                  <BookOpen className="h-4 w-4 text-muted-foreground" />
+                  <span>{page.title}</span>
+                </div>
+              ))}
+              {pages.length > 3 && (
+                <p className="text-sm text-muted-foreground pl-6">
+                  + {pages.length - 3} mais aulas
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-sm text-muted-foreground italic">
+              Conteúdo em desenvolvimento. Em breve novas aulas estarão disponíveis!
             </p>
           )}
         </div>
-        <Button asChild className="w-full">
-          <Link href={`/disciplina/${disciplineSlug}/modulo/${module.slug}`}>
-            Explorar Módulo
-            <ArrowRight className="ml-2 h-4 w-4" />
+        <Button asChild className="w-full" disabled={pages.length === 0}>
+          <Link href={pages.length > 0 ? `/disciplina/${disciplineSlug}/modulo/${module.slug}` : '#'}>
+            {pages.length > 0 ? 'Explorar Módulo' : 'Em Breve'}
+            {pages.length > 0 && <ArrowRight className="ml-2 h-4 w-4" />}
           </Link>
         </Button>
       </CardContent>

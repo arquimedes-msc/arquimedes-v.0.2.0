@@ -1,0 +1,9 @@
+{
+  "query": "DELETE FROM pageProgress WHERE userId = 1;\nDELETE FROM userPointsLog WHERE userId = 1;\nDELETE FROM xpTransactions WHERE userId = 1;\nUPDATE userXP SET totalXP = 0, level = 1, xpToNextLevel = 100 WHERE userId = 1;\nUPDATE users SET hasCompletedOnboarding = false WHERE id = 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute DELETE FROM pageProgress WHERE userId = 1;\nDELETE FROM userPointsLog WHERE userId = 1;\nDELETE FROM xpTransactions WHERE userId = 1;\nUPDATE userXP SET totalXP = 0, level = 1, xpToNextLevel = 100 WHERE userId = 1;\nUPDATE users SET hasCompletedOnboarding = false WHERE id = 1;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 177
+}

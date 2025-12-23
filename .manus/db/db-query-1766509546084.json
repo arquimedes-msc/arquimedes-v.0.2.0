@@ -1,0 +1,154 @@
+{
+  "query": "\nSELECT m.id, m.name, m.slug, m.description, m.order, d.name as discipline_name\nFROM modules m\nJOIN disciplines d ON m.disciplineId = d.id\nWHERE d.slug = 'aritmetica'\nORDER BY m.order;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute \nSELECT m.id, m.name, m.slug, m.description, m.order, d.name as discipline_name\nFROM modules m\nJOIN disciplines d ON m.disciplineId = d.id\nWHERE d.slug = 'aritmetica'\nORDER BY m.order;\n",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao",
+      "description": "Aprenda os fundamentos da adição, suas propriedades e técnicas de cálculo com reagrupamento.",
+      "order": "1",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao",
+      "description": "A Soma Repetida e a Área",
+      "order": "3",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao",
+      "description": "Domine a subtração, suas propriedades e técnicas de cálculo com empréstimo.",
+      "order": "3",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "description": "Repartição Justa e Medida",
+      "order": "4",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao",
+      "description": "Aprenda a dividir números, entender divisão com resto e aplicar em situações práticas.",
+      "order": "5",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60001",
+      "name": "Frações",
+      "slug": "fracoes",
+      "description": "Partes de um todo, numerador e denominador",
+      "order": "5",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "90001",
+      "name": "Proporção e Razão",
+      "slug": "proporcao-e-razao",
+      "description": "Aprenda a comparar quantidades e resolver problemas com regra de três",
+      "order": "6",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60002",
+      "name": "Decimais",
+      "slug": "decimais",
+      "description": "Números com vírgula e casas decimais",
+      "order": "6",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem",
+      "description": "Cálculos com percentuais e proporções",
+      "order": "7",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60004",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "description": "Relações entre quantidades e regra de três",
+      "order": "8",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60005",
+      "name": "Potenciação",
+      "slug": "potenciacao",
+      "description": "Multiplicação repetida e expoentes",
+      "order": "9",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60006",
+      "name": "Radiciação",
+      "slug": "radiciacao",
+      "description": "Raiz quadrada, cúbica e operações inversas",
+      "order": "10",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60007",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros",
+      "description": "Positivos, negativos e operações com sinais",
+      "order": "11",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60008",
+      "name": "Múltiplos e Divisores",
+      "slug": "multiplos-divisores",
+      "description": "MMC, MDC e divisibilidade",
+      "order": "12",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60009",
+      "name": "Números Primos",
+      "slug": "numeros-primos",
+      "description": "Identificação e fatoração em primos",
+      "order": "13",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60010",
+      "name": "Expressões Numéricas",
+      "slug": "expressoes-numericas",
+      "description": "Ordem de operações e parênteses",
+      "order": "14",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60011",
+      "name": "Sistemas de Medidas",
+      "slug": "sistemas-medidas",
+      "description": "Comprimento, massa, tempo e conversões",
+      "order": "15",
+      "discipline_name": "Aritmética"
+    },
+    {
+      "id": "60012",
+      "name": "Matemática Financeira Básica",
+      "slug": "matematica-financeira",
+      "description": "Juros simples, descontos e cálculos práticos",
+      "order": "16",
+      "discipline_name": "Aritmética"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tdescription\torder\tdiscipline_name\n1\tAdição\tadicao\tAprenda os fundamentos da adição, suas propriedades e técnicas de cálculo com reagrupamento.\t1\tAritmética\n2\tMultiplicação\tmultiplicacao\tA Soma Repetida e a Área\t3\tAritmética\n90002\tSubtração\tsubtracao\tDomine a subtração, suas propriedades e técnicas de cálculo com empréstimo.\t3\tAritmética\n3\tDivisão\tdivisao\tRepartição Justa e Medida\t4\tAritmética\n30001\tDivisão\tdivisao\tAprenda a dividir números, entender divisão com resto e aplicar em situações práticas.\t5\tAritmética\n60001\tFrações\tfracoes\tPartes de um todo, numerador e denominador\t5\tAritmética\n90001\tProporção e Razão\tproporcao-e-razao\tAprenda a comparar quantidades e resolver problemas com regra de três\t6\tAritmética\n60002\tDecimais\tdecimais\tNúmeros com vírgula e casas decimais\t6\tAritmética\n60003\tPorcentagem\tporcentagem\tCálculos com percentuais e proporções\t7\tAritmética\n60004\tRazão e Proporção\trazao-proporcao\tRelações entre quantidades e regra de três\t8\tAritmética\n60005\tPotenciação\tpotenciacao\tMultiplicação repetida e expoentes\t9\tAritmética\n60006\tRadiciação\tradiciacao\tRaiz quadrada, cúbica e operações inversas\t10\tAritmética\n60007\tNúmeros Inteiros\tnumeros-inteiros\tPositivos, negativos e operações com sinais\t11\tAritmética\n60008\tMúltiplos e Divisores\tmultiplos-divisores\tMMC, MDC e divisibilidade\t12\tAritmética\n60009\tNúmeros Primos\tnumeros-primos\tIdentificação e fatoração em primos\t13\tAritmética\n60010\tExpressões Numéricas\texpressoes-numericas\tOrdem de operações e parênteses\t14\tAritmética\n60011\tSistemas de Medidas\tsistemas-medidas\tComprimento, massa, tempo e conversões\t15\tAritmética\n60012\tMatemática Financeira Básica\tmatematica-financeira\tJuros simples, descontos e cálculos práticos\t16\tAritmética\n",
+  "stderr": "",
+  "execution_time_ms": 426
+}

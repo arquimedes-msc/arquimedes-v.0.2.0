@@ -39,7 +39,7 @@ export default function AchievementsPage() {
   const { data: achievements = [], isLoading } = trpc.achievements.getUserAchievements.useQuery(
     undefined,
     { enabled: isAuthenticated }
-  );
+  ) as { data: Array<{ id: number; name: string; description: string; icon: string; category: string; unlocked: boolean; unlockedAt: Date | null }>; isLoading: boolean };
 
   if (!isAuthenticated) {
     return (
@@ -182,7 +182,7 @@ export default function AchievementsPage() {
                             </Badge>
                           )}
                         </div>
-                        <CardTitle className="text-xl mt-4">{achievement.title}</CardTitle>
+                        <CardTitle className="text-xl mt-4">{achievement.name}</CardTitle>
                         <CardDescription className="text-base">
                           {achievement.description}
                         </CardDescription>

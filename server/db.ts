@@ -638,7 +638,7 @@ export async function awardAchievement(
  */
 export async function addPoints(
   userId: number,
-  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed" | "daily_challenge_completed",
+  action: "daily_login" | "video_watched" | "exercise_completed" | "podcast_listened" | "task_completed" | "daily_challenge_completed" | "lesson_completed",
   points: number,
   relatedId?: number
 ): Promise<void> {
@@ -1477,4 +1477,63 @@ export async function checkAndAwardAchievements(userId: number): Promise<Achieve
   }
 
   return newlyUnlocked;
+}
+
+
+// ============= ADMIN: RESET USER DATA =============
+
+export async function resetUserProgress(userId: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // Reset onboarding status
+  await db.update(users)
+    .set({ hasCompletedOnboarding: false })
+    .where(eq(users.id, userId));
+
+  // Delete user progress
+  await db.delete(pageProgress)
+    .where(eq(pageProgress.userId, userId));
+
+  // Delete XP transactions
+  await db.delete(xpTransactions)
+    .where(eq(xpTransactions.userId, userId));
+
+  // Delete user XP
+  await db.delete(userXP)
+    .where(eq(userXP.userId, userId));
+
+  // Delete points log
+  await db.delete(userPointsLog)
+    .where(eq(userPointsLog.userId, userId));
+
+  // Delete user achievements
+  await db.delete(userAchievements)
+    .where(eq(userAchievements.userId, userId));
+
+  // Delete enrollments
+  await db.delete(userEnrollments)
+    .where(eq(userEnrollments.userId, userId));
+
+  // Delete exercise attempts
+  await db.delete(exerciseAttempts)
+    .where(eq(exerciseAttempts.userId, userId));
+
+  // Delete standalone exercise attempts
+  await db.delete(standaloneExerciseAttempts)
+    .where(eq(standaloneExerciseAttempts.userId, userId));
+
+  // Delete daily challenge attempts
+  await db.delete(dailyChallengeAttempts)
+    .where(eq(dailyChallengeAttempts.userId, userId));
+
+  // Delete streaks
+  await db.delete(streaks)
+    .where(eq(streaks.userId, userId));
+
+  // Delete standalone video views
+  await db.delete(standaloneVideoViews)
+    .where(eq(standaloneVideoViews.userId, userId));
+
+  return { success: true, message: "User progress reset successfully" };
 }

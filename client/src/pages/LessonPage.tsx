@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams, Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -91,7 +91,11 @@ export default function LessonPage() {
   };
 
   const handleMarkComplete = () => {
-    if (!page || progress?.completed) return;
+    console.log('[DEBUG] handleMarkComplete called', { page: page?.id, progressCompleted: progress?.completed, isAuthenticated });
+    if (!page || progress?.completed) {
+      console.log('[DEBUG] handleMarkComplete blocked', { hasPage: !!page, progressCompleted: progress?.completed });
+      return;
+    }
 
     const allExercisesCompleted = exercises.length === 0 || exercises.every((ex) => completedExercises.has(ex.id));
     const score = exercises.length === 0 ? 100 : allExercisesCompleted ? 100 : Math.round((completedExercises.size / exercises.length) * 100);
@@ -112,13 +116,19 @@ export default function LessonPage() {
   };
 
   // Auto-complete when user scrolls to bottom
+  const scrollCallback = useCallback(() => {
+    console.log('[DEBUG] useScrollToBottom triggered', { isAuthenticated, pageId: page?.id, progressCompleted: progress?.completed });
+    if (isAuthenticated && page && !progress?.completed) {
+      console.log('[DEBUG] Calling handleMarkComplete');
+      handleMarkComplete();
+    } else {
+      console.log('[DEBUG] Blocked handleMarkComplete', { isAuthenticated, hasPage: !!page, progressCompleted: progress?.completed });
+    }
+  }, [isAuthenticated, page, progress?.completed]);
+
   useScrollToBottom({
     threshold: 200,
-    onReachBottom: () => {
-      if (isAuthenticated && page && !progress?.completed) {
-        handleMarkComplete();
-      }
-    },
+    onReachBottom: scrollCallback,
     once: true,
   });
 

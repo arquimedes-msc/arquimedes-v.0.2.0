@@ -214,7 +214,7 @@ export const userPointsLog = mysqlTable("userPointsLog", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull(),
   
-  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed", "daily_challenge_completed"]).notNull(),
+  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed", "daily_challenge_completed", "lesson_completed"]).notNull(),
   points: int("points").notNull(),
   
   // Optional metadata

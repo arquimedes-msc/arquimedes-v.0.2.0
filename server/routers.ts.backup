@@ -247,20 +247,10 @@ Retorne APENAS um JSON com:
           score: input.score,
         });
         
-        // Award XP and points for completing lesson
+        // Check if module is completed
         if (input.completed) {
           const page = await db.getPageById(input.pageId);
           if (page) {
-            // Award 50 XP for completing lesson
-            await db.awardXP(ctx.user.id, 50, "Aula concluída", page.id);
-            
-            // Award points based on score (10 base + bonus)
-            const scoreBonus = Math.floor((input.score || 0) / 10);
-            const totalPoints = 10 + scoreBonus;
-            await db.addPoints(ctx.user.id, "lesson_completed", totalPoints, page.id);
-            
-            // Check and award achievements
-            await db.checkAndAwardAchievements(ctx.user.id);
             const allPages = await db.getPagesByModule(page.moduleId);
             const allProgress = await db.getAllUserProgress(ctx.user.id);
             
@@ -606,16 +596,16 @@ Retorne APENAS um JSON com:
       const unlocked = await db.getUserUnlockedAchievements(ctx.user.id);
       const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
 
-      return definitions.map((def: any) => ({
+      return definitions.map((def) => ({
         ...def,
         unlocked: unlockedIds.has(def.id),
-        unlockedAt: unlocked.find((u: any) => u.achievementId === def.id)?.unlockedAt || null,
+        unlockedAt: unlocked.find((u) => u.achievementId === def.id)?.unlockedAt || null,
       }));
     }),
 
     checkProgress: protectedProcedure.mutation(async ({ ctx }) => {
-      // TODO: Implement checkAndAwardAchievements function
-      return { newAchievements: [] };
+      const newAchievements = await db.checkAndAwardAchievements(ctx.user.id);
+      return { newAchievements };
     }),
   }),
 
@@ -624,8 +614,9 @@ Retorne APENAS um JSON com:
     resetUserProgress: protectedProcedure
       .input(z.object({ userId: z.number().optional() }))
       .mutation(async ({ ctx, input }) => {
-        // TODO: Implement resetUserProgress function
-        return { success: true };
+        // Reset current user or specified user (for testing)
+        const targetUserId = input.userId || ctx.user.id;
+        return await db.resetUserProgress(targetUserId);
       }),
   }),
 });

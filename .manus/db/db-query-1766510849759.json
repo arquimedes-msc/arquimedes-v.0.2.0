@@ -1,0 +1,154 @@
+{
+  "query": "SELECT m.id, m.name, m.slug, m.disciplineId, m.order, COUNT(p.id) as pageCount \nFROM modules m \nLEFT JOIN pages p ON m.id = p.moduleId \nGROUP BY m.id \nORDER BY m.disciplineId, m.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT m.id, m.name, m.slug, m.disciplineId, m.order, COUNT(p.id) as pageCount \nFROM modules m \nLEFT JOIN pages p ON m.id = p.moduleId \nGROUP BY m.id \nORDER BY m.disciplineId, m.order;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição",
+      "slug": "adicao",
+      "disciplineId": "1",
+      "order": "1",
+      "pageCount": "3"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração",
+      "slug": "subtracao",
+      "disciplineId": "1",
+      "order": "3",
+      "pageCount": "0"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação",
+      "slug": "multiplicacao",
+      "disciplineId": "1",
+      "order": "3",
+      "pageCount": "3"
+    },
+    {
+      "id": "3",
+      "name": "Divisão",
+      "slug": "divisao",
+      "disciplineId": "1",
+      "order": "4",
+      "pageCount": "3"
+    },
+    {
+      "id": "30001",
+      "name": "Divisão",
+      "slug": "divisao",
+      "disciplineId": "1",
+      "order": "5",
+      "pageCount": "3"
+    },
+    {
+      "id": "60001",
+      "name": "Frações",
+      "slug": "fracoes",
+      "disciplineId": "1",
+      "order": "5",
+      "pageCount": "0"
+    },
+    {
+      "id": "60002",
+      "name": "Decimais",
+      "slug": "decimais",
+      "disciplineId": "1",
+      "order": "6",
+      "pageCount": "0"
+    },
+    {
+      "id": "90001",
+      "name": "Proporção e Razão",
+      "slug": "proporcao-e-razao",
+      "disciplineId": "1",
+      "order": "6",
+      "pageCount": "0"
+    },
+    {
+      "id": "60003",
+      "name": "Porcentagem",
+      "slug": "porcentagem",
+      "disciplineId": "1",
+      "order": "7",
+      "pageCount": "4"
+    },
+    {
+      "id": "60004",
+      "name": "Razão e Proporção",
+      "slug": "razao-proporcao",
+      "disciplineId": "1",
+      "order": "8",
+      "pageCount": "0"
+    },
+    {
+      "id": "60005",
+      "name": "Potenciação",
+      "slug": "potenciacao",
+      "disciplineId": "1",
+      "order": "9",
+      "pageCount": "0"
+    },
+    {
+      "id": "60006",
+      "name": "Radiciação",
+      "slug": "radiciacao",
+      "disciplineId": "1",
+      "order": "10",
+      "pageCount": "0"
+    },
+    {
+      "id": "60007",
+      "name": "Números Inteiros",
+      "slug": "numeros-inteiros",
+      "disciplineId": "1",
+      "order": "11",
+      "pageCount": "0"
+    },
+    {
+      "id": "60008",
+      "name": "Múltiplos e Divisores",
+      "slug": "multiplos-divisores",
+      "disciplineId": "1",
+      "order": "12",
+      "pageCount": "0"
+    },
+    {
+      "id": "60009",
+      "name": "Números Primos",
+      "slug": "numeros-primos",
+      "disciplineId": "1",
+      "order": "13",
+      "pageCount": "0"
+    },
+    {
+      "id": "60010",
+      "name": "Expressões Numéricas",
+      "slug": "expressoes-numericas",
+      "disciplineId": "1",
+      "order": "14",
+      "pageCount": "0"
+    },
+    {
+      "id": "60011",
+      "name": "Sistemas de Medidas",
+      "slug": "sistemas-medidas",
+      "disciplineId": "1",
+      "order": "15",
+      "pageCount": "0"
+    },
+    {
+      "id": "60012",
+      "name": "Matemática Financeira Básica",
+      "slug": "matematica-financeira",
+      "disciplineId": "1",
+      "order": "16",
+      "pageCount": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tdisciplineId\torder\tpageCount\n1\tAdição\tadicao\t1\t1\t3\n90002\tSubtração\tsubtracao\t1\t3\t0\n2\tMultiplicação\tmultiplicacao\t1\t3\t3\n3\tDivisão\tdivisao\t1\t4\t3\n30001\tDivisão\tdivisao\t1\t5\t3\n60001\tFrações\tfracoes\t1\t5\t0\n60002\tDecimais\tdecimais\t1\t6\t0\n90001\tProporção e Razão\tproporcao-e-razao\t1\t6\t0\n60003\tPorcentagem\tporcentagem\t1\t7\t4\n60004\tRazão e Proporção\trazao-proporcao\t1\t8\t0\n60005\tPotenciação\tpotenciacao\t1\t9\t0\n60006\tRadiciação\tradiciacao\t1\t10\t0\n60007\tNúmeros Inteiros\tnumeros-inteiros\t1\t11\t0\n60008\tMúltiplos e Divisores\tmultiplos-divisores\t1\t12\t0\n60009\tNúmeros Primos\tnumeros-primos\t1\t13\t0\n60010\tExpressões Numéricas\texpressoes-numericas\t1\t14\t0\n60011\tSistemas de Medidas\tsistemas-medidas\t1\t15\t0\n60012\tMatemática Financeira Básica\tmatematica-financeira\t1\t16\t0\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

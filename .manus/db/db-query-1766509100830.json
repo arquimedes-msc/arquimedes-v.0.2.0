@@ -1,0 +1,79 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "achievement_definitions"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "achievements"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "daily_challenge_attempts"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "daily_challenges"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "disciplines"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "exerciseAttempts"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "exercises"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "generatedExercises"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "modules"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "pageProgress"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "pages"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "standalone_exercise_attempts"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "standalone_exercises"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "standalone_video_views"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "standalone_videos"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "streaks"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "userEnrollments"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "userPointsLog"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "userXP"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "user_achievements"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "users"
+    },
+    {
+      "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p": "xpTransactions"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_T5Ee3HJGcPdFeU4iAe9r9p\n__drizzle_migrations\nachievement_definitions\nachievements\ndaily_challenge_attempts\ndaily_challenges\ndisciplines\nexerciseAttempts\nexercises\ngeneratedExercises\nmodules\npageProgress\npages\nstandalone_exercise_attempts\nstandalone_exercises\nstandalone_video_views\nstandalone_videos\nstreaks\nuserEnrollments\nuserPointsLog\nuserXP\nuser_achievements\nusers\nxpTransactions\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

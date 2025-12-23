@@ -20,6 +20,7 @@ import VideoRoomPage from "./pages/VideoRoomPage";
 import DailyChallengePage from "./pages/DailyChallengePage";
 import DisciplinesPage from "./pages/DisciplinesPage";
 import AchievementsPage from "./pages/AchievementsPage";
+import AdminPage from "./pages/AdminPage";
 import { SoundToggle } from "./components/SoundToggle";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/videos" component={VideoRoomPage} />
       <Route path="/desafio-do-dia" component={DailyChallengePage} />
       <Route path="/conquistas" component={AchievementsPage} />
+      <Route path="/admin" component={AdminPage} />
       <Route path="/disciplinas" component={DisciplinesPage} />
       <Route path="/minhas-disciplinas" component={DisciplinesPage} />
       <Route path="/visuals" component={VisualsDemo} />

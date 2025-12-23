@@ -102,7 +102,8 @@ export default function Dashboard() {
     return null; // Will redirect via useEffect
   }
 
-  const xpProgress = xpData ? (xpData.totalXP / xpData.xpToNextLevel) * 100 : 0;
+  const xpTotalForNextLevel = xpData ? xpData.totalXP + xpData.xpToNextLevel : 100;
+  const xpProgress = xpData ? (xpData.totalXP / xpTotalForNextLevel) * 100 : 0;
   const firstName = user?.name?.split(' ')[0] || 'Estudante';
   const greetingTime = new Date().getHours();
   const greeting = greetingTime < 12 ? 'Bom dia' : greetingTime < 18 ? 'Boa tarde' : 'Boa noite';
@@ -226,13 +227,13 @@ export default function Dashboard() {
                 <div>
                   <p className="text-3xl font-bold text-blue-600">Nível {xpData?.level || 1}</p>
                   <p className="text-sm text-muted-foreground mt-1">
-                    {xpData?.totalXP || 0} / {xpData?.xpToNextLevel || 100} XP
+                    {xpData?.totalXP || 0} / {(xpData?.totalXP || 0) + (xpData?.xpToNextLevel || 100)} XP
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-muted-foreground">Faltam</p>
                   <p className="text-2xl font-bold text-gray-700">
-                    {(xpData?.xpToNextLevel || 100) - (xpData?.totalXP || 0)} XP
+                    {xpData?.xpToNextLevel || 100} XP
                   </p>
                   <p className="text-xs text-muted-foreground">para o próximo nível</p>
                 </div>

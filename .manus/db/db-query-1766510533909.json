@@ -1,0 +1,21 @@
+{
+  "query": "SELECT * FROM pageProgress WHERE userId = 1 ORDER BY lastAccessedAt DESC LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT * FROM pageProgress WHERE userId = 1 ORDER BY lastAccessedAt DESC LIMIT 5;",
+  "rows": [
+    {
+      "id": "180001",
+      "userId": "1",
+      "pageId": "1",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-23 17:20:58",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-23 17:20:58",
+      "updatedAt": "2025-12-23 17:20:58"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tpageId\tcompleted\tscore\tlastAccessedAt\tcompletedAt\tcreatedAt\tupdatedAt\n180001\t1\t1\t0\t0\t2025-12-23 17:20:58\tNULL\t2025-12-23 17:20:58\t2025-12-23 17:20:58\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}
