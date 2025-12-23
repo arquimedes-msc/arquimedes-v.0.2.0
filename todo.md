@@ -852,3 +852,41 @@
 - [x] Vincular 145 exercícios aos módulos (script automático)
 - [x] Vincular 86 vídeos aos módulos (script automático)
 - [x] Distribuição: 9 módulos com conteúdo, 7 módulos pendentes
+
+
+## Correções e Validação Final (v2.18.0)
+
+### Correções Críticas
+- [ ] Corrigir vídeos não funcionando nas páginas de aula
+- [ ] Verificar componente YouTubePlayer
+- [ ] Implementar matrícula automática em Aritmética para todos os usuários
+- [ ] Corrigir página "Minhas Disciplinas" para mostrar matrícula
+
+### Criação de Conteúdo
+- [ ] Criar aulas completas para Módulo 1: Adição e Subtração
+- [ ] Criar aulas completas para Módulo 2: Multiplicação
+- [ ] Criar aulas completas para Módulo 3: Divisão
+- [ ] Criar aulas completas para Módulo 4: Frações
+- [ ] Criar aulas completas para Módulo 5: Números Decimais
+- [ ] Criar aulas completas para Módulo 6: Porcentagem
+- [ ] Criar aulas completas para Módulo 7: Razão e Proporção
+- [ ] Criar aulas completas para Módulo 8: Potenciação
+- [ ] Criar aulas completas para Módulo 9: Radiciação
+- [ ] Criar aulas completas para Módulo 10: Números Inteiros
+- [ ] Criar aulas completas para Módulo 11: Múltiplos e Divisores
+- [ ] Criar aulas completas para Módulo 12: Números Primos
+- [ ] Criar aulas completas para Módulo 13: Expressões Numéricas
+- [ ] Criar aulas completas para Módulo 14: Sistemas de Medidas
+- [ ] Criar aulas completas para Módulo 15: Matemática Financeira Básica
+- [ ] Adicionar vídeos do YouTube em português para todas as aulas
+
+### Auditoria e Validação
+- [ ] Testar todas as páginas de aula
+- [ ] Verificar todos os links (nenhum link quebrado)
+- [ ] Validar todos os vídeos (em português do Brasil)
+- [ ] Testar navegação completa
+- [ ] Verificar responsividade mobile
+- [ ] Testar sistema de pontos end-to-end
+- [ ] Validar Desafio do Dia
+- [ ] Validar Sala de Exercícios
+- [ ] Validar Sala de Vídeos

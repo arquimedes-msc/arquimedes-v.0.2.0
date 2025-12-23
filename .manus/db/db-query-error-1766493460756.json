@@ -1,0 +1,8 @@
+{
+  "query": "SELECT COUNT(*) as total FROM modulePages",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT COUNT(*) as total FROM modulePages",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1146 (42S02) at line 1: Table 't5ee3hjgcpdfeu4iae9r9p.modulePages' doesn't exist"
+  ]
+}

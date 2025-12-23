@@ -374,3 +374,5 @@ export const dailyChallengeAttempts = mysqlTable("daily_challenge_attempts", {
 
 export type DailyChallengeAttempt = typeof dailyChallengeAttempts.$inferSelect;
 export type InsertDailyChallengeAttempt = typeof dailyChallengeAttempts.$inferInsert;
+
+
