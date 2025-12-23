@@ -807,9 +807,10 @@
 
 
 ## Deploy na VPS Hostinger (v2.16.0)
-- [ ] Criar ecosystem.config.cjs para PM2
-- [ ] Criar script deploy/setup_vps.sh
-- [ ] Criar configuração deploy/nginx.conf
-- [ ] Adicionar HOSTINGER.md ao .gitignore
-- [ ] Fazer commit no repositório GitHub
-- [ ] Documentar processo de deploy
+- [x] Criar ecosystem.config.cjs para PM2
+- [x] Criar script deploy/setup_vps.sh
+- [x] Criar configuração deploy/nginx.conf
+- [x] Adicionar HOSTINGER.md ao .gitignore
+- [x] Fazer commit local no repositório
+- [x] Documentar processo de deploy (DEPLOY.md)
+- [ ] Push para GitHub (requer autenticação do usuário)
