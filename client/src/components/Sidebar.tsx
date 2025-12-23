@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Home, User, BookOpen, LogOut, Menu, X, Target, Video, Trophy, Award } from "lucide-react";
+import { Home, User, BookOpen, LogOut, Menu, X, Target, Video, Trophy, Award, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
 import { useState } from "react";
@@ -21,6 +21,7 @@ export function Sidebar() {
     { name: "Desafio do Dia", href: "/desafio-do-dia", icon: Trophy },
     { name: "Conquistas", href: "/conquistas", icon: Award },
     { name: "Sala de Exercicios", href: "/exercicios", icon: Target },
+    { name: "Exercícios Interativos", href: "/exercicios-interativos", icon: Sparkles },
     // { name: "Sala de Videos", href: "/videos", icon: Video }, // Oculto temporariamente
     { name: "Minhas Disciplinas", href: "/disciplinas", icon: BookOpen },
   ];
