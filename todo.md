@@ -757,3 +757,16 @@
 - [x] Adicionar enum daily_challenge_completed ao userPointsLog
 - [x] Escrever 7 testes unitários para desafio do dia (100% passando)
 - [x] Integrar com sistema de pontos acumulativos
+
+
+## Integração de Vídeos do YouTube com Módulos (v2.14.0)
+- [x] Campo `moduleId` já existia na tabela `standaloneVideos`
+- [x] Criar helper `getStandaloneVideosByModule` no db.ts
+- [x] Criar procedure tRPC `getByModule`
+- [x] Criar componente `YouTubePlayer.tsx` funcional com embed real
+- [x] Adicionar seção de vídeos na página ModulePage.tsx
+- [x] Popular banco com 15 vídeos reais do YouTube
+- [x] Vincular vídeos aos módulos de Aritmética (Adição/Subtração, Multiplicação, Divisão, Frações, Decimais, Porcentagem)
+- [x] Atualizar IDs com vídeos educacionais reais do YouTube
+- [x] Testar player do YouTube funcionando corretamente
+- [x] Player responsivo com aspect ratio 16:9

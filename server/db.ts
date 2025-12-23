@@ -1017,6 +1017,15 @@ export async function getStandaloneVideosByDiscipline(disciplineId: number) {
     .where(eq(standaloneVideos.disciplineId, disciplineId));
 }
 
+export async function getStandaloneVideosByModule(moduleId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return await db
+    .select()
+    .from(standaloneVideos)
+    .where(eq(standaloneVideos.moduleId, moduleId));
+}
+
 export async function markVideoAsWatched(userId: number, videoId: number) {
   const db = await getDb();
   if (!db) return;

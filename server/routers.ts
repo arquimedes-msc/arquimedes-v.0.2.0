@@ -507,6 +507,12 @@ Retorne APENAS um JSON com:
         return await db.getStandaloneVideosByDiscipline(input.disciplineId);
       }),
     
+    getByModule: publicProcedure
+      .input(z.object({ moduleId: z.number() }))
+      .query(async ({ input }) => {
+        return await db.getStandaloneVideosByModule(input.moduleId);
+      }),
+    
     markWatched: protectedProcedure
       .input(z.object({ videoId: z.number() }))
       .mutation(async ({ ctx, input }) => {
