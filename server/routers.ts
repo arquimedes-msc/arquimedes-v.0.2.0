@@ -379,6 +379,34 @@ Retorne APENAS um JSON com:
       await db.completeOnboarding(ctx.user.id);
       return { success: true };
     }),
+    
+    updateAvatar: protectedProcedure
+      .input(z.object({ avatarUrl: z.string().url() }))
+      .mutation(async ({ ctx, input }) => {
+        await db.updateUserAvatar(ctx.user.id, input.avatarUrl);
+        return { success: true };
+      }),
+    
+    updatePreferences: protectedProcedure
+      .input(z.object({
+        language: z.enum(["pt", "en"]).optional(),
+        themeColor: z.enum(["blue", "red", "green"]).optional(),
+        darkMode: z.boolean().optional(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        await db.updateUserPreferences(ctx.user.id, input);
+        return { success: true };
+      }),
+    
+    getActivityHistory: protectedProcedure
+      .input(z.object({ limit: z.number().optional().default(20) }))
+      .query(async ({ ctx, input }) => {
+        return await db.getUserActivityHistory(ctx.user.id, input.limit);
+      }),
+    
+    getWeeklyProgress: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserWeeklyProgress(ctx.user.id);
+    }),
   }),
 
   // ============= ENROLLMENTS =============

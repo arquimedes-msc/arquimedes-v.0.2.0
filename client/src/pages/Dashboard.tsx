@@ -4,7 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { trpc } from "@/lib/trpc";
 import { BookOpen, Trophy, Zap, ArrowRight, LogOut, TrendingUp, Calendar, Target, Award } from "lucide-react";
 import { getModuleIcon, getModuleColor } from "@/components/MathIcons";
-import { MobileNav } from "@/components/MobileNav";
+import { Sidebar } from "@/components/Sidebar";
 import { Link, useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import OnboardingModal from "@/components/OnboardingModal";
@@ -72,19 +72,15 @@ export default function Dashboard() {
   const xpProgress = xpData ? (xpData.totalXP / xpData.xpToNextLevel) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <MobileNav />
+    <>
+      <Sidebar />
+      <div className="lg:ml-72 min-h-screen bg-gradient-to-b from-blue-50 to-white">
       
       {/* Header minimalista */}
-      <div className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">Arquimedes</h1>
-            <p className="text-sm text-gray-600">Olá, {user?.name?.split(' ')[0] || 'Estudante'}!</p>
-          </div>
-          <Button variant="ghost" size="sm" onClick={() => logoutMutation.mutate()}>
-            <LogOut className="h-4 w-4" />
-          </Button>
+      <div className="border-b bg-white/80 backdrop-blur-sm sticky top-16 lg:top-0 z-10">
+        <div className="container py-4">
+          <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+          <p className="text-sm text-muted-foreground">Bem-vindo de volta, {user?.name?.split(' ')[0] || 'Estudante'}!</p>
         </div>
       </div>
 
@@ -250,12 +246,13 @@ export default function Dashboard() {
           </Card>
         )}
       </div>
+      </div>
       
       {/* Onboarding Modal */}
       <OnboardingModal 
         isOpen={showOnboarding} 
         onComplete={() => setShowOnboarding(false)}
       />
-    </div>
+    </>
   );
 }

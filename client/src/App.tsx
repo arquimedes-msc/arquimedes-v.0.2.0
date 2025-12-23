@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import DisciplinePage from "./pages/DisciplinePage";
 import ModulePage from "./pages/ModulePage";
 import LessonPage from "./pages/LessonPage";
+import ProfilePage from "./pages/ProfilePage";
 import VisualsDemo from "./pages/VisualsDemo";
 import ComponentsDemo from "./pages/ComponentsDemo";
 import { SoundToggle } from "./components/SoundToggle";
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/" component={LoginPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/perfil" component={ProfilePage} />
       <Route path="/visuals" component={VisualsDemo} />
       <Route path="/components" component={ComponentsDemo} />
       <Route path="/disciplina/:disciplineSlug" component={DisciplinePage} />

@@ -821,3 +821,95 @@ export async function getUserStats(userId: number) {
     exerciseAccuracy: accuracy,
   };
 }
+
+
+// ============= USER PROFILE =============
+
+export async function updateUserAvatar(userId: number, avatarUrl: string) {
+  const db = await getDb();
+  if (!db) return;
+  
+  await db
+    .update(users)
+    .set({ avatar: avatarUrl })
+    .where(eq(users.id, userId));
+}
+
+export async function updateUserPreferences(
+  userId: number,
+  preferences: { language?: string; themeColor?: string; darkMode?: boolean }
+) {
+  const db = await getDb();
+  if (!db) return;
+  
+  const updateData: any = {};
+  if (preferences.language !== undefined) updateData.language = preferences.language;
+  if (preferences.themeColor !== undefined) updateData.themeColor = preferences.themeColor;
+  if (preferences.darkMode !== undefined) updateData.darkMode = preferences.darkMode;
+  
+  if (Object.keys(updateData).length > 0) {
+    await db
+      .update(users)
+      .set(updateData)
+      .where(eq(users.id, userId));
+  }
+}
+
+export async function getUserActivityHistory(userId: number, limit: number = 20) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const activities = await db
+    .select({
+      pageId: pageProgress.pageId,
+      pageTitle: pages.title,
+      disciplineName: disciplines.name,
+      moduleName: modules.name,
+      completed: pageProgress.completed,
+      score: pageProgress.score,
+      timestamp: pageProgress.lastAccessedAt,
+    })
+    .from(pageProgress)
+    .innerJoin(pages, eq(pageProgress.pageId, pages.id))
+    .innerJoin(modules, eq(pages.moduleId, modules.id))
+    .innerJoin(disciplines, eq(modules.disciplineId, disciplines.id))
+    .where(eq(pageProgress.userId, userId))
+    .orderBy(desc(pageProgress.lastAccessedAt))
+    .limit(limit);
+  
+  return activities;
+}
+
+export async function getUserWeeklyProgress(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  // Get progress for last 7 days
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  
+  const progress = await db
+    .select({
+      date: sql<string>`DATE(${pageProgress.lastAccessedAt})`,
+      completedPages: sql<number>`COUNT(DISTINCT CASE WHEN ${pageProgress.completed} = 1 THEN ${pageProgress.pageId} END)`,
+      totalXP: sql<number>`COALESCE(SUM(${xpTransactions.amount}), 0)`,
+    })
+    .from(pageProgress)
+    .leftJoin(
+      xpTransactions,
+      and(
+        eq(xpTransactions.userId, userId),
+        sql`DATE(${xpTransactions.createdAt}) = DATE(${pageProgress.lastAccessedAt})`
+      )
+    )
+    .where(
+      and(
+        eq(pageProgress.userId, userId),
+        sql`${pageProgress.lastAccessedAt} >= ${sevenDaysAgo}`
+      )
+    )
+    .groupBy(sql`DATE(${pageProgress.lastAccessedAt})`)
+    .orderBy(sql`DATE(${pageProgress.lastAccessedAt})`);
+  
+  return progress;
+}

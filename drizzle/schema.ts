@@ -11,6 +11,10 @@ export const users = mysqlTable("users", {
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
   hasCompletedOnboarding: boolean("hasCompletedOnboarding").default(false).notNull(),
+  avatar: text("avatar"), // URL to S3 avatar image
+  language: varchar("language", { length: 10 }).default("pt").notNull(), // pt, en
+  themeColor: varchar("themeColor", { length: 20 }).default("blue").notNull(), // blue, red, green
+  darkMode: boolean("darkMode").default(false).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),

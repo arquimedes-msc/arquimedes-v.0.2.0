@@ -665,3 +665,39 @@
 - [x] Adicionar card de pontos acumulados (hoje, semana, total)
 - [x] Inscrever automaticamente em Aritmética no onboarding
 - [x] Testar fluxo de inscrição e dashboard personalizado
+
+
+## Sidebar Persistente e Página de Perfil Completa
+- [ ] Adicionar campos avatar, language, themeColor, darkMode na tabela users
+- [ ] Implementar procedure user.updateAvatar (upload S3)
+- [ ] Implementar procedure user.updatePreferences (language, themeColor, darkMode)
+- [ ] Criar componente Sidebar persistente
+- [ ] Adicionar navegação na Sidebar (Dashboard, Perfil, Disciplinas)
+- [ ] Adicionar avatar + nome do usuário na Sidebar
+- [ ] Criar página ProfilePage com edição de perfil
+- [ ] Adicionar upload de avatar na ProfilePage
+- [ ] Adicionar seleção de idioma (português/inglês)
+- [ ] Adicionar seleção de cor de tema (azul/vermelho/verde)
+- [ ] Adicionar toggle modo escuro/claro
+- [ ] Adicionar gráfico de progresso semanal
+- [ ] Adicionar histórico de atividades recentes
+- [ ] Implementar ThemeProvider com contexto de tema
+- [ ] Atualizar onboarding para incluir upload de foto
+- [ ] Testar sidebar e perfil completo
+
+## Sidebar Persistente e Página de Perfil Completa - CONCLUÍDO
+- [x] Adicionar campos avatar, language, themeColor, darkMode na tabela users
+- [x] Implementar procedure user.updateAvatar (upload S3 via base64)
+- [x] Implementar procedure user.updatePreferences (language, themeColor, darkMode)
+- [x] Criar componente Sidebar persistente
+- [x] Adicionar navegação na Sidebar (Dashboard, Perfil, Disciplinas)
+- [x] Adicionar avatar + nome do usuário na Sidebar
+- [x] Criar página ProfilePage com edição de perfil
+- [x] Adicionar upload de avatar na ProfilePage
+- [x] Adicionar seleção de idioma (português/inglês)
+- [x] Adicionar seleção de cor de tema (azul/vermelho/verde)
+- [x] Adicionar toggle modo escuro/claro
+- [x] Adicionar gráfico de progresso semanal
+- [x] Adicionar histórico de atividades recentes
+- [x] Sidebar responsiva mobile com menu hambúrguer
+- [x] Testar sidebar e perfil completo
