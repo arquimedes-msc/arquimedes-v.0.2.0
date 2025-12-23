@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Login from "./pages/Login";
+import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import DisciplinePage from "./pages/DisciplinePage";
 import ModulePage from "./pages/ModulePage";
@@ -16,7 +17,8 @@ import { SoundToggle } from "./components/SoundToggle";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Login} />
+      <Route path="/" component={LoginPage} />
+      <Route path="/login" component={LoginPage} />
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/visuals" component={VisualsDemo} />
       <Route path="/components" component={ComponentsDemo} />

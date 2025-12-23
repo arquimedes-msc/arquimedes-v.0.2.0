@@ -524,3 +524,17 @@
 - [x] Criar issues iniciais para Sprint 1 (Frações, Decimais, Porcentagem)
 - [x] Fazer commit e push completo para GitHub
 - [x] Documentar estrutura para trabalho simultâneo
+
+
+## Tela de Login Profissional (Porta de Entrada)
+- [x] Criar página LoginPage.tsx com hero section chamativa
+- [x] Implementar formulário de login (usuário + senha)
+- [x] Adicionar botões de login social (Google, GitHub, Manus)
+- [x] Criar gradiente de fundo com efeitos visuais
+- [x] Estilizar botões e campos de formulário
+- [x] Implementar validação de formulário
+- [x] Integrar com autenticação Manus OAuth
+- [x] Configurar redirecionamento automático para /login
+- [x] Implementar logout forçado ao acessar sistema
+- [x] Testar fluxo completo de autenticação
+- [x] Adicionar responsividade mobile
