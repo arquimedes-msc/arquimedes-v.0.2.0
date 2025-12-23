@@ -14,11 +14,13 @@ import { SEO } from "@/components/SEO";
 import { MobileNav } from "@/components/MobileNav";
 import { useScrollToBottom } from "@/hooks/useScrollToBottom";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
+import { useConfetti } from "@/hooks/useConfetti";
 
 export default function LessonPage() {
   const params = useParams<{ disciplineSlug: string; moduleSlug: string; pageSlug: string }>();
   const [, navigate] = useLocation();
   const { user, isAuthenticated } = useAuth();
+  const { fireConfetti } = useConfetti();
   
   const [completedExercises, setCompletedExercises] = useState<Set<number>>(new Set());
 
@@ -98,6 +100,14 @@ export default function LessonPage() {
       pageId: page.id,
       completed: true,
       score,
+    }, {
+      onSuccess: () => {
+        // Dispara confete para celebrar conclusão
+        fireConfetti();
+        toast.success('Parabéns! Aula concluída! 🎉', {
+          description: `Você ganhou ${score} pontos!`,
+        });
+      },
     });
   };
 

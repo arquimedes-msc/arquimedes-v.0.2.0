@@ -7,8 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Sidebar } from "@/components/Sidebar";
 import { Trophy, Flame, Target, CheckCircle2, XCircle, Clock, Sparkles } from "lucide-react";
 import { toast } from "sonner";
+import { useConfetti } from "@/hooks/useConfetti";
 
 export default function DailyChallengePage() {
+  const { fireGoldenConfetti } = useConfetti();
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [submittedExercises, setSubmittedExercises] = useState<Set<number>>(new Set());
   const [results, setResults] = useState<Record<number, { isCorrect: boolean; pointsEarned: number }>>({});
@@ -44,6 +46,7 @@ export default function DailyChallengePage() {
       setSubmittedExercises((prev) => new Set([...Array.from(prev), exerciseId]));
 
       if (result.isCorrect) {
+        fireGoldenConfetti(); // Confete dourado para desafio especial
         toast.success(`Correto! +${result.pointsEarned} pontos (DOBRADOS!) 🎉`);
       } else {
         toast.error("Resposta incorreta. Tente novamente amanhã!");

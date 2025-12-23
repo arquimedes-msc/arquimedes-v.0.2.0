@@ -8,6 +8,7 @@ import { MathContent } from "./MathContent";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { useSounds } from "@/lib/sounds";
+import { useConfetti } from "@/hooks/useConfetti";
 
 interface Exercise {
   id: number;
@@ -25,6 +26,7 @@ interface ExerciseCardProps {
 
 export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
   const { playSuccess, playError } = useSounds();
+  const { fireEmojiConfetti } = useConfetti();
   const [answer, setAnswer] = useState("");
   const [feedback, setFeedback] = useState<{
     type: "correct" | "incorrect" | null;
@@ -39,6 +41,7 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
       
       if (data.isCorrect) {
         playSuccess(); // Som de acerto
+        fireEmojiConfetti('✅'); // Confete com emoji de check
         setFeedback({
           type: "correct",
           message: "Excelente! Resposta correta! 🎉",

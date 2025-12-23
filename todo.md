@@ -988,3 +988,14 @@
 - [x] Otimizar performance de animações (will-change, transform) - usando Framer Motion
 - [ ] Testar gestos de toque em mobile
 - [ ] Validar tamanhos de toque (min 44x44px)
+
+
+## Animação de Confete (v2.26.0)
+- [x] Instalar canvas-confetti
+- [x] Criar hook useConfetti para gerenciar animações (6 variações)
+- [x] Integrar confete na conclusão automática de aulas
+- [x] Adicionar confete ao completar exercícios corretamente (emoji ✅)
+- [x] Adicionar confete ao completar desafio do dia (dourado)
+- [ ] Adicionar confete ao subir de nível
+- [x] Testar animações em diferentes dispositivos
+- [x] Garantir que não afeta performance
