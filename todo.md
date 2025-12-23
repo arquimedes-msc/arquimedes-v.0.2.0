@@ -110,3 +110,13 @@
 - [x] Adicionar componente NumberLine (reta numérica animada)
 - [x] Adicionar componente MultiplicationMatrix (matriz visual)
 - [x] Adicionar componente MultiplicationTable (tabuada visual)
+
+
+## Integração com Supabase
+- [x] Configurar variáveis de ambiente do Supabase
+- [x] Criar schema PostgreSQL compatível
+- [x] Criar adaptador de banco dual (Manus + Supabase)
+- [ ] Migrar dados para Supabase (fora do sandbox)
+- [ ] Configurar Row Level Security (RLS)
+- [ ] Criar scripts de exportação/importação
+- [x] Documentar integração
