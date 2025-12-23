@@ -538,3 +538,15 @@
 - [x] Implementar logout forçado ao acessar sistema
 - [x] Testar fluxo completo de autenticação
 - [x] Adicionar responsividade mobile
+
+
+## Simplificação e OAuth Funcional na Tela de Login
+- [x] Simplificar hero section (apenas "Arquimedes" + linha + "Matemática Descomplicada")
+- [x] Remover textos descritivos longos
+- [x] Simplificar card de login (remover "Bem-vindo de volta")
+- [x] Conectar botão Google ao OAuth real
+- [x] Conectar botão GitHub ao OAuth real
+- [x] Conectar botão Manus ao OAuth real
+- [x] Garantir redirecionamento para /dashboard após login
+- [x] Remover opção de cadastro manual
+- [x] Testar fluxo completo OAuth
