@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,8 +32,27 @@ export default function UnifiedExerciseRoomPage() {
   const awardXPMutation = trpc.gamification.awardXP.useMutation();
   const markCompleteMutation = trpc.standaloneExercises.markComplete.useMutation();
   
-  // Query de exercícios completados
+  // Query de exercícios completados (IDs apenas)
   const { data: completedExercises = [] } = trpc.standaloneExercises.getCompleted.useQuery();
+  
+  // Query de exercícios completados com detalhes (para restaurar estado visual)
+  const { data: completedDetails = [] } = trpc.standaloneExercises.getCompletedDetailed.useQuery();
+  
+  // Inicializar estado de exercícios respondidos a partir do banco de dados
+  useEffect(() => {
+    if (completedDetails.length > 0) {
+      const initialState: Record<number, { correct: boolean; selectedIdx: number }> = {};
+      completedDetails.forEach(detail => {
+        if (detail.selectedAnswer !== null) {
+          initialState[detail.exerciseId] = {
+            correct: detail.isCorrect,
+            selectedIdx: detail.selectedAnswer
+          };
+        }
+      });
+      setAnsweredExercises(initialState);
+    }
+  }, [completedDetails]);
 
   // Filtrar exercícios
   const filteredExercises = exercises?.filter((ex) => {
@@ -81,10 +100,11 @@ export default function UnifiedExerciseRoomPage() {
           relatedId: exerciseId,
         });
         
-        // Marcar como completado
+        // Marcar como completado (com selectedAnswer)
         await markCompleteMutation.mutateAsync({
           exerciseId,
           isCorrect: true,
+          selectedAnswer: selectedIdx,
         });
         
         // Verificar se módulo foi completado (backend fará a verificação e creditará bônus)

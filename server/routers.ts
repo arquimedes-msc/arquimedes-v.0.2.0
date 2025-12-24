@@ -515,9 +515,10 @@ Retorne APENAS um JSON com:
       .input(z.object({
         exerciseId: z.number(),
         isCorrect: z.boolean(),
+        selectedAnswer: z.number().optional(),
       }))
       .mutation(async ({ ctx, input }) => {
-        await db.markExerciseComplete(ctx.user.id, input.exerciseId, input.isCorrect);
+        await db.markExerciseComplete(ctx.user.id, input.exerciseId, input.isCorrect, input.selectedAnswer);
         
         // Check if module is complete and award bonus
         // Get exercise from database
@@ -535,6 +536,24 @@ Retorne APENAS um JSON com:
     
     getCompleted: protectedProcedure.query(async ({ ctx }) => {
       return await db.getUserCompletedExercises(ctx.user.id);
+    }),
+    
+    getCompletedDetailed: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserCompletedExercisesDetailed(ctx.user.id);
+    }),
+    
+    markInteractiveComplete: protectedProcedure
+      .input(z.object({
+        uniqueId: z.string(),
+        isCorrect: z.boolean(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        await db.markExerciseComplete(ctx.user.id, undefined, input.isCorrect, undefined, input.uniqueId);
+        return { success: true };
+      }),
+    
+    getCompletedInteractive: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserCompletedInteractiveExercises(ctx.user.id);
     }),
     
     getModuleStats: protectedProcedure

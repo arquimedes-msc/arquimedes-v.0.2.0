@@ -454,8 +454,10 @@ export type InsertPoint = typeof points.$inferInsert;
 export const exerciseCompletions = mysqlTable("exercise_completions", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull(),
-  exerciseId: int("exerciseId").notNull(), // ID do standalone_exercise
+  exerciseId: int("exerciseId"), // ID do standalone_exercise (nullable para exercícios interativos)
+  uniqueId: varchar("uniqueId", { length: 255 }), // ID string para exercícios interativos (ex: "adicao-fill-1")
   isCorrect: boolean("isCorrect").notNull(),
+  selectedAnswer: int("selectedAnswer"), // Índice da resposta selecionada (0-3 para múltipla escolha)
   completedAt: timestamp("completedAt").defaultNow().notNull(),
 });
 

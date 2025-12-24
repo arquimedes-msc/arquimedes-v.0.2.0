@@ -893,3 +893,51 @@
 - [ ] Atualizar página de Conquistas para usar badges progressivos
 - [ ] Implementar lógica de desbloque automático (bronze → prata → ouro → platina)
 - [ ] Testar responsividade e animações
+
+
+## 🚨 URGENTE - Correções Críticas de Persistência (24/12/2024)
+
+### Esconder Desafio do Dia (Temporário)
+- [ ] Remover link "Desafio do Dia" da Sidebar
+- [ ] Comentar rota /desafio-do-dia no App.tsx
+- [ ] Adicionar nota no código para voltar depois de validar respostas
+
+### Persistência de Exercícios (CRÍTICO)
+- [ ] Investigar por que exercícios não salvam após F5/logout
+- [ ] Verificar tabela exercise_completions no banco
+- [ ] Verificar se mutation está sendo chamada corretamente
+- [ ] Implementar salvamento automático no banco ao completar exercício
+- [ ] Testar persistência em Sala de Exercícios
+- [ ] Testar persistência em Exercícios Interativos
+- [ ] Garantir que progresso apareça após recarregar página
+- [ ] Garantir que badge "✓ Concluído" apareça em exercícios já feitos
+- [ ] Testar com F5 (recarregar página)
+- [ ] Testar com logout e login novamente
+- [ ] Testar navegando para outra página e voltando
+
+## ✅ Concluído (24/12/2024 - 15:52)
+
+### Esconder Desafio do Dia (Temporário)
+- [x] Remover link "Desafio do Dia" da Sidebar
+- [x] Comentar rota /desafio-do-dia no App.tsx
+- [x] Adicionar nota no código para voltar depois de validar respostas
+
+### Persistência de Exercícios (CRÍTICO) - ✅ IMPLEMENTADO
+- [x] Investigar por que exercícios não salvam após F5/logout
+- [x] Adicionar campo selectedAnswer à tabela exercise_completions
+- [x] Adicionar campo uniqueId à tabela exercise_completions (para exercícios interativos)
+- [x] Atualizar função markExerciseComplete para aceitar selectedAnswer e uniqueId
+- [x] Criar função getUserCompletedExercisesDetailed (retorna detalhes para restaurar UI)
+- [x] Criar função getUserCompletedInteractiveExercises (retorna uniqueIds)
+- [x] Adicionar mutation markInteractiveComplete no router
+- [x] Adicionar query getCompletedDetailed no router
+- [x] Adicionar query getCompletedInteractive no router
+- [x] Atualizar UnifiedExerciseRoomPage para usar getCompletedDetailed
+- [x] Inicializar estado answeredExercises com dados do banco (useEffect)
+- [x] Atualizar InteractiveExerciseRoomPage para usar getCompletedInteractive
+- [x] Inicializar estado completedExercises com dados do banco (useEffect)
+- [x] Aplicar 2 migrations (0018_lame_captain_cross.sql e 0019_common_cyclops.sql)
+- [ ] Testar persistência em Sala de Exercícios (após F5)
+- [ ] Testar persistência em Exercícios Interativos (após F5)
+- [ ] Testar com logout e login novamente
+- [ ] Testar navegando para outra página e voltando

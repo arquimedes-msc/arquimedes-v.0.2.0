@@ -18,7 +18,7 @@ export function Sidebar() {
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: Home },
     { name: "Perfil", href: "/perfil", icon: User },
-    { name: "Desafio do Dia", href: "/desafio-do-dia", icon: Trophy },
+    // { name: "Desafio do Dia", href: "/desafio-do-dia", icon: Trophy }, // Oculto temporariamente - validar respostas
     { name: "Conquistas", href: "/conquistas", icon: Award },
     { name: "Sala de Exercicios", href: "/exercicios", icon: Target },
     { name: "Exercícios Interativos", href: "/exercicios-interativos", icon: Sparkles },

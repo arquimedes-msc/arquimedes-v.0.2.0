@@ -1,4 +1,4 @@
-import { eq, and, desc, asc, sql, gte } from "drizzle-orm";
+import { eq, and, desc, asc, sql, gte, isNotNull, or } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { 
   InsertUser, users,
@@ -1577,20 +1577,34 @@ export async function resetUserProgress(userId: number) {
  */
 export async function markExerciseComplete(
   userId: number,
-  exerciseId: number,
-  isCorrect: boolean
+  exerciseId?: number,
+  isCorrect: boolean = true,
+  selectedAnswer?: number,
+  uniqueId?: string
 ): Promise<void> {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
 
-  // Check if already completed
+  // Check if already completed (by exerciseId OR uniqueId)
+  const whereConditions = [];
+  if (exerciseId !== undefined) {
+    whereConditions.push(eq(exerciseCompletions.exerciseId, exerciseId));
+  }
+  if (uniqueId) {
+    whereConditions.push(eq(exerciseCompletions.uniqueId, uniqueId));
+  }
+  
+  if (whereConditions.length === 0) {
+    throw new Error("Either exerciseId or uniqueId must be provided");
+  }
+
   const existing = await db
     .select()
     .from(exerciseCompletions)
     .where(
       and(
         eq(exerciseCompletions.userId, userId),
-        eq(exerciseCompletions.exerciseId, exerciseId)
+        or(...whereConditions)
       )
     )
     .limit(1);
@@ -1600,13 +1614,15 @@ export async function markExerciseComplete(
     await db.insert(exerciseCompletions).values({
       userId,
       exerciseId,
+      uniqueId,
       isCorrect,
+      selectedAnswer,
     });
   }
 }
 
 /**
- * Get user's completed exercises
+ * Get user's completed exercises (IDs only)
  */
 export async function getUserCompletedExercises(userId: number): Promise<number[]> {
   const db = await getDb();
@@ -1615,9 +1631,62 @@ export async function getUserCompletedExercises(userId: number): Promise<number[
   const completions = await db
     .select()
     .from(exerciseCompletions)
-    .where(eq(exerciseCompletions.userId, userId));
+    .where(
+      and(
+        eq(exerciseCompletions.userId, userId),
+        isNotNull(exerciseCompletions.exerciseId)
+      )
+    );
 
-  return completions.map(c => c.exerciseId);
+  return completions.map(c => c.exerciseId!).filter(id => id !== null);
+}
+
+/**
+ * Get user's completed exercises with details (for UI state restoration)
+ */
+export async function getUserCompletedExercisesDetailed(userId: number): Promise<Array<{
+  exerciseId: number;
+  isCorrect: boolean;
+  selectedAnswer: number | null;
+}>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const completions = await db
+    .select()
+    .from(exerciseCompletions)
+    .where(
+      and(
+        eq(exerciseCompletions.userId, userId),
+        isNotNull(exerciseCompletions.exerciseId)
+      )
+    );
+
+  return completions.map(c => ({
+    exerciseId: c.exerciseId!,
+    isCorrect: c.isCorrect,
+    selectedAnswer: c.selectedAnswer,
+  }));
+}
+
+/**
+ * Get user's completed interactive exercises (by uniqueId)
+ */
+export async function getUserCompletedInteractiveExercises(userId: number): Promise<string[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const completions = await db
+    .select()
+    .from(exerciseCompletions)
+    .where(
+      and(
+        eq(exerciseCompletions.userId, userId),
+        isNotNull(exerciseCompletions.uniqueId)
+      )
+    );
+
+  return completions.map(c => c.uniqueId!).filter(id => id !== null);
 }
 
 /**

@@ -127,6 +127,20 @@
       "when": 1766601998559,
       "tag": "0017_even_lyja",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1766602418090,
+      "tag": "0018_lame_captain_cross",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1766602644679,
+      "tag": "0019_common_cyclops",
+      "breakpoints": true
     }
   ]
 }

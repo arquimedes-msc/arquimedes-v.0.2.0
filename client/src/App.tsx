@@ -36,7 +36,7 @@ function Router() {
             <Route path="/exercicios-interativos" component={InteractiveExerciseRoomPage} />
             <Route path="/estatisticas" component={StatisticsPage} />
       <Route path="/videos" component={VideoRoomPage} />
-      <Route path="/desafio-do-dia" component={DailyChallengePage} />
+      {/* <Route path="/desafio-do-dia" component={DailyChallengePage} /> */} {/* Oculto temporariamente - validar respostas */}
       <Route path="/conquistas" component={AchievementsPage} />
       <Route path="/admin" component={AdminPage} />
       <Route path="/disciplinas" component={DisciplinesPage} />

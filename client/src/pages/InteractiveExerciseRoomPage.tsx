@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MobileNav } from "@/components/MobileNav";
 import { Sidebar } from "@/components/Sidebar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,13 +20,25 @@ export default function InteractiveExerciseRoomPage() {
   const { playSuccess, playError } = useSounds();
   const haptic = useHaptic();
 
+  // Query de exercícios interativos completados
+  const { data: completedInteractiveIds = [] } = trpc.standaloneExercises.getCompletedInteractive.useQuery();
+  
+  // Inicializar estado com exercícios já completados do banco
+  useEffect(() => {
+    if (completedInteractiveIds.length > 0) {
+      setCompletedExercises(new Set(completedInteractiveIds));
+    }
+  }, [completedInteractiveIds]);
+
   const addPointsMutation = trpc.points.addPoints.useMutation({
     onSuccess: () => {
       // Pontos adicionados com sucesso
     },
   });
+  
+  const markInteractiveCompleteMutation = trpc.standaloneExercises.markInteractiveComplete.useMutation();
 
-  const handleExerciseComplete = (exerciseId: string, points: number, isCorrect: boolean) => {
+  const handleExerciseComplete = async (exerciseId: string, points: number, isCorrect: boolean) => {
     if (completedExercises.has(exerciseId)) {
       toast.info("Você já completou este exercício!");
       return;
@@ -42,10 +54,16 @@ export default function InteractiveExerciseRoomPage() {
       toast.success(`+${points} pontos! 🎉`);
       
       // Adicionar pontos ao sistema
-      addPointsMutation.mutate({
+      await addPointsMutation.mutateAsync({
         action: "exercise_completed",
         points,
         relatedId: undefined,
+      });
+      
+      // Marcar como completado no banco
+      await markInteractiveCompleteMutation.mutateAsync({
+        uniqueId: exerciseId,
+        isCorrect: true,
       });
     } else {
       playError();
