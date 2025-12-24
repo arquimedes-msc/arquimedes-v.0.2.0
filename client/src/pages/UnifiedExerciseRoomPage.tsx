@@ -344,7 +344,9 @@ export default function UnifiedExerciseRoomPage() {
                             
                             {exercise.exerciseType === "multiple_choice" && exercise.options && (
                               <div className="grid gap-2">
-                                {(typeof exercise.options === 'string' ? JSON.parse(exercise.options) : exercise.options as string[]).map((option: string, idx: number) => {
+                                {(typeof exercise.options === 'string' ? JSON.parse(exercise.options) : exercise.options as any[]).map((option: any, idx: number) => {
+                                  // Suportar tanto formato string[] quanto {id, text}[]
+                                  const optionText = typeof option === 'string' ? option : option.text;
                                   const correctIdx = parseInt(exercise.correctAnswer || "0");
                                   const answered = answeredExercises[exercise.id];
                                   const isThisSelected = answered?.selectedIdx === idx;
@@ -375,7 +377,7 @@ export default function UnifiedExerciseRoomPage() {
                                       onClick={() => handleAnswer(exercise.id, idx, correctIdx, exercise.points)}
                                     >
                                       <span className="mr-2 font-bold">{String.fromCharCode(65 + idx)})</span>
-                                      {option}
+                                      {optionText}
                                       {answered && isThisCorrect && !isThisSelected && " ✅"}
                                     </Button>
                                   );

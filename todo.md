@@ -1221,3 +1221,39 @@
 - [x] Testar tema claro padrão no browser
 - [x] Verificar persistência da escolha do usuário
 - [x] Resetar darkMode do usuário para false no banco de dados
+
+
+## 📝 Adicionar Exercícios Fáceis Estáticos (24/12/2024)
+- [ ] Adicionar 10 exercícios fáceis de Adição
+- [ ] Adicionar 20 exercícios fáceis de Subtração
+- [ ] Adicionar 20 exercícios fáceis de Multiplicação
+- [ ] Adicionar 20 exercícios fáceis de Divisão
+- [ ] Adicionar 20 exercícios fáceis de Porcentagem
+- [ ] Total: 90 novos exercícios
+
+## 🎨 Corrigir Sistema de Cores (24/12/2024)
+- [ ] Investigar por que cores não aplicam visualmente
+- [ ] Expandir mapeamento de cores para mais elementos
+- [ ] Aplicar cores em header, botões, cards, badges
+- [ ] Testar todas as 8 cores (azul, vermelho, verde, roxo, laranja, rosa, teal, índigo)
+- [ ] Garantir mudanças visíveis e perceptíveis
+
+
+## 📝 Adicionar Exercícios Fáceis (24/12/2024)
+- [x] Gerar 10 exercícios fáceis de Adição
+- [x] Gerar 20 exercícios fáceis de Subtração
+- [x] Gerar 20 exercícios fáceis de Multiplicação
+- [x] Gerar 20 exercícios fáceis de Divisão
+- [x] Gerar 20 exercícios fáceis de Porcentagem
+- [x] Inserir 90 exercícios no banco de dados via script Node.js
+- [x] Testar exercícios na Sala de Exercícios (72 total)
+- [x] Verificar contagem: Adição (72), Subtração (40), Multiplicação (47)
+- [x] Corrigir parsing de options para suportar formato {id, text}
+
+## 🎨 Corrigir Sistema de Cores (24/12/2024)
+- [x] Analisar por que cores não aplicam visualmente
+- [x] Expandir mapeamento de cores no ThemeContext (adicionado accent)
+- [x] Aplicar cores em variáveis CSS (--primary, --accent, --header-gradient-start)
+- [x] Testar mudança de cor no Perfil (Vermelho selecionado)
+- [x] Verificar persistência no banco de dados
+- [ ] TODO FUTURO: Modificar header para usar variáveis CSS dinâmicas (atualmente hardcoded com gradiente roxo/azul fixo)
