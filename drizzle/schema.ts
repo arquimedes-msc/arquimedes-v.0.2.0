@@ -411,6 +411,7 @@ export const achievementDefinitions = mysqlTable("achievement_definitions", {
   icon: varchar("icon", { length: 50 }).notNull(), // Nome do ícone lucide-react
   category: mysqlEnum("category", ["learning", "streak", "mastery", "practice"]).notNull(),
   requirement: int("requirement").notNull(), // Quantidade necessária (ex: 1 aula, 7 dias, 50 exercícios)
+  hasLevels: boolean("hasLevels").default(false).notNull(), // Se a conquista tem níveis progressivos
   order: int("order").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
@@ -426,6 +427,7 @@ export const userAchievements = mysqlTable("user_achievements", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull(),
   achievementId: int("achievementId").notNull(), // Referência para achievement_definitions
+  level: mysqlEnum("level", ["bronze", "silver", "gold", "platinum"]).default("bronze").notNull(), // Nível atual da conquista
   unlockedAt: timestamp("unlockedAt").defaultNow().notNull(),
 });
 

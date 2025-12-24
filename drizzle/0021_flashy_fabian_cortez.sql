@@ -1,0 +1,2 @@
+ALTER TABLE `achievement_definitions` ADD `hasLevels` boolean DEFAULT false NOT NULL;--> statement-breakpoint
+ALTER TABLE `user_achievements` ADD `level` enum('bronze','silver','gold','platinum') DEFAULT 'bronze' NOT NULL;

@@ -675,18 +675,27 @@ Retorne APENAS um JSON com:
     getUserAchievements: protectedProcedure.query(async ({ ctx }) => {
       const definitions = await db.getAllAchievementDefinitions();
       const unlocked = await db.getUserUnlockedAchievements(ctx.user.id);
-      const unlockedIds = new Set(unlocked.map((u) => u.achievementId));
+      const unlockedMap = new Map(unlocked.map((u) => [u.achievementId, u]));
 
-      return definitions.map((def) => ({
-        ...def,
-        unlocked: unlockedIds.has(def.id),
-        unlockedAt: unlocked.find((u) => u.achievementId === def.id)?.unlockedAt || null,
-      }));
+      return definitions.map((def) => {
+        const userAch = unlockedMap.get(def.id);
+        return {
+          ...def,
+          unlocked: !!userAch,
+          level: userAch?.level || "bronze",
+          unlockedAt: userAch?.unlockedAt || null,
+        };
+      });
     }),
 
     checkProgress: protectedProcedure.mutation(async ({ ctx }) => {
-      // TODO: Implement checkAndAwardAchievements function
-      return { newAchievements: [] };
+      const newAchievements = await db.checkAndAwardAchievements(ctx.user.id);
+      const upgradedAchievements = await db.checkAndUpgradeAchievementLevels(ctx.user.id);
+      
+      return { 
+        newAchievements, 
+        upgradedAchievements 
+      };
     }),
   }),
 

@@ -1523,6 +1523,137 @@ export async function checkAndAwardAchievements(userId: number): Promise<Achieve
   return newlyUnlocked;
 }
 
+/**
+ * Check and upgrade achievement levels (bronze → silver → gold → platinum)
+ * Returns upgraded achievements
+ */
+export async function checkAndUpgradeAchievementLevels(userId: number): Promise<Array<{ achievement: AchievementDefinition; oldLevel: string; newLevel: string }>> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const definitions = await getAllAchievementDefinitions();
+  const unlocked = await getUserUnlockedAchievements(userId);
+  const upgraded: Array<{ achievement: AchievementDefinition; oldLevel: string; newLevel: string }> = [];
+
+  // Level multipliers
+  const levelRequirements = {
+    bronze: 1,    // base requirement
+    silver: 2,    // 2x base
+    gold: 5,      // 5x base
+    platinum: 10  // 10x base
+  };
+
+  for (const userAch of unlocked) {
+    const def = definitions.find(d => d.id === userAch.achievementId);
+    if (!def || !def.hasLevels) continue;
+
+    // Calculate current progress
+    let currentProgress = 0;
+
+    switch (def.key) {
+      case "learning_master": {
+        const progress = await db
+          .select()
+          .from(pageProgress)
+          .where(and(eq(pageProgress.userId, userId), eq(pageProgress.completed, true)));
+        currentProgress = progress.length;
+        break;
+      }
+
+      case "practice_champion": {
+        const attempts = await db
+          .select()
+          .from(standaloneExerciseAttempts)
+          .where(
+            and(
+              eq(standaloneExerciseAttempts.userId, userId),
+              eq(standaloneExerciseAttempts.isCorrect, true)
+            )
+          );
+        currentProgress = attempts.length;
+        break;
+      }
+
+      case "streak_legend": {
+        const streak = await db
+          .select()
+          .from(streaks)
+          .where(eq(streaks.userId, userId))
+          .limit(1);
+        currentProgress = streak.length > 0 ? streak[0].longestStreak : 0;
+        break;
+      }
+
+      case "mastery_expert": {
+        // Count completed modules
+        const allModules = await db.select().from(modules);
+        let completedModules = 0;
+
+        for (const module of allModules) {
+          const modulePages = await db
+            .select()
+            .from(pages)
+            .where(eq(pages.moduleId, module.id));
+          
+          if (modulePages.length === 0) continue;
+
+          const completedPages = await db
+            .select()
+            .from(pageProgress)
+            .where(
+              and(
+                eq(pageProgress.userId, userId),
+                eq(pageProgress.completed, true)
+              )
+            );
+
+          const completedPageIds = new Set(completedPages.map((p) => p.pageId));
+          const allModulePagesCompleted = modulePages.every((p) => completedPageIds.has(p.id));
+          
+          if (allModulePagesCompleted) {
+            completedModules++;
+          }
+        }
+        currentProgress = completedModules;
+        break;
+      }
+    }
+
+    // Determine target level based on progress
+    let targetLevel: "bronze" | "silver" | "gold" | "platinum" = "bronze";
+    const baseReq = def.requirement;
+
+    if (currentProgress >= baseReq * levelRequirements.platinum) {
+      targetLevel = "platinum";
+    } else if (currentProgress >= baseReq * levelRequirements.gold) {
+      targetLevel = "gold";
+    } else if (currentProgress >= baseReq * levelRequirements.silver) {
+      targetLevel = "silver";
+    }
+
+    // Upgrade if needed
+    if (targetLevel !== userAch.level) {
+      const oldLevel = userAch.level;
+      await db
+        .update(userAchievements)
+        .set({ level: targetLevel })
+        .where(eq(userAchievements.id, userAch.id));
+
+      upgraded.push({
+        achievement: def,
+        oldLevel,
+        newLevel: targetLevel
+      });
+
+      // Award bonus XP for upgrade
+      const xpBonus = targetLevel === "platinum" ? 50 : targetLevel === "gold" ? 30 : 15;
+      await awardXP(userId, xpBonus, `Upgrade: ${def.title} (${targetLevel.toUpperCase()})`, def.id);
+    }
+  }
+
+  return upgraded;
+}
+
 
 // ============= ADMIN: RESET USER DATA =============
 

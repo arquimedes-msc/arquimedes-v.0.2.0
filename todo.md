@@ -1037,3 +1037,73 @@
 - [x] Salvar alterações - ✅ Funcionou
 - [x] Persistência após F5 - ✅ Funcionou
 - [x] Botão "Salvar" aparece/desaparece corretamente - ✅ Funcionou
+
+## 🏆 Sistema de Badges Progressivos - EM ANDAMENTO
+
+### Backend - Schema e Lógica
+- [ ] Adicionar campo `level` (bronze, prata, ouro, platina) na tabela achievements
+- [ ] Adicionar campo `nextLevelRequirement` para definir requisito do próximo nível
+- [ ] Criar função `checkAndUpgradeAchievements()` para desbloqueio automático
+- [ ] Atualizar mutation `checkProgress` para verificar upgrades
+
+### Backend - Sistema de Níveis
+- [ ] Bronze: Requisito base (ex: 5 exercícios)
+- [ ] Prata: 2x o bronze (ex: 10 exercícios)
+- [ ] Ouro: 5x o bronze (ex: 25 exercícios)
+- [ ] Platina: 10x o bronze (ex: 50 exercícios)
+
+### Frontend - Interface Visual
+- [ ] Redesenhar AchievementsPage com grid de badges progressivos
+- [ ] Adicionar cores por nível (bronze: #CD7F32, prata: #C0C0C0, ouro: #FFD700, platina: #E5E4E2)
+- [ ] Barra de progresso até próximo nível
+- [ ] Animação de desbloqueio (confetti, shake, glow)
+- [ ] Tooltip com requisitos e progresso
+
+### Frontend - Responsividade
+- [ ] Grid 1 coluna (mobile)
+- [ ] Grid 2 colunas (tablet)
+- [ ] Grid 3-4 colunas (desktop)
+- [ ] Testar em diferentes resoluções
+
+### Testes
+- [ ] Desbloquear bronze automaticamente
+- [ ] Upgrade bronze → prata
+- [ ] Upgrade prata → ouro
+- [ ] Upgrade ouro → platina
+- [ ] Animações funcionando
+- [ ] Responsividade mobile/tablet/desktop
+
+## ✅ Sistema de Badges Progressivos - CONCLUÍDO (v2.45.0)
+
+### Backend - Schema e Lógica
+- [x] Adicionar campo `level` (bronze, prata, ouro, platina) na tabela user_achievements
+- [x] Adicionar campo `hasLevels` na tabela achievement_definitions
+- [x] Criar função `checkAndUpgradeAchievementLevels()` para desbloqueio automático
+- [x] Atualizar mutation `checkProgress` para verificar upgrades
+
+### Backend - Sistema de Níveis
+- [x] Bronze: Requisito base (ex: 5 exercícios)
+- [x] Prata: 2x o bronze (ex: 10 exercícios)
+- [x] Ouro: 5x o bronze (ex: 25 exercícios)
+- [x] Platina: 10x o bronze (ex: 50 exercícios)
+
+### Frontend - Interface Visual
+- [x] Redesenhar AchievementsPage com grid de badges progressivos
+- [x] Adicionar cores por nível (bronze: #CD7F32, prata: #C0C0C0, ouro: #FFD700, platina: #E5E4E2)
+- [x] Barra de progresso até próximo nível
+- [x] Tooltip com requisitos e progresso
+- [x] Gradientes e sombras por nível
+
+### Frontend - Responsividade
+- [x] Grid 1 coluna (mobile)
+- [x] Grid 2 colunas (tablet)
+- [x] Grid 3-4 colunas (desktop)
+- [x] Testado em diferentes resoluções
+
+### Testes
+- [x] Interface visual funcionando
+- [x] Badges bloqueadas com cadeado
+- [x] Badge desbloqueada ("Primeira Aula") com gradiente bronze
+- [x] Badges progressivas com emojis (🥉🥈🥇💎)
+- [x] Grid responsivo 4 colunas desktop
+- [x] Scroll completo funcionando
