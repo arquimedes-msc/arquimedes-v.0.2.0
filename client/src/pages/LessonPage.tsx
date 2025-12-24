@@ -100,31 +100,41 @@ export default function LessonPage() {
     const allExercisesCompleted = exercises.length === 0 || exercises.every((ex) => completedExercises.has(ex.id));
     const score = exercises.length === 0 ? 100 : allExercisesCompleted ? 100 : Math.round((completedExercises.size / exercises.length) * 100);
 
+    console.log('[DEBUG] About to call mutation', { pageId: page.id, score, exercisesCount: exercises.length });
+    
     updateProgressMutation.mutate({
       pageId: page.id,
       completed: true,
       score,
     }, {
       onSuccess: () => {
+        console.log('[DEBUG] Mutation success!');
         // Dispara confete para celebrar conclusão
         fireConfetti();
         toast.success('Parabéns! Aula concluída! 🎉', {
           description: `Você ganhou ${score} pontos!`,
         });
       },
+      onError: (error) => {
+        console.error('[DEBUG] Mutation error:', error);
+        toast.error('Erro ao salvar progresso', {
+          description: error.message || 'Tente novamente',
+        });
+      },
     });
   };
 
-  // Auto-complete when user scrolls to bottom
+  // Auto-complete when user scrolls to bottom (simplified - less restrictive)
   const scrollCallback = useCallback(() => {
-    console.log('[DEBUG] useScrollToBottom triggered', { isAuthenticated, pageId: page?.id, progressCompleted: progress?.completed });
-    if (isAuthenticated && page && !progress?.completed) {
+    console.log('[DEBUG] useScrollToBottom triggered', { pageId: page?.id, progressCompleted: progress?.completed });
+    // Simplified: only check if page exists and not already completed
+    if (page && !progress?.completed) {
       console.log('[DEBUG] Calling handleMarkComplete');
       handleMarkComplete();
     } else {
-      console.log('[DEBUG] Blocked handleMarkComplete', { isAuthenticated, hasPage: !!page, progressCompleted: progress?.completed });
+      console.log('[DEBUG] Blocked handleMarkComplete', { hasPage: !!page, progressCompleted: progress?.completed });
     }
-  }, [isAuthenticated, page, progress?.completed]);
+  }, [page, progress?.completed]);
 
   useScrollToBottom({
     threshold: 200,
@@ -281,12 +291,35 @@ export default function LessonPage() {
           </Card>
         )}
 
-        {/* Auto-completion indicator */}
-        {isAuthenticated && !progress?.completed && (
-          <div className="flex justify-center px-4 py-6">
+        {/* Completion section */}
+        {!progress?.completed && (
+          <div className="flex flex-col items-center gap-4 px-4 py-6 border-t">
             <p className="text-sm text-muted-foreground text-center">
-              🎓 Continue lendo até o final para concluir esta aula automaticamente
+              🎓 Role até o final para concluir automaticamente ou clique no botão abaixo
             </p>
+            <Button 
+              onClick={handleMarkComplete}
+              size="lg"
+              className="w-full sm:w-auto min-h-[48px]"
+              disabled={!isAuthenticated || updateProgressMutation.isPending}
+            >
+              {updateProgressMutation.isPending ? (
+                <>
+                  <span className="animate-spin mr-2">⏳</span>
+                  Salvando...
+                </>
+              ) : (
+                <>
+                  <CheckCircle2 className="h-5 w-5 mr-2" />
+                  Concluir Aula
+                </>
+              )}
+            </Button>
+            {!isAuthenticated && (
+              <p className="text-xs text-muted-foreground">
+                Faça login para salvar seu progresso
+              </p>
+            )}
           </div>
         )}
 
