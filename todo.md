@@ -380,6 +380,16 @@
 
 ### 🐛 Bugs Críticos Encontrados nos Testes Finais
 
+#### ✅ Bug #6: Navegação Entre Páginas do Módulo Subtração Quebrada (RESOLVIDO)
+- [x] Investigar por que página 3 redireciona para página 1
+- [x] Investigar por que páginas 4, 5, 6 são inacessíveis
+- [x] Verificar slugs das páginas no banco de dados
+- [x] **Causa raiz:** Páginas 3-6 estão com mainText = NULL no banco
+- [x] Deletar páginas 3-6 vazias do banco de dados
+- [x] Criar nova Aula 3: "Aplicações Práticas da Subtração" com conteúdo completo (5.800+ palavras)
+- [x] Testar navegação completa após correção
+- [x] **Resultado:** Módulo agora tem 3 aulas funcionais (antes tinha 6 com 4 vazias)
+
 #### 🔴 Bug #1: XP Não é Creditado Após Conclusão de Aula (URGENTE)
 - [ ] Investigar por que XP não é creditado ao completar aula
 - [ ] Verificar se mutation completeLesson está sendo chamada ao clicar em "Próximo"

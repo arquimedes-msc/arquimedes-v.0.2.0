@@ -1,0 +1,8 @@
+{
+  "query": "SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.content IS NULL THEN 'NULL' \n            WHEN LENGTH(p.content) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.content), ' chars') \n       END as content_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.content IS NULL THEN 'NULL' \n            WHEN LENGTH(p.content) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.content), ' chars') \n       END as content_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'p.content' in 'field list'"
+  ]
+}

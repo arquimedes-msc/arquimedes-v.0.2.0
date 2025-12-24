@@ -1,0 +1,52 @@
+{
+  "query": "SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT p.id, p.title, p.slug, p.order, \n       CASE WHEN p.mainText IS NULL THEN 'NULL' \n            WHEN LENGTH(p.mainText) = 0 THEN 'EMPTY' \n            ELSE CONCAT(LENGTH(p.mainText), ' chars') \n       END as mainText_status\nFROM pages p\nJOIN modules m ON p.moduleId = m.id\nWHERE m.slug = 'subtracao'\nORDER BY p.order;",
+  "rows": [
+    {
+      "id": "120009",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair",
+      "order": "1",
+      "mainText_status": "3714 chars"
+    },
+    {
+      "id": "120010",
+      "title": "Subtração na Reta Numérica",
+      "slug": "subtracao-com-emprestimo",
+      "order": "2",
+      "mainText_status": "3224 chars"
+    },
+    {
+      "id": "120011",
+      "title": "Subtração com Empréstimo",
+      "slug": "aplicacoes-praticas-subtracao",
+      "order": "3",
+      "mainText_status": "840 chars"
+    },
+    {
+      "id": "120015",
+      "title": "Subtração de Números Maiores",
+      "slug": "o-que-e-subtrair",
+      "order": "4",
+      "mainText_status": "2366 chars"
+    },
+    {
+      "id": "120016",
+      "title": "Relação entre Adição e Subtração",
+      "slug": "subtracao-com-emprestimo",
+      "order": "5",
+      "mainText_status": "1733 chars"
+    },
+    {
+      "id": "120017",
+      "title": "Aplicações Práticas da Subtração",
+      "slug": "aplicacoes-praticas-subtracao",
+      "order": "6",
+      "mainText_status": "1727 chars"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\torder\tmainText_status\n120009\tO que é Subtrair?\to-que-e-subtrair\t1\t3714 chars\n120010\tSubtração na Reta Numérica\tsubtracao-com-emprestimo\t2\t3224 chars\n120011\tSubtração com Empréstimo\taplicacoes-praticas-subtracao\t3\t840 chars\n120015\tSubtração de Números Maiores\to-que-e-subtrair\t4\t2366 chars\n120016\tRelação entre Adição e Subtração\tsubtracao-com-emprestimo\t5\t1733 chars\n120017\tAplicações Práticas da Subtração\taplicacoes-praticas-subtracao\t6\t1727 chars\n",
+  "stderr": "",
+  "execution_time_ms": 56
+}
