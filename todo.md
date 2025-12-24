@@ -941,3 +941,99 @@
 - [ ] Testar persistência em Exercícios Interativos (após F5)
 - [ ] Testar com logout e login novamente
 - [ ] Testar navegando para outra página e voltando
+
+
+## 🎨 Refatoração Completa da Página de Perfil (ALTA PRIORIDADE)
+
+### Backend - Schema e APIs
+- [ ] Verificar campos existentes na tabela users (avatar, themeColor, darkMode)
+- [ ] Adicionar campo favoriteAchievements (JSON array de IDs) se não existir
+- [ ] Criar mutation updateProfile (nome, avatar, themeColor, darkMode)
+- [ ] Criar mutation uploadAvatar (upload para S3 e retorna URL)
+- [ ] Criar mutation updateFavoriteAchievements (array de achievement IDs)
+
+### Frontend - Upload de Avatar
+- [ ] Criar componente AvatarUpload com preview
+- [ ] Implementar drag & drop de imagens
+- [ ] Validar tamanho (max 2MB) e formato (jpg, png, webp)
+- [ ] Fazer upload para S3 via mutation
+- [ ] Mostrar loading durante upload
+- [ ] Atualizar avatar na Sidebar automaticamente
+
+### Frontend - Seletor de Cores
+- [ ] Criar paleta de 8-10 cores predefinidas
+- [ ] Criar componente ColorPicker visual
+- [ ] Aplicar cor selecionada em tempo real (preview)
+- [ ] Salvar preferência no banco via mutation
+
+### Frontend - Modo Escuro
+- [ ] Criar toggle Escuro/Claro visual
+- [ ] Integrar com ThemeProvider existente
+- [ ] Aplicar tema em toda a aplicação
+- [ ] Salvar preferência no banco
+- [ ] Carregar preferência ao fazer login
+
+### Frontend - Seleção de Badges Favoritas
+- [ ] Buscar todas as conquistas desbloqueadas do usuário
+- [ ] Criar grid de badges selecionáveis
+- [ ] Permitir selecionar até 3 badges favoritas
+- [ ] Mostrar badges selecionadas no topo do perfil
+- [ ] Salvar seleção no banco
+
+### Frontend - Interface Profissional
+- [ ] Redesenhar ProfilePage com layout moderno
+- [ ] Seção "Informações Pessoais" (nome, email, avatar)
+- [ ] Seção "Aparência" (tema de cores, modo escuro)
+- [ ] Seção "Badges Favoritas" (seleção visual)
+- [ ] Seção "Estatísticas" (XP, nível, sequência, conquistas)
+- [ ] Botão "Salvar Alterações" com feedback visual
+- [ ] Preview em tempo real das mudanças
+
+## ✅ Refatoração Completa da Página de Perfil - CONCLUÍDO
+
+### Backend - Schema e APIs
+- [x] Campo favoriteAchievements (JSON array) adicionado à tabela users
+- [x] Mutation updateAvatar com upload para S3 implementada
+- [x] Mutation updatePreferences expandida para 8 cores
+- [x] Mutation updateFavoriteAchievements criada
+- [x] Função updateUserFavoriteAchievements no db.ts
+
+### Frontend - Upload de Avatar
+- [x] Upload direto para S3 com preview
+- [x] Validação de tamanho (max 2MB) e formato
+- [x] Loading durante upload
+- [x] Avatar atualizado automaticamente
+
+### Frontend - Seletor de Cores
+- [x] Paleta de 8 cores visuais (blue, red, green, purple, orange, pink, teal, indigo)
+- [x] Componente ColorPicker com checkmarks
+- [x] Preview em tempo real
+- [x] Persistência no banco
+
+### Frontend - Modo Escuro
+- [x] Toggle Escuro/Claro visual
+- [x] Salvar preferência no banco
+
+### Frontend - Seleção de Badges Favoritas
+- [x] Grid de badges desbloqueadas
+- [x] Seleção até 3 badges
+- [x] Visual com checkmarks e bordas
+- [x] Persistência no banco
+
+### Frontend - Interface Profissional
+- [x] Design moderno com gradiente
+- [x] Avatar grande (132x132) com botão de câmera
+- [x] Seção "Informações Pessoais"
+- [x] Seção "Aparência" com paleta visual
+- [x] Seção "Badges Favoritas"
+- [x] Botão "Salvar Todas as Alterações" (aparece só quando há mudanças)
+- [x] Preview em tempo real
+- [x] Detecção automática de mudanças
+
+### Testes Realizados
+- [x] Upload de avatar (validação pendente - não testado com arquivo real)
+- [x] Seleção de cor (Roxo) - ✅ Funcionou
+- [x] Seleção de badge favorita - ✅ Funcionou
+- [x] Salvar alterações - ✅ Funcionou
+- [x] Persistência após F5 - ✅ Funcionou
+- [x] Botão "Salvar" aparece/desaparece corretamente - ✅ Funcionou

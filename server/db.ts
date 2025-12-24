@@ -887,6 +887,19 @@ export async function updateUserPreferences(
   }
 }
 
+export async function updateUserFavoriteAchievements(
+  userId: number,
+  achievementIds: number[]
+) {
+  const db = await getDb();
+  if (!db) return;
+  
+  await db
+    .update(users)
+    .set({ favoriteAchievements: achievementIds })
+    .where(eq(users.id, userId));
+}
+
 export async function getUserActivityHistory(userId: number, limit: number = 20) {
   const db = await getDb();
   if (!db) return [];

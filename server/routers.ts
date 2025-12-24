@@ -392,20 +392,34 @@ Retorne APENAS um JSON com:
     }),
     
     updateAvatar: protectedProcedure
-      .input(z.object({ avatarUrl: z.string().url() }))
+      .input(z.object({ avatarBase64: z.string() }))
       .mutation(async ({ ctx, input }) => {
-        await db.updateUserAvatar(ctx.user.id, input.avatarUrl);
-        return { success: true };
+        // Upload to S3
+        const buffer = Buffer.from(input.avatarBase64.split(',')[1], 'base64');
+        const fileKey = `avatars/${ctx.user.id}-${Date.now()}.jpg`;
+        const { storagePut } = await import("./storage");
+        const { url } = await storagePut(fileKey, buffer, "image/jpeg");
+        
+        // Update user avatar URL
+        await db.updateUserAvatar(ctx.user.id, url);
+        return { success: true, avatarUrl: url };
       }),
     
     updatePreferences: protectedProcedure
       .input(z.object({
         language: z.enum(["pt", "en"]).optional(),
-        themeColor: z.enum(["blue", "red", "green"]).optional(),
+        themeColor: z.enum(["blue", "red", "green", "purple", "orange", "pink", "teal", "indigo"]).optional(),
         darkMode: z.boolean().optional(),
       }))
       .mutation(async ({ ctx, input }) => {
         await db.updateUserPreferences(ctx.user.id, input);
+        return { success: true };
+      }),
+    
+    updateFavoriteAchievements: protectedProcedure
+      .input(z.object({ achievementIds: z.array(z.number()).max(3) }))
+      .mutation(async ({ ctx, input }) => {
+        await db.updateUserFavoriteAchievements(ctx.user.id, input.achievementIds);
         return { success: true };
       }),
     

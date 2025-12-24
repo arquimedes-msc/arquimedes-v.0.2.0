@@ -13,8 +13,9 @@ export const users = mysqlTable("users", {
   hasCompletedOnboarding: boolean("hasCompletedOnboarding").default(false).notNull(),
   avatar: text("avatar"), // URL to S3 avatar image
   language: varchar("language", { length: 10 }).default("pt").notNull(), // pt, en
-  themeColor: varchar("themeColor", { length: 20 }).default("blue").notNull(), // blue, red, green
+  themeColor: varchar("themeColor", { length: 20 }).default("blue").notNull(), // blue, red, green, purple, orange, pink, teal, indigo
   darkMode: boolean("darkMode").default(false).notNull(),
+  favoriteAchievements: json("favoriteAchievements").$type<number[]>(), // Array de IDs de conquistas favoritas (max 3)
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),

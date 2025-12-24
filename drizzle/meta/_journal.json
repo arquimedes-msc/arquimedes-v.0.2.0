@@ -141,6 +141,13 @@
       "when": 1766602644679,
       "tag": "0019_common_cyclops",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1766603087073,
+      "tag": "0020_black_guardian",
+      "breakpoints": true
     }
   ]
 }
