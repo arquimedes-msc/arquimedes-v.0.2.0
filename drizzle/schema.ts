@@ -419,3 +419,19 @@ export const userAchievements = mysqlTable("user_achievements", {
 
 export type UserAchievement = typeof userAchievements.$inferSelect;
 export type InsertUserAchievement = typeof userAchievements.$inferInsert;
+
+/**
+ * Points (Pontos)
+ * Rastreia pontos ganhos pelos usuários em diferentes ações
+ */
+export const points = mysqlTable("points", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  action: mysqlEnum("action", ["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed"]).notNull(),
+  points: int("points").notNull(),
+  relatedId: int("relatedId"), // ID relacionado (exercício, vídeo, etc)
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Point = typeof points.$inferSelect;
+export type InsertPoint = typeof points.$inferInsert;

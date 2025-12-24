@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE pages \nSET `order` = CASE id\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1) AS t1) THEN 1\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 1) AS t2) THEN 2\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 2) AS t3) THEN 3\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 3) AS t4) THEN 4\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 4) AS t5) THEN 5\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 5) AS t6) THEN 6\nEND\nWHERE moduleId = 90002;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute UPDATE pages \nSET `order` = CASE id\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1) AS t1) THEN 1\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 1) AS t2) THEN 2\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 2) AS t3) THEN 3\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 3) AS t4) THEN 4\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 4) AS t5) THEN 5\n  WHEN (SELECT id FROM (SELECT id FROM pages WHERE moduleId = 90002 ORDER BY `order`, id LIMIT 1 OFFSET 5) AS t6) THEN 6\nEND\nWHERE moduleId = 90002;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 63
+}

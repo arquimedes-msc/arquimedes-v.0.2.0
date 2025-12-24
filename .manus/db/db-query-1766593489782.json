@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, title, `order` FROM pages WHERE moduleId = 90002 ORDER BY `order`;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, title, `order` FROM pages WHERE moduleId = 90002 ORDER BY `order`;",
+  "rows": [
+    {
+      "id": "120009",
+      "title": "O que é Subtrair?",
+      "order": "1"
+    },
+    {
+      "id": "120010",
+      "title": "Subtração na Reta Numérica",
+      "order": "2"
+    },
+    {
+      "id": "120011",
+      "title": "Subtração com Empréstimo",
+      "order": "3"
+    },
+    {
+      "id": "120015",
+      "title": "Subtração de Números Maiores",
+      "order": "4"
+    },
+    {
+      "id": "120016",
+      "title": "Relação entre Adição e Subtração",
+      "order": "5"
+    },
+    {
+      "id": "120017",
+      "title": "Aplicações Práticas da Subtração",
+      "order": "6"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\torder\n120009\tO que é Subtrair?\t1\n120010\tSubtração na Reta Numérica\t2\n120011\tSubtração com Empréstimo\t3\n120015\tSubtração de Números Maiores\t4\n120016\tRelação entre Adição e Subtração\t5\n120017\tAplicações Práticas da Subtração\t6\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

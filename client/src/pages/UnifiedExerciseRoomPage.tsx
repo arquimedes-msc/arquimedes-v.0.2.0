@@ -18,6 +18,7 @@ export default function UnifiedExerciseRoomPage() {
   const [filterType, setFilterType] = useState<string>("all");
   const [filterDifficulty, setFilterDifficulty] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [answeredExercises, setAnsweredExercises] = useState<Record<number, { correct: boolean; selectedIdx: number }>>({}); // Rastrear respostas
 
   // Queries
   const { data: modules } = trpc.modules.listByDiscipline.useQuery({ disciplineId: 1 }); // 1 = Aritmética
@@ -26,8 +27,9 @@ export default function UnifiedExerciseRoomPage() {
     { enabled: !!activeModule }
   );
 
-  // Mutation para adicionar pontos
+  // Mutations
   const addPointsMutation = trpc.points.addPoints.useMutation();
+  const awardXPMutation = trpc.gamification.awardXP.useMutation();
 
   // Filtrar exercícios
   const filteredExercises = exercises?.filter((ex) => {
@@ -46,20 +48,42 @@ export default function UnifiedExerciseRoomPage() {
     accuracy: 0,
   };
 
-  // Handler para exercício correto
-  const handleCorrect = async (exerciseId: number, points: number) => {
+  // Handler para resposta de exercício
+  const handleAnswer = async (exerciseId: number, selectedIdx: number, correctIdx: number, points: number) => {
+    // Prevenir responder novamente
+    if (answeredExercises[exerciseId]) return;
 
-    try {
-      await addPointsMutation.mutateAsync({
-        action: "exercise_completed",
-        points,
-        relatedId: exerciseId,
-      });
+    const isCorrect = selectedIdx === correctIdx;
+    
+    // Marcar como respondido
+    setAnsweredExercises(prev => ({
+      ...prev,
+      [exerciseId]: { correct: isCorrect, selectedIdx }
+    }));
 
-      toast.success(`✅ Resposta Correta! +${points} pontos`);
-      refetch();
-    } catch (error) {
-      console.error("Erro ao adicionar pontos:", error);
+    if (isCorrect) {
+      try {
+        // Adicionar pontos
+        await addPointsMutation.mutateAsync({
+          action: "exercise_completed",
+          points,
+          relatedId: exerciseId,
+        });
+        
+        // Adicionar XP (+5 XP por exercício)
+        await awardXPMutation.mutateAsync({
+          amount: 5,
+          reason: "Exercício completado",
+          relatedId: exerciseId,
+        });
+        
+        toast.success(`✅ Resposta Correta! +${points} pontos +5 XP`);
+      } catch (error) {
+        console.error("Erro ao adicionar pontos:", error);
+        toast.error("❌ Erro ao salvar pontos");
+      }
+    } else {
+      toast.error("❌ Resposta incorreta. Veja a explicação abaixo!");
     }
   };
 
@@ -256,25 +280,42 @@ export default function UnifiedExerciseRoomPage() {
                             
                             {exercise.exerciseType === "multiple_choice" && exercise.options && (
                               <div className="grid gap-2">
-                                {(typeof exercise.options === 'string' ? JSON.parse(exercise.options) : exercise.options as string[]).map((option: string, idx: number) => (
-                                  <Button
-                                    key={idx}
-                                    variant="outline"
-                                    className="justify-start text-left h-auto py-3 px-4 hover:bg-primary/10"
-                                    onClick={() => {
-                                      const correctIdx = parseInt(exercise.correctAnswer || "0");
-                                      if (idx === correctIdx) {
-                                        toast.success("✅ Correto!");
-                                        handleCorrect(exercise.id, exercise.points);
-                                      } else {
-                                        toast.error("❌ Incorreto. Tente novamente!");
-                                      }
-                                    }}
-                                  >
-                                    <span className="mr-2 font-bold">{String.fromCharCode(65 + idx)})</span>
-                                    {option}
-                                  </Button>
-                                ))}
+                                {(typeof exercise.options === 'string' ? JSON.parse(exercise.options) : exercise.options as string[]).map((option: string, idx: number) => {
+                                  const correctIdx = parseInt(exercise.correctAnswer || "0");
+                                  const answered = answeredExercises[exercise.id];
+                                  const isThisSelected = answered?.selectedIdx === idx;
+                                  const isThisCorrect = idx === correctIdx;
+                                  
+                                  // Determinar estilo do botão
+                                  let buttonClass = "justify-start text-left h-auto py-3 px-4";
+                                  if (answered) {
+                                    if (isThisSelected && answered.correct) {
+                                      buttonClass += " bg-green-500 text-white hover:bg-green-600 border-green-600";
+                                    } else if (isThisSelected && !answered.correct) {
+                                      buttonClass += " bg-red-500 text-white hover:bg-red-600 border-red-600";
+                                    } else if (isThisCorrect && !answered.correct) {
+                                      buttonClass += " bg-green-100 border-green-500 text-green-700";
+                                    } else {
+                                      buttonClass += " opacity-50";
+                                    }
+                                  } else {
+                                    buttonClass += " hover:bg-primary/10";
+                                  }
+                                  
+                                  return (
+                                    <Button
+                                      key={idx}
+                                      variant="outline"
+                                      className={buttonClass}
+                                      disabled={!!answered}
+                                      onClick={() => handleAnswer(exercise.id, idx, correctIdx, exercise.points)}
+                                    >
+                                      <span className="mr-2 font-bold">{String.fromCharCode(65 + idx)})</span>
+                                      {option}
+                                      {answered && isThisCorrect && !isThisSelected && " ✅"}
+                                    </Button>
+                                  );
+                                })}
                               </div>
                             )}
                             

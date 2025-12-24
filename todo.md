@@ -729,3 +729,45 @@
 - [x] Criar script de seed para inserir todos os exercícios no banco
 - [ ] Executar script e validar inserção (problema técnico no parser - será resolvido após checkpoint)
 - [x] Validar distribuição equilibrada de dificuldades
+
+
+### 🚨 Bugs Críticos Reportados pelo Usuário (24/12/2024)
+
+#### Bug #6: Exercícios Interativos com 404 (CORRIGIDO ✅)
+- [x] Investigar por que /exercicios-interativos retorna 404
+- [x] Verificar se rota está registrada no App.tsx
+- [x] Verificar se componente InteractiveExerciseRoomPage existe
+- [x] Testar acesso à página após correção
+- [x] Rota descomentada e funcionando
+
+#### Bug #7: Exercícios Sem Feedback Visual (CORRIGIDO ✅)
+- [x] Adicionar indicador verde quando usuário acerta
+- [x] Adicionar indicador vermelho quando usuário erra
+- [x] Impedir reenvio após resposta (desabilitar botões)
+- [x] Mostrar resposta correta após erro (com ✅)
+- [x] Sistema de estado answeredExercises implementado
+
+#### Bug #8: Pontuação Não Atualiza no Dashboard (CORRIGIDO ✅)
+- [x] Investigar por que pontos não aparecem no header
+- [x] Verificar se mutation de responder exercício credita pontos
+- [x] Verificar se query do Dashboard busca pontos atualizados
+- [x] Testar fluxo completo de ganho de pontos
+- [x] Tabela points criada no banco de dados
+- [x] Migration aplicada com sucesso
+
+#### Bug #9: XP Limitado - Poucas Fontes (PARCIALMENTE CORRIGIDO 🔄)
+- [x] Documentar todas as fontes atuais de XP (docs/FONTES-DE-XP.md)
+- [x] Adicionar XP por completar exercício (5 XP por exercício)
+- [ ] Adicionar XP por sequência de dias (10 XP por dia consecutivo) - Planejado
+- [ ] Adicionar XP por completar módulo inteiro (50 XP bônus) - Planejado
+- [ ] Adicionar XP por primeira conquista do dia (5 XP) - Planejado
+- [x] Fontes atuais: Completar aula, Completar exercício, Login diário
+
+#### Bug #10: Aulas de Subtração Duplicadas (CORRIGIDO ✅)
+- [x] Investigar por que aulas 4, 5, 6 não aparecem
+- [x] Verificar se páginas existem no banco de dados
+- [x] Verificar navegação "Próxima Aula" no ModulePage
+- [x] Corrigir lógica de próxima aula
+- [x] Testar navegação completa do módulo de Subtração
+- [x] Campo order corrigido para valores sequenciais (1-6)
+- [x] Script fix-page-order.mjs criado e executado
