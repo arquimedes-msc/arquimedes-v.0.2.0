@@ -1,0 +1,62 @@
+{
+  "query": "SELECT pp.*, p.title, p.slug FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE p.moduleId = 90002 ORDER BY pp.lastAccessedAt DESC LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT pp.*, p.title, p.slug FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE p.moduleId = 90002 ORDER BY pp.lastAccessedAt DESC LIMIT 5;",
+  "rows": [
+    {
+      "id": "240002",
+      "userId": "1",
+      "pageId": "120009",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-24 17:35:46",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-23 18:47:38",
+      "updatedAt": "2025-12-24 17:35:45",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair"
+    },
+    {
+      "id": "330001",
+      "userId": "270013",
+      "pageId": "120009",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-24 17:24:33",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-24 16:05:09",
+      "updatedAt": "2025-12-24 17:24:33",
+      "title": "O que é Subtrair?",
+      "slug": "o-que-e-subtrair"
+    },
+    {
+      "id": "330003",
+      "userId": "270013",
+      "pageId": "120011",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-24 17:24:28",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-24 16:06:35",
+      "updatedAt": "2025-12-24 17:24:28",
+      "title": "Subtração com Empréstimo",
+      "slug": "aplicacoes-praticas-subtracao"
+    },
+    {
+      "id": "330002",
+      "userId": "270013",
+      "pageId": "120010",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-24 17:24:23",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-24 16:06:06",
+      "updatedAt": "2025-12-24 17:24:23",
+      "title": "Subtração na Reta Numérica",
+      "slug": "subtracao-com-emprestimo"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tpageId\tcompleted\tscore\tlastAccessedAt\tcompletedAt\tcreatedAt\tupdatedAt\ttitle\tslug\n240002\t1\t120009\t0\t0\t2025-12-24 17:35:46\tNULL\t2025-12-23 18:47:38\t2025-12-24 17:35:45\tO que é Subtrair?\to-que-e-subtrair\n330001\t270013\t120009\t0\t0\t2025-12-24 17:24:33\tNULL\t2025-12-24 16:05:09\t2025-12-24 17:24:33\tO que é Subtrair?\to-que-e-subtrair\n330003\t270013\t120011\t0\t0\t2025-12-24 17:24:28\tNULL\t2025-12-24 16:06:35\t2025-12-24 17:24:28\tSubtração com Empréstimo\taplicacoes-praticas-subtracao\n330002\t270013\t120010\t0\t0\t2025-12-24 17:24:23\tNULL\t2025-12-24 16:06:06\t2025-12-24 17:24:23\tSubtração na Reta Numérica\tsubtracao-com-emprestimo\n",
+  "stderr": "",
+  "execution_time_ms": 114
+}

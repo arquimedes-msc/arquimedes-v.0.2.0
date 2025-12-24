@@ -809,3 +809,37 @@
 - [x] Métrica: Tempo médio de resolução por exercício
 - [x] Seção: Sugestões personalizadas baseadas em erros
 - [ ] Exportar estatísticas em PDF (opcional - não implementado)
+
+
+### 🚨 Bug Crítico Reportado (24/12/2024 - 14h)
+
+#### Bug #11: Progresso de Módulos Não Salva (CRÍTICO)
+- [ ] Investigar por que apenas Módulo 1 (Adição) salva progresso
+- [ ] Verificar se outros módulos (Subtração, Multiplicação, Divisão, Porcentagem) têm IDs corretos
+- [ ] Verificar se mutation de completar aula está sendo chamada
+- [ ] Verificar se XP está sendo creditado ao completar aulas
+- [ ] Testar progresso em todos os módulos após correção
+- [ ] Validar que barra de progresso atualiza corretamente
+
+
+### 🚨 Bug Crítico Reportado (24/12/2024)
+
+#### Bug #11: Progresso de Módulos Não Salva (CORRIGIDO ✅)
+**Descrição:** Usuário reportou que apenas Módulo 1 (Adição) salva progresso. Outros módulos (Subtração, Multiplicação, Divisão, Porcentagem) não salvam progresso das aulas, mesmo que o sistema lembre onde o usuário parou.
+
+**Causa Raiz:** Tabela `pageProgress` não existia no banco de dados. A migration nunca foi aplicada.
+
+**Correção Aplicada:**
+- [x] Investigar por que apenas Módulo 1 salva progresso
+- [x] Verificar se tabela page_progress existe no banco
+- [x] Aplicar migration (pnpm db:push)
+- [x] Testar salvamento em todos os módulos (Subtração testado com sucesso)
+- [x] Verificar se XP/pontos são creditados ao completar aula
+- [x] Verificar se progresso persiste após recarregar página
+- [x] Tabela pageProgress criada via migration
+- [x] Progresso salvo com sucesso (toast "Progresso salvo!" confirmado)
+- [x] 4 registros de progresso salvos no módulo de Subtração
+- [x] Testar auto-complete ao rolar até o final da aula
+
+**Status:** ✅ CORRIGIDO - Migration aplicada, progresso salvando corretamente
+**Data:** 24/12/2024

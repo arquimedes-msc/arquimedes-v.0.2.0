@@ -1,0 +1,22 @@
+{
+  "query": "SELECT pp.completed, pp.score, pp.completedAt, p.title FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE p.slug = 'o-que-e-subtrair' AND p.moduleId = 90002;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT pp.completed, pp.score, pp.completedAt, p.title FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE p.slug = 'o-que-e-subtrair' AND p.moduleId = 90002;",
+  "rows": [
+    {
+      "completed": "0",
+      "score": "0",
+      "completedAt": "NULL",
+      "title": "O que é Subtrair?"
+    },
+    {
+      "completed": "0",
+      "score": "0",
+      "completedAt": "NULL",
+      "title": "O que é Subtrair?"
+    }
+  ],
+  "messages": [],
+  "stdout": "completed\tscore\tcompletedAt\ttitle\n0\t0\tNULL\tO que é Subtrair?\n0\t0\tNULL\tO que é Subtrair?\n",
+  "stderr": "",
+  "execution_time_ms": 52
+}

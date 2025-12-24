@@ -1,0 +1,49 @@
+{
+  "query": "SELECT pp.*, p.title, p.moduleId FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE pp.userId = 1 ORDER BY pp.completedAt DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT pp.*, p.title, p.moduleId FROM pageProgress pp JOIN pages p ON pp.pageId = p.id WHERE pp.userId = 1 ORDER BY pp.completedAt DESC LIMIT 20;",
+  "rows": [
+    {
+      "id": "180001",
+      "userId": "1",
+      "pageId": "1",
+      "completed": "1",
+      "score": "0",
+      "lastAccessedAt": "2025-12-23 17:52:40",
+      "completedAt": "2025-12-23 17:24:50",
+      "createdAt": "2025-12-23 17:20:58",
+      "updatedAt": "2025-12-23 17:52:39",
+      "title": "O que é Adicionar (Combinar)",
+      "moduleId": "1"
+    },
+    {
+      "id": "240001",
+      "userId": "1",
+      "pageId": "4",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-23 18:37:50",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-23 18:37:50",
+      "updatedAt": "2025-12-23 18:37:50",
+      "title": "Multiplicação: Uma Forma Rápida de Somar",
+      "moduleId": "2"
+    },
+    {
+      "id": "240002",
+      "userId": "1",
+      "pageId": "120009",
+      "completed": "0",
+      "score": "0",
+      "lastAccessedAt": "2025-12-23 18:47:38",
+      "completedAt": "NULL",
+      "createdAt": "2025-12-23 18:47:38",
+      "updatedAt": "2025-12-23 18:47:38",
+      "title": "O que é Subtrair?",
+      "moduleId": "90002"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tuserId\tpageId\tcompleted\tscore\tlastAccessedAt\tcompletedAt\tcreatedAt\tupdatedAt\ttitle\tmoduleId\n180001\t1\t1\t1\t0\t2025-12-23 17:52:40\t2025-12-23 17:24:50\t2025-12-23 17:20:58\t2025-12-23 17:52:39\tO que é Adicionar (Combinar)\t1\n240001\t1\t4\t0\t0\t2025-12-23 18:37:50\tNULL\t2025-12-23 18:37:50\t2025-12-23 18:37:50\tMultiplicação: Uma Forma Rápida de Somar\t2\n240002\t1\t120009\t0\t0\t2025-12-23 18:47:38\tNULL\t2025-12-23 18:47:38\t2025-12-23 18:47:38\tO que é Subtrair?\t90002\n",
+  "stderr": "",
+  "execution_time_ms": 62
+}

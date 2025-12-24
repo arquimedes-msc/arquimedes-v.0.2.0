@@ -1,0 +1,50 @@
+{
+  "query": "SELECT id, name FROM modules ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3791tceNk2iYTis.4402e8216d86 --database T5Ee3HJGcPdFeU4iAe9r9p --execute SELECT id, name FROM modules ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Adição"
+    },
+    {
+      "id": "2",
+      "name": "Multiplicação"
+    },
+    {
+      "id": "3",
+      "name": "Divisão"
+    },
+    {
+      "id": "90002",
+      "name": "Subtração"
+    },
+    {
+      "id": "120001",
+      "name": "Frações"
+    },
+    {
+      "id": "120002",
+      "name": "Números Decimais"
+    },
+    {
+      "id": "120003",
+      "name": "Razão e Proporção"
+    },
+    {
+      "id": "120004",
+      "name": "Potenciação e Radiciação"
+    },
+    {
+      "id": "120005",
+      "name": "Números Inteiros"
+    },
+    {
+      "id": "120006",
+      "name": "Porcentagem"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tAdição\n2\tMultiplicação\n3\tDivisão\n90002\tSubtração\n120001\tFrações\n120002\tNúmeros Decimais\n120003\tRazão e Proporção\n120004\tPotenciação e Radiciação\n120005\tNúmeros Inteiros\n120006\tPorcentagem\n",
+  "stderr": "",
+  "execution_time_ms": 552
+}
