@@ -771,3 +771,41 @@
 - [x] Testar navegação completa do módulo de Subtração
 - [x] Campo order corrigido para valores sequenciais (1-6)
 - [x] Script fix-page-order.mjs criado e executado
+
+
+### 🎯 Melhorias Solicitadas (24/12/2024)
+
+#### 1. Sistema de Progresso Persistente (✅ CONCLUÍDO)
+- [x] Criar tabela `exercise_completions` no schema
+- [x] Adicionar campos: userId, exerciseId, completedAt, isCorrect
+- [x] Aplicar migration ao banco de dados
+- [x] Criar mutation `markExerciseComplete` no backend
+- [x] Atualizar UnifiedExerciseRoomPage para salvar progresso
+- [x] Adicionar badge "✓ Concluído" nos cards de exercícios completados
+- [x] Calcular taxa de conclusão por módulo
+- [x] Exibir estatísticas de progresso no Dashboard
+
+#### 2. Novas Fontes de XP (✅ CONCLUÍDO)
+- [x] XP por Streak: +10 XP por dia consecutivo
+  - [x] Verificar streak atual do usuário
+  - [x] Creditar XP ao manter streak ativo
+  - [x] Implementado na função updateStreak
+- [x] XP por Módulo Completo: +50 XP bônus
+  - [x] Detectar quando usuário completa todas as aulas de um módulo
+  - [x] Creditar 50 XP bônus
+  - [x] Função checkModuleCompletion implementada
+- [x] XP por Primeira Conquista do Dia: +5 XP
+  - [x] Rastrear conquistas desbloqueadas por dia
+  - [x] Creditar 5 XP na primeira conquista do dia
+  - [x] Implementado na função checkAndAwardAchievements
+
+#### 3. Dashboard de Estatísticas Detalhadas (✅ CONCLUÍDO)
+- [x] Criar nova página `/estatisticas`
+- [x] Adicionar rota e link na Sidebar
+- [x] Implementar gráficos com biblioteca (recharts)
+- [x] Gráfico: Desempenho por módulo (taxa de acerto)
+- [x] Gráfico: Progresso ao longo do tempo (XP/dia)
+- [x] Lista: Exercícios mais difíceis (menor taxa de acerto)
+- [x] Métrica: Tempo médio de resolução por exercício
+- [x] Seção: Sugestões personalizadas baseadas em erros
+- [ ] Exportar estatísticas em PDF (opcional - não implementado)

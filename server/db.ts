@@ -1,4 +1,4 @@
-import { eq, and, desc, asc, sql } from "drizzle-orm";
+import { eq, and, desc, asc, sql, gte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { 
   InsertUser, users,
@@ -22,7 +22,8 @@ import {
   standaloneVideos, StandaloneVideo, InsertStandaloneVideo,
   standaloneVideoViews, StandaloneVideoView, InsertStandaloneVideoView,
   dailyChallenges, DailyChallenge, InsertDailyChallenge,
-  dailyChallengeAttempts, DailyChallengeAttempt, InsertDailyChallengeAttempt
+  dailyChallengeAttempts, DailyChallengeAttempt, InsertDailyChallengeAttempt,
+  exerciseCompletions, ExerciseCompletion, InsertExerciseCompletion
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -471,6 +472,9 @@ export async function updateStreak(userId: number): Promise<Streak | null> {
           lastActivityDate: now,
         })
         .where(eq(streaks.userId, userId));
+      
+      // Award XP for maintaining streak (+10 XP per consecutive day)
+      await awardXP(userId, 10, `Sequência de ${newStreak} dias!`, undefined);
     } else {
       // Streak broken
       await db.update(streaks)
@@ -1473,6 +1477,25 @@ export async function checkAndAwardAchievements(userId: number): Promise<Achieve
         achievementId: def.id,
       });
       newlyUnlocked.push(def);
+      
+      // Check if this is the first achievement of the day
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      const todayAchievements = await db
+        .select()
+        .from(userAchievements)
+        .where(
+          and(
+            eq(userAchievements.userId, userId),
+            gte(userAchievements.unlockedAt, today)
+          )
+        );
+      
+      // If this is the first achievement today, award bonus XP
+      if (todayAchievements.length === 1) {
+        await awardXP(userId, 5, "Primeira conquista do dia!", def.id);
+      }
     }
   }
 
@@ -1536,4 +1559,118 @@ export async function resetUserProgress(userId: number) {
     .where(eq(standaloneVideoViews.userId, userId));
 
   return { success: true, message: "User progress reset successfully" };
+}
+
+
+// ============= EXERCISE COMPLETIONS =============
+
+/**
+ * Mark exercise as completed
+ */
+export async function markExerciseComplete(
+  userId: number,
+  exerciseId: number,
+  isCorrect: boolean
+): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // Check if already completed
+  const existing = await db
+    .select()
+    .from(exerciseCompletions)
+    .where(
+      and(
+        eq(exerciseCompletions.userId, userId),
+        eq(exerciseCompletions.exerciseId, exerciseId)
+      )
+    )
+    .limit(1);
+
+  if (existing.length === 0) {
+    // Insert new completion
+    await db.insert(exerciseCompletions).values({
+      userId,
+      exerciseId,
+      isCorrect,
+    });
+  }
+}
+
+/**
+ * Get user's completed exercises
+ */
+export async function getUserCompletedExercises(userId: number): Promise<number[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const completions = await db
+    .select()
+    .from(exerciseCompletions)
+    .where(eq(exerciseCompletions.userId, userId));
+
+  return completions.map(c => c.exerciseId);
+}
+
+/**
+ * Get completion stats for a module
+ */
+export async function getModuleCompletionStats(userId: number, moduleId: number): Promise<{
+  total: number;
+  completed: number;
+  percentage: number;
+}> {
+  const db = await getDb();
+  if (!db) return { total: 0, completed: 0, percentage: 0 };
+
+  // Get all exercises in module
+  const allExercises = await db
+    .select()
+    .from(standaloneExercises)
+    .where(eq(standaloneExercises.moduleId, moduleId));
+
+  const total = allExercises.length;
+
+  // Get completed exercises
+  const completedIds = await getUserCompletedExercises(userId);
+  const completed = allExercises.filter(ex => completedIds.includes(ex.id)).length;
+
+  const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+  return { total, completed, percentage };
+}
+
+
+/**
+ * Check if user completed all exercises in a module and award bonus XP
+ */
+export async function checkModuleCompletion(userId: number, moduleId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const stats = await getModuleCompletionStats(userId, moduleId);
+  
+  // Check if module is 100% complete
+  if (stats.percentage === 100 && stats.total > 0) {
+    // Check if bonus was already awarded
+    const existingBonus = await db
+      .select()
+      .from(xpTransactions)
+      .where(
+        and(
+          eq(xpTransactions.userId, userId),
+          eq(xpTransactions.reason, `Módulo ${moduleId} completado!`),
+          eq(xpTransactions.amount, 50)
+        )
+      )
+      .limit(1);
+    
+    if (existingBonus.length === 0) {
+      // Award 50 XP bonus
+      await awardXP(userId, 50, `Módulo ${moduleId} completado!`, moduleId);
+      return true;
+    }
+  }
+  
+  return false;
 }

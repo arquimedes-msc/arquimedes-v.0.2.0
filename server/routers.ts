@@ -504,6 +504,38 @@ Retorne APENAS um JSON com:
     getStats: protectedProcedure.query(async ({ ctx }) => {
       return await db.getStandaloneExerciseStats(ctx.user.id);
     }),
+    
+    markComplete: protectedProcedure
+      .input(z.object({
+        exerciseId: z.number(),
+        isCorrect: z.boolean(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        await db.markExerciseComplete(ctx.user.id, input.exerciseId, input.isCorrect);
+        
+        // Check if module is complete and award bonus
+        // Get exercise from database
+        const allExercises = await db.getAllStandaloneExercises();
+        const exercise = allExercises.find(ex => ex.id === input.exerciseId);
+        if (exercise && exercise.moduleId) {
+          const moduleCompleted = await db.checkModuleCompletion(ctx.user.id, exercise.moduleId);
+          if (moduleCompleted) {
+            return { success: true, moduleCompleted: true, bonusXP: 50 };
+          }
+        }
+        
+        return { success: true, moduleCompleted: false };
+      }),
+    
+    getCompleted: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserCompletedExercises(ctx.user.id);
+    }),
+    
+    getModuleStats: protectedProcedure
+      .input(z.object({ moduleId: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.getModuleCompletionStats(ctx.user.id, input.moduleId);
+      }),
   }),
 
   // ============= STANDALONE VIDEOS (SALA DE VÍDEOS) =============

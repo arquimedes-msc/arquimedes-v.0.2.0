@@ -30,6 +30,10 @@ export default function UnifiedExerciseRoomPage() {
   // Mutations
   const addPointsMutation = trpc.points.addPoints.useMutation();
   const awardXPMutation = trpc.gamification.awardXP.useMutation();
+  const markCompleteMutation = trpc.standaloneExercises.markComplete.useMutation();
+  
+  // Query de exercícios completados
+  const { data: completedExercises = [] } = trpc.standaloneExercises.getCompleted.useQuery();
 
   // Filtrar exercícios
   const filteredExercises = exercises?.filter((ex) => {
@@ -76,6 +80,15 @@ export default function UnifiedExerciseRoomPage() {
           reason: "Exercício completado",
           relatedId: exerciseId,
         });
+        
+        // Marcar como completado
+        await markCompleteMutation.mutateAsync({
+          exerciseId,
+          isCorrect: true,
+        });
+        
+        // Verificar se módulo foi completado (backend fará a verificação e creditará bônus)
+        // A lógica de verificação será chamada no backend automaticamente
         
         toast.success(`✅ Resposta Correta! +${points} pontos +5 XP`);
       } catch (error) {
@@ -255,11 +268,20 @@ export default function UnifiedExerciseRoomPage() {
                   </Card>
                 ) : (
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {filteredExercises.map((exercise) => (
-                      <Card key={exercise.id} className="hover:shadow-lg transition-shadow">
+                    {filteredExercises.map((exercise) => {
+                      const isCompleted = completedExercises.includes(exercise.id);
+                      return (
+                      <Card key={exercise.id} className={`hover:shadow-lg transition-shadow ${isCompleted ? 'border-green-500 border-2' : ''}`}>
                         <CardHeader>
                           <div className="flex items-start justify-between gap-2 mb-2">
-                            <CardTitle className="text-lg">{exercise.title}</CardTitle>
+                            <CardTitle className="text-lg flex items-center gap-2">
+                              {exercise.title}
+                              {isCompleted && (
+                                <Badge className="bg-green-500 text-white">
+                                  ✓ Concluído
+                                </Badge>
+                              )}
+                            </CardTitle>
                             <div className="flex gap-2 flex-shrink-0">
                               {getDifficultyBadge(exercise.difficulty)}
                               <Badge variant="secondary">{exercise.points} pts</Badge>
@@ -332,7 +354,8 @@ export default function UnifiedExerciseRoomPage() {
                           </div>
                         </CardContent>
                       </Card>
-                    ))}
+                    );
+                    })}
                   </div>
                 )}
               </TabsContent>

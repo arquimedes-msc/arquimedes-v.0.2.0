@@ -435,3 +435,18 @@ export const points = mysqlTable("points", {
 
 export type Point = typeof points.$inferSelect;
 export type InsertPoint = typeof points.$inferInsert;
+
+/**
+ * Exercise Completions (Exercícios Completados)
+ * Rastreia quais exercícios cada usuário completou
+ */
+export const exerciseCompletions = mysqlTable("exercise_completions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  exerciseId: int("exerciseId").notNull(), // ID do standalone_exercise
+  isCorrect: boolean("isCorrect").notNull(),
+  completedAt: timestamp("completedAt").defaultNow().notNull(),
+});
+
+export type ExerciseCompletion = typeof exerciseCompletions.$inferSelect;
+export type InsertExerciseCompletion = typeof exerciseCompletions.$inferInsert;
