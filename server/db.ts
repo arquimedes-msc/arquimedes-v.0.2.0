@@ -21,6 +21,7 @@ import {
   standaloneExerciseAttempts, StandaloneExerciseAttempt, InsertStandaloneExerciseAttempt,
   standaloneVideos, StandaloneVideo, InsertStandaloneVideo,
   standaloneVideoViews, StandaloneVideoView, InsertStandaloneVideoView,
+  videoFavorites, VideoFavorite, InsertVideoFavorite,
   dailyChallenges, DailyChallenge, InsertDailyChallenge,
   dailyChallengeAttempts, DailyChallengeAttempt, InsertDailyChallengeAttempt,
   exerciseCompletions, ExerciseCompletion, InsertExerciseCompletion
@@ -385,6 +386,13 @@ export async function getModuleProgress(userId: number, moduleId: number): Promi
   const percentage = Math.round((completed / total) * 100);
   
   return { completed, total, percentage };
+}
+
+export async function getAllModules(): Promise<Module[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  return await db.select().from(modules).orderBy(asc(modules.order));
 }
 
 export async function getAllModulesProgress(userId: number): Promise<Map<number, { completed: number; total: number; percentage: number }>> {
@@ -1094,9 +1102,112 @@ export async function getWatchedVideos(userId: number) {
 
 export async function getStandaloneVideoStats(userId: number) {
   const watched = await getWatchedVideos(userId);
+  const favorites = await getUserFavoriteVideos(userId);
   return {
     totalWatched: watched.length,
+    totalFavorites: favorites.length,
   };
+}
+
+// ============= VIDEO FAVORITES =============
+
+export async function toggleVideoFavorite(userId: number, videoId: number): Promise<{ isFavorited: boolean }> {
+  const db = await getDb();
+  if (!db) return { isFavorited: false };
+
+  // Check if already favorited
+  const existing = await db
+    .select()
+    .from(videoFavorites)
+    .where(and(
+      eq(videoFavorites.userId, userId),
+      eq(videoFavorites.videoId, videoId)
+    ));
+
+  if (existing.length > 0) {
+    // Remove favorite
+    await db.delete(videoFavorites)
+      .where(and(
+        eq(videoFavorites.userId, userId),
+        eq(videoFavorites.videoId, videoId)
+      ));
+    return { isFavorited: false };
+  } else {
+    // Add favorite
+    await db.insert(videoFavorites).values({
+      userId,
+      videoId,
+    });
+    return { isFavorited: true };
+  }
+}
+
+export async function getUserFavoriteVideos(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  const favorites = await db
+    .select({
+      id: videoFavorites.id,
+      videoId: videoFavorites.videoId,
+      createdAt: videoFavorites.createdAt,
+    })
+    .from(videoFavorites)
+    .where(eq(videoFavorites.userId, userId))
+    .orderBy(desc(videoFavorites.createdAt));
+
+  return favorites;
+}
+
+export async function getUserFavoriteVideosWithDetails(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+
+  const favorites = await db
+    .select({
+      favoriteId: videoFavorites.id,
+      videoId: standaloneVideos.id,
+      title: standaloneVideos.title,
+      youtubeId: standaloneVideos.youtubeId,
+      duration: standaloneVideos.duration,
+      description: standaloneVideos.description,
+      disciplineId: standaloneVideos.disciplineId,
+      moduleId: standaloneVideos.moduleId,
+      favoritedAt: videoFavorites.createdAt,
+    })
+    .from(videoFavorites)
+    .innerJoin(standaloneVideos, eq(videoFavorites.videoId, standaloneVideos.id))
+    .where(eq(videoFavorites.userId, userId))
+    .orderBy(desc(videoFavorites.createdAt));
+
+  return favorites;
+}
+
+export async function isVideoFavorited(userId: number, videoId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const existing = await db
+    .select()
+    .from(videoFavorites)
+    .where(and(
+      eq(videoFavorites.userId, userId),
+      eq(videoFavorites.videoId, videoId)
+    ));
+
+  return existing.length > 0;
+}
+
+export async function getUserFavoriteVideoIds(userId: number): Promise<number[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const favorites = await db
+    .select({ videoId: videoFavorites.videoId })
+    .from(videoFavorites)
+    .where(eq(videoFavorites.userId, userId));
+
+  return favorites.map(f => f.videoId);
 }
 
 

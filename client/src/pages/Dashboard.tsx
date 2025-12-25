@@ -113,7 +113,7 @@ export default function Dashboard() {
     <>
       <MobileNav />
       <Sidebar />
-      <div className="lg:ml-72 min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="lg:ml-72 min-h-screen bg-gradient-to-br from-[#F5F5F5] via-[#6A0DAD]/5 to-[#0052CC]/5">
       
       {/* Hero Section - Impactante */}
       <motion.div 
@@ -151,7 +151,7 @@ export default function Dashboard() {
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
               {greeting}, {firstName}! 👋
             </h1>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
               Continue sua jornada em matemática.
             </p>
             

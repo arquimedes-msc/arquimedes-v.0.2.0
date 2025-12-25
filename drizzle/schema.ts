@@ -368,6 +368,20 @@ export type StandaloneVideoView = typeof standaloneVideoViews.$inferSelect;
 export type InsertStandaloneVideoView = typeof standaloneVideoViews.$inferInsert;
 
 /**
+ * Video Favorites (Vídeos Favoritos)
+ * Permite que usuários marquem vídeos como favoritos para acesso rápido
+ */
+export const videoFavorites = mysqlTable("video_favorites", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  videoId: int("videoId").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type VideoFavorite = typeof videoFavorites.$inferSelect;
+export type InsertVideoFavorite = typeof videoFavorites.$inferInsert;
+
+/**
  * Daily Challenges (Desafio do Dia)
  * Armazena os desafios diários gerados automaticamente
  */

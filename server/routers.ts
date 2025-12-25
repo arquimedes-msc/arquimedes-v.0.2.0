@@ -36,6 +36,10 @@ export const appRouter = router({
 
   // ============= MODULES =============
   modules: router({
+    listAll: publicProcedure.query(async () => {
+      return await db.getAllModules();
+    }),
+    
     listByDiscipline: publicProcedure
       .input(z.object({ disciplineId: z.number() }))
       .query(async ({ input }) => {
@@ -614,6 +618,28 @@ Retorne APENAS um JSON com:
     getStats: protectedProcedure.query(async ({ ctx }) => {
       return await db.getStandaloneVideoStats(ctx.user.id);
     }),
+
+    // ============= VIDEO FAVORITES =============
+    toggleFavorite: protectedProcedure
+      .input(z.object({ videoId: z.number() }))
+      .mutation(async ({ ctx, input }) => {
+        const result = await db.toggleVideoFavorite(ctx.user.id, input.videoId);
+        return result;
+      }),
+
+    getFavorites: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserFavoriteVideosWithDetails(ctx.user.id);
+    }),
+
+    getFavoriteIds: protectedProcedure.query(async ({ ctx }) => {
+      return await db.getUserFavoriteVideoIds(ctx.user.id);
+    }),
+
+    isFavorited: protectedProcedure
+      .input(z.object({ videoId: z.number() }))
+      .query(async ({ ctx, input }) => {
+        return await db.isVideoFavorited(ctx.user.id, input.videoId);
+      }),
   }),
 
   // ============= DAILY CHALLENGE (DESAFIO DO DIA) =============

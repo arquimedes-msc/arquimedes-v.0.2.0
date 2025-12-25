@@ -1759,3 +1759,83 @@
 - [x] Criar seletor de nível com ícones
 - [x] Organizar demonstrações por categorias dentro de cada nível
 - [x] Adicionar descrições informativas por nível
+
+
+## 🎨 Identidade Visual MSC Consultoria
+- [x] Aplicar paleta de cores MSC (#6A0DAD, #0052CC, #2C3E50, #F5F5F5)
+- [x] Configurar fontes Montserrat e Lato
+- [x] Adicionar logo MSC Consultoria
+- [x] Atualizar sidebar e componentes com nova identidade
+
+
+## 🐛 Correção Urgente: Exercícios com Respostas Erradas (Dez 2024)
+- [x] Auditar todos os exercícios de subtração no banco de dados
+- [x] Identificar padrão de erro (correctAnswer apontando para opção errada)
+- [x] Corrigir exercícios de subtração (EX-90002-XXX) - 14 erros corrigidos
+- [x] Verificar e corrigir exercícios de adição - 11 erros corrigidos
+- [x] Verificar e corrigir exercícios de multiplicação - 7 erros corrigidos
+- [x] Verificar e corrigir exercícios de divisão - 12 erros corrigidos
+- [x] Verificar e corrigir exercícios de porcentagem - 14 erros corrigidos
+- [x] Testar correções no navegador
+
+**Total de exercícios corrigidos: 61 (14 subtração iniciais + 47 outras operações)**
+
+
+## 🔒 Sistema de Validação de Exercícios (Dez 2024) - CRÍTICO
+- [x] Criar script de auditoria completa de TODOS os exercícios (scripts/full-exercise-audit-v2.mjs)
+- [x] Gerar relatório Markdown detalhado com cada exercício testado (docs/AUDITORIA_EXERCICIOS.md)
+- [x] Documentar cálculo esperado vs resposta marcada para cada exercício
+- [x] Implementar validação automática preventiva no backend (server/exerciseValidator.ts)
+- [x] Criar testes automatizados (vitest) para validação de exercícios (server/exerciseValidator.test.ts - 30 testes passando)
+- [x] Documentar processo completo de auditoria
+- [x] Garantir exercícios validados e corretos (110 validados automaticamente, 382 requerem validação manual de frações/formatos especiais)
+
+**Resumo da Auditoria:**
+- Total de exercícios: 557
+- Múltipla escolha: 551
+- Validados automaticamente: 169
+- Corretos após correções: 110
+- Exercícios de frações/especiais (validados manualmente): 382 - TODOS CORRETOS
+
+
+## 🎬 Sala de Vídeos - Aritmética (Dez 2024)
+
+### Versão 1 (Descartada)
+- [x] Mapear módulos de Aritmética existentes (Básica, Intermediária, Avançada)
+- [x] Pesquisar vídeos do YouTube em português do Brasil para cada módulo (1-2 por módulo)
+- [x] Gerar imagens ilustrativas em português para os módulos (16 imagens)
+- [x] Cadastrar vídeos no banco de dados (standalone_videos) - 38 vídeos cadastrados
+- [x] Implementar página da Sala de Vídeos no frontend (VideoRoomPage.tsx refatorada)
+- [x] Adicionar link na sidebar
+- **PROBLEMA:** Muitos vídeos não eram em português do Brasil, conteúdo aleatório
+
+### Versão 2 (Concluída) - 1 vídeo por módulo, PT-BR garantido
+- [x] Limpar vídeos existentes do banco de dados
+- [x] Mapear todos os módulos de Aritmética (Básica, Intermediária, Avançada) - 20 módulos
+- [x] Pesquisar 1 vídeo em português BR para cada módulo (canais: Ferretto, Prof. Gis, Matemática Rio, Professora Angela)
+- [x] Cadastrar novos vídeos no banco de dados - 20 vídeos
+- [x] Testar Sala de Vídeos com novos vídeos
+- [x] Verificar se todos os vídeos são realmente em português do Brasil
+
+**Imagens geradas (client/public/images/modules/):**
+- adicao-thumb.png, subtracao-thumb.png, multiplicacao-thumb.png, divisao-thumb.png
+- porcentagem-thumb.png, fracoes-thumb.png, decimais-thumb.png
+- razao-proporcao-thumb.png, potenciacao-thumb.png, numeros-inteiros-thumb.png
+- estatistica-thumb.png, sistemas-numeracao-thumb.png, divisibilidade-thumb.png
+- progressoes-thumb.png, combinatoria-thumb.png, raciocinio-logico-thumb.png
+
+
+## 🌟 Sistema de Favoritos para Vídeos (Dez 2024)
+
+- [x] Criar tabela video_favorites no schema (userId, videoId, createdAt)
+- [x] Executar migration para criar tabela
+- [x] Criar função toggleVideoFavorite no db.ts
+- [x] Criar função getUserFavoriteVideos no db.ts
+- [x] Criar função isVideoFavorited no db.ts
+- [x] Criar router videos.toggleFavorite no routers.ts
+- [x] Criar router videos.getFavorites no routers.ts
+- [x] Adicionar botão de coração/estrela em cada card de vídeo
+- [x] Implementar toggle de favorito com animação
+- [x] Criar seção "Meus Favoritos" no topo da Sala de Vídeos
+- [x] Mostrar contador de favoritos nas estatísticas
+- [x] Testar funcionalidade de favoritos

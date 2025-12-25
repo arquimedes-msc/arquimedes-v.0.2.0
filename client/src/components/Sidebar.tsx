@@ -24,7 +24,7 @@ export function Sidebar() {
     { name: "Exercícios Interativos", href: "/exercicios-interativos", icon: Sparkles },
     { name: "Exercícios Resolvidos", href: "/exercicios-resolvidos", icon: CheckCircle2 },
     { name: "Laboratório de Matemática", href: "/laboratorio", icon: Beaker },
-    // { name: "Sala de Videos", href: "/videos", icon: Video }, // Oculto temporariamente
+    { name: "Sala de Vídeos", href: "/videos", icon: Video },
     { name: "Minhas Disciplinas", href: "/disciplinas", icon: BookOpen },
   ];
 
@@ -32,16 +32,30 @@ export function Sidebar() {
 
   const SidebarContent = () => (
     <>
-      {/* Logo */}
-      <div className="p-6 border-b">
-        <h1 className="text-2xl font-bold text-primary">Arquimedes</h1>
-        <p className="text-sm text-muted-foreground">Matematica Descomplicada</p>
+      {/* MSC Consultoria Logo */}
+      <div className="p-6 border-b bg-gradient-to-r from-[#6A0DAD]/5 to-[#0052CC]/5">
+        <div className="flex items-center gap-3">
+          <img 
+            src="/msc-logo.webp" 
+            alt="MSC Consultoria" 
+            className="h-10 w-auto"
+          />
+          <div>
+            <h1 className="text-xl font-bold text-gradient-msc" style={{
+              background: 'linear-gradient(135deg, #6A0DAD 0%, #0052CC 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Arquimedes</h1>
+            <p className="text-xs text-muted-foreground">Matemática Descomplicada</p>
+          </div>
+        </div>
       </div>
 
       {/* User Profile */}
       {user && (
         <div className="p-6 border-b flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6A0DAD] to-[#0052CC] flex items-center justify-center text-white font-bold text-lg shadow-lg">
             {user.avatar ? (
               <img src={user.avatar} alt={user.name || "User"} className="w-full h-full rounded-full object-cover" />
             ) : (
@@ -65,7 +79,7 @@ export function Sidebar() {
                 variant={isActive(item.href) ? "secondary" : "ghost"}
                 className={cn(
                   "w-full justify-start gap-3",
-                  isActive(item.href) && "bg-primary/10 text-primary hover:bg-primary/20"
+                  isActive(item.href) && "bg-[#6A0DAD]/10 text-[#6A0DAD] hover:bg-[#6A0DAD]/20"
                 )}
                 onClick={() => setIsMobileOpen(false)}
               >
@@ -99,7 +113,19 @@ export function Sidebar() {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background border-b">
         <div className="flex items-center justify-between p-4">
-          <h1 className="text-xl font-bold text-primary">Arquimedes</h1>
+          <div className="flex items-center gap-2">
+            <img 
+              src="/msc-logo.webp" 
+              alt="MSC Consultoria" 
+              className="h-8 w-auto"
+            />
+            <h1 className="text-lg font-bold" style={{
+              background: 'linear-gradient(135deg, #6A0DAD 0%, #0052CC 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Arquimedes</h1>
+          </div>
           <Button
             variant="ghost"
             size="icon"
