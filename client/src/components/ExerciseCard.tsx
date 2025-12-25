@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,11 @@ interface ExerciseCardProps {
   onComplete?: (isCorrect: boolean) => void;
 }
 
-export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
+// ⚡ Optimization: Using React.memo to prevent unnecessary re-renders of the exercise card.
+// This is beneficial when ExerciseCard is part of a list that might re-render (like in LessonPage),
+// ensuring this component only re-renders if its specific props change.
+// This avoids costly re-renders when parent state changes but this card's data remains the same.
+export const ExerciseCard = memo(function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
   const { playSuccess, playError } = useSounds();
   const { fireEmojiConfetti } = useConfetti();
   const [answer, setAnswer] = useState("");
@@ -164,4 +168,4 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
       </CardContent>
     </Card>
   );
-}
+});
