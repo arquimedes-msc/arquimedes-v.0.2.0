@@ -24,6 +24,7 @@ import DisciplinesPage from "./pages/DisciplinesPage";
 import AchievementsPage from "./pages/AchievementsPage";
 import AdminPage from "./pages/AdminPage";
 import ExercisesCompletedPage from "./pages/ExercisesCompletedPage";
+import MathLabPage from "./pages/MathLabPage";
 import { SoundToggle } from "./components/SoundToggle";
 
 function Router() {
@@ -40,6 +41,7 @@ function Router() {
       <Route path="/videos" component={VideoRoomPage} />
       {/* <Route path="/desafio-do-dia" component={DailyChallengePage} /> */} {/* Oculto temporariamente - validar respostas */}
       <Route path="/conquistas" component={AchievementsPage} />
+      <Route path="/laboratorio" component={MathLabPage} />
       <Route path="/admin" component={AdminPage} />
       <Route path="/disciplinas" component={DisciplinesPage} />
       <Route path="/minhas-disciplinas" component={DisciplinesPage} />

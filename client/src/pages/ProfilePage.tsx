@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
 import { Camera, Save, Globe, Palette, Moon, Sun, Trophy, Upload, Check } from "lucide-react";
+import { AchievementIcon } from "@/lib/achievementIcons";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
@@ -59,6 +60,15 @@ export default function ProfilePage() {
       setSelectedAchievements((user.favoriteAchievements as number[]) || []);
     }
   }, [user]);
+
+  // Apply dark mode instantly
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   // Check if there are unsaved changes
   useEffect(() => {
@@ -374,7 +384,7 @@ export default function ProfilePage() {
                             : "border-gray-200 hover:border-gray-300"
                         }`}
                       >
-                        <div className="text-4xl mb-2">{achievement.icon}</div>
+                        <AchievementIcon icon={achievement.icon} title={achievement.title} size="md" />
                         <p className="text-sm font-medium text-center">{achievement.title}</p>
                         {isSelected && (
                           <div className="absolute top-2 right-2 bg-primary text-primary-foreground rounded-full p-1">

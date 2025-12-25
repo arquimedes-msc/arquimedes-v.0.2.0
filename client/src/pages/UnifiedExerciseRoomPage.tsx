@@ -14,6 +14,7 @@ import { ExerciseCard } from "@/components/ExerciseCard";
 
 export default function UnifiedExerciseRoomPage() {
 
+  const [activeDiscipline, setActiveDiscipline] = useState("1"); // 1 = Aritmética, 2 = Álgebra
   const [activeModule, setActiveModule] = useState("1");
   const [filterType, setFilterType] = useState<string>("all");
   const [filterDifficulty, setFilterDifficulty] = useState<string>("all");
@@ -21,7 +22,15 @@ export default function UnifiedExerciseRoomPage() {
   const [answeredExercises, setAnsweredExercises] = useState<Record<number, { correct: boolean; selectedIdx: number }>>({}); // Rastrear respostas
 
   // Queries
-  const { data: modules } = trpc.modules.listByDiscipline.useQuery({ disciplineId: 1 }); // 1 = Aritmética
+  const { data: disciplines } = trpc.disciplines.list.useQuery();
+  const { data: modules } = trpc.modules.listByDiscipline.useQuery({ disciplineId: parseInt(activeDiscipline) });
+  
+  // Atualizar activeModule quando mudar de disciplina
+  useEffect(() => {
+    if (modules && modules.length > 0) {
+      setActiveModule(modules[0].id.toString());
+    }
+  }, [modules]);
   const { data: exercises, isLoading, refetch } = trpc.standaloneExercises.getByModule.useQuery(
     { moduleId: parseInt(activeModule) },
     { enabled: !!activeModule }
@@ -217,6 +226,24 @@ export default function UnifiedExerciseRoomPage() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Seletor de Disciplina */}
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle>Escolha a Disciplina</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Tabs value={activeDiscipline} onValueChange={setActiveDiscipline}>
+                <TabsList className="grid w-full grid-cols-2">
+                  {disciplines?.slice(0, 2).map((discipline) => (
+                    <TabsTrigger key={discipline.id} value={discipline.id.toString()}>
+                      {discipline.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+            </CardContent>
+          </Card>
 
           {/* Filtros */}
           <Card className="mb-6">

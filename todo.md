@@ -1270,3 +1270,492 @@
 - [x] Testar mudança de cor no Perfil (todas as 8 cores)
 - [x] Verificar contraste e legibilidade em todas as cores
 - [x] Salvar checkpoint com sistema de cores totalmente funcional
+
+
+## 🧪 Laboratório de Matemática Interativo
+
+### Fase 1: Estrutura Base
+- [ ] Instalar bibliotecas (mafs, gsap, framer-motion)
+- [ ] Criar página MathLabPage.tsx
+- [ ] Implementar MathLabSidebar com lista de módulos
+- [ ] Criar área de visualização responsiva
+- [ ] Adicionar controles básicos (play, reset)
+- [ ] Adicionar rota no App.tsx
+
+### Fase 2: Demonstração 1 - Blocos Empilháveis
+- [ ] Criar componente StackableBlocks.tsx
+- [ ] Implementar drag-and-drop com física
+- [ ] Adicionar animação de empilhamento (GSAP)
+- [ ] Adicionar som de "clique" ao empilhar
+- [ ] Testar responsividade mobile
+
+### Fase 3: Outras Demonstrações (Futuro)
+- [ ] Agrupamento de Objetos
+- [ ] Visualização de Dinheiro (R$)
+- [ ] Gráfico de Barras Crescente
+- [ ] Vetores e Deslocamento
+
+## 🧪 Laboratório de Matemática
+
+### Estrutura Base
+- [x] Pesquisar e analisar referências (Manim + 3Blue1Brown)
+- [x] Planejar arquitetura e escolher stack técnica
+- [x] Instalar bibliotecas (mafs, gsap, framer-motion)
+- [x] Criar página MathLabPage.tsx
+- [x] Adicionar rota /laboratorio
+- [x] Adicionar link na Sidebar
+
+### Demonstração: Blocos Empilháveis
+- [x] Criar componente StackableBlocks
+- [x] Implementar botões de seleção (1 Azul, 2 Verdes, 3 Laranjas)
+- [x] Implementar área de blocos disponíveis
+- [x] Implementar área de empilhamento
+- [x] Adicionar animações GSAP (entrada e empilhamento)
+- [x] Testar interatividade no browser
+- [ ] Corrigir card de Total (não está visível)
+
+### Próximas Demonstrações
+- [ ] Reta Numérica Animada
+- [ ] Agrupamento de Objetos
+- [ ] Visualização de Dinheiro
+- [ ] Gráfico de Barras Crescente
+- [ ] Vetores e Deslocamento
+
+
+---
+
+## 🧪 Laboratório de Matemática - Reorganização Mobile-First (v2.47.0)
+
+### Estrutura com Accordions
+- [x] Reorganizar MathLabPage com accordions/dropdowns
+- [x] Criar 5 accordions (Adição, Subtração, Multiplicação, Divisão, Porcentagem)
+- [x] 2 demonstrações por accordion (total: 10 demos)
+- [x] Design mobile-first otimizado
+- [ ] Testar em dispositivos móveis (320px, 375px, 390px)
+
+### Demonstrações de Adição (2)
+- [x] 1. Blocos Empilháveis (funcionando)
+- [x] 2. Reta Numérica Animada
+
+### Demonstrações de Subtração (2)
+- [x] 1. Blocos Removíveis
+- [x] 2. Reta Numérica com Movimento para Esquerda
+
+### Demonstrações de Multiplicação (2)
+- [x] 1. Matriz de Multiplicação Interativa
+- [x] 2. Grupos de Objetos
+
+### Demonstrações de Divisão (2)
+- [x] 1. Distribuição em Grupos
+- [x] 2. Divisão com Resto Visual
+
+### Demonstrações de Porcentagem (2)
+- [x] 1. Barra de Porcentagem Interativa
+- [x] 2. Pizza de Porcentagem
+
+### Validação e Testes
+- [ ] Testar accordions em mobile
+- [ ] Validar animações GSAP em dispositivos móveis
+- [ ] Verificar performance
+- [ ] Salvar checkpoint v2.47.0
+
+
+---
+
+## 📝 Exercícios e Conteúdo dos 3 Cursos
+
+### Exercícios (75 total)
+- [x] Criar 25 exercícios de Álgebra (5 por módulo)
+- [x] Criar 25 exercícios de Geometria (5 por módulo)
+- [x] Criar 25 exercícios de Cálculo (5 por módulo)
+
+### Conteúdo Teórico Álgebra (máx 250 caracteres)
+- [x] Módulo 1: Variáveis e Expressões
+- [x] Módulo 2: Equações do 1º Grau
+- [x] Módulo 3: Sistemas de Equações
+- [x] Módulo 4: Equações do 2º Grau
+- [x] Módulo 5: Produtos Notáveis
+
+
+---
+
+## 🎨 Correção Tema Light e Badges
+
+### Modo Escuro
+- [x] Corrigir switch do modo escuro que não desativa
+- [x] Testar alternância dark/light em mobile
+
+### Badges Visuais
+- [x] Gerar imagem: Primeira Aula (BookOpen)
+- [x] Gerar imagem: Estudante Dedicado (GraduationCap)
+- [x] Gerar imagem: Mestre da Adição (Plus)
+- [x] Gerar imagem: Mestre da Multiplicação (X)
+- [x] Gerar imagem: Mestre da Divisão (Divide)
+- [x] Integrar badges no perfil
+- [x] Integrar badges na aba conquistas
+
+
+---
+
+## 📐 Módulo Completo de Álgebra (v3.0.0)
+
+### Planejamento e Estrutura
+- [x] Definir estrutura de 5 módulos com 3-4 aulas cada (~17 aulas total)
+- [x] Mapear demonstrações interativas (10 demos, 2 por módulo)
+- [x] Planejar exercícios (50-75 estáticos + 30-40 interativos)
+- [x] Definir conquistas específicas de Álgebra
+- [x] Criar documento de planejamento detalhado
+
+### Conteúdo Educacional Rico (~25.000 palavras)
+- [x] Módulo 1: Introdução às Variáveis e Expressões (3 aulas, ~4.500 palavras)
+  - [x] Aula 1: O que são Variáveis?
+  - [x] Aula 2: Expressões Algébricas
+  - [x] Aula 3: Termos Semelhantes e Simplificação
+- [x] Módulo 2: Equações do 1º Grau (4 aulas, ~6.000 palavras)
+  - [x] Aula 1: O que é uma Equação?
+  - [x] Aula 2: Resolver Equações Simples
+  - [x] Aula 3: Equações com Parênteses
+  - [x] Aula 4: Problemas Práticos com Equações
+- [x] Módulo 3: Sistemas de Equações (3 aulas, ~4.500 palavras)
+  - [x] Aula 1: Introdução aos Sistemas
+  - [x] Aula 2: Método da Substituição
+  - [x] Aula 3: Método da Adição
+- [x] Módulo 4: Equações do 2º Grau (4 aulas, ~6.000 palavras)
+  - [x] Aula 1: O que é uma Equação do 2º Grau?
+  - [x] Aula 2: Equações Incompletas
+  - [x] Aula 3: Fórmula de Bhaskara
+  - [x] Aula 4: Problemas Práticos
+- [x] Módulo 5: Produtos Notáveis e Fatoração (3 aulas, ~4.500 palavras)
+  - [x] Aula 1: Quadrado da Soma e Diferença
+  - [x] Aula 2: Produto da Soma pela Diferença
+  - [x] Aula 3: Fatoração Básica
+
+### Laboratório de Matemática - Seção Álgebra
+- [ ] Criar accordion "Álgebra" no MathLabPage.tsx
+- [x] Demo 1: Balança de Equações (arrastar pesos para equilibrar) ✅ IMPLEMENTADA
+- [x] Demo 2: Visualizador de Variáveis (especificada)
+- [x] Demo 3: Resolver Equação 1º Grau (especificada)
+- [x] Demo 4: Gráfico de Equação Linear (especificada)
+- [x] Demo 5: Sistema 2x2 Gráfico (especificada)
+- [x] Demo 6: Sistema 2x2 Substituição (especificada)
+- [x] Demo 7: Parábola Interativa (especificada)
+- [x] Demo 8: Bhaskara Visual (especificada)
+- [x] Demo 9: Produtos Notáveis Visual (especificada)
+- [x] Demo 10: Fatoração Interativa (especificada)
+
+### Exercícios Estáticos (Sala de Exercícios)
+- [x] Criar 65 exercícios de múltipla escolha
+- [x] Distribuição: 40% Fácil (5 pts), 40% Moderado (10 pts), 20% Difícil (15 pts)
+- [x] Módulo 1: 10 exercícios (variáveis, expressões, simplificação)
+- [x] Módulo 2: 15 exercícios (equações 1º grau)
+- [x] Módulo 3: 10 exercícios (sistemas de equações)
+- [x] Módulo 4: 15 exercícios (equações 2º grau, Bhaskara)
+- [x] Módulo 5: 15 exercícios (produtos notáveis, fatoração)
+- [x] Adicionar explicações passo-a-passo detalhadas
+- [x] Adicionar uniqueId para cada exercício (EX-ALG-M0X-NNN)
+
+### Exercícios Interativos
+- [x] Criar 35 exercícios interativos
+- [x] 15 exercícios FillInBlanks (completar equações, simplificações)
+- [x] 10 exercícios InteractiveSlider (estimar valores de x, y)
+- [x] 10 exercícios MatchingGame (conectar expressões equivalentes)
+- [x] Adicionar dicas estratégicas para exercícios difíceis
+- [x] Integrar com sistema de pontos (5/10/15 pts)
+- [x] Adicionar feedback multissensorial
+
+### Conquistas Específicas de Álgebra
+- [x] Criar achievement "Mestre da Álgebra" (completar 5 módulos)
+- [x] Criar achievement "Solucionador de Equações" (100 exercícios de álgebra)
+- [x] Criar achievement "Gênio de Bhaskara" (30 exercícios de 2º grau)
+- [x] Criar achievement "Explorador do Laboratório" (10 demos)
+- [x] Criar badges progressivos (Bronze → Prata → Ouro → Platina)
+- [x] Especificar prompts para geração de badges
+- [x] Documentar lógica de desbloqueio
+
+### Scripts de Seed
+- [ ] Criar script seed-algebra-pages.mjs (17 aulas)
+- [ ] Criar script seed-algebra-exercises-static.mjs (65 exercícios)
+- [ ] Criar script seed-algebra-exercises-interactive.mjs (35 exercícios)
+- [ ] Criar script seed-algebra-achievements.mjs (4 conquistas)
+- [ ] Documentar ordem de execução dos scripts
+
+### Integração e Testes
+- [ ] Testar navegação entre módulos de Álgebra
+- [ ] Testar todas as 17 aulas (conteúdo, formatação, vídeos)
+- [ ] Testar laboratório de matemática (10 demonstrações)
+- [ ] Testar exercícios estáticos (múltipla escolha)
+- [ ] Testar exercícios interativos (FillInBlanks, Slider, Matching)
+- [ ] Testar sistema de pontos e XP
+- [ ] Validar conquistas desbloqueiam corretamente
+- [ ] Testar responsividade mobile
+- [ ] Verificar acessibilidade (navegação por teclado, leitores de tela)
+- [ ] Salvar checkpoint v3.0.0
+
+### Documentação
+- [x] Criar docs/ALGEBRA_COMPLETE_PLAN.md (planejamento completo)
+- [x] Criar docs/ALGEBRA_LAB_SPECS.md (especificações das demos)
+- [x] Criar docs/ALGEBRA_EXERCISES_STATIC.md (65 exercícios)
+- [x] Criar docs/ALGEBRA_EXERCISES_INTERACTIVE.md (35 exercícios)
+- [x] Criar docs/ALGEBRA_ACHIEVEMENTS.md (sistema de conquistas)
+- [x] Criar docs/ALGEBRA_DELIVERY_SUMMARY.md (resumo de entrega)
+- [ ] Atualizar README.md com módulo de Álgebra
+- [ ] Atualizar CHANGELOG.md com v3.0.0
+
+
+---
+
+## 🚀 Aritmética Intermediária e Avançada (Dezembro 2024)
+
+### Fase 1: Estruturação no Banco de Dados
+- [ ] Criar disciplina "Aritmética Intermediária" (ID: 3)
+- [ ] Criar disciplina "Aritmética Avançada" (ID: 4)
+- [ ] Criar 5 módulos de Aritmética Intermediária
+  - [ ] Módulo 6: Números Inteiros e Racionais (4 aulas)
+  - [ ] Módulo 7: Potenciação e Radiciação Avançadas (4 aulas)
+  - [ ] Módulo 8: Razão, Proporção e Regra de Três (4 aulas)
+  - [ ] Módulo 9: Porcentagem Avançada (4 aulas)
+  - [ ] Módulo 10: Estatística Descritiva Básica (4 aulas)
+- [ ] Criar 5 módulos de Aritmética Avançada
+  - [ ] Módulo 11: Sistemas de Numeração e Bases (4 aulas)
+  - [ ] Módulo 12: Divisibilidade e Números Primos (5 aulas)
+  - [ ] Módulo 13: Progressões Aritméticas e Geométricas (4 aulas)
+  - [ ] Módulo 14: Análise Combinatória Básica (4 aulas)
+  - [ ] Módulo 15: Raciocínio Lógico Quantitativo (4 aulas)
+
+### Fase 2: Conteúdo das Aulas - Intermediário (20 aulas)
+- [ ] Escrever Módulo 6: Números Inteiros e Racionais
+  - [ ] Aula 6.1: Números Inteiros Negativos (50 min)
+  - [ ] Aula 6.2: Comparação e Ordenação (45 min)
+  - [ ] Aula 6.3: Números Racionais (55 min)
+  - [ ] Aula 6.4: Operações com Racionais (50 min)
+- [ ] Escrever Módulo 7: Potenciação e Radiciação Avançadas
+  - [ ] Aula 7.1: Propriedades das Potências (50 min)
+  - [ ] Aula 7.2: Raízes e suas Propriedades (55 min)
+  - [ ] Aula 7.3: Notação Científica (45 min)
+  - [ ] Aula 7.4: Problemas Avançados (50 min)
+- [ ] Escrever Módulo 8: Razão, Proporção e Regra de Três
+  - [ ] Aula 8.1: Razão e Proporção (50 min)
+  - [ ] Aula 8.2: Regra de Três Simples (55 min)
+  - [ ] Aula 8.3: Regra de Três Composta (45 min)
+  - [ ] Aula 8.4: Divisão Proporcional (50 min)
+- [ ] Escrever Módulo 9: Porcentagem Avançada
+  - [ ] Aula 9.1: Cálculos Percentuais Avançados (50 min)
+  - [ ] Aula 9.2: Matemática Financeira Básica (55 min)
+  - [ ] Aula 9.3: Juros Compostos Introdutórios (45 min)
+  - [ ] Aula 9.4: Porcentagens em Estatística (50 min)
+- [ ] Escrever Módulo 10: Estatística Descritiva Básica
+  - [ ] Aula 10.1: Medidas de Tendência Central (50 min)
+  - [ ] Aula 10.2: Interpretação de Gráficos (55 min)
+  - [ ] Aula 10.3: Tabelas e Frequências (45 min)
+  - [ ] Aula 10.4: Porcentagens em Estatística (50 min)
+
+### Fase 3: Conteúdo das Aulas - Avançado (19 aulas)
+- [ ] Escrever Módulo 11: Sistemas de Numeração e Bases
+  - [ ] Aula 11.1: Sistema Decimal e Valor Posicional (50 min)
+  - [ ] Aula 11.2: Outros Sistemas de Numeração (55 min)
+  - [ ] Aula 11.3: Números Romanos (45 min)
+  - [ ] Aula 11.4: Operações em Diferentes Bases (50 min)
+- [ ] Escrever Módulo 12: Divisibilidade e Números Primos
+  - [ ] Aula 12.1: Critérios de Divisibilidade (50 min)
+  - [ ] Aula 12.2: Números Primos e Compostos (55 min)
+  - [ ] Aula 12.3: Fatoração em Primos (50 min)
+  - [ ] Aula 12.4: MMC e MDC (50 min)
+  - [ ] Aula 12.5: Problemas Avançados de Divisibilidade (50 min)
+- [ ] Escrever Módulo 13: Progressões Aritméticas e Geométricas
+  - [ ] Aula 13.1: Sequências Numéricas (45 min)
+  - [ ] Aula 13.2: Progressão Aritmética (PA) (55 min)
+  - [ ] Aula 13.3: Progressão Geométrica (PG) (55 min)
+  - [ ] Aula 13.4: Problemas com PA e PG (55 min)
+- [ ] Escrever Módulo 14: Análise Combinatória Básica
+  - [ ] Aula 14.1: Princípio Fundamental da Contagem (50 min)
+  - [ ] Aula 14.2: Permutações (50 min)
+  - [ ] Aula 14.3: Arranjos e Combinações (55 min)
+  - [ ] Aula 14.4: Problemas Avançados de Contagem (55 min)
+- [ ] Escrever Módulo 15: Raciocínio Lógico Quantitativo
+  - [ ] Aula 15.1: Problemas de Lógica com Números (50 min)
+  - [ ] Aula 15.2: Problemas de Idades (50 min)
+  - [ ] Aula 15.3: Problemas de Conjuntos e Diagramas (55 min)
+  - [ ] Aula 15.4: Desafios e Simulados (55 min)
+
+### Fase 4: Exercícios
+- [ ] Criar 60-90 exercícios para Aritmética Intermediária (70% fácil, 30% médio)
+- [ ] Criar 60-90 exercícios para Aritmética Avançada (60% médio, 40% difícil)
+- [ ] Distribuir exercícios pelos módulos
+- [ ] Adicionar explicações passo-a-passo
+
+### Fase 5: Integração e Testes
+- [ ] Configurar sistema de pré-requisitos (Básico → Intermediário → Avançado)
+- [ ] Testar progressão entre níveis
+- [ ] Validar conteúdo e exercícios no navegador
+- [ ] Ajustar dificuldade conforme feedback
+
+### Fase 6: Melhorias Visuais
+- [ ] Adicionar logo da MSC Consultoria no rodapé
+- [ ] Criar página "Sobre" mencionando MSC Consultoria como desenvolvedora
+- [ ] Adicionar ícones específicos para cada nível (Básico/Intermediário/Avançado)
+
+
+## ✅ Aritmética Intermediária - Fase 2 Concluída (Dez 2024)
+
+- [x] Criar disciplina "Aritmética Intermediária" no banco
+- [x] Criar 5 módulos de Aritmética Intermediária
+- [x] Escrever Módulo 6: Números Inteiros e Racionais (4 aulas)
+- [x] Escrever Módulo 7: Potenciação e Radiciação Avançadas (4 aulas)
+- [x] Escrever Módulo 8: Razão, Proporção e Regra de Três (4 aulas)
+- [x] Escrever Módulo 9: Porcentagem Avançada (4 aulas)
+- [x] Escrever Módulo 10: Estatística Descritiva Básica (4 aulas)
+- [x] Total: 20 aulas criadas (~16h40min de conteúdo)
+- [x] Conteúdo de alta qualidade (~3.500+ palavras por aula)
+
+
+## 🎯 Fase A: Aritmética Intermediária - Exercícios
+
+- [ ] Criar 90 exercícios (63 fáceis + 27 médios)
+- [ ] Distribuir pelos 5 módulos (18 por módulo)
+- [ ] Inserir no banco de dados via script
+- [ ] Testar exercícios no navegador
+- [ ] Criar testes automatizados com vitest
+- [ ] Validar pontuação e progressão
+
+## 🎯 Fase B: Aritmética Avançada - Curso Completo
+
+- [ ] Criar disciplina "Aritmética Avançada" no banco
+- [ ] Criar 5 módulos de Aritmética Avançada
+- [ ] Escrever Módulo 11: Números Primos e Divisibilidade (4 aulas)
+- [ ] Escrever Módulo 12: MMC e MDC Avançados (4 aulas)
+- [ ] Escrever Módulo 13: Frações Complexas (3 aulas)
+- [ ] Escrever Módulo 14: Problemas de Lógica Matemática (4 aulas)
+- [ ] Escrever Módulo 15: Preparação para Concursos (4 aulas)
+- [ ] Criar 90 exercícios de Aritmética Avançada
+- [ ] Testar e validar curso completo
+
+## 🧪 Fase C: Laboratório de Matemática - Demonstrações
+
+- [ ] Pesquisar 5 demos para Aritmética Básica
+- [ ] Pesquisar 5 demos para Aritmética Intermediária
+- [ ] Pesquisar 5 demos para Aritmética Avançada
+- [ ] Planejar implementação com visualizações interativas
+- [ ] Criar protótipos de demonstrações
+
+
+## ✅ Fase A Concluída: Exercícios de Aritmética Intermediária (Dez 2024)
+
+- [x] Criar 90 exercícios (63 fáceis + 27 médios)
+- [x] Distribuir pelos 5 módulos (18 por módulo)
+- [x] Inserir no banco de dados via script
+- [x] Total: 90 exercícios, 585 pontos
+- [x] Módulo 1: Números Inteiros e Racionais (18 exercícios)
+- [x] Módulo 2: Potenciação e Radiciação (18 exercícios)
+- [x] Módulo 3: Razão e Proporção (18 exercícios)
+- [x] Módulo 4: Porcentagem Avançada (18 exercícios)
+- [x] Módulo 5: Estatística Básica (18 exercícios)
+
+
+## 🚀 Fase B: Aritmética Avançada - 21 Aulas
+
+### Módulo 11: Sistemas de Numeração (4 aulas)
+- [ ] Aula 1: Sistema Decimal e Posicional
+- [ ] Aula 2: Sistema Binário
+- [ ] Aula 3: Sistema Hexadecimal
+- [ ] Aula 4: Conversão entre Sistemas
+
+### Módulo 12: Divisibilidade e Números Primos (5 aulas)
+- [ ] Aula 1: Critérios de Divisibilidade
+- [ ] Aula 2: Números Primos e Compostos
+- [ ] Aula 3: Fatoração em Primos
+- [ ] Aula 4: MDC e MMC Avançados
+- [ ] Aula 5: Aplicações Práticas
+
+### Módulo 13: Progressões Aritméticas e Geométricas (4 aulas)
+- [ ] Aula 1: Progressão Aritmética (PA)
+- [ ] Aula 2: Soma de PA
+- [ ] Aula 3: Progressão Geométrica (PG)
+- [ ] Aula 4: Soma de PG
+
+### Módulo 14: Análise Combinatória Básica (4 aulas)
+- [ ] Aula 1: Princípio Fundamental da Contagem
+- [ ] Aula 2: Permutações
+- [ ] Aula 3: Arranjos
+- [ ] Aula 4: Combinações
+
+### Módulo 15: Raciocínio Lógico Quantitativo (4 aulas)
+- [ ] Aula 1: Sequências Numéricas
+- [ ] Aula 2: Problemas de Lógica
+- [ ] Aula 3: Raciocínio Proporcional
+- [ ] Aula 4: Problemas de Concursos
+
+## 🚀 Fase B: Aritmética Avançada - 90 Exercícios
+- [ ] Criar 18 exercícios de Sistemas de Numeração
+- [ ] Criar 18 exercícios de Divisibilidade
+- [ ] Criar 18 exercícios de Progressões
+- [ ] Criar 18 exercícios de Análise Combinatória
+- [ ] Criar 18 exercícios de Raciocínio Lógico
+
+## 🚀 Fase C: Laboratório de Matemática - 15 Demonstrações
+
+### Aritmética Básica (5 demos)
+- [ ] Demo 1: Reta Numérica Interativa (Adição/Subtração)
+- [ ] Demo 2: Matriz de Multiplicação
+- [ ] Demo 3: Divisão Visual com Resto
+- [ ] Demo 4: Barra de Porcentagem
+- [ ] Demo 5: Pizza de Frações
+
+### Aritmética Intermediária (5 demos)
+- [ ] Demo 1: Potenciação Visual (bases e expoentes)
+- [ ] Demo 2: Radiciação com Quadrados Perfeitos
+- [ ] Demo 3: Regra de Três Interativa
+- [ ] Demo 4: Gráfico de Proporções
+- [ ] Demo 5: Calculadora de Estatísticas
+
+### Aritmética Avançada (5 demos)
+- [ ] Demo 1: Conversor de Bases Numéricas
+- [ ] Demo 2: Crivo de Eratóstenes Animado
+- [ ] Demo 3: Visualizador de Progressões
+- [ ] Demo 4: Diagrama de Árvore (Combinatória)
+- [ ] Demo 5: Sequências Numéricas Interativas
+
+
+---
+
+## 🚀 Fase B: Aritmética Avançada + Laboratório de Matemática (Dezembro 2024)
+
+### Aritmética Avançada - 21 Aulas ✅
+- [x] Módulo 11: Sistemas de Numeração (4 aulas)
+- [x] Módulo 12: Divisibilidade e Números Primos (5 aulas)
+- [x] Módulo 13: Progressões Aritméticas e Geométricas (4 aulas)
+- [x] Módulo 14: Análise Combinatória Básica (4 aulas)
+- [x] Módulo 15: Raciocínio Lógico Quantitativo (4 aulas)
+
+### Aritmética Avançada - 90 Exercícios ✅
+- [x] 18 exercícios de Sistemas de Numeração
+- [x] 18 exercícios de Divisibilidade
+- [x] 18 exercícios de Progressões
+- [x] 18 exercícios de Análise Combinatória
+- [x] 18 exercícios de Raciocínio Lógico
+
+### Laboratório de Matemática - Demonstrações Interativas ✅
+
+#### Nível Básico (6 demonstrações)
+- [x] Blocos Empilháveis (já existia)
+- [x] Reta Numérica Animada (já existia)
+- [x] Blocos Removíveis (já existia)
+- [x] Tabuada Visual (NOVO)
+- [x] Frações com Pizza (NOVO)
+- [x] Porcentagem Barra e Pizza (já existia)
+
+#### Nível Intermediário (3 demonstrações)
+- [x] Gráfico de Funções (Linear, Quadrática, Modular) (NOVO)
+- [x] Teorema de Pitágoras Visual (NOVO)
+- [x] Probabilidade com Dados (NOVO)
+
+#### Nível Avançado (4 demonstrações)
+- [x] Conversor de Bases Numéricas (NOVO)
+- [x] Visualização de Progressões PA e PG (NOVO)
+- [x] Fatoração em Primos Interativa (NOVO)
+- [x] Análise Combinatória Visual (NOVO)
+
+### Organização do Laboratório ✅
+- [x] Reorganizar MathLabPage com 3 níveis (Básico, Intermediário, Avançado)
+- [x] Criar seletor de nível com ícones
+- [x] Organizar demonstrações por categorias dentro de cada nível
+- [x] Adicionar descrições informativas por nível

@@ -24,6 +24,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ACHIEVEMENT_ICON_IMAGES } from "@/lib/achievementIcons";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   BookOpen,
@@ -248,7 +249,15 @@ export default function AchievementsPage() {
                               <div className="flex items-start justify-between">
                                 <div className={`p-3 rounded-full ${achievement.unlocked ? "bg-white/20" : "bg-gray-200"}`}>
                                   {achievement.unlocked ? (
-                                    <Icon className={`h-8 w-8 ${levelColors.text}`} />
+                                    ACHIEVEMENT_ICON_IMAGES[achievement.icon] ? (
+                                      <img 
+                                        src={ACHIEVEMENT_ICON_IMAGES[achievement.icon]} 
+                                        alt={achievement.title}
+                                        className="h-12 w-12 object-contain"
+                                      />
+                                    ) : (
+                                      <Icon className={`h-8 w-8 ${levelColors.text}`} />
+                                    )
                                   ) : (
                                     <Lock className="h-8 w-8 text-gray-400" />
                                   )}
