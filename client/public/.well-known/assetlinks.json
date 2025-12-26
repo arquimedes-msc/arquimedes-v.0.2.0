@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mscconsultoria.arquimedes",
+      "sha256_cert_fingerprints": [
+        "41:DE:A4:51:6A:DB:9C:11:9B:91:85:64:D6:92:FE:4C:BF:BB:68:B2:B0:D0:0F:94:32:CC:5C:96:99:9D:C0:81"
+      ]
+    }
+  }
+]
