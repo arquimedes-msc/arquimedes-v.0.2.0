@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Mail, Code } from "lucide-react";
 import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
@@ -22,15 +23,6 @@ export default function LoginPage() {
     // Após login bem-sucedido, o callback redirecionará para /dashboard
     window.location.href = getLoginUrl();
   };
-
-  // Mostra loading enquanto verifica autenticação
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#6A0DAD] via-[#0052CC] to-[#2C3E50]">
-        <div className="text-white text-xl">Carregando...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-[#6A0DAD] via-[#0052CC] to-[#2C3E50]">
@@ -83,8 +75,13 @@ export default function LoginPage() {
               type="button"
               onClick={handleGoogleLogin}
               className="w-full h-14 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-300 hover:border-[#6A0DAD] font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-base"
+              disabled={isLoading}
             >
-              <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
+              {isLoading ? (
+                <Spinner className="mr-3" />
+              ) : (
+                <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
+              )}
               Continuar com Google
             </Button>
 
@@ -94,8 +91,13 @@ export default function LoginPage() {
                 type="button"
                 onClick={() => (window.location.href = "/api/dev/login")}
                 className="w-full h-14 bg-[#2C3E50] hover:bg-[#1a252f] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-base"
+                disabled={isLoading}
               >
-                <Code className="w-5 h-5 mr-3 flex-shrink-0" />
+                {isLoading ? (
+                  <Spinner className="mr-3" />
+                ) : (
+                  <Code className="w-5 h-5 mr-3 flex-shrink-0" />
+                )}
                 Entrar como Desenvolvedor
               </Button>
             )}
