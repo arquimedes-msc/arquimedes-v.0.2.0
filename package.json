@@ -14,6 +14,8 @@
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "PWDEBUG=1 playwright test",
     "quality": "node scripts/quality-monitor.mjs",
     "quality:watch": "nodemon --watch server --exec 'node scripts/quality-monitor.mjs'",
     "lint": "eslint server --ext .ts --max-warnings 0",
