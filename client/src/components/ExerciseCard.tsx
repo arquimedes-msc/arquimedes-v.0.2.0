@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,10 +21,10 @@ interface Exercise {
 
 interface ExerciseCardProps {
   exercise: Exercise;
-  onComplete?: (isCorrect: boolean) => void;
+  onComplete?: (exerciseId: number, isCorrect: boolean) => void;
 }
 
-export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
+export const ExerciseCard = memo(function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
   const { playSuccess, playError } = useSounds();
   const { fireEmojiConfetti } = useConfetti();
   const [answer, setAnswer] = useState("");
@@ -47,7 +47,7 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
           message: "Excelente! Resposta correta! 🎉",
         });
         toast.success("Resposta correta!");
-        onComplete?.(true);
+        onComplete?.(exercise.id, true);
       } else {
         playError(); // Som de erro
         setFeedback({
@@ -164,4 +164,4 @@ export function ExerciseCard({ exercise, onComplete }: ExerciseCardProps) {
       </CardContent>
     </Card>
   );
-}
+});
