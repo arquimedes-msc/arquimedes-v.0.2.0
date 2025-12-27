@@ -21,7 +21,7 @@ interface Exercise {
 
 interface ExerciseCardProps {
   exercise: Exercise;
-  onComplete?: (isCorrect: boolean) => void;
+  onComplete?: (exerciseId: number, isCorrect: boolean) => void;
 }
 
 // ⚡ Optimization: Using React.memo to prevent unnecessary re-renders of the exercise card.
@@ -51,7 +51,7 @@ export const ExerciseCard = memo(function ExerciseCard({ exercise, onComplete }:
           message: "Excelente! Resposta correta! 🎉",
         });
         toast.success("Resposta correta!");
-        onComplete?.(true);
+        onComplete?.(exercise.id, true);
       } else {
         playError(); // Som de erro
         setFeedback({

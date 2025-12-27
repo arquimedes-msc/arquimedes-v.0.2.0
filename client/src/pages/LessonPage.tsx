@@ -83,7 +83,7 @@ export default function LessonPage() {
     }
   }, [page?.id, isAuthenticated]);
 
-  const handleExerciseComplete = (exerciseId: number, isCorrect: boolean) => {
+  const handleExerciseComplete = useCallback((exerciseId: number, isCorrect: boolean) => {
     if (isCorrect) {
       setCompletedExercises((prev) => {
         const newSet = new Set(prev);
@@ -91,7 +91,7 @@ export default function LessonPage() {
         return newSet;
       });
     }
-  };
+  }, []);
 
   const handleMarkComplete = () => {
     console.log('[DEBUG] handleMarkComplete called', { page: page?.id, progressCompleted: progress?.completed, isAuthenticated });
@@ -280,7 +280,7 @@ export default function LessonPage() {
               <ExerciseCard
                 key={exercise.id}
                 exercise={exercise}
-                onComplete={(isCorrect) => handleExerciseComplete(exercise.id, isCorrect)}
+                onComplete={handleExerciseComplete}
               />
             ))}
           </div>
