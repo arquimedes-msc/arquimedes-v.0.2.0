@@ -212,6 +212,35 @@ export async function createPage(data: InsertPage): Promise<Page> {
   return inserted[0]!;
 }
 
+// ============= CURRICULUM OPERATIONS =============
+
+export async function getAllCurriculum(): Promise<{
+  disciplines: Discipline[];
+  modules: Module[];
+  pages: Page[];
+}> {
+  const db = await getDb();
+  if (!db) {
+    return {
+      disciplines: [],
+      modules: [],
+      pages: [],
+    };
+  }
+
+  const [disciplinesData, modulesData, pagesData] = await Promise.all([
+    db.select().from(disciplines).orderBy(asc(disciplines.order)),
+    db.select().from(modules).orderBy(asc(modules.order)),
+    db.select().from(pages).orderBy(asc(pages.order)),
+  ]);
+
+  return {
+    disciplines: disciplinesData,
+    modules: modulesData,
+    pages: pagesData,
+  };
+}
+
 // ============= EXERCISE OPERATIONS =============
 
 export async function getExercisesByPage(pageId: number): Promise<Exercise[]> {

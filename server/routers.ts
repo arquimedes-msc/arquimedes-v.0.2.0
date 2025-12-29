@@ -353,19 +353,22 @@ Retorne APENAS um JSON com:
     
     recommendations: protectedProcedure.query(async ({ ctx }) => {
       const allProgress = await db.getAllUserProgress(ctx.user.id);
-      const disciplines = await db.getAllDisciplines();
+      const { disciplines, modules, pages } = await db.getAllCurriculum();
       
+      // Create a Set of completed page IDs for efficient lookup
+      const completedPageIds = new Set(
+        allProgress.filter(p => p.completed).map(p => p.pageId)
+      );
+
       // Find next recommended page
       for (const discipline of disciplines) {
-        const modules = await db.getModulesByDiscipline(discipline.id);
+        const disciplineModules = modules.filter(m => m.disciplineId === discipline.id);
         
-        for (const module of modules) {
-          const pages = await db.getPagesByModule(module.id);
+        for (const module of disciplineModules) {
+          const modulePages = pages.filter(p => p.moduleId === module.id);
           
-          for (const page of pages) {
-            const progress = allProgress.find(p => p.pageId === page.id);
-            
-            if (!progress || !progress.completed) {
+          for (const page of modulePages) {
+            if (!completedPageIds.has(page.id)) {
               return {
                 discipline,
                 module,

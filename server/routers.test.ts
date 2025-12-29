@@ -1,11 +1,77 @@
-import { describe, expect, it, beforeAll, afterAll } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
-import * as db from "./db";
-import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+vi.mock("./db", () => {
+    // Mock data
+    const mockDisciplines = [
+      { id: 1, name: "Aritmética", slug: "aritmetica", description: "A base de tudo", order: 1 },
+    ];
+    const mockModules = [
+      { id: 1, name: "Adição e Subtração", slug: "adicao-subtracao", disciplineId: 1, order: 1 },
+    ];
+    const mockPages = [
+      { id: 1, title: "O que é Adicionar?", slug: "o-que-e-adicionar", moduleId: 1, mainText: "Texto principal", conceptSummary: "Resumo", order: 1 },
+    ];
+    const mockExercises = [
+      { id: 1, pageId: 1, question: "Quanto é 7 + 1?", expectedAnswer: "8", order: 1, alternativeAnswers: [] },
+    ];
+    const mockUserProgress = [
+        { id: 1, userId: 1, pageId: 1, completed: true, score: 100, lastAccessedAt: new Date(), completedAt: new Date() }
+    ];
+    const mockAchievements = [
+        { id: 1, userId: 1, type: "first_lesson", title: "Primeira Aula", createdAt: new Date() }
+    ];
+
+    return {
+      getAllDisciplines: vi.fn().mockResolvedValue(mockDisciplines),
+      getDisciplineBySlug: vi.fn().mockImplementation((slug) =>
+        Promise.resolve(mockDisciplines.find(d => d.slug === slug))
+      ),
+      getModulesByDiscipline: vi.fn().mockImplementation((disciplineId) =>
+        Promise.resolve(mockModules.filter(m => m.disciplineId === disciplineId))
+      ),
+      getModuleBySlug: vi.fn().mockImplementation((disciplineId, slug) =>
+        Promise.resolve(mockModules.find(m => m.disciplineId === disciplineId && m.slug === slug))
+      ),
+      getPagesByModule: vi.fn().mockImplementation((moduleId) =>
+        Promise.resolve(mockPages.filter(p => p.moduleId === moduleId))
+      ),
+      getPageBySlug: vi.fn().mockImplementation((moduleId, slug) =>
+        Promise.resolve(mockPages.find(p => p.moduleId === moduleId && p.slug === slug))
+      ),
+      getExercisesByPage: vi.fn().mockImplementation((pageId) =>
+        Promise.resolve(mockExercises.filter(e => e.pageId === pageId))
+      ),
+      getExerciseById: vi.fn().mockImplementation((exerciseId) =>
+        Promise.resolve(mockExercises.find(e => e.id === exerciseId))
+      ),
+      createExerciseAttempt: vi.fn().mockImplementation((data) =>
+        Promise.resolve({ ...data, id: Math.random(), attemptNumber: 1, createdAt: new Date() })
+      ),
+      upsertPageProgress: vi.fn().mockResolvedValue(undefined),
+      getAllUserProgress: vi.fn().mockResolvedValue(mockUserProgress),
+      getUserAchievements: vi.fn().mockResolvedValue(mockAchievements),
+      getAllCurriculum: vi.fn().mockResolvedValue({
+        disciplines: mockDisciplines,
+        modules: mockModules,
+        pages: mockPages,
+      }),
+      getPageById: vi.fn().mockImplementation((pageId) =>
+        Promise.resolve(mockPages.find(p => p.id === pageId))
+      ),
+       awardXP: vi.fn().mockResolvedValue(null),
+       addPoints: vi.fn().mockResolvedValue(undefined),
+       checkAndAwardAchievements: vi.fn().mockResolvedValue([]),
+       createAchievement: vi.fn().mockResolvedValue({}),
+       getDb: vi.fn().mockResolvedValue({
+        select: () => ({ from: () => ({ where: () => ({ limit: () => Promise.resolve([]) }) }) }),
+      }),
+    };
+});
 
 type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
 
