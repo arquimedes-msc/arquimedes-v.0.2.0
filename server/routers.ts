@@ -734,8 +734,10 @@ Retorne APENAS um JSON com:
     resetUserProgress: adminProcedure
       .input(z.object({ userId: z.number().optional() }))
       .mutation(async ({ ctx, input }) => {
-        // TODO: Implement resetUserProgress function
-        return { success: true };
+        if (!input.userId) {
+          throw new Error("A userId must be provided to reset progress.");
+        }
+        return await db.resetUserProgress(input.userId);
       }),
   }),
 });
