@@ -24,7 +24,8 @@ import {
   videoFavorites, VideoFavorite, InsertVideoFavorite,
   dailyChallenges, DailyChallenge, InsertDailyChallenge,
   dailyChallengeAttempts, DailyChallengeAttempt, InsertDailyChallengeAttempt,
-  exerciseCompletions, ExerciseCompletion, InsertExerciseCompletion
+  exerciseCompletions, ExerciseCompletion, InsertExerciseCompletion,
+  blogPosts, BlogPost
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -2046,4 +2047,13 @@ export async function checkModuleCompletion(userId: number, moduleId: number): P
   }
   
   return false;
+}
+
+// ============= BLOG OPERATIONS =============
+
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
 }

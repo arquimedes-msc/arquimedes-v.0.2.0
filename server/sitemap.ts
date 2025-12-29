@@ -94,16 +94,15 @@ export async function generateSitemap(): Promise<string> {
     }
   }
 
-  // TODO: Adicionar páginas de blog quando implementado
-  // const blogPosts = await db.getBlogPosts();
-  // for (const post of blogPosts) {
-  //   urls.push({
-  //     loc: `${BASE_URL}/blog/${post.slug}`,
-  //     lastmod: post.updatedAt?.toISOString().split("T")[0],
-  //     changefreq: "monthly",
-  //     priority: 0.6,
-  //   });
-  // }
+  const blogPosts = await db.getBlogPosts();
+  for (const post of blogPosts) {
+    urls.push({
+      loc: `${BASE_URL}/blog/${post.slug}`,
+      lastmod: post.updatedAt?.toISOString().split("T")[0],
+      changefreq: "monthly",
+      priority: 0.6,
+    });
+  }
 
   return generateSitemapXml(urls);
 }
