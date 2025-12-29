@@ -146,6 +146,9 @@ VITE_APP_ID=seu_app_id_aqui
 OWNER_OPEN_ID=seu_open_id_aqui
 OWNER_NAME=Gabriel Luiz
 
+# Certbot (SSL Certificate)
+CERTBOT_EMAIL=seu_email@dominio.com
+
 # Manus Forge API
 BUILT_IN_FORGE_API_URL=https://forge-api.manus.im
 BUILT_IN_FORGE_API_KEY=sua_chave_api_aqui
@@ -278,9 +281,19 @@ echo -e "${YELLOW}🔒 Configurando SSL...${NC}"
 echo "Executando Certbot para obter certificado SSL..."
 echo ""
 
-certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email gabrielol2035@gmail.com || {
-    echo -e "${YELLOW}⚠️  Certbot falhou. Execute manualmente:${NC}"
-    echo "certbot --nginx -d $DOMAIN -d www.$DOMAIN"
+# Carregar variáveis de ambiente para o Certbot
+if [ -f "$PROJECT_DIR/.env" ]; then
+    source "$PROJECT_DIR/.env"
+fi
+
+if [ -z "$CERTBOT_EMAIL" ]; then
+    echo -e "${RED}ERRO: CERTBOT_EMAIL não está definido no arquivo .env. Abortando.${NC}"
+    exit 1
+fi
+
+certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email "$CERTBOT_EMAIL" || {
+    echo -e "${YELLOW}⚠️  Certbot falhou. Tente executar manualmente:${NC}"
+    echo "certbot --nginx -d $DOMAIN -d www.$DOMAIN --email $CERTBOT_EMAIL"
 }
 
 # ========================================
