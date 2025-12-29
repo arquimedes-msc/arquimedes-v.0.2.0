@@ -2,10 +2,10 @@ import { Link, useLocation } from "wouter";
 import { Home, User, BookOpen, LogOut, Menu, X, Target, Video, Trophy, Award, Sparkles, CheckCircle2, Beaker } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export function Sidebar() {
+export const Sidebar = memo(function Sidebar() {
   const [location, setLocation] = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { data: user } = trpc.auth.me.useQuery();
@@ -164,4 +164,4 @@ export function Sidebar() {
       <div className="lg:hidden h-16" />
     </>
   );
-}
+});
