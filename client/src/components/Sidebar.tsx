@@ -74,19 +74,21 @@ export const Sidebar = memo(function Sidebar() {
         {navigation.map((item) => {
           const Icon = item.icon;
           return (
-            <Link key={item.href} href={item.href}>
-              <Button
-                variant={isActive(item.href) ? "secondary" : "ghost"}
-                className={cn(
-                  "w-full justify-start gap-3",
-                  isActive(item.href) && "bg-[#6A0DAD]/10 text-[#6A0DAD] hover:bg-[#6A0DAD]/20"
-                )}
-                onClick={() => setIsMobileOpen(false)}
-              >
+            <Button
+              key={item.href}
+              asChild
+              variant={isActive(item.href) ? "secondary" : "ghost"}
+              className={cn(
+                "w-full justify-start gap-3",
+                isActive(item.href) && "bg-[#6A0DAD]/10 text-[#6A0DAD] hover:bg-[#6A0DAD]/20"
+              )}
+              onClick={() => setIsMobileOpen(false)}
+            >
+              <Link href={item.href}>
                 <Icon className="h-5 w-5" />
                 {item.name}
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           );
         })}
       </nav>
