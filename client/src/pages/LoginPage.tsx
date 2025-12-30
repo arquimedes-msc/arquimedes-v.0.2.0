@@ -91,7 +91,7 @@ export default function LoginPage() {
               {isGoogleLoginLoading ? (
                 <Spinner className="w-5 h-5 mr-3 text-gray-700" />
               ) : (
-                <Mail className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
+                <Mail aria-hidden="true" className="w-5 h-5 mr-3 text-red-600 flex-shrink-0" />
               )}
               {isGoogleLoginLoading
                 ? "Redirecionando..."
@@ -105,7 +105,7 @@ export default function LoginPage() {
                 onClick={() => (window.location.href = "/api/dev/login")}
                 className="w-full h-14 bg-[#2C3E50] hover:bg-[#1a252f] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-base"
               >
-                <Code className="w-5 h-5 mr-3 flex-shrink-0" />
+                <Code aria-hidden="true" className="w-5 h-5 mr-3 flex-shrink-0" />
                 Entrar como Desenvolvedor
               </Button>
             )}
