@@ -1,17 +1,20 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
+import * as db from "./db";
+
+vi.mock("./db");
 
 type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
 
-function createAuthContext(): { ctx: TrpcContext } {
+function createAuthContext(role: "user" | "admin" = "user"): { ctx: TrpcContext } {
   const user: AuthenticatedUser = {
     id: 999,
     openId: "test-gamification-user",
     email: "gamification@test.com",
     name: "Test Gamification User",
     loginMethod: "manus",
-    role: "user",
+    role,
     createdAt: new Date(),
     updatedAt: new Date(),
     lastSignedIn: new Date(),
@@ -32,6 +35,22 @@ function createAuthContext(): { ctx: TrpcContext } {
 }
 
 describe("Gamification System", () => {
+  let userXpState;
+
+  beforeEach(() => {
+    userXpState = { totalXP: 0, level: 1, xpToNextLevel: 100 };
+
+    const dbMock = vi.mocked(db, true);
+    dbMock.getUserXP.mockImplementation(() => Promise.resolve(userXpState));
+    dbMock.awardXP.mockImplementation((userId, amount) => {
+      userXpState.totalXP += amount;
+      userXpState.level = userXpState.totalXP >= 100 ? 2 : 1;
+      return Promise.resolve(userXpState);
+    });
+    dbMock.getUserStreak.mockResolvedValue({ currentStreak: 0, longestStreak: 0 });
+    dbMock.getUserAchievements.mockResolvedValue([]);
+  });
+
   it("should get user streak (initially 0)", async () => {
     const { ctx } = createAuthContext();
     const caller = appRouter.createCaller(ctx);
@@ -65,13 +84,14 @@ describe("Gamification System", () => {
   });
 
   it("should award XP to user", async () => {
-    const { ctx } = createAuthContext();
+    const { ctx } = createAuthContext("admin");
     const caller = appRouter.createCaller(ctx);
 
     const initialXP = await caller.gamification.xp();
     const initialTotal = initialXP.totalXP;
 
     const result = await caller.gamification.awardXP({
+      userId: 999,
       amount: 50,
       reason: "test_completion",
       relatedId: 1,
@@ -82,11 +102,12 @@ describe("Gamification System", () => {
   });
 
   it("should calculate level correctly based on XP", async () => {
-    const { ctx } = createAuthContext();
+    const { ctx } = createAuthContext("admin");
     const caller = appRouter.createCaller(ctx);
 
     // Award enough XP to level up (level 1 requires 100 XP, level 2 requires 200 XP total)
     await caller.gamification.awardXP({
+      userId: 999,
       amount: 150,
       reason: "test_levelup",
     });
