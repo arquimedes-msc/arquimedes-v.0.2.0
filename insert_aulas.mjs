@@ -1,15 +1,16 @@
 import mysql from 'mysql2/promise';
 import { readFileSync } from 'fs';
+import 'dotenv/config';
 
-// Conectar ao banco
-const connection = await mysql.createConnection({
-  host: 'gateway01.us-east-1.prod.aws.tidbcloud.com',
-  port: 4000,
-  user: '2vQiSYfHd1UvQXB.root',
-  password: 'Qd2hS7ySvnBLvBDO',
-  database: 'manus_webdev_arquimedes',
-  ssl: { rejectUnauthorized: true }
-});
+// Verificar se a URL do banco de dados está definida
+if (!process.env.DATABASE_URL) {
+  console.error("❌ ERRO: DATABASE_URL não definida nas variáveis de ambiente.");
+  process.exit(1);
+}
+
+// Conectar ao banco usando DATABASE_URL
+// Formato esperado: mysql://user:password@host:port/database
+const connection = await mysql.createConnection(process.env.DATABASE_URL);
 
 // Ler conteúdos
 const subtracao1 = readFileSync('/tmp/subtracao_aula1.md', 'utf-8');
