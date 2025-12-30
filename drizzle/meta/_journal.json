@@ -169,6 +169,13 @@
       "when": 1766628291419,
       "tag": "0023_aromatic_callisto",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1767039970536,
+      "tag": "0024_swift_lester",
+      "breakpoints": true
     }
   ]
 }

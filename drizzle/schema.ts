@@ -481,3 +481,17 @@ export const exerciseCompletions = mysqlTable("exercise_completions", {
 
 export type ExerciseCompletion = typeof exerciseCompletions.$inferSelect;
 export type InsertExerciseCompletion = typeof exerciseCompletions.$inferInsert;
+
+/**
+ * Blog Posts
+ */
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  title: varchar("title", { length: 255 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
