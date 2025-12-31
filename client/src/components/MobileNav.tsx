@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { Menu, X, Home, BookOpen, User, LogOut, CheckCircle2, Search } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,9 @@ const normalizeString = (value: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
-export function MobileNav() {
+// ⚡ Bolt: Memoized MobileNav to prevent unnecessary re-renders from the parent Dashboard component.
+// This is a stable component that doesn't receive props, so re-rendering is wasteful when Dashboard's state changes.
+export const MobileNav = memo(function MobileNav() {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { user, isAuthenticated, logout } = useAuth();
@@ -162,7 +164,7 @@ export function MobileNav() {
       </SheetContent>
     </Sheet>
   );
-}
+});
 
 function DisciplineAccordion({
   discipline,
