@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
+import rateLimit from "express-rate-limit";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
@@ -34,6 +35,24 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Trust proxy for correct IP resolution when behind a proxy (like Nginx/Vercel)
+  // This ensures the rate limiter uses the real client IP, not the proxy's IP.
+  app.set("trust proxy", 1);
+
+  // 🛡️ SECURITY: Rate Limiting
+  // Limit repeated requests to public APIs to protect against abuse and DoS attacks.
+  const apiLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000, // 1 minute
+    limit: 500, // Limit each IP to 500 requests per windowMs (approx 8 req/sec)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+    message: "Too many requests from this IP, please try again later.",
+  });
+
+  // Apply rate limiting to all API routes
+  app.use("/api", apiLimiter);
+
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   
