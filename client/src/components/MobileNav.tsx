@@ -25,10 +25,9 @@ const normalizeString = (value: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
-// ⚡ Bolt: Memoized MobileNav to prevent unnecessary re-renders from stateful
-// parent components like Dashboard.tsx. Since MobileNav is self-contained and
-// has no props, it should only render once.
-export const MobileNav = memo(() => {
+// ⚡ Bolt: Memoized MobileNav to prevent unnecessary re-renders from the parent Dashboard component.
+// This is a stable component that doesn't receive props, so re-rendering is wasteful when Dashboard's state changes.
+export const MobileNav = memo(function MobileNav() {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { user, isAuthenticated, logout } = useAuth();
