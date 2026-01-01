@@ -28,11 +28,16 @@ vi.mock('./db', () => ({
   getExercises: vi.fn(),
   getStandaloneExercises: vi.fn(),
   getUserProgress: vi.fn(),
-  getUserXP: vi.fn(),
-  getUserAchievements: vi.fn(),
+  getUserXP: vi.fn().mockResolvedValue({ totalXP: 0, level: 1, xpToNextLevel: 100 }),
+  awardXP: vi.fn().mockImplementation((userId, amount) => {
+    return Promise.resolve({ totalXP: amount });
+  }),
+  getUserAchievements: vi.fn().mockResolvedValue([]),
+  getUserStreak: vi.fn().mockResolvedValue({ currentStreak: 0, longestStreak: 0 }),
   getStreak: vi.fn(),
   getUserPoints: vi.fn(),
   getModuleVideos: vi.fn(),
+  getStandaloneVideosByModule: vi.fn(),
   getDailyChallenge: vi.fn(),
 }));
 

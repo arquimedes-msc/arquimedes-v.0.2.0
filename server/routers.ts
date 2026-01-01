@@ -318,14 +318,16 @@ Retorne APENAS um JSON com:
       return await db.getUserAchievements(ctx.user.id);
     }),
     
-    awardXP: protectedProcedure
+    // Only admins can award XP directly
+    awardXP: adminProcedure
       .input(z.object({
+        userId: z.number(),
         amount: z.number(),
         reason: z.string(),
         relatedId: z.number().optional(),
       }))
       .mutation(async ({ ctx, input }) => {
-        return await db.awardXP(ctx.user.id, input.amount, input.reason, input.relatedId);
+        return await db.awardXP(input.userId, input.amount, input.reason, input.relatedId);
       }),
   }),
   
@@ -401,11 +403,27 @@ Retorne APENAS um JSON com:
     updateAvatar: protectedProcedure
       .input(z.object({ avatarBase64: z.string() }))
       .mutation(async ({ ctx, input }) => {
-        // Upload to S3
-        const buffer = Buffer.from(input.avatarBase64.split(',')[1], 'base64');
-        const fileKey = `avatars/${ctx.user.id}-${Date.now()}.jpg`;
+        // Validate base64 format and mime type
+        const match = input.avatarBase64.match(/^data:(image\/(jpeg|png|webp));base64,/);
+        if (!match) {
+          throw new Error("Invalid image format. Only JPEG, PNG, and WebP are allowed.");
+        }
+
+        const mimeType = match[1];
+        const extension = mimeType.split('/')[1];
+        const base64Data = input.avatarBase64.replace(/^data:image\/\w+;base64,/, "");
+
+        // Create buffer and check size
+        const buffer = Buffer.from(base64Data, 'base64');
+
+        // 5MB limit
+        if (buffer.length > 5 * 1024 * 1024) {
+          throw new Error("File too large. Maximum size is 5MB.");
+        }
+
+        const fileKey = `avatars/${ctx.user.id}-${Date.now()}.${extension}`;
         const { storagePut } = await import("./storage");
-        const { url } = await storagePut(fileKey, buffer, "image/jpeg");
+        const { url } = await storagePut(fileKey, buffer, mimeType);
         
         // Update user avatar URL
         await db.updateUserAvatar(ctx.user.id, url);
@@ -457,14 +475,16 @@ Retorne APENAS um JSON com:
   
   // ============= POINTS =============
   points: router({
-    addPoints: protectedProcedure
+    // Only admins can add points directly
+    addPoints: adminProcedure
       .input(z.object({
-        action: z.enum(["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed"]),
+        userId: z.number(),
+        action: z.enum(["daily_login", "video_watched", "exercise_completed", "podcast_listened", "task_completed", "manual_adjustment"]),
         points: z.number(),
         relatedId: z.number().optional(),
       }))
       .mutation(async ({ ctx, input }) => {
-        await db.addPoints(ctx.user.id, input.action, input.points, input.relatedId);
+        await db.addPoints(input.userId, input.action, input.points, input.relatedId);
         return { success: true };
       }),
     
