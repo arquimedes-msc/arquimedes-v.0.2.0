@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 import { Card } from './ui/card';
@@ -47,7 +48,18 @@ export function MathContent({ content, className = "", videoUrl, videoTitle }: M
       {/* Primeira parte do conteúdo */}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        rehypePlugins={[rehypeRaw, [rehypeSanitize, {
+          ...defaultSchema,
+          attributes: {
+            ...defaultSchema.attributes,
+            // Allow className on all elements for styling
+            '*': ['className'],
+            // Allow specific attributes for certain tags if needed
+            div: [...(defaultSchema.attributes?.div || []), 'className'],
+            span: [...(defaultSchema.attributes?.span || []), 'className', 'style'],
+          },
+          tagNames: [...(defaultSchema.tagNames || []), 'div', 'span']
+        }]]}
         components={markdownComponents}
       >
         {processedParts[0]}
@@ -67,7 +79,16 @@ export function MathContent({ content, className = "", videoUrl, videoTitle }: M
       {processedParts[1] && (
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeRaw]}
+          rehypePlugins={[rehypeRaw, [rehypeSanitize, {
+            ...defaultSchema,
+            attributes: {
+              ...defaultSchema.attributes,
+              '*': ['className'],
+              div: [...(defaultSchema.attributes?.div || []), 'className'],
+              span: [...(defaultSchema.attributes?.span || []), 'className', 'style'],
+            },
+            tagNames: [...(defaultSchema.tagNames || []), 'div', 'span']
+          }]]}
           components={markdownComponents}
         >
           {processedParts[1]}

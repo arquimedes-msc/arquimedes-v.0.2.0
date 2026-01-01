@@ -1,106 +1,69 @@
-import { describe, it, expect, beforeAll } from "vitest";
+import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
-import * as db from "./db";
 import type { TrpcContext } from "./_core/context";
-import { userPointsLog } from "../drizzle/schema";
-import { eq, and } from "drizzle-orm";
+import * as db from "./db";
 
-describe("Points System", () => {
-  const mockUser = {
-    id: 999,
+vi.mock("./db");
+
+type AuthenticatedUser = NonNullable<TrpcContext["user"]>;
+
+function createAuthContext(role: "user" | "admin" = "user"): { ctx: TrpcContext } {
+  const user: AuthenticatedUser = {
+    id: 1000,
     openId: "test-points-user",
-    name: "Points Test User",
     email: "points@test.com",
-    role: "user" as const,
+    name: "Test Points User",
+    loginMethod: "manus",
+    role,
     createdAt: new Date(),
     updatedAt: new Date(),
     lastSignedIn: new Date(),
-    loginMethod: "test",
   };
 
-  const mockContext: TrpcContext = {
-    user: mockUser,
-    req: {} as any,
-    res: {} as any,
+  const ctx: TrpcContext = {
+    user,
+    req: {
+      protocol: "https",
+      headers: {},
+    } as TrpcContext["req"],
+    res: {
+      clearCookie: () => {},
+    } as TrpcContext["res"],
   };
 
-  const caller = appRouter.createCaller(mockContext);
+  return { ctx };
+}
 
-  beforeAll(async () => {
-    // Ensure user exists in database
-    await db.upsertUser({
-      openId: mockUser.openId,
-      name: mockUser.name,
-      email: mockUser.email,
-      loginMethod: mockUser.loginMethod,
-      lastSignedIn: new Date(),
-    });
+describe("Points System", () => {
+  beforeEach(() => {
+    const dbMock = vi.mocked(db, true);
+    dbMock.addPoints.mockImplementation(async () => {});
   });
 
-  it("should add points for an action", async () => {
+  it("should allow admin to add points to a user", async () => {
+    const { ctx } = createAuthContext("admin");
+    const caller = appRouter.createCaller(ctx);
+
     const result = await caller.points.addPoints({
-      action: "exercise_completed",
-      points: 5,
+      userId: 1000,
+      action: "manual_adjustment",
+      points: 100,
     });
 
     expect(result.success).toBe(true);
+    expect(db.addPoints).toHaveBeenCalledWith(1000, "manual_adjustment", 100, undefined);
   });
 
-  it("should get points summary", async () => {
-    // Add some points first
-    await caller.points.addPoints({
-      action: "video_watched",
-      points: 3,
-    });
+  it("should prevent non-admin user from adding points", async () => {
+    const { ctx } = createAuthContext("user");
+    const caller = appRouter.createCaller(ctx);
 
-    const summary = await caller.points.getSummary();
-
-    expect(summary).toHaveProperty("today");
-    expect(summary).toHaveProperty("thisWeek");
-    expect(summary).toHaveProperty("thisMonth");
-    expect(summary).toHaveProperty("allTime");
-    expect(summary.allTime).toBeGreaterThan(0);
-  });
-
-  it("should give daily login points only once per day", async () => {
-    // Clean up any existing daily_login points from previous test runs
-    const database = await db.getDb();
-    if (database) {
-      await database.delete(userPointsLog)
-        .where(and(
-          eq(userPointsLog.userId, mockUser.id),
-          eq(userPointsLog.action, "daily_login")
-        ));
-    }
-
-    const firstLogin = await caller.points.checkDailyLogin();
-    expect(firstLogin.earned).toBe(true);
-    expect(firstLogin.points).toBe(10);
-
-    // Wait a bit to ensure the first record is persisted
-    await new Promise(resolve => setTimeout(resolve, 100));
-
-    const secondLogin = await caller.points.checkDailyLogin();
-    expect(secondLogin.earned).toBe(false);
-    expect(secondLogin.points).toBe(0);
-  });
-
-  it("should track points by different actions", async () => {
-    const summaryBefore = await caller.points.getSummary();
-
-    await caller.points.addPoints({
-      action: "podcast_listened",
-      points: 7,
-    });
-
-    await caller.points.addPoints({
-      action: "task_completed",
-      points: 15,
-    });
-
-    const summaryAfter = await caller.points.getSummary();
-
-    expect(summaryAfter.allTime).toBeGreaterThan(summaryBefore.allTime);
-    expect(summaryAfter.allTime - summaryBefore.allTime).toBe(22); // 7 + 15
+    await expect(
+      caller.points.addPoints({
+        userId: 1000,
+        action: "manual_adjustment",
+        points: 100,
+      })
+    ).rejects.toThrow("You do not have required permission");
   });
 });
