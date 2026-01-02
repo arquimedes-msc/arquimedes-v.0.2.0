@@ -134,8 +134,9 @@ PORT=3000
 # Database (SUBSTITUA COM SUAS CREDENCIAIS)
 DATABASE_URL=mysql://usuario:senha@host:3306/database
 
-# JWT Secret (GERE UMA CHAVE SEGURA)
-JWT_SECRET=sua_chave_secreta_super_segura_aqui
+# JWT Secret (SUBSTITUA POR UMA CHAVE SEGURA GERADA)
+# Ex: openssl rand -hex 32
+JWT_SECRET=[INSIRA_SUA_CHAVE_SECRETA_DE_MINIMO_32_CARACTERES_AQUI]
 
 # OAuth Manus
 OAUTH_SERVER_URL=https://api.manus.im
