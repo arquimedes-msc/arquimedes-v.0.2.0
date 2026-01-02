@@ -91,7 +91,7 @@ export const appRouter = router({
     submit: protectedProcedure
       .input(z.object({
         exerciseId: z.number(),
-        answer: z.string(),
+        answer: z.string().max(1000, "Answer is too long"),
       }))
       .mutation(async ({ ctx, input }) => {
         const exercise = await db.getExerciseById(input.exerciseId);
@@ -401,7 +401,7 @@ Retorne APENAS um JSON com:
     }),
     
     updateAvatar: protectedProcedure
-      .input(z.object({ avatarBase64: z.string() }))
+      .input(z.object({ avatarBase64: z.string().max(10 * 1024 * 1024, "Image too large") }))
       .mutation(async ({ ctx, input }) => {
         // Validate base64 format and mime type
         const match = input.avatarBase64.match(/^data:(image\/(jpeg|png|webp));base64,/);
