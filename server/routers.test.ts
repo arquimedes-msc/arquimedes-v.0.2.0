@@ -5,6 +5,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+vi.mock("./_core/notification", () => ({
+  notifyOwner: vi.fn().mockResolvedValue(undefined),
+}));
+
 vi.mock("./db", () => {
     // Mock data
     const mockDisciplines = [
