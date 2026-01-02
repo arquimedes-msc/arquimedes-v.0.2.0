@@ -430,20 +430,48 @@ export async function getAllModules(): Promise<Module[]> {
   return await db.select().from(modules).orderBy(asc(modules.order));
 }
 
+// ⚡ Bolt: Optimized to fix N+1 query problem.
+// Previously, this function made 1 + (N * 2) queries, where N is the number of modules.
+// Now, it makes a constant 3 queries, significantly improving performance.
 export async function getAllModulesProgress(userId: number): Promise<Map<number, { completed: number; total: number; percentage: number }>> {
   const db = await getDb();
   if (!db) return new Map();
-  
-  // Get all modules
-  const allModules = await db.select().from(modules);
-  
-  const progressMap = new Map<number, { completed: number; total: number; percentage: number }>();
-  
-  for (const module of allModules) {
-    const progress = await getModuleProgress(userId, module.id);
-    progressMap.set(module.id, progress);
+
+  // 1. Fetch all necessary data in parallel
+  const [allModules, allPages, userProgress] = await Promise.all([
+    db.select({ id: modules.id, disciplineId: modules.disciplineId }).from(modules),
+    db.select({ id: pages.id, moduleId: pages.moduleId }).from(pages),
+    db.select({ pageId: pageProgress.pageId }).from(pageProgress).where(and(eq(pageProgress.userId, userId), eq(pageProgress.completed, true)))
+  ]);
+
+  // 2. Create efficient lookups
+  const completedPageIds = new Set(userProgress.map(p => p.pageId));
+  const pagesByModule = new Map<number, number[]>();
+  for (const page of allPages) {
+    if (!pagesByModule.has(page.moduleId)) {
+      pagesByModule.set(page.moduleId, []);
+    }
+    pagesByModule.get(page.moduleId)!.push(page.id);
   }
   
+  // 3. Process data in memory
+  const progressMap = new Map<number, { completed: number; total: number; percentage: number }>();
+
+  for (const module of allModules) {
+    const modulePages = pagesByModule.get(module.id) || [];
+    const total = modulePages.length;
+
+    if (total === 0) {
+      progressMap.set(module.id, { completed: 0, total: 0, percentage: 0 });
+      continue;
+    }
+
+    const completed = modulePages.filter(pageId => completedPageIds.has(pageId)).length;
+    const percentage = Math.round((completed / total) * 100);
+
+    progressMap.set(module.id, { completed, total, percentage });
+  }
+
   return progressMap;
 }
 
