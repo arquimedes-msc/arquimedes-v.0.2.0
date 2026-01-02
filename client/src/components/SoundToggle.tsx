@@ -25,9 +25,15 @@ export function SoundToggle() {
       title={isMuted ? "Ativar som" : "Desativar som"}
     >
       {isMuted ? (
-        <VolumeX className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+        <VolumeX
+          aria-hidden="true"
+          className="w-5 h-5 text-gray-600 dark:text-gray-300"
+        />
       ) : (
-        <Volume2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+        <Volume2
+          aria-hidden="true"
+          className="w-5 h-5 text-blue-600 dark:text-blue-400"
+        />
       )}
     </Button>
   );
