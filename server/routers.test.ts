@@ -70,6 +70,7 @@ vi.mock("./db", () => {
        getDb: vi.fn().mockResolvedValue({
         select: () => ({ from: () => ({ where: () => ({ limit: () => Promise.resolve([]) }) }) }),
       }),
+      getRecommendation: vi.fn().mockResolvedValue(null),
     };
 });
 

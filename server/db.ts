@@ -242,6 +242,56 @@ export async function getAllCurriculum(): Promise<{
   };
 }
 
+// ============= RECOMMENDATION OPERATIONS =============
+
+/**
+ * ⚡ Bolt: Optimized recommendation engine.
+ * This function replaces an inefficient in-memory loop with a single, performant SQL query.
+ * It finds the next uncompleted page for a user within their enrolled disciplines,
+ * significantly reducing data transfer and server-side processing.
+ */
+export async function getRecommendation(userId: number): Promise<{
+  discipline: Discipline;
+  module: Module;
+  page: Page;
+} | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db
+    .select({
+      discipline: disciplines,
+      module: modules,
+      page: pages,
+    })
+    .from(pages)
+    .innerJoin(modules, eq(pages.moduleId, modules.id))
+    .innerJoin(disciplines, eq(modules.disciplineId, disciplines.id))
+    .innerJoin(userEnrollments, eq(disciplines.id, userEnrollments.disciplineId))
+    .leftJoin(pageProgress, and(
+      eq(pageProgress.pageId, pages.id),
+      eq(pageProgress.userId, userId)
+    ))
+    .where(
+      and(
+        eq(userEnrollments.userId, userId),
+        or(
+          sql`${pageProgress.completed} IS NULL`,
+          eq(pageProgress.completed, false)
+        )
+      )
+    )
+    .orderBy(asc(disciplines.order), asc(modules.order), asc(pages.order))
+    .limit(1);
+
+  if (result.length === 0) {
+    return null;
+  }
+
+  return result[0];
+}
+
+
 // ============= EXERCISE OPERATIONS =============
 
 export async function getExercisesByPage(pageId: number): Promise<Exercise[]> {
