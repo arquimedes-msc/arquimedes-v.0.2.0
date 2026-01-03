@@ -91,7 +91,8 @@ export const appRouter = router({
     submit: protectedProcedure
       .input(z.object({
         exerciseId: z.number(),
-        answer: z.string(),
+        // 🛡️ SECURITY: Limit input length to prevent DoS/Storage exhaustion
+        answer: z.string().max(1000, "Answer too long"),
       }))
       .mutation(async ({ ctx, input }) => {
         const exercise = await db.getExerciseById(input.exerciseId);
