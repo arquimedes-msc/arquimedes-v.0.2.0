@@ -354,34 +354,9 @@ Retorne APENAS um JSON com:
     }),
     
     recommendations: protectedProcedure.query(async ({ ctx }) => {
-      const allProgress = await db.getAllUserProgress(ctx.user.id);
-      const { disciplines, modules, pages } = await db.getAllCurriculum();
-      
-      // Create a Set of completed page IDs for efficient lookup
-      const completedPageIds = new Set(
-        allProgress.filter(p => p.completed).map(p => p.pageId)
-      );
-
-      // Find next recommended page
-      for (const discipline of disciplines) {
-        const disciplineModules = modules.filter(m => m.disciplineId === discipline.id);
-        
-        for (const module of disciplineModules) {
-          const modulePages = pages.filter(p => p.moduleId === module.id);
-          
-          for (const page of modulePages) {
-            if (!completedPageIds.has(page.id)) {
-              return {
-                discipline,
-                module,
-                page,
-              };
-            }
-          }
-        }
-      }
-      
-      return null;
+      // ⚡ Bolt: Replaced inefficient in-memory recommendation logic with a single,
+      // optimized database query for significant performance improvement.
+      return await db.getRecommendation(ctx.user.id);
     }),
    }),
 
