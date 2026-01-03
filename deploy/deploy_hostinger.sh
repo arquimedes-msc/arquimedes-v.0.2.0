@@ -134,30 +134,30 @@ PORT=3000
 # Database (SUBSTITUA COM SUAS CREDENCIAIS)
 DATABASE_URL=mysql://usuario:senha@host:3306/database
 
-# JWT Secret (GERE UMA CHAVE SEGURA)
-JWT_SECRET=sua_chave_secreta_super_segura_aqui
+# JWT Secret (Gerado automaticamente)
+JWT_SECRET=$(openssl rand -hex 32)
 
 # OAuth Manus
 OAUTH_SERVER_URL=https://api.manus.im
 VITE_OAUTH_PORTAL_URL=https://portal.manus.im
-VITE_APP_ID=seu_app_id_aqui
+VITE_APP_ID=
 
 # Owner Info
-OWNER_OPEN_ID=seu_open_id_aqui
+OWNER_OPEN_ID=
 OWNER_NAME=Gabriel Luiz
 
 # Certbot (SSL Certificate)
-CERTBOT_EMAIL=seu_email@dominio.com
+CERTBOT_EMAIL=
 
 # Manus Forge API
 BUILT_IN_FORGE_API_URL=https://forge-api.manus.im
-BUILT_IN_FORGE_API_KEY=sua_chave_api_aqui
-VITE_FRONTEND_FORGE_API_KEY=sua_chave_frontend_aqui
+BUILT_IN_FORGE_API_KEY=
+VITE_FRONTEND_FORGE_API_KEY=
 VITE_FRONTEND_FORGE_API_URL=https://forge-api.manus.im
 
 # Analytics
 VITE_ANALYTICS_ENDPOINT=https://analytics.manus.im
-VITE_ANALYTICS_WEBSITE_ID=seu_website_id_aqui
+VITE_ANALYTICS_WEBSITE_ID=
 
 # App Config
 VITE_APP_TITLE=Arquimedes - Matemática Descomplicada
