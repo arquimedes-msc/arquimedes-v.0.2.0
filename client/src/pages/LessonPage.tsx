@@ -4,6 +4,7 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
 import { MathContent } from "@/components/MathContent";
 import { ExerciseCard } from "@/components/ExerciseCard";
 import { YouTubeEmbed } from "@/components/YouTubeEmbed";
@@ -312,7 +313,7 @@ export default function LessonPage() {
             >
               {updateProgressMutation.isPending ? (
                 <>
-                  <span className="animate-spin mr-2">⏳</span>
+                  <Spinner className="mr-2 h-5 w-5" />
                   Salvando...
                 </>
               ) : (
