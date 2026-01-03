@@ -5,6 +5,11 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Mock notification to prevent "Notification service URL is not configured" error
+vi.mock("./_core/notification", () => ({
+  notifyOwner: vi.fn().mockResolvedValue(undefined),
+}));
+
 vi.mock("./db", () => {
     // Mock data
     const mockDisciplines = [
